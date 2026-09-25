@@ -58,6 +58,21 @@ class SplitTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             split_records(self.records, (0.8, 0.3, -0.1), seed=1)
 
+    def test_image_ratio_is_primary_when_large_groups_are_class_imbalanced(self) -> None:
+        records: list[SourceRecord] = []
+        index = 0
+        for group, size, category in (("A", 20, 5), ("B", 15, 6), ("C", 15, 6)):
+            for _ in range(size):
+                index += 1
+                records.append(record(index, group, (category,)))
+        for singleton in range(50):
+            index += 1
+            records.append(record(index, f"S{singleton}", ((singleton % 10) + 1,)))
+
+        splits = split_records(records, (0.7, 0.15, 0.15), seed=1)
+
+        self.assertEqual({name: len(items) for name, items in splits.items()}, {"train": 70, "val": 15, "test": 15})
+
 
 if __name__ == "__main__":
     unittest.main()

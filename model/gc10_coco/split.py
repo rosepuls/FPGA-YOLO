@@ -60,18 +60,28 @@ def split_records(
 
     for group, members in ordered_groups:
         group_counts = _instance_counts(members)
-        candidate_scores: list[tuple[float, float, int, str]] = []
-        for split_index, split_name in enumerate(SPLIT_NAMES):
-            projected_images = current_images[split_name] + len(members)
-            image_error = ((projected_images - target_images[split_name]) / max(target_images[split_name], 1.0)) ** 2
-            class_error = 0.0
-            for category in categories:
-                projected = current_instances[split_name][category] + group_counts[category]
-                target = target_instances[split_name][category]
-                class_error += ((projected - target) / max(target, 1.0)) ** 2
-            fill = current_images[split_name] / max(target_images[split_name], 1.0)
-            candidate_scores.append((image_error + class_error / max(len(categories), 1), fill, split_index, split_name))
-        chosen = min(candidate_scores)[3]
+        feasible = [
+            split_name
+            for split_name in SPLIT_NAMES
+            if target_images[split_name] - current_images[split_name] >= len(members)
+        ]
+        candidates = feasible or list(SPLIT_NAMES)
+        candidate_scores: list[tuple[float, float, float, int, str]] = []
+        for split_index, split_name in enumerate(candidates):
+            remaining = target_images[split_name] - current_images[split_name]
+            overflow = max(0.0, len(members) - remaining)
+            remaining_ratio = remaining / max(target_images[split_name], 1.0)
+            instance_total = max(sum(group_counts.values()), 1)
+            class_need = sum(
+                group_counts[category]
+                * max(target_instances[split_name][category] - current_instances[split_name][category], 0.0)
+                / max(target_instances[split_name][category], 1.0)
+                for category in group_counts
+            ) / instance_total
+            candidate_scores.append(
+                (overflow, -class_need, -remaining_ratio, split_index, split_name)
+            )
+        chosen = min(candidate_scores)[4]
         assignments[chosen].extend(members)
         current_images[chosen] += len(members)
         current_instances[chosen].update(group_counts)
