@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+model/Data/
+model/tests/fixture-*/
+model/tests/coco-fixture-*/
+model/tests/cli-fixture-*/
+model/tests/tmp*/
+model/tests/_write_probe/
