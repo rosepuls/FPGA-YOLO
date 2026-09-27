@@ -463,7 +463,7 @@ Do not claim stage 1 is complete until the 300-epoch run and val/test evaluation
 - [ ] **Step 6: Run documentation/path checks.**
 
 ```powershell
-rg -n "models/data|TinyDefect|model/Data" . --glob '!third_party/**' --glob '!data/**'
+rg -n "models/data|TinyDefect|model/Data" . --glob '!third_party/**' --glob '!data/**' --glob '!docs/superpowers/plans/2026-09-27-yolov5n-gray-training.md'
 git diff --check
 ```
 
