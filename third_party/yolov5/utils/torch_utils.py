@@ -35,6 +35,37 @@ warnings.filterwarnings('ignore', message='User provided device_type of \'cuda\'
 warnings.filterwarnings('ignore', category=UserWarning)
 
 
+def adapt_input_conv(state_dict, target_state_dict, input_channels):
+    adapted = dict(state_dict)
+    if input_channels == 3:
+        return adapted, None
+    if input_channels != 1:
+        raise ValueError(f'input_channels must be 1 or 3, got {input_channels}')
+
+    for key, target in target_state_dict.items():
+        source = adapted.get(key)
+        if (
+            target.ndim == 4
+            and target.shape[1] == 1
+            and source is not None
+            and source.shape == target.shape
+        ):
+            return adapted, None
+        if (
+            target.ndim == 4
+            and target.shape[1] == 1
+            and source is not None
+            and source.ndim == 4
+            and source.shape[1] == 3
+            and source.shape[0] == target.shape[0]
+            and source.shape[2:] == target.shape[2:]
+        ):
+            adapted[key] = source.mean(dim=1, keepdim=True)
+            return adapted, key
+
+    raise ValueError('no compatible RGB input convolution found for grayscale adaptation')
+
+
 def smart_inference_mode(torch_1_9=check_version(torch.__version__, '1.9.0')):
     # Applies torch.inference_mode() decorator if torch>=1.9.0 else torch.no_grad() decorator
     def decorate(fn):

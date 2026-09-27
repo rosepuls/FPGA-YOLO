@@ -561,7 +561,7 @@ def check_dataset(data, autodownload=True):
     return data  # dictionary
 
 
-def check_amp(model):
+def check_amp(model, image_channels=3):
     # Check PyTorch Automatic Mixed Precision (AMP) functionality. Return True on correct operation
     from models.common import AutoShape, DetectMultiBackend
 
@@ -578,7 +578,12 @@ def check_amp(model):
     if device.type in ('cpu', 'mps'):
         return False  # AMP only used on CUDA devices
     f = ROOT / 'data' / 'images' / 'bus.jpg'  # image to check
-    im = f if f.exists() else 'https://ultralytics.com/images/bus.jpg' if check_online() else np.ones((640, 640, 3))
+    if image_channels == 3:
+        im = f if f.exists() else 'https://ultralytics.com/images/bus.jpg' if check_online() else np.ones((640, 640, 3))
+    elif image_channels == 1:
+        im = np.ones((640, 640, 1), dtype=np.uint8)
+    else:
+        raise ValueError(f'image_channels must be 1 or 3, got {image_channels}')
     try:
         assert amp_allclose(deepcopy(model), im) or amp_allclose(DetectMultiBackend('yolov5n.pt', device), im)
         LOGGER.info(f'{prefix}checks passed ✅')
