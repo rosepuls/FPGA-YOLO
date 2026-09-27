@@ -7,6 +7,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import torch
 
@@ -19,7 +20,7 @@ os.environ.setdefault("MPLCONFIGDIR", str(TEST_CACHE_ROOT / "fpga-yolo-matplotli
 if str(YOLOV5_ROOT) not in sys.path:
     sys.path.insert(0, str(YOLOV5_ROOT))
 
-from utils.torch_utils import adapt_input_conv
+from utils.torch_utils import adapt_input_conv, load_checkpoint
 
 
 class YoloV5GrayModelTests(unittest.TestCase):
@@ -65,6 +66,14 @@ class YoloV5GrayModelTests(unittest.TestCase):
 
         self.assertIsNone(key)
         self.assertIs(adapted["model.0.conv.weight"], gray)
+
+    def test_checkpoint_loader_allows_official_yolov5_model_objects(self) -> None:
+        sentinel = {"model": object()}
+        with patch("utils.torch_utils.torch.load", return_value=sentinel) as torch_load:
+            checkpoint = load_checkpoint("weights.pt", map_location="cpu")
+
+        self.assertIs(checkpoint, sentinel)
+        torch_load.assert_called_once_with("weights.pt", map_location="cpu", weights_only=False)
 
     def test_single_channel_model_has_expected_first_conv_and_heads(self) -> None:
         code = f"""

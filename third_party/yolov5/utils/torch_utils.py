@@ -35,6 +35,11 @@ warnings.filterwarnings('ignore', message='User provided device_type of \'cuda\'
 warnings.filterwarnings('ignore', category=UserWarning)
 
 
+def load_checkpoint(path, map_location='cpu'):
+    """Load trusted YOLOv5 checkpoints that contain serialized model objects."""
+    return torch.load(path, map_location=map_location, weights_only=False)
+
+
 def adapt_input_conv(state_dict, target_state_dict, input_channels):
     adapted = dict(state_dict)
     if input_channels == 3:
