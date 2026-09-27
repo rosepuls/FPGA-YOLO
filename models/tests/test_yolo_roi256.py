@@ -29,13 +29,20 @@ def fixture_coco_dataset():
         (source / "annotations").mkdir()
 
         Image.new("L", (200, 100), 128).save(source / "images" / "train" / "positive.png")
+        Image.new("L", (2048, 1000), 96).save(source / "images" / "train" / "edge.png")
         Image.new("L", (50, 50), 64).save(source / "images" / "val" / "negative.png")
         Image.new("L", (80, 40), 32).save(source / "images" / "test" / "test.png")
 
         payloads = {
             "train": {
-                "images": [{"id": 1, "file_name": "positive.png", "width": 200, "height": 100}],
-                "annotations": [{"id": 1, "image_id": 1, "category_id": 1, "bbox": [20, 10, 40, 20]}],
+                "images": [
+                    {"id": 1, "file_name": "positive.png", "width": 200, "height": 100},
+                    {"id": 4, "file_name": "edge.png", "width": 2048, "height": 1000},
+                ],
+                "annotations": [
+                    {"id": 1, "image_id": 1, "category_id": 1, "bbox": [20, 10, 40, 20]},
+                    {"id": 3, "image_id": 4, "category_id": 1, "bbox": [190, 76, 1858, 883]},
+                ],
             },
             "val": {
                 "images": [{"id": 2, "file_name": "negative.png", "width": 50, "height": 50}],
@@ -83,6 +90,19 @@ class YoloRoi256Tests(unittest.TestCase):
                 (output / "labels" / "test" / "test.txt").read_text(encoding="utf-8").strip(),
                 "9 0.250000 0.250000 0.500000 0.500000",
             )
+
+    def test_convert_dataset_keeps_six_decimal_edge_box_inside_yolo_bounds(self) -> None:
+        with fixture_coco_dataset() as source:
+            output = source.parent / "output"
+            report = convert_dataset(ConversionConfig(source, output))
+
+            self.assertTrue(report["validation"]["valid"])
+            fields = (output / "labels" / "train" / "edge.txt").read_text(encoding="utf-8").split()
+            self.assertEqual(len(fields), 5)
+            self.assertTrue(all(len(value.partition(".")[2]) == 6 for value in fields[1:]))
+            xc, yc, width, height = (float(value) for value in fields[1:])
+            self.assertLessEqual(xc + width / 2, 1.0)
+            self.assertLessEqual(yc + height / 2, 1.0)
 
     def test_cli_requires_overwrite_before_replacing_dataset(self) -> None:
         with fixture_coco_dataset() as source:

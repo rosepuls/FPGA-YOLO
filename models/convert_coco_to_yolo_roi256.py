@@ -55,6 +55,14 @@ def coco_bbox_to_yolo(
     )
 
 
+def _format_yolo_label(class_id: int, bbox: list[float], image_width: int, image_height: int) -> str:
+    xc, yc, width, height = coco_bbox_to_yolo(bbox, image_width, image_height)
+    xc, yc, width, height = (float(f"{value:.6f}") for value in (xc, yc, width, height))
+    xc = min(max(xc, width / 2), 1 - width / 2)
+    yc = min(max(yc, height / 2), 1 - height / 2)
+    return f"{class_id} {xc:.6f} {yc:.6f} {width:.6f} {height:.6f}\n"
+
+
 def _read_split(source: Path, split_name: str) -> tuple[list[dict], dict[int, list[dict]]]:
     annotation_path = source / "annotations" / f"instances_{split_name}.json"
     try:
@@ -162,10 +170,7 @@ def convert_dataset(config: ConversionConfig) -> dict:
                     bbox = annotation.get("bbox")
                     if not isinstance(bbox, list):
                         raise ValueError(f"invalid COCO bbox in instances_{split_name}.json")
-                    xc, yc, box_width, box_height = coco_bbox_to_yolo(bbox, width, height)
-                    labels.append(
-                        f"{annotation['category_id'] - 1} {xc:.6f} {yc:.6f} {box_width:.6f} {box_height:.6f}\n"
-                    )
+                    labels.append(_format_yolo_label(annotation["category_id"] - 1, bbox, width, height))
                 (label_directory / f"{Path(filename).stem}.txt").write_text("".join(labels), encoding="utf-8")
                 image_count += 1
                 annotation_count += len(labels)
