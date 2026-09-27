@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from collections import defaultdict
 from dataclasses import dataclass
+from decimal import Decimal, InvalidOperation
 import json
 import math
 from pathlib import Path
@@ -15,6 +16,7 @@ from PIL import Image
 
 
 SPLIT_NAMES = ("train", "val", "test")
+SERIALIZATION_SCALE = 1_000_000
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_SOURCE = SCRIPT_DIR / "data" / "GC10-DET-COCO"
 DEFAULT_OUTPUT = SCRIPT_DIR / "data" / "GC10-DET-YOLO-ROI256"
@@ -57,10 +59,23 @@ def coco_bbox_to_yolo(
 
 def _format_yolo_label(class_id: int, bbox: list[float], image_width: int, image_height: int) -> str:
     xc, yc, width, height = coco_bbox_to_yolo(bbox, image_width, image_height)
-    xc, yc, width, height = (float(f"{value:.6f}") for value in (xc, yc, width, height))
-    xc = min(max(xc, width / 2), 1 - width / 2)
-    yc = min(max(yc, height / 2), 1 - height / 2)
-    return f"{class_id} {xc:.6f} {yc:.6f} {width:.6f} {height:.6f}\n"
+    xc_units, yc_units, width_units, height_units = (
+        round(value * SERIALIZATION_SCALE) for value in (xc, yc, width, height)
+    )
+    xc_units = _fit_center_units(xc_units, width_units)
+    yc_units = _fit_center_units(yc_units, height_units)
+    return (
+        f"{class_id} {xc_units / SERIALIZATION_SCALE:.6f} {yc_units / SERIALIZATION_SCALE:.6f} "
+        f"{width_units / SERIALIZATION_SCALE:.6f} {height_units / SERIALIZATION_SCALE:.6f}\n"
+    )
+
+
+def _fit_center_units(center_units: int, size_units: int) -> int:
+    if not 0 < size_units <= SERIALIZATION_SCALE:
+        raise ValueError("invalid normalized bbox size")
+    minimum_center = (size_units + 1) // 2
+    maximum_center = (2 * SERIALIZATION_SCALE - size_units) // 2
+    return min(max(center_units, minimum_center), maximum_center)
 
 
 def _read_split(source: Path, split_name: str) -> tuple[list[dict], dict[int, list[dict]]]:
@@ -260,8 +275,8 @@ def validate_dataset(root: Path) -> dict:
                     continue
                 try:
                     class_id = int(fields[0])
-                    xc, yc, width, height = (float(value) for value in fields[1:])
-                except ValueError:
+                    xc, yc, width, height = (Decimal(value) for value in fields[1:])
+                except (InvalidOperation, ValueError):
                     errors.append(f"invalid label values: {label_path}:{line_number}")
                     continue
                 if class_id not in range(10):
@@ -269,17 +284,17 @@ def validate_dataset(root: Path) -> dict:
                     continue
                 geometry = (xc, yc, width, height)
                 if (
-                    not all(math.isfinite(value) for value in geometry)
+                    not all(value.is_finite() for value in geometry)
                     or width <= 0
                     or height <= 0
                     or xc < 0
                     or yc < 0
                     or xc > 1
                     or yc > 1
-                    or xc - width / 2 < 0
-                    or yc - height / 2 < 0
-                    or xc + width / 2 > 1
-                    or yc + height / 2 > 1
+                    or xc - width / 2 < Decimal("0")
+                    or yc - height / 2 < Decimal("0")
+                    or xc + width / 2 > Decimal("1")
+                    or yc + height / 2 > Decimal("1")
                 ):
                     errors.append(f"invalid normalized geometry: {label_path}:{line_number}")
                     continue
