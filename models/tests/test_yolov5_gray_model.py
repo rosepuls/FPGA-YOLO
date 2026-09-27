@@ -9,6 +9,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
+import numpy as np
 import torch
 
 
@@ -21,6 +22,7 @@ if str(YOLOV5_ROOT) not in sys.path:
     sys.path.insert(0, str(YOLOV5_ROOT))
 
 from utils.torch_utils import adapt_input_conv, load_checkpoint
+from utils.metrics import compute_ap
 
 
 class YoloV5GrayModelTests(unittest.TestCase):
@@ -74,6 +76,14 @@ class YoloV5GrayModelTests(unittest.TestCase):
 
         self.assertIs(checkpoint, sentinel)
         torch_load.assert_called_once_with("weights.pt", map_location="cpu", weights_only=False)
+
+    def test_compute_ap_runs_with_current_numpy_integrator(self) -> None:
+        ap, _, _ = compute_ap(
+            np.array([0.2, 1.0]),
+            np.array([1.0, 0.5]),
+        )
+
+        self.assertAlmostEqual(ap, 0.7975, places=4)
 
     def test_single_channel_model_has_expected_first_conv_and_heads(self) -> None:
         code = f"""
