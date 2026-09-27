@@ -6,6 +6,10 @@ data/
 
 # Immutable local backup of the pristine YOLOv5 v7.0 source
 third_party/yolov5-v7.0-original/
+
+# YOLOv5 pretrained and training outputs
+yolov5n.pt
+runs/
 models/tests/fixture-*/
 models/tests/coco-fixture-*/
 models/tests/cli-fixture-*/

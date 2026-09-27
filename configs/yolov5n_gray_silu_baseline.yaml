@@ -1,0 +1,15 @@
+data: gc10_yolo.yaml
+cfg: configs/yolov5n_gray_256.yaml
+weights: yolov5n.pt
+hyp: third_party/yolov5/data/hyps/hyp.scratch-low.yaml
+imgsz: 256
+channels: 1
+epochs: 300
+batch_size: 32
+seed: 20260927
+device: "0"
+workers: 4
+cache: null
+project: runs
+name: yolov5n_gray256_silu_baseline
+exist_ok: false
