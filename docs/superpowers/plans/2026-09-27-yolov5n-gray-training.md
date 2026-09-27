@@ -130,7 +130,7 @@ Add tests that instantiate `LoadImagesAndLabels` twice, once with `augment=False
 
 ```python
 self.assertEqual(dataset[0][0].shape, (1, 256, 256))
-self.assertEqual(augmented_dataset.load_mosaic(0)[0].shape, (512, 512, 1))
+self.assertEqual(augmented_dataset.load_mosaic(0)[0].shape, (256, 256, 1))
 ```
 
 Also call `create_dataloader(..., channels=1, workers=0)` and assert the first batch has shape `(2, 1, 256, 256)`.

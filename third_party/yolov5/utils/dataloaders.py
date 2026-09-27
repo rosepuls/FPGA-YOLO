@@ -100,6 +100,22 @@ def seed_worker(worker_id):
     random.seed(worker_seed)
 
 
+def read_image(path, channels=3):
+    if channels not in (1, 3):
+        raise ValueError(f'channels must be 1 or 3, got {channels}')
+    flag = cv2.IMREAD_GRAYSCALE if channels == 1 else cv2.IMREAD_COLOR
+    image = cv2.imread(str(path), flag)
+    if image is not None and channels == 1 and image.ndim == 2:
+        image = image[..., None]
+    return image
+
+
+def ensure_hwc(image, channels):
+    if channels == 1 and image.ndim == 2:
+        return image[..., None]
+    return image
+
+
 def create_dataloader(path,
                       imgsz,
                       batch_size,
@@ -115,7 +131,8 @@ def create_dataloader(path,
                       image_weights=False,
                       quad=False,
                       prefix='',
-                      shuffle=False):
+                      shuffle=False,
+                      channels=3):
     if rect and shuffle:
         LOGGER.warning('WARNING ⚠️ --rect is incompatible with DataLoader shuffle, setting shuffle=False')
         shuffle = False
@@ -132,7 +149,8 @@ def create_dataloader(path,
             stride=int(stride),
             pad=pad,
             image_weights=image_weights,
-            prefix=prefix)
+            prefix=prefix,
+            channels=channels)
 
     batch_size = min(batch_size, len(dataset))
     nd = torch.cuda.device_count()  # number of CUDA devices
@@ -446,8 +464,12 @@ class LoadImagesAndLabels(Dataset):
                  stride=32,
                  pad=0.0,
                  min_items=0,
-                 prefix=''):
+                 prefix='',
+                 channels=3):
+        if channels not in (1, 3):
+            raise ValueError(f'channels must be 1 or 3, got {channels}')
         self.img_size = img_size
+        self.channels = channels
         self.augment = augment
         self.hyp = hyp
         self.image_weights = image_weights
@@ -456,7 +478,7 @@ class LoadImagesAndLabels(Dataset):
         self.mosaic_border = [-img_size // 2, -img_size // 2]
         self.stride = stride
         self.path = path
-        self.albumentations = Albumentations(size=img_size) if augment else None
+        self.albumentations = Albumentations(size=img_size) if augment and channels == 3 else None
 
         try:
             f = []  # image files
@@ -590,7 +612,7 @@ class LoadImagesAndLabels(Dataset):
         b, gb = 0, 1 << 30  # bytes of cached images, bytes per gigabytes
         n = min(self.n, 30)  # extrapolate from 30 random images
         for _ in range(n):
-            im = cv2.imread(random.choice(self.im_files))  # sample image
+            im = read_image(random.choice(self.im_files), self.channels)  # sample image
             ratio = self.img_size / max(im.shape[0], im.shape[1])  # max(h, w)  # ratio
             b += im.nbytes * ratio ** 2
         mem_required = b * self.n / n  # GB required to cache dataset into RAM
@@ -691,11 +713,13 @@ class LoadImagesAndLabels(Dataset):
 
         if self.augment:
             # Albumentations
-            img, labels = self.albumentations(img, labels)
-            nl = len(labels)  # update after albumentations
+            if self.albumentations:
+                img, labels = self.albumentations(img, labels)
+                nl = len(labels)  # update after albumentations
 
             # HSV color-space
-            augment_hsv(img, hgain=hyp['hsv_h'], sgain=hyp['hsv_s'], vgain=hyp['hsv_v'])
+            if self.channels == 3:
+                augment_hsv(img, hgain=hyp['hsv_h'], sgain=hyp['hsv_s'], vgain=hyp['hsv_v'])
 
             # Flip up-down
             if random.random() < hyp['flipud']:
@@ -718,6 +742,7 @@ class LoadImagesAndLabels(Dataset):
             labels_out[:, 1:] = torch.from_numpy(labels)
 
         # Convert
+        img = ensure_hwc(img, self.channels)
         img = img.transpose((2, 0, 1))[::-1]  # HWC to CHW, BGR to RGB
         img = np.ascontiguousarray(img)
 
@@ -730,13 +755,14 @@ class LoadImagesAndLabels(Dataset):
             if fn.exists():  # load npy
                 im = np.load(fn)
             else:  # read image
-                im = cv2.imread(f)  # BGR
+                im = read_image(f, self.channels)
                 assert im is not None, f'Image Not Found {f}'
             h0, w0 = im.shape[:2]  # orig hw
             r = self.img_size / max(h0, w0)  # ratio
             if r != 1:  # if sizes are not equal
                 interp = cv2.INTER_LINEAR if (self.augment or r > 1) else cv2.INTER_AREA
                 im = cv2.resize(im, (int(w0 * r), int(h0 * r)), interpolation=interp)
+            im = ensure_hwc(im, self.channels)
             return im, (h0, w0), im.shape[:2]  # im, hw_original, hw_resized
         return self.ims[i], self.im_hw0[i], self.im_hw[i]  # im, hw_original, hw_resized
 
@@ -744,7 +770,7 @@ class LoadImagesAndLabels(Dataset):
         # Saves an image as an *.npy file for faster loading
         f = self.npy_files[i]
         if not f.exists():
-            np.save(f.as_posix(), cv2.imread(self.im_files[i]))
+            np.save(f.as_posix(), read_image(self.im_files[i], self.channels))
 
     def load_mosaic(self, index):
         # YOLOv5 4-mosaic loader. Loads 1 image + 3 random images into a 4-image mosaic
@@ -802,7 +828,7 @@ class LoadImagesAndLabels(Dataset):
                                            perspective=self.hyp['perspective'],
                                            border=self.mosaic_border)  # border to remove
 
-        return img4, labels4
+        return ensure_hwc(img4, self.channels), labels4
 
     def load_mosaic9(self, index):
         # YOLOv5 9-mosaic loader. Loads 1 image + 8 random images into a 9-image mosaic
@@ -879,7 +905,7 @@ class LoadImagesAndLabels(Dataset):
                                            perspective=self.hyp['perspective'],
                                            border=self.mosaic_border)  # border to remove
 
-        return img9, labels9
+        return ensure_hwc(img9, self.channels), labels9
 
     @staticmethod
     def collate_fn(batch):
