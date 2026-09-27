@@ -1,17 +1,23 @@
 from __future__ import annotations
 
+import argparse
 from collections import defaultdict
 from dataclasses import dataclass
 import json
 import math
 from pathlib import Path
 import shutil
+import sys
+from typing import Sequence
 import uuid
 
 from PIL import Image
 
 
 SPLIT_NAMES = ("train", "val", "test")
+SCRIPT_DIR = Path(__file__).resolve().parent
+DEFAULT_SOURCE = SCRIPT_DIR / "data" / "GC10-DET-COCO"
+DEFAULT_OUTPUT = SCRIPT_DIR / "data" / "GC10-DET-YOLO-ROI256"
 
 
 @dataclass(frozen=True)
@@ -281,3 +287,46 @@ def validate_dataset(root: Path) -> dict:
         "labels": label_count,
         "annotations": annotation_count,
     }
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Convert validated GC10 COCO data into a 256x256 grayscale YOLO dataset."
+    )
+    parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument("--validate", type=Path, help="Validate an existing YOLO dataset and exit.")
+    return parser
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    arguments = build_parser().parse_args(argv)
+    try:
+        if arguments.validate is not None:
+            report = validate_dataset(arguments.validate)
+            print(json.dumps(report, ensure_ascii=False, indent=2))
+            return 0 if report["valid"] else 1
+
+        report = convert_dataset(
+            ConversionConfig(
+                source_dir=arguments.source,
+                output_dir=arguments.output,
+                overwrite=arguments.overwrite,
+            )
+        )
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return 0
+    except Exception as error:
+        print(
+            json.dumps(
+                {"error": type(error).__name__, "message": str(error)},
+                ensure_ascii=False,
+            ),
+            file=sys.stderr,
+        )
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

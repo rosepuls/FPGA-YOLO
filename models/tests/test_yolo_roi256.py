@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from contextlib import contextmanager
+from contextlib import contextmanager, redirect_stderr, redirect_stdout
+from io import StringIO
 import json
 from pathlib import Path
 import shutil
@@ -13,6 +14,7 @@ from models.convert_coco_to_yolo_roi256 import (
     ConversionConfig,
     coco_bbox_to_yolo,
     convert_dataset,
+    main,
 )
 
 
@@ -81,6 +83,24 @@ class YoloRoi256Tests(unittest.TestCase):
                 (output / "labels" / "test" / "test.txt").read_text(encoding="utf-8").strip(),
                 "9 0.250000 0.250000 0.500000 0.500000",
             )
+
+    def test_cli_requires_overwrite_before_replacing_dataset(self) -> None:
+        with fixture_coco_dataset() as source:
+            output = source.parent / "output"
+            with redirect_stdout(StringIO()), redirect_stderr(StringIO()):
+                self.assertEqual(main(["--source", str(source), "--output", str(output)]), 0)
+                self.assertEqual(main(["--source", str(source), "--output", str(output)]), 2)
+                self.assertEqual(
+                    main(["--source", str(source), "--output", str(output), "--overwrite"]),
+                    0,
+                )
+
+    def test_cli_validates_without_writing(self) -> None:
+        with fixture_coco_dataset() as source:
+            output = source.parent / "output"
+            with redirect_stdout(StringIO()):
+                self.assertEqual(main(["--source", str(source), "--output", str(output)]), 0)
+                self.assertEqual(main(["--validate", str(output)]), 0)
 
 
 if __name__ == "__main__":
