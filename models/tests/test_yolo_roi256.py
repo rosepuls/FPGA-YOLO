@@ -1,0 +1,88 @@
+from __future__ import annotations
+
+from contextlib import contextmanager
+import json
+from pathlib import Path
+import shutil
+import unittest
+import uuid
+
+from PIL import Image
+
+from models.convert_coco_to_yolo_roi256 import (
+    ConversionConfig,
+    coco_bbox_to_yolo,
+    convert_dataset,
+)
+
+
+@contextmanager
+def fixture_coco_dataset():
+    root = Path(__file__).parent / f"yolo-roi256-fixture-{uuid.uuid4().hex}"
+    root.mkdir()
+    try:
+        source = root / "GC10-DET-COCO"
+        for split_name in ("train", "val", "test"):
+            (source / "images" / split_name).mkdir(parents=True)
+        (source / "annotations").mkdir()
+
+        Image.new("L", (200, 100), 128).save(source / "images" / "train" / "positive.png")
+        Image.new("L", (50, 50), 64).save(source / "images" / "val" / "negative.png")
+        Image.new("L", (80, 40), 32).save(source / "images" / "test" / "test.png")
+
+        payloads = {
+            "train": {
+                "images": [{"id": 1, "file_name": "positive.png", "width": 200, "height": 100}],
+                "annotations": [{"id": 1, "image_id": 1, "category_id": 1, "bbox": [20, 10, 40, 20]}],
+            },
+            "val": {
+                "images": [{"id": 2, "file_name": "negative.png", "width": 50, "height": 50}],
+                "annotations": [],
+            },
+            "test": {
+                "images": [{"id": 3, "file_name": "test.png", "width": 80, "height": 40}],
+                "annotations": [{"id": 2, "image_id": 3, "category_id": 10, "bbox": [0, 0, 40, 20]}],
+            },
+        }
+        for split_name, payload in payloads.items():
+            (source / "annotations" / f"instances_{split_name}.json").write_text(
+                json.dumps(payload),
+                encoding="utf-8",
+            )
+        yield source
+    finally:
+        shutil.rmtree(root)
+
+
+class YoloRoi256Tests(unittest.TestCase):
+    def test_coco_bbox_to_yolo_scales_independent_axes(self) -> None:
+        self.assertEqual(
+            coco_bbox_to_yolo([20, 10, 40, 20], image_width=200, image_height=100),
+            (0.2, 0.2, 0.2, 0.2),
+        )
+
+    def test_convert_dataset_writes_256_grayscale_images_and_yolo_labels(self) -> None:
+        with fixture_coco_dataset() as source:
+            output = source.parent / "output"
+            report = convert_dataset(ConversionConfig(source, output))
+
+            self.assertTrue(report["validation"]["valid"])
+            with Image.open(output / "images" / "train" / "positive.png") as image:
+                self.assertEqual((image.mode, image.size), ("L", (256, 256)))
+            self.assertEqual(
+                (output / "labels" / "train" / "positive.txt").read_text(encoding="utf-8").strip(),
+                "0 0.200000 0.200000 0.200000 0.200000",
+            )
+            self.assertEqual(
+                (output / "labels" / "val" / "negative.txt").read_text(encoding="utf-8"),
+                "",
+            )
+            self.assertEqual(
+                (output / "labels" / "test" / "test.txt").read_text(encoding="utf-8").strip(),
+                "9 0.250000 0.250000 0.500000 0.500000",
+            )
+
+
+if __name__ == "__main__":
+    unittest.main()
+
