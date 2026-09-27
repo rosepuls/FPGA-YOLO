@@ -2,10 +2,12 @@ from __future__ import annotations
 
 from contextlib import contextmanager
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
 import sys
+import tempfile
 import unittest
 import uuid
 
@@ -94,6 +96,34 @@ class YoloV5GrayPreflightTests(unittest.TestCase):
         self.assertEqual(config["batch_size"], 32)
         self.assertEqual(config["seed"], 20260927)
         self.assertIsNone(config["cache"])
+
+    def test_vendor_training_resolves_project_dataset(self) -> None:
+        code = f"""
+import sys
+from pathlib import Path
+sys.path.insert(0, {str(PROJECT_ROOT / 'third_party' / 'yolov5')!r})
+from utils.general import check_dataset
+data = check_dataset({str(PROJECT_ROOT / 'gc10_yolo.yaml')!r}, autodownload=False)
+print(data['val'])
+"""
+        result = subprocess.run(
+            [sys.executable, "-c", code],
+            cwd=PROJECT_ROOT,
+            env={
+                **os.environ,
+                "YOLOV5_CONFIG_DIR": str(Path(tempfile.gettempdir()) / "fpga-yolo-ultralytics"),
+                "MPLCONFIGDIR": str(Path(tempfile.gettempdir()) / "fpga-yolo-matplotlib"),
+            },
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn(
+            str(PROJECT_ROOT / "data" / "GC10-DET-YOLO-ROI256" / "images" / "val"),
+            result.stdout,
+        )
 
     def test_preflight_proves_grayscale_training_contract(self) -> None:
         with fixture_preflight_config() as run_config:

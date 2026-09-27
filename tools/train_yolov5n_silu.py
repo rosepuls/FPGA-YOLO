@@ -112,7 +112,9 @@ def run_preflight(project_root: Path, run_config: dict) -> dict:
 
     dataset_root = Path(data_config["path"])
     if not dataset_root.is_absolute():
-        dataset_root = project_root / dataset_root
+        project_candidate = (project_root / dataset_root).resolve()
+        vendor_candidate = (vendor_root / dataset_root).resolve()
+        dataset_root = project_candidate if project_candidate.exists() else vendor_candidate
     train_path = Path(data_config["train"])
     if not train_path.is_absolute():
         train_path = dataset_root / train_path
