@@ -1,8 +1,28 @@
 __pycache__/
 *.py[cod]
-model/Data/
-model/tests/fixture-*/
-model/tests/coco-fixture-*/
-model/tests/cli-fixture-*/
-model/tests/tmp*/
-model/tests/_write_probe/
+
+# Local datasets
+data/
+
+# Immutable local backup of the pristine YOLOv5 v7.0 source
+third_party/yolov5-v7.0-original/
+models/tests/fixture-*/
+models/tests/coco-fixture-*/
+models/tests/cli-fixture-*/
+models/tests/tmp*/
+models/tests/_write_probe/
+
+# FPGA and PS generated artifacts
+fpga/build/
+fpga/vivado/.Xil/
+fpga/vivado/*.jou
+fpga/vivado/*.log
+fpga/vivado/*.str
+fpga/vivado/*.runs/
+fpga/vivado/*.cache/
+fpga/vivado/*.hw/
+fpga/vivado/*.ip_user_files/
+fpga/vitis/Debug/
+fpga/vitis/Release/
+ps_app/build/*
+!ps_app/build/.gitkeep
