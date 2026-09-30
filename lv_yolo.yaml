@@ -1,0 +1,9 @@
+# LV-COCO four-class dataset for the grayscale 256x256 FPGA deployment route.
+# YOLOv5 resolves this relative path from third_party/yolov5.
+path: ../../data/LV-YOLO-ROI256
+train: images/train
+val: images/val
+test: images/test
+
+nc: 4
+names: [ca_shang, zang_wu, zhe_zhou, zhen_kong]

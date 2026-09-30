@@ -124,6 +124,16 @@ def compute_ap(recall, precision):
     return ap, mpre, mrec
 
 
+def confusion_annotation_style(value):
+    """Return high-contrast annotation and outline colors for a heatmap value."""
+    return ("white", "#111827") if value >= 0.5 else ("#111827", "white")
+
+
+def background_background_annotation():
+    """Label the non-applicable background-to-background confusion-matrix cell."""
+    return "N/A"
+
+
 class ConfusionMatrix:
     # Updated version of https://github.com/kaanakan/object_detection_confusion_matrix
     def __init__(self, nc, conf=0.25, iou_thres=0.45):
@@ -189,6 +199,7 @@ class ConfusionMatrix:
 
     @TryExcept('WARNING ⚠️ ConfusionMatrix plot failure')
     def plot(self, normalize=True, save_dir='', names=()):
+        import matplotlib.patheffects as patheffects
         import seaborn as sn
 
         array = self.matrix / ((self.matrix.sum(0).reshape(1, -1) + 1E-9) if normalize else 1)  # normalize columns
@@ -205,13 +216,29 @@ class ConfusionMatrix:
                        ax=ax,
                        annot=nc < 30,
                        annot_kws={
-                           "size": 8},
+                           "size": 12,
+                           "weight": "bold"},
                        cmap='Blues',
                        fmt='.2f',
                        square=True,
                        vmin=0.0,
                        xticklabels=ticklabels,
                        yticklabels=ticklabels).set_facecolor((1, 1, 1))
+        for annotation in ax.texts:
+            color, outline = confusion_annotation_style(float(annotation.get_text()))
+            annotation.set_color(color)
+            annotation.set_path_effects([patheffects.withStroke(linewidth=1.25, foreground=outline)])
+        background_label = ax.text(
+            nc + 0.5,
+            nc + 0.5,
+            background_background_annotation(),
+            ha='center',
+            va='center',
+            color='#111827',
+            fontsize=12,
+            fontweight='bold',
+        )
+        background_label.set_path_effects([patheffects.withStroke(linewidth=1.25, foreground='white')])
         ax.set_ylabel('True')
         ax.set_ylabel('Predicted')
         ax.set_title('Confusion Matrix')

@@ -1,0 +1,274 @@
+# OV5640 图像处理模块 → YOLOv5 推理模块图像接口约束（v1.0）
+
+## 1. 文件用途
+
+
+图像处理模块负责从 OV5640 视频流中取出一帧工件图像、完成颜色转换、ROI 裁剪、缩放和工件到位判断；推理模块只接收已处理好的模型输入图像，并负责 YOLOv5 推理、Decode、NMS 和 PASS/FAIL。
+
+图像处理模块不需要提供 RGB 原图给推理模块，也不需要负责模型归一化、量化、Conv、NMS 或缺陷判定。
+
+---
+
+## 2. 双方分工
+
+### 图像处理模块需要完成
+
+1. 配置 OV5640，采集稳定的 DVP 视频流。
+2. 从视频流中识别一张完整有效帧。
+3. 将相机 RGB565 像素转换为 8-bit 灰度图。
+4. 从源图取出配置的工件 ROI。
+5. 将 ROI 直接双线性缩放为 `256×256`。
+6. 判断工件是否到位且画面稳定。
+7. 工件就绪时发送一帧 `256×256` 灰度图和元数据给推理模块。
+8. 工件未到位、相机异常或图像格式异常时发送状态，不发送无效图片。
+
+### 推理模块负责
+
+1. 接收 `256×256` 灰度图和 `frame_id`。
+2. 将图像送入单通道 YOLOv5n-ReLU 推理。
+3. 对 P3/P4/P5 输出进行 Decode 和 NMS。
+4. 输出 `PASS`、`FAIL` 或 `ERROR`，并返回对应的 `frame_id`。
+5. 图像处理模块收到该帧释放通知后，才可以复用对应帧缓冲。
+
+---
+
+## 3. 相机输入约定（图像处理模块内部）
+
+第一版 OV5640 使用 DVP 并行输出，图像处理模块按以下目标配置实现：
+
+| 项目 | 约定 |
+| --- | --- |
+| 像素格式 | RGB565 |
+| 源图分辨率 | `640×480` |
+| 像素字节数 | 每像素 2 byte |
+| 帧边界 | 由 VSYNC 标识 |
+| 行有效区 | 由 HREF 标识 |
+| 像素采样时钟 | PCLK |
+| 像素坐标原点 | 左上角 `(0,0)` |
+| x/y 方向 | x 向右，y 向下 |
+
+OV5640 的具体 SCCB 寄存器表、XCLK、PCLK 极性、RGB565 字节先后顺序和板卡管脚以图像处理同伴实际调通的配置为准；但最终交给推理模块的图像必须遵守第 4 节，不能因为相机内部格式不同而改变推理输入格式。
+
+---
+
+## 4. 推理模块唯一接受的图像格式
+
+### 4.1 图像有效载荷
+
+当且仅当工件状态为 `READY` 时，图像处理模块必须交付：
+
+```text
+名称：gray_u8
+尺寸：256 × 256
+通道：1
+数据类型：uint8
+取值范围：0 到 255
+总长度：65536 byte
+存储顺序：行优先（row-major）
+像素偏移：offset = y × 256 + x
+```
+
+即：
+
+```text
+gray_u8[0]       = 左上角像素 (x=0,   y=0)
+gray_u8[255]     = 第一行最后像素 (x=255, y=0)
+gray_u8[256]     = 第二行第一个像素 (x=0,   y=1)
+gray_u8[65535]   = 右下角像素 (x=255, y=255)
+```
+
+推理模块 **不接受** 以下格式：
+
+- RGB888、BGR888、RGB565、YUV422 原图；
+- 三通道灰度复制图；
+- `float32`、`float16`、归一化到 `0~1` 的图；
+- letterbox 补边图；
+- JPEG、PNG 等压缩字节流；
+- 宽高不是 `256×256` 的图；
+- 行 stride 大于 256 但未明确说明/未去除填充的数据。
+
+### 4.2 RGB565 转灰度规则
+
+若 OV5640 输出 RGB565，图像处理模块必须先按下列规则扩展成 8-bit RGB，再转灰度：
+
+```text
+R8 = (R5 << 3) | (R5 >> 2)
+G8 = (G6 << 2) | (G6 >> 4)
+B8 = (B5 << 3) | (B5 >> 2)
+
+gray = (77 × R8 + 150 × G8 + 29 × B8 + 128) >> 8
+```
+
+其中乘法在至少 18 bit 无符号范围内完成，输出只保留低 8 bit 结果。若相机最终配置为原生灰度输出，则直接把灰度值作为 `gray_u8`，不得再次套用 RGB 公式。
+
+### 4.3 ROI 与缩放规则
+
+ROI 使用源图坐标：
+
+```text
+roi_x, roi_y, roi_width, roi_height
+```
+
+要求：
+
+```text
+0 <= roi_x < source_width
+0 <= roi_y < source_height
+roi_width  > 0
+roi_height > 0
+roi_x + roi_width  <= source_width
+roi_y + roi_height <= source_height
+```
+
+ROI 必须直接双线性缩放至 `256×256`：
+
+- 不使用 letterbox；
+- 不补黑边；
+- 不保持原始宽高比；
+- 不额外裁剪；
+- 不做减均值、除以 255、直方图均衡、锐化或其他会改变模型输入的增强。
+
+如果后续双方决定更换 ROI 或缩放算法，必须同时更新训练数据转换、推理 Golden image 和本文件版本；只改图像处理模块会导致模型输入失配。
+
+---
+
+## 5. 每帧必须附带的元数据
+
+图像处理模块交付一帧 `gray_u8` 时，必须同时给推理模块一份帧描述符：
+
+| 字段 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| `frame_id` | `uint32` | 是 | 从 0 单调递增的帧序号；同一帧所有字段使用同一 ID |
+| `image_state` | enum | 是 | `READY`、`NOT_READY`、`ERROR` 三者之一 |
+| `gray_addr` | `uint32/uint64` | READY 时是 | `gray_u8` 在共享 DDR 的物理地址；流接口可忽略此字段 |
+| `gray_bytes` | `uint32` | READY 时是 | 固定为 `65536` |
+| `gray_stride` | `uint16` | READY 时是 | 固定为 `256` byte |
+| `source_width` | `uint16` | 是 | 当前源图宽；第一版为 640 |
+| `source_height` | `uint16` | 是 | 当前源图高；第一版为 480 |
+| `roi_x` / `roi_y` | `uint16` | 是 | ROI 左上角源图坐标 |
+| `roi_width` / `roi_height` | `uint16` | 是 | ROI 源图宽高 |
+| `gray_crc32` | `uint32` | 建议 | 对 65536 byte `gray_u8` 计算的 CRC32，用于联调定位 |
+| `presence_mean_gray` | `uint8` | 建议 | 工件到位判断的灰度均值 |
+| `presence_ratio_q8` | `uint8` | 建议 | 前景比例，Q0.8 格式 |
+| `error_code` | `uint16` | ERROR 时是 | 错误原因，见第 8 节 |
+
+### 描述符发送规则
+
+1. 图像处理模块先完成整张 `gray_u8` 写入，再发送 `READY` 描述符。
+2. `READY` 时 `gray_bytes` 必须为 65536，`gray_stride` 必须为 256。
+3. `NOT_READY` 时不发送图像 payload，`gray_addr`/`gray_bytes` 置 0。
+4. `ERROR` 时不发送图像 payload，必须携带 `error_code`。
+5. `frame_id` 不允许在一张图或一个传输 packet 内变化。
+6. 推理模块若发现 `frame_id`、长度、ROI、CRC 或状态错误，必须拒绝推理并返回同一 `frame_id` 的 `ERROR`。
+
+---
+
+## 6. 推荐传输方式
+
+图像处理和推理在同一 AC550 FPGA/SoC 内时，优先使用以下两种方式之一。双方在开始实现前选定一种；**不能一边写 Avalon-ST、一边按 DDR 地址等待。**
+
+### 方式 A：共享 DDR + 帧描述符（推荐用于当前工程）
+
+1. 图像处理模块将连续 65536 byte `gray_u8` 写到 HPS DDR 的 `gray_addr`。
+2. 图像处理模块完成写入后，先完成必要的缓存/写屏障，再通知 HPS `READY(frame_id)`。
+3. HPS 推理程序验证描述符并对输入区执行 cache invalidate，再读取或提交 FPGA 推理任务。
+4. 推理完成后，HPS 发送 `FRAME_RELEASE(frame_id)`；图像处理模块收到后才可复用该输入缓冲。
+5. 所有 buffer 地址 64-byte 对齐；第一版建议至少使用 3 个 65536-byte 输入 buffer。
+
+### 方式 B：Avalon-ST 灰度像素流
+
+若图像处理模块直接将图像送入 FPGA 推理入口，接口定义为：
+
+```text
+valid / ready / data[7:0] / sop / eop / frame_id[31:0]
+```
+
+规则：
+
+- 一帧只允许一个 packet，恰好传输 65536 byte；
+- 第一像素：`sop=1`；最后像素：`eop=1`；
+- 在 `valid=1 && ready=0` 时，`data`、`sop`、`eop`、`frame_id` 必须保持不变；
+- 一个 packet 内 `frame_id` 保持不变；
+- packet 长度、sop/eop、frame_id 有任何错误，推理侧丢弃该帧并返回 `ERROR_STREAM_FORMAT`；
+- 跨 PCLK、系统时钟或 CNN 时钟必须使用异步 FIFO，禁止单拍脉冲直接跨时钟域。
+
+即使采用方式 B，也必须把 ROI 元数据在 `sop` 前或与 `sop` 同周期通过 descriptor/CSR 交给推理模块。
+
+---
+
+## 7. 工件到位状态握手
+
+图像处理模块只负责判断“是否值得推理”，不负责判断缺陷类别。
+
+```text
+图像处理模块                         推理模块
+     │                                    │
+     ├── NOT_READY(frame_id) ────────────►│  不推理
+     │                                    │
+     ├── READY(frame_id, gray_u8, meta) ─►│  推理
+     │                                    │
+     │◄── RESULT(frame_id, PASS/FAIL) ────┤
+     │◄── FRAME_RELEASE(frame_id) ────────┤
+     │                                    │
+     ├── ERROR(frame_id, error_code) ────►│  不推理
+```
+
+规则：
+
+- `NOT_READY` 可以连续出现，不占推理 buffer；
+- 每个 `READY(frame_id)` 最多触发一次推理；
+- 推理模块返回的 frame_id 必须与提交 ID 相同；
+- 图像处理模块在收到 `FRAME_RELEASE` 前不能覆盖该帧的 `gray_u8`；
+- 如果 READY 后图像处理模块发现帧损坏，必须通知 `ERROR(frame_id)`，推理模块停止/丢弃该帧；
+- 超时、重复 READY、重复 RELEASE 或 ID 不一致均记录为接口错误。
+
+---
+
+## 8. 图像处理侧错误码
+
+| 值 | 名称 | 说明 |
+| ---: | --- | --- |
+| `0` | `IMG_OK` | 无错误 |
+| `1` | `IMG_ERR_CAMERA_INIT` | OV5640 SCCB 初始化、ID 或寄存器校验失败 |
+| `2` | `IMG_ERR_DVP_FORMAT` | 行/帧尺寸、RGB565 组字节、VSYNC/HREF/PCLK 格式错误 |
+| `3` | `IMG_ERR_FIFO` | PCLK 到系统域 FIFO 上溢、下溢或 CDC 错误 |
+| `4` | `IMG_ERR_ROI` | ROI 越界、尺寸为零或参数非法 |
+| `5` | `IMG_ERR_RESIZE` | Resize 输出长度/状态异常 |
+| `6` | `IMG_ERR_BUFFER` | DDR 地址、长度、对齐或 buffer 所有权错误 |
+| `7` | `IMG_ERR_STREAM_FORMAT` | Avalon-ST packet 长度、sop/eop 或 frame_id 错误 |
+| `8` | `IMG_ERR_TIMEOUT` | 一帧采集或预处理超时 |
+
+---
+
+## 9. 联调前必须交付的测试数据
+
+图像处理同伴在交付接口前，需要提供以下文件或等价的 DDR dump：
+
+1. 一张 OV5640 彩条原始 RGB565 帧及其 `frame_id`。
+2. 一张真实工件 RGB565 帧。
+3. 上述真实工件帧的 ROI 参数。
+4. 该 ROI 对应的 `gray_u8[256×256]` 原始二进制文件，长度必须为 65536 byte。
+5. 该 `gray_u8` 的 CRC32。
+6. 一组 `READY` 描述符。
+7. 一组 `NOT_READY` 描述符（空工位或工件未稳定）。
+8. 一组 `ERROR` 描述符（例如 ROI 越界或 DVP 帧格式错误）。
+
+推理模块使用这组数据先完成离线输入测试；离线结果通过后才接实时 OV5640 视频流。
+
+---
+
+## 10. 交付验收清单
+
+图像处理模块向推理模块交付时，以下条件必须全部满足：
+
+- [ ] 能完成 OV5640 初始化并采到连续 RGB565 视频流。
+- [ ] 可正确识别 640×480 帧，行/列数无错位。
+- [ ] RGB565 → 灰度符合第 4.2 节公式。
+- [ ] ROI 合法性检查完整，越界不输出 READY。
+- [ ] 输出图像严格是单通道 `uint8`、`256×256`、65536 byte、行优先、无压缩。
+- [ ] 直接双线性 Resize，不使用 letterbox、归一化或额外增强。
+- [ ] `READY`、`NOT_READY`、`ERROR` 和 `frame_id` 握手完整。
+- [ ] READY 帧在 release 前不被覆盖。
+- [ ] 至少提供第 9 节要求的 8 项联调数据。
+
+**一句话交付要求：图像处理模块只要在工件稳定到位时，发给推理模块一张“单通道、uint8、256×256、连续 65536 byte、行优先”的灰度 ROI 图，并附上 frame_id、ROI、状态和地址/流控制信息；其余格式推理模块一律拒收。**
