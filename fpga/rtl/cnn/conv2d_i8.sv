@@ -42,6 +42,11 @@ module conv2d_i8 #(
   integer oc_index, oh_index, ow_index, ic_index, ky_index, kx_index;
   integer input_y, input_x, input_index, weight_index, output_index;
   integer expected_height, expected_width;
+  integer validate_index;
+  longint unsigned required_input_elements;
+  longint unsigned required_weight_elements;
+  longint unsigned required_output_elements;
+  logic shift_range_invalid;
   logic signed [31:0] accumulator_work;
   logic signed [31:0] accumulator_next;
   logic signed [31:0] product_work;
@@ -70,9 +75,9 @@ module conv2d_i8 #(
         half = 64'sd1 <<< (right_shift - 1'b1);
         if ((remainder > half) || ((remainder == half) && quotient[0])) rounded = quotient + 64'sd1;
       end
-      if (rounded > 64'sd127) requant_value = 8'sd127;
+      if (apply_relu && rounded < 0) requant_value = 8'sd0;
+      else if (rounded > 64'sd127) requant_value = 8'sd127;
       else if (rounded < -64'sd127) requant_value = -8'sd127;
-      else if (apply_relu && rounded < 0) requant_value = 8'sd0;
       else requant_value = rounded[7:0];
     end
   endfunction
@@ -112,6 +117,22 @@ module conv2d_i8 #(
             expected_height = 0;
             expected_width = 0;
           end
+          required_input_elements = input_channels;
+          required_input_elements = required_input_elements * input_height;
+          required_input_elements = required_input_elements * input_width;
+          required_weight_elements = output_channels;
+          required_weight_elements = required_weight_elements * input_channels;
+          required_weight_elements = required_weight_elements * kernel;
+          required_weight_elements = required_weight_elements * kernel;
+          required_output_elements = output_channels;
+          required_output_elements = required_output_elements * output_height;
+          required_output_elements = required_output_elements * output_width;
+          shift_range_invalid = 1'b0;
+          if (output_channels <= MAX_CHANNELS) begin
+            for (validate_index = 0; validate_index < output_channels; validate_index = validate_index + 1) begin
+              if (shift_mem[validate_index] > 8'd63) shift_range_invalid = 1'b1;
+            end
+          end
           if (!supported_kernel(kernel) || (stride != 1 && stride != 2)) begin
             error <= 1'b1;
             error_code <= ERR_UNSUPPORTED_KERNEL;
@@ -121,6 +142,14 @@ module conv2d_i8 #(
                        expected_height != output_height || expected_width != output_width) begin
             error <= 1'b1;
             error_code <= ERR_INVALID_SHAPE;
+          end else if (required_input_elements > MAX_INPUT_ELEMENTS ||
+                       required_weight_elements > MAX_WEIGHT_ELEMENTS ||
+                       required_output_elements > MAX_OUTPUT_ELEMENTS) begin
+            error <= 1'b1;
+            error_code <= ERR_CAPACITY;
+          end else if (shift_range_invalid) begin
+            error <= 1'b1;
+            error_code <= ERR_QUANT_PARAM;
           end else begin
             active_linear_mode <= linear_mode;
             active_input_channels <= input_channels;

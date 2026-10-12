@@ -1,6 +1,7 @@
 `timescale 1ns/1ps
 
 module conv2d_i8_tb;
+  import ac550_cnn_pkg::*;
   localparam int MAX_INPUT = 256;
   localparam int MAX_WEIGHT = 256;
   localparam int MAX_OUTPUT = 256;
@@ -88,6 +89,21 @@ module conv2d_i8_tb;
     end
   endtask
 
+  task automatic expect_rejected(input logic [3:0] expected_code, input string label);
+    begin
+      @(negedge clk);
+      start = 1'b1;
+      @(negedge clk);
+      start = 1'b0;
+      @(posedge clk);
+      #1;
+      if (error !== 1'b1 || error_code !== expected_code || busy !== 1'b0) begin
+        $error("%s: error=%b code=%0d busy=%b", label, error, error_code, busy);
+        $fatal(1);
+      end
+    end
+  endtask
+
   task automatic expect_output(input integer index, input integer expected, input string label);
     begin
       if (output_mem[index] !== expected[7:0]) begin
@@ -162,6 +178,74 @@ module conv2d_i8_tb;
     expect_output(5, 36, "6x6 first layer");
     expect_output(10, 36, "6x6 first layer");
     expect_output(15, 16, "6x6 first layer");
+
+    // Inline requant path must apply ReLU before negative saturation.
+    clear_mem();
+    linear_mode = 1'b0;
+    input_channels = 1;
+    input_height = 1;
+    input_width = 1;
+    output_channels = 1;
+    output_height = 1;
+    output_width = 1;
+    kernel = 1;
+    stride = 1;
+    padding = 0;
+    bias_mem[0] = -32'sd200;
+    weight_mem[0] = 8'sd0;
+    run_case("inline ReLU ordering");
+    expect_output(0, 0, "inline ReLU ordering");
+
+    // Runtime safety checks: these requests must be rejected before any array index.
+    clear_mem();
+    linear_mode = 1'b1;
+    input_channels = 1;
+    input_height = 20;
+    input_width = 20;
+    output_channels = 1;
+    output_height = 20;
+    output_width = 20;
+    kernel = 1;
+    stride = 1;
+    padding = 0;
+    expect_rejected(ERR_CAPACITY, "input capacity");
+
+    clear_mem();
+    input_channels = 2;
+    input_height = 6;
+    input_width = 6;
+    output_channels = 4;
+    output_height = 3;
+    output_width = 3;
+    kernel = 6;
+    stride = 2;
+    padding = 2;
+    expect_rejected(ERR_CAPACITY, "weight capacity");
+
+    clear_mem();
+    input_channels = 1;
+    input_height = 12;
+    input_width = 12;
+    output_channels = 2;
+    output_height = 12;
+    output_width = 12;
+    kernel = 1;
+    stride = 1;
+    padding = 0;
+    expect_rejected(ERR_CAPACITY, "output capacity");
+
+    clear_mem();
+    input_channels = 1;
+    input_height = 1;
+    input_width = 1;
+    output_channels = 1;
+    output_height = 1;
+    output_width = 1;
+    kernel = 1;
+    stride = 1;
+    padding = 0;
+    shift_mem[0] = 8'd64;
+    expect_rejected(ERR_QUANT_PARAM, "requant shift range");
 
     $display("AC550 Conv2D functional test passed");
     $finish;

@@ -22,6 +22,8 @@ package ac550_cnn_pkg;
   localparam logic [3:0] ERR_BYTE_COUNT         = 4'd8;
   localparam logic [3:0] ERR_WATCHDOG_TIMEOUT   = 4'd9;
   localparam logic [3:0] ERR_TASK_ID_MISMATCH   = 4'd10;
+  localparam logic [3:0] ERR_CAPACITY           = 4'd11;
+  localparam logic [3:0] ERR_QUANT_PARAM        = 4'd12;
 
   localparam logic [7:0] CSR_VERSION          = 8'h00;
   localparam logic [7:0] CSR_CONTROL          = 8'h04;

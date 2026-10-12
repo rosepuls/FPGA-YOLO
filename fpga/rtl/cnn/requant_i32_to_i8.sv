@@ -27,12 +27,12 @@ module requant_i32_to_i8 (
         rounded = quotient + 64'sd1;
       end
     end
-    if (rounded > 64'sd127) begin
+    if (apply_relu && (rounded < 0)) begin
+      result = 8'sd0;
+    end else if (rounded > 64'sd127) begin
       result = 8'sd127;
     end else if (rounded < -64'sd127) begin
       result = -8'sd127;
-    end else if (apply_relu && (rounded < 0)) begin
-      result = 8'sd0;
     end else begin
       result = rounded[7:0];
     end

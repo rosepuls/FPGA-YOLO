@@ -52,6 +52,8 @@ module requant_i32_to_i8_tb;
     check_requant(-32'sd3, 32'sd1, 1, 1'b0, -8'sd2, "negative tie rounds to even");
     check_requant(-32'sd5, 32'sd1, 1, 1'b0, -8'sd2, "negative odd tie rounds toward zero");
     check_requant(-32'sd5, 32'sd1, 1, 1'b1, 8'sd0, "relu removes negative linear result");
+    check_requant(-32'sd200, 32'sd1, 0, 1'b1, 8'sd0, "relu applies before negative saturation");
+    check_requant(-32'sd200, 32'sd1, 0, 1'b0, -8'sd127, "symmetric negative saturation");
     check_requant(32'sd1048576, 32'sd1048576, 35, 1'b0, 8'sd32, "right shift 35");
     check_requant(32'sh7fff_ffff, 32'sh7fff_ffff, 35, 1'b0, 8'sd127, "positive saturation");
     check_requant(-32'sh8000_0000, 32'sh7fff_ffff, 35, 1'b0, -8'sd127, "negative saturation");
