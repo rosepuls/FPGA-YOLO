@@ -73,6 +73,12 @@ module conv2d_i8_tb;
       start = 1'b1;
       @(negedge clk);
       start = 1'b0;
+      @(posedge clk);
+      #1;
+      if (busy !== 1'b1 || done !== 1'b0) begin
+        $error("%s completed without spending cycles in the MAC FSM", label);
+        $fatal(1);
+      end
       wait (done === 1'b1);
       #1;
       if (error !== 1'b0) begin
