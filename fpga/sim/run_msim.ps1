@@ -40,6 +40,9 @@ switch ($Testbench) {
   'conv2d_i8_tb' {
     $sources = @($common, (Join-Path $repoRoot 'fpga\rtl\cnn\conv2d_i8.sv'), (Join-Path $repoRoot 'fpga\sim\conv2d_i8_tb.sv'))
   }
+  'maxpool_i8_tb' {
+    $sources = @($common, (Join-Path $repoRoot 'fpga\rtl\cnn\maxpool_i8.sv'), (Join-Path $repoRoot 'fpga\sim\maxpool_i8_tb.sv'))
+  }
   default { throw "No compile manifest is registered for testbench '$Testbench'" }
 }
 
