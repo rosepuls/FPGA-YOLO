@@ -272,6 +272,24 @@ WAIT_VSYNC → WAIT_HREF → BYTE0 → BYTE1 → PIXEL_VALID → LINE_END → FR
 
 ### 5.1 ReLU 单通道四分类模型训练
 
+#### 前置基线：SiLU 模型训练与初步验证（已完成）
+
+在开始 ReLU 重训前，已用 YOLOv5n 默认 SiLU 激活完成单通道、四分类、`256×256` 的精度基线训练。训练使用 LV-YOLO-ROI256 数据集、`yolov5n.pt` 迁移学习初始化、100 epochs、batch size 32、随机种子 `20260930`。该基线用于检查数据和任务可学性，并作为 ReLU 精度比较对象；SiLU 权重不符合 FPGA 的 ReLU 部署契约。
+
+使用该次训练的 `best.pt` 在独立 test split 上验证，测试集共 256 张图、457 个缺陷实例：
+
+| 类别 | Precision | Recall | AP@0.5 | AP@0.5:0.95 |
+| --- | ---: | ---: | ---: | ---: |
+| `ca_shang` | 0.983 | 0.974 | 0.985 | 0.696 |
+| `zang_wu` | 1.000 | 0.950 | 0.978 | 0.667 |
+| `zhe_zhou` | 0.838 | 0.841 | 0.755 | 0.464 |
+| `zhen_kong` | 0.962 | 0.966 | 0.970 | 0.499 |
+| **总体** | **0.946** | **0.933** | **0.922** | **0.582** |
+
+产物位于 `runs/yolov5n_gray_silu_baseline2/`：权重为 `weights/best.pt`，训练曲线数据为 `results.csv`；测试集混淆矩阵及 P/R/F1/PR 曲线位于 `analysis/validation/`。测试集结果表明 SiLU 基线初步可用，其中 `zhe_zhou` 是当前主要短板，进入部署前需优先检查该类样本和标注，并在 ReLU 重训后按相同数据划分复测。
+
+训练的 100 个 epoch 已完成并产出可加载的 `best.pt`；训练结束的 optimizer 清理步骤曾因 PyTorch 2.11 默认 `weights_only=True` 报错。该收尾兼容问题不影响已保存权重和本节单独完成的测试集验证，但应修正 `strip_optimizer()` 的 checkpoint 加载调用，避免后续训练结束时再次报错。
+
 **计划文件：**
 
 - Create: `configs/yolov5n_gray_relu_256.yaml`
