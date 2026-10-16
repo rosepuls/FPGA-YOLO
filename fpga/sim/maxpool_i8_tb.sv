@@ -1,6 +1,7 @@
 `timescale 1ns/1ps
 
 module maxpool_i8_tb;
+  import ac550_cnn_pkg::*;
   localparam int MAX_ELEMENTS = 256;
   logic clk = 1'b0;
   logic reset_n = 1'b0;
@@ -58,6 +59,12 @@ module maxpool_i8_tb;
     start = 1'b1;
     @(negedge clk);
     start = 1'b0;
+    @(posedge clk);
+    #1;
+    if (busy !== 1'b1 || done !== 1'b0) begin
+      $error("MaxPool completed without serially processing its window");
+      $fatal(1);
+    end
     wait (done === 1'b1);
     #1;
     if (error !== 1'b0) $fatal(1, "MaxPool returned error %0d", error_code);
@@ -69,6 +76,22 @@ module maxpool_i8_tb;
     expect_output(18, -70, "lower edge");
     expect_output(20, -101, "corner bottom-left");
     expect_output(24, -103, "corner bottom-right");
+
+    @(negedge clk);
+    input_height = 17;
+    input_width = 17;
+    output_height = 17;
+    output_width = 17;
+    start = 1'b1;
+    @(negedge clk);
+    start = 1'b0;
+    @(posedge clk);
+    #1;
+    if (error !== 1'b1 || error_code !== ERR_CAPACITY || busy !== 1'b0) begin
+      $error("oversized MaxPool tensors were not rejected before indexing");
+      $fatal(1);
+    end
+
     $display("AC550 MaxPool test passed");
     $finish;
   end

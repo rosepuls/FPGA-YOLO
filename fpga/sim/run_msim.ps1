@@ -34,6 +34,23 @@ switch ($Testbench) {
   'ac550_cnn_csr_tb' {
     $sources = @($common, (Join-Path $repoRoot 'fpga\rtl\avalon\ac550_cnn_csr.sv'), (Join-Path $repoRoot 'fpga\sim\ac550_cnn_csr_tb.sv'))
   }
+  'cnn_job_controller_tb' {
+    $sources = @($common, (Join-Path $repoRoot 'fpga\rtl\avalon\cnn_job_controller.sv'), (Join-Path $repoRoot 'fpga\sim\cnn_job_controller_tb.sv'))
+  }
+  'tensor_dma_tb' {
+    $sources = @((Join-Path $repoRoot 'fpga\rtl\cnn\tensor_dma.sv'), (Join-Path $repoRoot 'fpga\sim\tensor_dma_tb.sv'))
+  }
+  'fpga_op_executor_tb' {
+    $sources = @(
+      $common,
+      (Join-Path $repoRoot 'fpga\rtl\avalon\cnn_job_controller.sv'),
+      (Join-Path $repoRoot 'fpga\rtl\cnn\tensor_dma.sv'),
+      (Join-Path $repoRoot 'fpga\rtl\cnn\conv2d_i8.sv'),
+      (Join-Path $repoRoot 'fpga\rtl\cnn\maxpool_i8.sv'),
+      (Join-Path $repoRoot 'fpga\rtl\cnn\fpga_op_executor.sv'),
+      (Join-Path $repoRoot 'fpga\sim\fpga_op_executor_tb.sv')
+    )
+  }
   'requant_i32_to_i8_tb' {
     $sources = @((Join-Path $repoRoot 'fpga\rtl\cnn\requant_i32_to_i8.sv'), (Join-Path $repoRoot 'fpga\rtl\cnn\relu_i8.sv'), (Join-Path $repoRoot 'fpga\sim\requant_i32_to_i8_tb.sv'))
   }

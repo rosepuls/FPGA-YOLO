@@ -19,3 +19,11 @@ Graph nodes such as `model.0` and `model.2.cv1` resolve to quantization and Gold
 ## Safety checks
 
 The compiler requires 87 graph nodes, 60 convolutions and executor split 57/3/3/7/13/4. It validates every Golden input/output mapping and every weight or bias offset plus byte count against the source binary before emitting the associated `.mem` image.
+
+## Task and DMA execution order
+
+`cnn_job_controller` validates the descriptor and local buffer capacities before issuing DMA. A Conv task reads regions in this order: input, weight, bias, multiplier, shift; then starts the selected Conv mode and writes output. A MaxPool task reads input, starts MaxPool, and writes output. Every DMA response must report the requested byte count before execution can advance. A read/write failure, short transfer, engine failure, or watchdog timeout ends the task with an error and does not signal successful completion.
+
+The Avalon-MM master moves 32-bit little-endian words. DDR addresses are word aligned; local addresses are byte offsets within the selected region. The final partial write uses `byteenable` so bytes beyond the requested tensor are preserved. Region IDs are input=0, weight=1, bias=2, multiplier=3, shift=4, output=5.
+
+`fpga_op_executor` is the functional integration harness for DDR→Conv/MaxPool→DDR simulation. It currently holds full tensors in local arrays. It has not passed Quartus fitting and is not the final resource-bounded AC550 implementation; replace its full tensor banks with reusable feature and weight tiles before full-model deployment.

@@ -1,6 +1,6 @@
 # FPGA 目录
 
-这里放 ZYNQ-7010 的 RTL、Vivado、Vitis 和仿真工程。
+这里放 AC550-SoC 的 RTL、Quartus/Platform Designer 和仿真工程。
 
 建议开发顺序：
 
@@ -8,3 +8,15 @@
 2. 验证 `fpga/rtl/cnn` 的单层 Conv/ReLU/Requant；
 3. 再连接 AXI 和 DMA；
 4. 最后接入视频前端、Frame Buffer 和 ARM 后处理。
+
+## INT8 算子任务链 bring-up
+
+当前已具备 CSR、Conv/Requant/ReLU、MaxPool、任务控制器、Avalon-MM 字节 DMA，以及功能级 `fpga_op_executor`。可用 ModelSim 运行对应测试：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File fpga/sim/run_msim.ps1 -Testbench cnn_job_controller_tb
+powershell -NoProfile -ExecutionPolicy Bypass -File fpga/sim/run_msim.ps1 -Testbench tensor_dma_tb
+powershell -NoProfile -ExecutionPolicy Bypass -File fpga/sim/run_msim.ps1 -Testbench fpga_op_executor_tb
+```
+
+`fpga_op_executor` 目前把完整输入、权重和输出 tensor 放在本地数组中，目的是验证 DDR→算子→DDR 的功能闭环。它尚未实现全模型可综合的片上 tile 复用结构，也未完成 Quartus 资源/时序验收；整网部署前必须把这些完整 tensor bank 改为有界 feature/weight tile buffer。
