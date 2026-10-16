@@ -57,6 +57,7 @@ switch ($Testbench) {
     $sources = @(
       $common,
       (Join-Path $repoRoot 'fpga\rtl\avalon\cnn_job_controller.sv'),
+      (Join-Path $repoRoot 'fpga\rtl\avalon\ac550_cnn_csr.sv'),
       (Join-Path $repoRoot 'fpga\rtl\cnn\tensor_dma.sv')
     ) + $convSources + @(
       (Join-Path $repoRoot 'fpga\rtl\cnn\maxpool_i8.sv'),

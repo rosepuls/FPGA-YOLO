@@ -158,6 +158,20 @@ module cnn_job_controller_tb;
     repeat (3) @(posedge clk);
     reset_n = 1'b1;
     pulse_start();
+    // A duplicate START while busy must not replace the active descriptor.
+    @(negedge clk);
+    start = 1'b1;
+    task_id = 32'hdead;
+    frame_id = 32'hbeef;
+    @(negedge clk);
+    start = 1'b0;
+    task_id = 32'h42;
+    frame_id = 32'h7;
+    #1;
+    if (busy !== 1'b1 || error !== 1'b0) begin
+      $error("duplicate START disturbed the active job");
+      $fatal(1);
+    end
     expect_dma(1'b0, DMA_INPUT, input_addr, 4);
     expect_dma(1'b0, DMA_WEIGHT, weight_addr, 1);
     expect_dma(1'b0, DMA_BIAS, bias_addr, 4);
