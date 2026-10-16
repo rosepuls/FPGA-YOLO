@@ -60,6 +60,15 @@ switch ($Testbench) {
   'maxpool_i8_tb' {
     $sources = @($common, (Join-Path $repoRoot 'fpga\rtl\cnn\maxpool_i8.sv'), (Join-Path $repoRoot 'fpga\sim\maxpool_i8_tb.sv'))
   }
+  'tile_datapath_tb' {
+    $sources = @(
+      (Join-Path $repoRoot 'fpga\rtl\cnn\feature_tile_buffer.sv'),
+      (Join-Path $repoRoot 'fpga\rtl\cnn\weight_tile_buffer.sv'),
+      (Join-Path $repoRoot 'fpga\rtl\cnn\accumulator_buffer.sv'),
+      (Join-Path $repoRoot 'fpga\rtl\cnn\mac_array_i8.sv'),
+      (Join-Path $repoRoot 'fpga\sim\tile_datapath_tb.sv')
+    )
+  }
   default { throw "No compile manifest is registered for testbench '$Testbench'" }
 }
 

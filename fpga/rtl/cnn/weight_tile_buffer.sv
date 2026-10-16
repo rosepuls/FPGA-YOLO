@@ -1,0 +1,23 @@
+// Bounded OIHW weight storage for one POUT x PIN x MAX_KERNEL x MAX_KERNEL tile.
+module weight_tile_buffer #(
+  parameter int PIN = 1,
+  parameter int POUT = 1,
+  parameter int MAX_KERNEL = 6,
+  parameter int DEPTH = POUT * PIN * MAX_KERNEL * MAX_KERNEL,
+  parameter int ADDR_WIDTH = (DEPTH <= 1) ? 1 : $clog2(DEPTH)
+) (
+  input  logic                  clk,
+  input  logic                  write_enable,
+  input  logic [ADDR_WIDTH-1:0] write_address,
+  input  logic signed [7:0]     write_data,
+  input  logic [ADDR_WIDTH-1:0] read_address,
+  output logic signed [7:0]     read_data
+);
+  logic signed [7:0] storage [0:DEPTH-1];
+
+  always_ff @(posedge clk) begin
+    if (write_enable && write_address < DEPTH) storage[write_address] <= write_data;
+    if (read_address < DEPTH) read_data <= storage[read_address];
+    else read_data <= '0;
+  end
+endmodule

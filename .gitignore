@@ -20,6 +20,7 @@ models/tests/_write_probe/
 
 # FPGA and PS generated artifacts
 fpga/build/
+fpga/sim/results/
 fpga/vivado/.Xil/
 fpga/vivado/*.jou
 fpga/vivado/*.log

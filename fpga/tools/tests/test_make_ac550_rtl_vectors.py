@@ -78,6 +78,10 @@ def test_compiler_emits_complete_runtime_boundary(tmp_path: Path) -> None:
 
     assert (generated / "model_0_weight.mem").is_file()
     assert (generated / "model_0_bias.mem").is_file()
+    assert (generated / "model_0_multiplier.mem").is_file()
+    assert (generated / "model_0_shift.mem").is_file()
+    assert len((generated / "model_0_multiplier.mem").read_text().splitlines()) == 16
+    assert len((generated / "model_0_shift.mem").read_text().splitlines()) == 16
     assert (generated / "requant_multiplier_i32.bin").stat().st_size == 4 * sum(
         node["output_shape"][1] for node in nodes if node["opcode"].startswith("CONV_")
     )
@@ -111,3 +115,26 @@ def test_compiler_rejects_changed_lock_and_out_of_range_weight(tmp_path: Path) -
     bad_range = run_compiler(package, generated)
     assert bad_range.returncode != 0
     assert "weight range" in bad_range.stderr
+
+
+def test_convolution_vectors_are_rescaled_to_package_activation_scales(tmp_path: Path) -> None:
+    """Golden tensors are serialized with sample scales; RTL must see package scales."""
+    package = package_root()
+    generated = tmp_path / "generated"
+    result = run_compiler(package, generated)
+    assert result.returncode == 0, result.stderr
+
+    quant = json.loads((package / "quant_params.json").read_text(encoding="utf-8"))
+    golden = json.loads((package / "golden_vectors.json").read_text(encoding="utf-8"))
+    node_id = "model.24.m.0"
+    conv = next(item for item in quant["convolutions"] if item["source_module"] == node_id)
+    vector = next(item for item in golden["vectors"] if item["source_module"] == node_id)
+    source_scale = vector["input"]["quantization"]["scale"]
+    target_scale = conv["input_quantization"]["scale"]
+    source = (package / vector["input"]["file"]).read_bytes()
+    expected = []
+    for byte in source:
+        signed = byte if byte < 128 else byte - 256
+        expected.append(max(-127, min(127, round(signed * source_scale / target_scale))) & 0xFF)
+    actual = [int(line, 16) for line in (generated / "model_24_m_0_input.mem").read_text().splitlines()]
+    assert actual == expected

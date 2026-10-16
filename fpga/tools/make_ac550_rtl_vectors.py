@@ -36,6 +36,8 @@ class Vector:
     output_file: str
     input_shape: list[int]
     output_shape: list[int]
+    input_scale: float
+    output_scale: float
 
 
 def load_json(path: Path) -> Any:
@@ -63,6 +65,11 @@ def write_mem(path: Path, payload: bytes) -> None:
     path.write_text("".join(f"{byte:02X}\n" for byte in payload), encoding="ascii")
 
 
+def write_i32_mem(path: Path, values: list[int]) -> None:
+    """Write one signed two's-complement 32-bit word per $readmemh line."""
+    path.write_text("".join(f"{value & 0xFFFFFFFF:08X}\n" for value in values), encoding="ascii")
+
+
 def checked_slice(package: Path, description: str, file_name: str, offset: int, byte_count: int) -> bytes:
     file_path = package / file_name
     try:
@@ -76,6 +83,19 @@ def checked_slice(package: Path, description: str, file_name: str, offset: int, 
     with file_path.open("rb") as source:
         source.seek(offset)
         return source.read(byte_count)
+
+
+def requantize_i8_bytes(payload: bytes, source_scale: float, target_scale: float) -> bytes:
+    """Convert sample-encoded activations to the layer's fixed package scale."""
+    if source_scale <= 0 or target_scale <= 0:
+        raise PackageError("activation scales must be positive")
+    ratio = source_scale / target_scale
+    result = bytearray()
+    for byte in payload:
+        value = byte - 256 if byte >= 128 else byte
+        quantized = max(-127, min(127, round(value * ratio)))
+        result.append(quantized & 0xFF)
+    return bytes(result)
 
 
 def normalize_convolution_name(graph_node: dict[str, Any], names: set[str]) -> str:
@@ -109,6 +129,8 @@ def vector_map(golden: dict[str, Any]) -> dict[str, Vector]:
             output_file=entry["output"]["file"],
             input_shape=entry["input"]["shape"],
             output_shape=entry["output"]["shape"],
+            input_scale=float(entry["input"]["quantization"]["scale"]),
+            output_scale=float(entry["output"]["quantization"]["scale"]),
         )
     return vectors
 
@@ -160,6 +182,7 @@ def compile_package(package: Path, output: Path) -> list[dict[str, Any]]:
             weight_offset = weight_bytes = bias_offset = bias_bytes = 0
             multiplier_offset = len(multiplier_bytes)
             shift_offset = len(shift_bytes)
+            multiplier_file = shift_file = None
         else:
             source = normalize_convolution_name(graph_node, set(conv_by_source))
             layer = conv_by_source[source]
@@ -168,7 +191,13 @@ def compile_package(package: Path, output: Path) -> list[dict[str, Any]]:
             weight_offset, weight_bytes = weight["offset"], weight["bytes"]
             bias_offset, bias_bytes = bias["offset"], bias["bytes"]
             write_mem(output / f"{safe_stem(graph_node['id'])}_weight.mem", checked_slice(package, "weight", weight["file"], weight_offset, weight_bytes))
-            write_mem(output / f"{safe_stem(graph_node['id'])}_bias.mem", checked_slice(package, "bias", bias["file"], bias_offset, bias_bytes))
+            bias_payload = checked_slice(package, "bias", bias["file"], bias_offset, bias_bytes)
+            if bias_bytes != graph_node["output_channels"] * 4:
+                raise PackageError(f"bias byte count mismatch for {source}")
+            write_i32_mem(
+                output / f"{safe_stem(graph_node['id'])}_bias.mem",
+                list(struct.unpack(f"<{graph_node['output_channels']}i", bias_payload)),
+            )
             requant = layer["requantization"]
             multipliers = requant["integer_multiplier"]
             shifts = requant["right_shift"]
@@ -178,6 +207,10 @@ def compile_package(package: Path, output: Path) -> list[dict[str, Any]]:
             shift_offset = len(shift_bytes)
             multiplier_bytes.extend(struct.pack(f"<{len(multipliers)}i", *multipliers))
             shift_bytes.extend(shifts)
+            multiplier_file = f"{safe_stem(graph_node['id'])}_multiplier.mem"
+            shift_file = f"{safe_stem(graph_node['id'])}_shift.mem"
+            write_i32_mem(output / multiplier_file, multipliers)
+            write_mem(output / shift_file, bytes(shifts))
         if source not in vectors:
             raise PackageError(f"missing input/output golden vector for {source}")
         vector = vectors[source]
@@ -185,6 +218,9 @@ def compile_package(package: Path, output: Path) -> list[dict[str, Any]]:
         output_file = package / vector.output_file
         input_data = checked_slice(package, "golden input", vector.input_file, 0, input_file.stat().st_size)
         output_data = checked_slice(package, "golden output", vector.output_file, 0, output_file.stat().st_size)
+        if executor != "FPGA_MAXPOOL":
+            input_data = requantize_i8_bytes(input_data, vector.input_scale, layer["input_quantization"]["scale"])
+            output_data = requantize_i8_bytes(output_data, vector.output_scale, layer["output_quantization"]["scale"])
         stem = safe_stem(graph_node["id"])
         input_mem = f"{stem}_input.mem"
         output_mem = f"{stem}_output_golden.mem"
@@ -214,6 +250,12 @@ def compile_package(package: Path, output: Path) -> list[dict[str, Any]]:
             "shift_offset": shift_offset,
             "input_mem": input_mem,
             "output_golden_mem": output_mem,
+            "weight_mem": None if executor == "FPGA_MAXPOOL" else f"{safe_stem(graph_node['id'])}_weight.mem",
+            "bias_mem": None if executor == "FPGA_MAXPOOL" else f"{safe_stem(graph_node['id'])}_bias.mem",
+            "multiplier_mem": multiplier_file,
+            "shift_mem": shift_file,
+            "input_scale": vector.input_scale if executor == "FPGA_MAXPOOL" else layer["input_quantization"]["scale"],
+            "output_scale": vector.output_scale if executor == "FPGA_MAXPOOL" else layer["output_quantization"]["scale"],
         })
         descriptor_index += 1
     if descriptor_index != 63:
