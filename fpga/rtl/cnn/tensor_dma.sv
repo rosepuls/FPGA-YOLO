@@ -32,6 +32,7 @@ module tensor_dma #(
   logic [2:0] write_valid_bytes;
   logic [32:0] ddr_end, local_end;
   logic invalid_request;
+  logic read_channel_poisoned;
 
   task automatic set_burst(input logic [31:0] remaining, input logic [1:0] first_lane);
     begin
@@ -56,7 +57,9 @@ module tensor_dma #(
     local_end = {1'b0, req_local_addr} + {1'b0, req_bytes} - 33'd1;
     invalid_request = (req_bytes == 0) || (req_region > 3'd5) || ddr_end[32] || local_end[32];
     case (req_region)
-      3'd0, 3'd1, 3'd5: invalid_request |= req_ddr_addr[5:0] != 0;
+      // Descriptor base addresses are checked by the job controller. Tile
+      // rows and OIHW weight slices can start at arbitrary byte offsets.
+      3'd0, 3'd1, 3'd5: ;
       3'd2, 3'd3: invalid_request |= req_ddr_addr[1:0] != 0;
       3'd4: ; // shift parameters are byte-addressed
       default: invalid_request = 1'b1;
@@ -92,6 +95,7 @@ module tensor_dma #(
       response_index <= 0; store_index <= 0; write_index <= 0; gather_index <= 0;
       lane_offset <= 0; store_lane <= 0; gather_lane <= 0; timeout_count <= 0;
       store_byte_index <= 0; gather_byte_index <= 0; error <= 0;
+      read_channel_poisoned <= 0;
       for (integer i=0; i<MAX_BURST_WORDS; i++) begin
         read_words[i] <= 0; write_words[i] <= 0; write_enables[i] <= 0;
       end
@@ -99,9 +103,12 @@ module tensor_dma #(
       case (state)
         IDLE: if (req_valid) begin
           bytes_done <= 0;
-          error <= invalid_request;
+          // An accepted read that timed out may still produce late Avalon
+          // responses. Reject every later request until reset reinitializes
+          // both this DMA and the memory interface.
+          error <= invalid_request || read_channel_poisoned;
           timeout_count <= 0;
-          if (invalid_request) state <= FINISH;
+          if (invalid_request || read_channel_poisoned) state <= FINISH;
           else begin
             active_region <= req_region;
             active_local_addr <= req_local_addr; active_bytes <= req_bytes;
@@ -119,21 +126,29 @@ module tensor_dma #(
         end
 
         READ_CMD: begin
-          if (master_read_error) begin error <= 1; state <= FINISH; end
+          if (master_read_error) begin
+            // The read may have been accepted in this same cycle. Quarantine
+            // the channel so a late response cannot feed a later request.
+            read_channel_poisoned <= 1; error <= 1; state <= FINISH;
+          end
           else if (!master_waitrequest) begin response_index <= 0; timeout_count <= 0; state <= READ_DATA; end
           else if (timeout_count + 1 >= TIMEOUT_CYCLES) begin error <= 1; state <= FINISH; end
           else timeout_count <= timeout_count + 1'b1;
         end
 
         READ_DATA: begin
-          if (master_read_error) begin error <= 1; state <= FINISH; end
+          if (master_read_error) begin
+            read_channel_poisoned <= 1; error <= 1; state <= FINISH;
+          end
           else if (master_readdatavalid) begin
             read_words[response_index] <= master_readdata;
             timeout_count <= 0;
             if (response_index + 1 >= burst_words) begin
               store_index <= 0; store_lane <= lane_offset; store_byte_index <= 0; state <= READ_STORE;
             end else response_index <= response_index + 1'b1;
-          end else if (timeout_count + 1 >= TIMEOUT_CYCLES) begin error <= 1; state <= FINISH; end
+          end else if (timeout_count + 1 >= TIMEOUT_CYCLES) begin
+            read_channel_poisoned <= 1; error <= 1; state <= FINISH;
+          end
           else timeout_count <= timeout_count + 1'b1;
         end
 
@@ -192,7 +207,9 @@ module tensor_dma #(
 
   always_comb begin
     burst_byte_step = {25'b0, burst_words, 2'b00};
-    if (lane_offset != 0 && gather_index == 0) gather_bytes_this_word = 4-lane_offset;
+    if (lane_offset != 0 && gather_index == 0)
+      gather_bytes_this_word = ((bytes_in_burst-gather_byte_index) > (4-lane_offset)) ?
+                               (4-lane_offset) : (bytes_in_burst-gather_byte_index);
     else if ((bytes_in_burst-gather_byte_index) > 4) gather_bytes_this_word = 4;
     else gather_bytes_this_word = bytes_in_burst-gather_byte_index;
   end

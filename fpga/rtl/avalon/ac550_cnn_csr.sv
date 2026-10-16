@@ -12,8 +12,27 @@ module ac550_cnn_csr (
   input  logic        job_error,
   input  logic [3:0]  job_error_code,
   input  logic [31:0] job_done_task_id,
+  output logic [31:0] active_opcode,
   output logic [31:0] active_task_id,
-  output logic [31:0] active_input_addr
+  output logic [31:0] active_frame_id,
+  output logic [31:0] active_input_addr,
+  output logic [31:0] active_weight_addr,
+  output logic [31:0] active_bias_addr,
+  output logic [31:0] active_multiplier_addr,
+  output logic [31:0] active_shift_addr,
+  output logic [31:0] active_output_addr,
+  output logic [31:0] active_input_bytes,
+  output logic [31:0] active_output_bytes,
+  output logic [31:0] active_input_c,
+  output logic [31:0] active_input_h,
+  output logic [31:0] active_input_w,
+  output logic [31:0] active_output_c,
+  output logic [31:0] active_output_h,
+  output logic [31:0] active_output_w,
+  output logic [31:0] active_kernel,
+  output logic [31:0] active_stride,
+  output logic [31:0] active_padding,
+  output logic [31:0] active_watchdog_cycles
 );
   import ac550_cnn_pkg::*;
 
@@ -24,9 +43,7 @@ module ac550_cnn_csr (
   logic [31:0] cfg_input_addr, cfg_weight_addr, cfg_bias_addr, cfg_multiplier_addr, cfg_shift_addr, cfg_output_addr;
   logic [31:0] cfg_input_bytes, cfg_output_bytes, cfg_input_c, cfg_input_h, cfg_input_w;
   logic [31:0] cfg_output_c, cfg_output_h, cfg_output_w, cfg_kernel, cfg_stride, cfg_padding, cfg_quant_id, cfg_watchdog_cycles;
-  logic [31:0] active_frame_id, active_weight_addr, active_bias_addr, active_multiplier_addr, active_shift_addr, active_output_addr;
-  logic [31:0] active_input_bytes, active_output_bytes, active_input_c, active_input_h, active_input_w;
-  logic [31:0] active_output_c, active_output_h, active_output_w, active_kernel, active_stride, active_padding, active_quant_id, active_watchdog_cycles;
+  logic [31:0] active_quant_id;
 
   function automatic logic opcode_is_supported(input logic [31:0] opcode);
     return opcode == OP_CONV_RELU || opcode == OP_CONV_LINEAR || opcode == OP_MAXPOOL;
@@ -41,10 +58,14 @@ module ac550_cnn_csr (
   function automatic logic descriptor_shape_is_valid;
     return cfg_input_bytes != 0 && cfg_output_bytes != 0 && cfg_input_c != 0 &&
            cfg_input_h != 0 && cfg_input_w != 0 && cfg_output_c != 0 &&
-           cfg_output_h != 0 && cfg_output_w != 0 && cfg_kernel != 0 && cfg_stride != 0;
+           cfg_output_h != 0 && cfg_output_w != 0 && cfg_kernel != 0 && cfg_stride != 0 &&
+           cfg_input_c[31:16] == 0 && cfg_input_h[31:16] == 0 && cfg_input_w[31:16] == 0 &&
+           cfg_output_c[31:16] == 0 && cfg_output_h[31:16] == 0 && cfg_output_w[31:16] == 0 &&
+           cfg_kernel[31:8] == 0 && cfg_stride[31:8] == 0 && cfg_padding[31:8] == 0;
   endfunction
 
   task automatic latch_descriptor;
+    active_opcode         <= cfg_opcode;
     active_task_id        <= cfg_task_id;
     active_frame_id       <= cfg_frame_id;
     active_input_addr     <= cfg_input_addr;
@@ -101,6 +122,7 @@ module ac550_cnn_csr (
       cfg_quant_id <= '0;
       cfg_watchdog_cycles <= '0;
       active_task_id <= '0;
+      active_opcode <= '0;
       active_frame_id <= '0;
       active_input_addr <= '0;
       active_weight_addr <= '0;
@@ -123,7 +145,9 @@ module ac550_cnn_csr (
       active_watchdog_cycles <= '0;
     end else begin
       start_pulse <= 1'b0;
-      if (busy && job_error) begin
+      // A previous job's sticky error can still be high during the START
+      // pulse; the controller clears it when it accepts the new descriptor.
+      if (busy && job_error && !start_pulse) begin
         busy <= 1'b0;
         error <= 1'b1;
         error_code <= job_error_code;

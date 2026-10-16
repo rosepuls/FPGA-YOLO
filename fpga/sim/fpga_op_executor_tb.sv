@@ -60,7 +60,13 @@ module fpga_op_executor_tb;
     .avs_writedata(csr_writedata), .avs_readdata(csr_readdata), .irq(csr_irq),
     .start_pulse(csr_start_pulse), .job_done(done), .job_error(error),
     .job_error_code(error_code), .job_done_task_id(done_task_id),
-    .active_task_id(csr_active_task_id), .active_input_addr(csr_active_input_addr)
+    .active_task_id(csr_active_task_id), .active_input_addr(csr_active_input_addr),
+    .active_opcode(), .active_frame_id(), .active_weight_addr(),
+    .active_bias_addr(), .active_multiplier_addr(), .active_shift_addr(),
+    .active_output_addr(), .active_input_bytes(), .active_output_bytes(),
+    .active_input_c(), .active_input_h(), .active_input_w(),
+    .active_output_c(), .active_output_h(), .active_output_w(),
+    .active_kernel(), .active_stride(), .active_padding(), .active_watchdog_cycles()
   );
 
   always @(posedge clk or negedge reset_n) begin
@@ -165,7 +171,8 @@ module fpga_op_executor_tb;
       @(posedge clk);
       #1;
       if (csr_irq !== 1'b1) begin
-        $error("CSR did not raise IRQ after output completion for task %h", expected_task_id);
+        $error("CSR did not raise IRQ after output completion for task %h csr_busy=%b csr_error=%b csr_code=%0d",
+          expected_task_id, csr.busy, csr.error, csr.error_code);
         $fatal(1);
       end
     end
@@ -317,8 +324,8 @@ module fpga_op_executor_tb;
         $fatal(1);
       end
     end
-    if (accepted_write_count !== 19) begin
-      $error("64-byte output should add sixteen accepted beats, total=%0d", accepted_write_count);
+    if (accepted_write_count-write_baseline !== 16) begin
+      $error("64-byte output should add sixteen accepted beats, delta=%0d", accepted_write_count-write_baseline);
       $fatal(1);
     end
 
@@ -328,6 +335,7 @@ module fpga_op_executor_tb;
     task_id = 32'h1238;
     frame_id = 32'h5a;
     inject_write_error = 1'b1;
+    write_baseline = accepted_write_count;
     write_csr(CSR_CONTROL, CONTROL_CLEAR);
     configure_csr(OP_CONV_RELU, 32'h1238, 32'h5a, 64, 8, 1, 0);
     pulse_csr_start();
@@ -335,14 +343,14 @@ module fpga_op_executor_tb;
     #1;
     inject_write_error = 1'b0;
     if (error !== 1'b1 || error_code !== ERR_DMA_WRITE || done !== 1'b0 || busy !== 1'b0 ||
-        accepted_write_count !== 20 || ddr_mem[640] !== 8'd1 || ddr_mem[641] !== 8'd2 ||
+        accepted_write_count !== write_baseline+1 || ddr_mem[640] !== 8'd1 || ddr_mem[641] !== 8'd2 ||
         ddr_mem[642] !== 8'd3 || ddr_mem[643] !== 8'd4 || ddr_mem[644] !== 8'hA5) begin
       $error("failed output DMA did not abort cleanly: err=%b code=%0d writes=%0d", error, error_code, accepted_write_count);
       $fatal(1);
     end
     repeat (12) @(posedge clk);
     #1;
-    if (accepted_write_count !== 20 || ddr_mem[644] !== 8'hA5) begin
+    if (accepted_write_count !== write_baseline+1 || ddr_mem[644] !== 8'hA5) begin
       $error("output writes continued after the DMA error");
       $fatal(1);
     end
@@ -352,6 +360,89 @@ module fpga_op_executor_tb;
       $error("CSR raised completion IRQ for an aborted output transfer");
       $fatal(1);
     end
+
+    // Timeout must drain an outstanding DMA request before publishing error,
+    // then allow a fresh descriptor without writes from the abandoned job.
+    write_csr(CSR_CONTROL, CONTROL_CLEAR);
+    input_addr = BASE;
+    output_addr = BASE + 32'h300;
+    input_height = 2; input_width = 2;
+    output_height = 2; output_width = 2;
+    input_bytes = 4; output_bytes = 4;
+    kernel = 1; stride = 1; padding = 0;
+    task_id = 32'h1239; frame_id = 32'h5b;
+    watchdog_cycles = 5;
+    configure_csr(OP_CONV_RELU, 32'h1239, 32'h5b, 4, 2, 1, 0);
+    write_baseline = accepted_write_count;
+    pulse_csr_start();
+    wait (busy);
+    wait (error);
+    #1;
+    if (error_code !== ERR_WATCHDOG_TIMEOUT || busy !== 1'b0 || done !== 1'b0 ||
+        accepted_write_count !== write_baseline) begin
+      $fatal(1, "watchdog result code=%0d busy=%b done=%b writes=%0d baseline=%0d",
+        error_code, busy, done, accepted_write_count, write_baseline);
+    end
+    repeat (20) @(posedge clk);
+    #1;
+    if (accepted_write_count !== write_baseline || ddr_mem[768] !== 8'ha5)
+      $fatal(1, "DDR traffic continued after watchdog timeout");
+    watchdog_cycles = 500;
+    task_id = 32'h123a; frame_id = 32'h5c;
+    write_csr(CSR_CONTROL, CONTROL_CLEAR);
+    configure_csr(OP_CONV_RELU, 32'h123a, 32'h5c, 4, 2, 1, 0);
+    pulse_csr_start();
+    wait (busy);
+    check_irq_after_output_completion(32'h123a);
+    if (ddr_mem[768] !== 8'd1 || ddr_mem[769] !== 8'd2)
+      $fatal(1, "post-watchdog descriptor did not complete cleanly");
+
+    write_csr(CSR_CONTROL, CONTROL_CLEAR);
+    watchdog_cycles = 1;
+    task_id = 32'h123d; frame_id = 32'h5f;
+    configure_csr(OP_CONV_RELU, 32'h123d, 32'h5f, 4, 2, 1, 0);
+    write_baseline = accepted_write_count;
+    pulse_csr_start();
+    wait (busy);
+    wait (error);
+    #1;
+    if (error_code !== ERR_WATCHDOG_TIMEOUT || accepted_write_count !== write_baseline)
+      $fatal(1, "one-cycle watchdog left an active DDR writer");
+    repeat (12) @(posedge clk);
+    #1;
+    if (accepted_write_count !== write_baseline)
+      $fatal(1, "one-cycle watchdog allowed a late DDR write");
+    watchdog_cycles = 500;
+
+    // Whole-tensor bounds and overlap must reject before tile address
+    // arithmetic can wrap or overwrite an input needed by a later tile.
+    write_csr(CSR_CONTROL, CONTROL_CLEAR);
+    input_addr = 32'hffff_ffc0;
+    input_height = 16; input_width = 16;
+    output_height = 16; output_width = 16;
+    input_bytes = 256; output_bytes = 256;
+    task_id = 32'h123b;
+    configure_csr(OP_CONV_RELU, 32'h123b, 32'h5d, 256, 16, 1, 0);
+    write_baseline = accepted_write_count;
+    pulse_csr_start();
+    repeat (2) @(posedge clk);
+    #1;
+    if (error_code !== ERR_INVALID_SHAPE || accepted_write_count !== write_baseline)
+      $fatal(1, "wrapping tensor range was not rejected");
+
+    write_csr(CSR_CONTROL, CONTROL_CLEAR);
+    input_addr = BASE + 32'h300;
+    output_addr = BASE + 32'h300;
+    input_height = 2; input_width = 2;
+    output_height = 2; output_width = 2;
+    input_bytes = 4; output_bytes = 4;
+    task_id = 32'h123c;
+    configure_csr(OP_CONV_RELU, 32'h123c, 32'h5e, 4, 2, 1, 0);
+    pulse_csr_start();
+    repeat (2) @(posedge clk);
+    #1;
+    if (error_code !== ERR_INVALID_SHAPE || accepted_write_count !== write_baseline)
+      $fatal(1, "overlapping input/output tensor range was not rejected");
 
     $display("AC550 integrated FPGA op executor test passed, including error abort");
     $finish;

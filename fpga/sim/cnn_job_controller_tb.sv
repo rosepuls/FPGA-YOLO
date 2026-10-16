@@ -48,10 +48,13 @@ module cnn_job_controller_tb;
     .busy, .done, .error, .error_code, .done_task_id, .done_frame_id,
     .dma_req_valid, .dma_req_ready, .dma_req_write, .dma_req_region, .dma_req_addr, .dma_req_bytes,
     .dma_done, .dma_error, .dma_bytes_done,
-    .engine_start, .engine_done, .engine_error, .engine_error_code, .engine_opcode,
+    .engine_start, .engine_abort(), .engine_done, .engine_error,
+    .engine_error_code, .engine_opcode,
     .engine_input_channels, .engine_input_height, .engine_input_width,
     .engine_output_channels, .engine_output_height, .engine_output_width,
-    .engine_kernel, .engine_stride, .engine_padding
+    .engine_kernel, .engine_stride, .engine_padding,
+    .engine_input_addr(), .engine_weight_addr(), .engine_bias_addr(),
+    .engine_multiplier_addr(), .engine_shift_addr(), .engine_output_addr()
   );
 
   task automatic expect_dma(

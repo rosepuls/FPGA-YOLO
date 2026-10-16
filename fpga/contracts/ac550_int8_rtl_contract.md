@@ -4,7 +4,7 @@
 
 The vector compiler takes an explicit `--package` path, computes the SHA-256 of `manifest.json`, and records it in `fpga/sim/generated/package_lock.json`. A later generation in the same output directory fails when this identity differs, preventing Golden vectors, runtime tables and RTL results from being mixed between exports.
 
-The engineering baseline is `runs/ac550_yolov5n_relu_int8_qat_staged_v1`; its manifest SHA-256 is `3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24`. Its state is `PRE_G2_STATIC_QUANTIZATION`, so it is for bring-up rather than final G2 accuracy release.
+The current RTL/DDR engineering baseline is `runs/ac550_yolov5n_relu_int8_qat_staged_v4`; its manifest SHA-256 is `30EC0F313A521A66492F86CB8E1C1265E6250C58326878F463936A57609093F4`. Its state is `PRE_G2_STATIC_QUANTIZATION`, so it is for bring-up rather than final G2 accuracy release.
 
 ## Memory representation
 
@@ -22,8 +22,8 @@ The compiler requires 87 graph nodes, 60 convolutions and executor split 57/3/3/
 
 ## Task and DMA execution order
 
-`cnn_job_controller` validates the descriptor and local buffer capacities before issuing DMA. A Conv task reads regions in this order: input, weight, bias, multiplier, shift; then starts the selected Conv mode and writes output. A MaxPool task reads input, starts MaxPool, and writes output. Every DMA response must report the requested byte count before execution can advance. A read/write failure, short transfer, engine failure, or watchdog timeout ends the task with an error and does not signal successful completion.
+`cnn_job_controller` validates the descriptor and starts `fpga_op_executor`. In streaming mode, complete tensor address ranges must fit 32-bit DDR space and the output range must not overlap any source range. Conv fetches output-channel quantization values, then feature rows and OIHW weight slices for each channel/spatial tile; MaxPool fetches feature rows for a 5×5 window. Each tile output row is written back before advancing. Every DMA response must report the requested byte count. A read/write failure, short transfer, quantization error, or watchdog timeout ends the job without successful completion; a timeout first drains an outstanding DMA transaction and blocks further requests.
 
-The Avalon-MM master moves 32-bit little-endian words. DDR addresses are word aligned; local addresses are byte offsets within the selected region. The final partial write uses `byteenable` so bytes beyond the requested tensor are preserved. Region IDs are input=0, weight=1, bias=2, multiplier=3, shift=4, output=5.
+The Avalon-MM master moves 32-bit little-endian words. Descriptor tensor bases are 64-byte aligned; tile transfers may start at byte offsets, while the DMA aligns bus commands to words. The first and final partial writes use `byteenable` to preserve neighboring DDR bytes. A read-command error, or an accepted read that times out or reports an error, can leave a late response; the DMA rejects all subsequent requests until reset. Region IDs are input=0, weight=1, bias=2, multiplier=3, shift=4, output=5.
 
-`fpga_op_executor` is the functional integration harness for DDR→Conv/MaxPool→DDR simulation. It currently holds full tensors in local arrays. It has not passed Quartus fitting and is not the final resource-bounded AC550 implementation; replace its full tensor banks with reusable feature and weight tiles before full-model deployment.
+`ac550_cnn_accelerator` provides a synthesizable CSR→executor→Avalon master connection; `fpga_op_executor` contains fixed-size feature, weight, accumulator, quantization, and output tile banks, not full tensors. All 63 v4 FPGA nodes pass behavioral CSR/DDR simulation, but Quartus fitting, RAM inference, timing closure, HPS integration, and board execution remain open.

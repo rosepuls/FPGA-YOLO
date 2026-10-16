@@ -2,7 +2,8 @@ module cnn_job_controller #(
   parameter int MAX_INPUT_ELEMENTS = 262144,
   parameter int MAX_WEIGHT_ELEMENTS = 1179648,
   parameter int MAX_OUTPUT_ELEMENTS = 262144,
-  parameter int MAX_CHANNELS = 512
+  parameter int MAX_CHANNELS = 512,
+  parameter bit STREAM_TILES = 1'b0
 ) (
   input  logic        clk,
   input  logic        reset_n,
@@ -44,6 +45,7 @@ module cnn_job_controller #(
   input  logic        dma_error,
   input  logic [31:0] dma_bytes_done,
   output logic        engine_start,
+  output logic        engine_abort,
   input  logic        engine_done,
   input  logic        engine_error,
   input  logic [3:0]  engine_error_code,
@@ -56,7 +58,13 @@ module cnn_job_controller #(
   output logic [15:0] engine_output_width,
   output logic [7:0]  engine_kernel,
   output logic [7:0]  engine_stride,
-  output logic [7:0]  engine_padding
+  output logic [7:0]  engine_padding,
+  output logic [31:0] engine_input_addr,
+  output logic [31:0] engine_weight_addr,
+  output logic [31:0] engine_bias_addr,
+  output logic [31:0] engine_multiplier_addr,
+  output logic [31:0] engine_shift_addr,
+  output logic [31:0] engine_output_addr
 );
   import ac550_cnn_pkg::*;
 
@@ -84,10 +92,32 @@ module cnn_job_controller #(
   logic [31:0] active_watchdog_cycles, watchdog_count;
   logic [31:0] active_task_id, active_frame_id;
   logic maxpool_job;
+  logic watchdog_pending;
   longint unsigned required_input_bytes, required_output_bytes, required_weight_bytes;
   longint unsigned required_bias_bytes;
   logic descriptor_valid;
   logic [3:0] descriptor_error_code;
+
+  function automatic logic range_fits(input logic [31:0] base,
+                                       input longint unsigned length);
+    return ({32'd0, base} + length) <= 64'h0000_0001_0000_0000;
+  endfunction
+
+  function automatic logic ranges_overlap(input logic [31:0] a,
+                                           input longint unsigned a_length,
+                                           input logic [31:0] b,
+                                           input longint unsigned b_length);
+    return ({32'd0, a} < {32'd0, b} + b_length) &&
+           ({32'd0, b} < {32'd0, a} + a_length);
+  endfunction
+
+  assign engine_input_addr = active_input_addr;
+  assign engine_weight_addr = active_weight_addr;
+  assign engine_bias_addr = active_bias_addr;
+  assign engine_multiplier_addr = active_multiplier_addr;
+  assign engine_shift_addr = active_shift_addr;
+  assign engine_output_addr = active_output_addr;
+  assign engine_abort = STREAM_TILES && watchdog_pending;
 
   always_comb begin
     dma_req_valid = 1'b0;
@@ -155,6 +185,7 @@ module cnn_job_controller #(
       active_watchdog_cycles <= '0;
       watchdog_count <= '0;
       maxpool_job <= 1'b0;
+      watchdog_pending <= 1'b0;
       engine_opcode <= '0;
       engine_input_channels <= '0;
       engine_input_height <= '0;
@@ -208,10 +239,11 @@ module cnn_job_controller #(
             descriptor_error_code = ERR_UNSUPPORTED_OPCODE;
           end
           if (descriptor_valid &&
-              (required_input_bytes > MAX_INPUT_ELEMENTS || required_output_bytes > MAX_OUTPUT_ELEMENTS ||
-               input_channels > MAX_CHANNELS || output_channels > MAX_CHANNELS ||
-               ((opcode == OP_CONV_RELU || opcode == OP_CONV_LINEAR) &&
-                required_weight_bytes > MAX_WEIGHT_ELEMENTS))) begin
+              (input_channels > MAX_CHANNELS || output_channels > MAX_CHANNELS ||
+               (!STREAM_TILES &&
+                (required_input_bytes > MAX_INPUT_ELEMENTS || required_output_bytes > MAX_OUTPUT_ELEMENTS ||
+                 ((opcode == OP_CONV_RELU || opcode == OP_CONV_LINEAR) &&
+                  required_weight_bytes > MAX_WEIGHT_ELEMENTS))))) begin
             descriptor_valid = 1'b0;
             descriptor_error_code = ERR_CAPACITY;
           end
@@ -220,6 +252,27 @@ module cnn_job_controller #(
                                         multiplier_addr[5:0] != 0 || shift_addr[5:0] != 0))) begin
             descriptor_valid = 1'b0;
             descriptor_error_code = ERR_ADDRESS_ALIGNMENT;
+          end
+          if (STREAM_TILES && descriptor_valid &&
+              (!range_fits(input_addr, required_input_bytes) ||
+               !range_fits(output_addr, required_output_bytes) ||
+               ranges_overlap(input_addr, required_input_bytes,
+                              output_addr, required_output_bytes) ||
+               (opcode != OP_MAXPOOL &&
+                (!range_fits(weight_addr, required_weight_bytes) ||
+                 !range_fits(bias_addr, required_bias_bytes) ||
+                 !range_fits(multiplier_addr, required_bias_bytes) ||
+                 !range_fits(shift_addr, output_channels) ||
+                 ranges_overlap(weight_addr, required_weight_bytes,
+                                output_addr, required_output_bytes) ||
+                 ranges_overlap(bias_addr, required_bias_bytes,
+                                output_addr, required_output_bytes) ||
+                 ranges_overlap(multiplier_addr, required_bias_bytes,
+                                output_addr, required_output_bytes) ||
+                 ranges_overlap(shift_addr, output_channels,
+                                output_addr, required_output_bytes))))) begin
+            descriptor_valid = 1'b0;
+            descriptor_error_code = ERR_INVALID_SHAPE;
           end
 
           if (!descriptor_valid) begin
@@ -250,6 +303,7 @@ module cnn_job_controller #(
             active_watchdog_cycles <= watchdog_cycles;
             watchdog_count <= '0;
             maxpool_job <= opcode == OP_MAXPOOL;
+            watchdog_pending <= 1'b0;
             engine_opcode <= opcode;
             engine_input_channels <= input_channels;
             engine_input_height <= input_height;
@@ -265,14 +319,22 @@ module cnn_job_controller #(
             done <= 1'b0;
             error <= 1'b0;
             error_code <= ERR_OK;
-            state <= DMA_ISSUE;
+            state <= STREAM_TILES ? ENGINE_START : DMA_ISSUE;
           end
         end
-      end else if (active_watchdog_cycles != 0 && watchdog_count >= active_watchdog_cycles - 1) begin
-        busy <= 1'b0;
-        error <= 1'b1;
-        error_code <= ERR_WATCHDOG_TIMEOUT;
-        state <= IDLE;
+      end else if (!watchdog_pending && active_watchdog_cycles != 0 &&
+                   watchdog_count >= active_watchdog_cycles - 1 &&
+                   !(STREAM_TILES && state == ENGINE_WAIT && (engine_done || engine_error))) begin
+        if (STREAM_TILES && (state == ENGINE_START || state == ENGINE_WAIT)) begin
+          // Drain the one outstanding DMA transfer before publishing timeout.
+          watchdog_pending <= 1'b1;
+          if (state == ENGINE_START) state <= ENGINE_WAIT;
+        end else begin
+          busy <= 1'b0;
+          error <= 1'b1;
+          error_code <= ERR_WATCHDOG_TIMEOUT;
+          state <= IDLE;
+        end
       end else begin
         watchdog_count <= watchdog_count + 1'b1;
         case (state)
@@ -325,8 +387,16 @@ module cnn_job_controller #(
               error_code <= engine_error_code;
               state <= IDLE;
             end else if (engine_done) begin
-              region <= DMA_OUTPUT;
-              state <= DMA_ISSUE;
+              if (STREAM_TILES) begin
+                busy <= 1'b0;
+                done <= 1'b1;
+                done_task_id <= active_task_id;
+                done_frame_id <= active_frame_id;
+                state <= IDLE;
+              end else begin
+                region <= DMA_OUTPUT;
+                state <= DMA_ISSUE;
+              end
             end
           end
           default: begin

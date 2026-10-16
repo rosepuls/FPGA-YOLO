@@ -98,8 +98,11 @@ try {
   if (-not (Test-Path 'modelsim.ini')) { & $vmap -c }
   & $vmap work $BuildDir
   if ($LASTEXITCODE -ne 0) { throw "vmap failed with exit code $LASTEXITCODE" }
-  & $vsim "work.$Testbench" -c -do 'run -all; quit -f'
-  if ($LASTEXITCODE -ne 0) { throw "vsim failed with exit code $LASTEXITCODE" }
+  $simulationOutput = & $vsim "work.$Testbench" -c -do 'run -all; quit -f' 2>&1
+  $simulationOutput | ForEach-Object { Write-Host $_ }
+  if ($LASTEXITCODE -ne 0 -or ($simulationOutput -match '^# \*\* (Error|Fatal):')) {
+    throw "vsim failed for $Testbench (exit code $LASTEXITCODE)"
+  }
 } finally {
   Set-Location $previousLocation
 }

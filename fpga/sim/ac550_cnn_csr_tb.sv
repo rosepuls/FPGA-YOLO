@@ -18,6 +18,7 @@ module ac550_cnn_csr_tb;
   logic [31:0] job_done_task_id;
   logic [31:0] active_task_id;
   logic [31:0] active_input_addr;
+  logic [31:0] active_opcode;
 
   always #5 clk = ~clk;
 
@@ -35,8 +36,15 @@ module ac550_cnn_csr_tb;
     .job_error,
     .job_error_code,
     .job_done_task_id,
+    .active_opcode,
     .active_task_id,
-    .active_input_addr
+    .active_input_addr,
+    .active_frame_id(), .active_weight_addr(), .active_bias_addr(),
+    .active_multiplier_addr(), .active_shift_addr(), .active_output_addr(),
+    .active_input_bytes(), .active_output_bytes(), .active_input_c(),
+    .active_input_h(), .active_input_w(), .active_output_c(),
+    .active_output_h(), .active_output_w(), .active_kernel(),
+    .active_stride(), .active_padding(), .active_watchdog_cycles()
   );
 
   task automatic write_csr(input logic [7:0] address, input logic [31:0] value);
@@ -109,10 +117,13 @@ module ac550_cnn_csr_tb;
     @(posedge clk);
     expect_true("valid start produces a one-cycle start pulse", start_pulse);
     expect_equal32("task id latches at start", active_task_id, 32'h42);
+    expect_equal32("opcode latches at start", active_opcode, OP_CONV_RELU);
     expect_equal32("input address latches at start", active_input_addr, 32'h1000_0040);
 
     write_csr(CSR_TASK_ID, 32'hDEAD_BEEF);
+    write_csr(CSR_OPCODE, OP_MAXPOOL);
     expect_equal32("software updates cannot alter active task", active_task_id, 32'h42);
+    expect_equal32("software updates cannot alter active opcode", active_opcode, OP_CONV_RELU);
     write_csr(CSR_CONTROL, CONTROL_START);
     read_csr(CSR_ERROR_CODE, value);
     expect_equal32("second start is rejected while busy", value, ERR_BUSY_START);
@@ -143,6 +154,14 @@ module ac550_cnn_csr_tb;
     write_csr(CSR_CONTROL, CONTROL_START);
     read_csr(CSR_ERROR_CODE, value);
     expect_equal32("unsupported opcode is rejected before DMA", value, ERR_UNSUPPORTED_OPCODE);
+
+    write_csr(CSR_CONTROL, CONTROL_CLEAR);
+    write_csr(CSR_OPCODE, OP_CONV_RELU);
+    write_csr(CSR_INPUT_W, 32'h0001_0001);
+    write_csr(CSR_CONTROL, CONTROL_START);
+    read_csr(CSR_ERROR_CODE, value);
+    expect_equal32("oversized CSR dimension cannot truncate into executor", value, ERR_INVALID_SHAPE);
+    if (start_pulse !== 1'b0) $fatal(1, "truncated descriptor started a job");
 
     $display("AC550 CSR test passed");
     $finish;

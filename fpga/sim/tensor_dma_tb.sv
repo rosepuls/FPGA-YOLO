@@ -156,9 +156,54 @@ module tensor_dma_tb;
     for (i=0; i<192; i++) if (ddr_model.memory[768+i] !== (i ^ 8'h3c))
       $fatal(1, "multi-burst write byte %0d mismatch", i);
 
-    // Invalid alignment, region, and address overflow reject before touching memory.
+    // A tile row may start at any byte within an aligned tensor allocation.
+    // Exercise unaligned head, a full middle burst, and a partial tail.
+    launch(0, 0, 32'h223, 16, 70, 0, 70);
+    for (i=0; i<70; i++) if (local_mem[16+i] !== ddr_model.memory[16'h223+i])
+      $fatal(1, "unaligned feature row byte %0d mismatch", i);
+    for (i=0; i<70; i++) local_mem[16+i] = i ^ 8'h93;
+    ddr_model.memory[16'h382] = 8'haa;
+    ddr_model.memory[16'h3c9] = 8'hbb;
+    launch(1, 5, 32'h383, 16, 70, 0, 70);
+    for (i=0; i<70; i++) if (ddr_model.memory[16'h383+i] !== (i ^ 8'h93))
+      $fatal(1, "unaligned output row byte %0d mismatch", i);
+    if (ddr_model.memory[16'h382] !== 8'haa ||
+        ddr_model.memory[16'h3c9] !== 8'hbb)
+      $fatal(1, "unaligned output row touched a neighboring byte");
+
+    // A one-byte tile tail at lane 1 must not gather or enable lanes 2/3.
+    local_mem[111] = 8'h27;
+    ddr_model.memory[16'h404] = 8'hb1;
+    ddr_model.memory[16'h405] = 8'hb2;
+    ddr_model.memory[16'h406] = 8'hb3;
+    ddr_model.memory[16'h407] = 8'hb4;
+    launch(1, 5, 32'h405, 111, 1, 0, 1);
+    if (ddr_model.memory[16'h404] !== 8'hb1 ||
+        ddr_model.memory[16'h405] !== 8'h27 ||
+        ddr_model.memory[16'h406] !== 8'hb3 ||
+        ddr_model.memory[16'h407] !== 8'hb4)
+      $fatal(1, "one-byte unaligned write corrupted neighboring lanes");
+    ddr_model.memory[16'h405] = 8'hc1;
+    ddr_model.memory[16'h406] = 8'hc2;
+    ddr_model.memory[16'h407] = 8'hc3;
+    launch(1, 5, 32'h406, 111, 1, 0, 1);
+    if (ddr_model.memory[16'h405] !== 8'hc1 ||
+        ddr_model.memory[16'h406] !== 8'h27 ||
+        ddr_model.memory[16'h407] !== 8'hc3)
+      $fatal(1, "lane-2 one-byte write corrupted neighboring lanes");
+    ddr_model.memory[16'h406] = 8'hd1;
+    ddr_model.memory[16'h407] = 8'hd2;
+    ddr_model.memory[16'h408] = 8'hd3;
+    launch(1, 5, 32'h407, 111, 1, 0, 1);
+    if (ddr_model.memory[16'h406] !== 8'hd1 ||
+        ddr_model.memory[16'h407] !== 8'h27 ||
+        ddr_model.memory[16'h408] !== 8'hd3)
+      $fatal(1, "lane-3 one-byte write corrupted neighboring lanes");
+
+    // Quantization parameters still require 32-bit alignment. Invalid region,
+    // length, and address overflow reject before touching memory.
     reads_before_invalid = read_commands;
-    launch(0, 0, 32'h24, 20, 4, 1, 0);
+    launch(0, 2, 32'h45, 20, 4, 1, 0);
     launch(0, 7, 32'h40, 20, 4, 1, 0);
     launch(0, 4, 32'hffff_fff0, 20, 32, 1, 0);
     launch(0, 4, 32'h100, 20, 0, 1, 0);
@@ -168,10 +213,28 @@ module tensor_dma_tb;
     inject_read_error = 1;
     launch(0, 2, 32'h44, 20, 4, 1, 0);
     inject_read_error = 0;
+    reads_before_invalid = read_commands;
+    launch(0, 0, 32'h40, 20, 4, 1, 0);
+    if (read_commands != reads_before_invalid)
+      $fatal(1, "DMA reused read channel after read-command error");
+    reset_n = 0;
+    repeat (3) @(posedge clk);
+    reset_n = 1;
+    launch(0, 0, 32'h40, 20, 4, 0, 4);
 
     drop_reads = 1;
     launch(0, 2, 32'h44, 20, 4, 1, 0);
     drop_reads = 0;
+    reads_before_invalid = read_commands;
+    // The old accepted read can still return after the timeout. Until reset,
+    // no later request may mistake that response for its own payload.
+    launch(0, 0, 32'h40, 20, 4, 1, 0);
+    if (read_commands != reads_before_invalid)
+      $fatal(1, "DMA accepted a new read after an unflushable read timeout");
+    reset_n = 0;
+    repeat (3) @(posedge clk);
+    reset_n = 1;
+    launch(0, 0, 32'h40, 20, 4, 0, 4);
 
     stall_all = 1;
     launch(1, 5, 32'h140, 64, 4, 1, 0);
