@@ -326,14 +326,40 @@ def _safe_vector_name(name: str) -> str:
     return name.replace(".", "_").replace("#", "_call_")
 
 
-def _write_golden_vectors(records: list[CapturedTensor], output_dir: Path) -> dict[str, Any]:
+def _quantize_with_scale(tensor: torch.Tensor, scale: float) -> tuple[torch.Tensor, dict[str, Any]]:
+    """Quantize with the same fixed per-node scale used by packed Conv parameters."""
+    if not np.isfinite(scale) or scale <= 0:
+        raise QuantizationError(f"invalid activation scale: {scale}")
+    if not torch.isfinite(tensor).all():
+        raise QuantizationError("cannot quantize non-finite tensor values")
+    quantized = torch.clamp(torch.round(tensor.detach().cpu() / scale), -127, 127).to(torch.int8)
+    return quantized, {
+        "scheme": "SYMMETRIC_PER_TENSOR",
+        "storage_dtype": "int8",
+        "scale": scale,
+        "zero_point": 0,
+        "rounding": "ROUND_HALF_TO_EVEN",
+        "saturation": [-127, 127],
+    }
+
+
+def _write_golden_vectors(
+    records: list[CapturedTensor], output_dir: Path, node_scales: dict[str, Any]
+) -> dict[str, Any]:
     vectors_dir = output_dir / "vectors"
     vectors_dir.mkdir()
     entries: list[dict[str, Any]] = []
     heads: dict[int, Path] = {}
     for record in records:
-        input_i8, input_quantization = quantize_symmetric(record.input)
-        output_i8, output_quantization = quantize_symmetric(record.output)
+        base_name = record.name.split("#", maxsplit=1)[0]
+        try:
+            scales = node_scales[base_name]
+            input_scale = float(scales["input_quantization"]["scale"])
+            output_scale = float(scales["output_quantization"]["scale"])
+        except KeyError as error:
+            raise QuantizationError(f"missing static activation scales for Golden node {base_name}") from error
+        input_i8, input_quantization = _quantize_with_scale(record.input, input_scale)
+        output_i8, output_quantization = _quantize_with_scale(record.output, output_scale)
         stem = _safe_vector_name(record.name)
         input_path = vectors_dir / f"{stem}_input_i8.bin"
         output_path = vectors_dir / f"{stem}_output_i8.bin"
@@ -391,7 +417,7 @@ def export_package(
     try:
         (temporary / "golden_input_u8.bin").write_bytes(pixels.tobytes(order="C"))
         quantization = _pack_weights_and_biases(model, calibration_statistics, temporary)
-        vectors = _write_golden_vectors(capture_records, temporary)
+        vectors = _write_golden_vectors(capture_records, temporary, quantization["nodes"])
         _write_json(temporary / "graph.json", graph)
         _write_json(temporary / "quant_params.json", quantization)
         _write_json(temporary / "anchors.json", _anchors(model))

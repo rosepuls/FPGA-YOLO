@@ -148,6 +148,29 @@ print('GRAPH=' + json.dumps(module.build_execution_graph(model)))
             self.assertIn("nodes", quant_params)
             self.assertIn("model.9.m", quant_params["nodes"])
             self.assertGreater(quant_params["nodes"]["model.9.m"]["output_quantization"]["scale"], 0.0)
+            self.assertTrue(vectors["vectors"])
+            self.assertTrue(
+                all(
+                    vector["source_module"].split("#", maxsplit=1)[0] in quant_params["nodes"]
+                    for vector in vectors["vectors"]
+                ),
+                "every Golden vector must map to a static package scale",
+            )
+            for vector in vectors["vectors"]:
+                source_module = vector["source_module"].split("#", maxsplit=1)[0]
+                if source_module not in quant_params["nodes"]:
+                    continue
+                static = quant_params["nodes"][source_module]
+                self.assertEqual(
+                    vector["input"]["quantization"]["scale"],
+                    static["input_quantization"]["scale"],
+                    f"{source_module} Golden input must use the package's static input scale",
+                )
+                self.assertEqual(
+                    vector["output"]["quantization"]["scale"],
+                    static["output_quantization"]["scale"],
+                    f"{source_module} Golden output must use the package's static output scale",
+                )
         finally:
             shutil.rmtree(temporary)
 

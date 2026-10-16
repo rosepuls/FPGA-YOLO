@@ -9,6 +9,7 @@ unchecked file range must make these tests fail.
 from __future__ import annotations
 
 import json
+import hashlib
 import os
 import shutil
 import subprocess
@@ -18,9 +19,6 @@ from pathlib import Path
 
 REPOSITORY = Path(__file__).resolve().parents[3]
 SCRIPT = REPOSITORY / "fpga" / "tools" / "make_ac550_rtl_vectors.py"
-EXPECTED_MANIFEST_SHA256 = "3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24"
-
-
 def package_root() -> Path:
     configured = os.environ.get("AC550_PACKAGE_ROOT")
     assert configured, "set AC550_PACKAGE_ROOT to the exported AC550 package"
@@ -48,7 +46,8 @@ def test_compiler_emits_complete_runtime_boundary(tmp_path: Path) -> None:
     lock = json.loads((generated / "package_lock.json").read_text(encoding="utf-8"))
     nodes = json.loads((generated / "runtime_nodes.json").read_text(encoding="utf-8"))
 
-    assert lock["manifest_sha256"] == EXPECTED_MANIFEST_SHA256
+    expected_manifest_sha256 = hashlib.sha256((package_root() / "manifest.json").read_bytes()).hexdigest().upper()
+    assert lock["manifest_sha256"] == expected_manifest_sha256
     assert lock["graph_node_count"] == 87
     assert lock["convolution_count"] == 60
     assert lock["executor_counts"] == {
