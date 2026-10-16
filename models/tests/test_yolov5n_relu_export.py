@@ -8,6 +8,7 @@ import sys
 import tempfile
 import unittest
 
+import numpy as np
 from PIL import Image
 import torch
 
@@ -21,9 +22,72 @@ from models.export.quantize_yolov5n_relu_ac550 import (
     quantize_per_output_channel,
     quantize_symmetric,
 )
+from models.export.export_yolov5n_relu_ac550 import (
+    _integer_conv_output,
+    _integer_maxpool_output,
+    _pack_weights_and_biases,
+)
 
 
 class Ac550QuantizationTests(unittest.TestCase):
+    def test_maxpool_reuses_the_input_quantization_scale(self) -> None:
+        """MaxPool preserves integer codes, so its output scale cannot be recalibrated independently."""
+        class Conv(torch.nn.Module):
+            def __init__(self) -> None:
+                super().__init__()
+                self.conv = torch.nn.Conv2d(1, 1, kernel_size=1)
+
+        class Model(torch.nn.Module):
+            def __init__(self) -> None:
+                super().__init__()
+                self.layer = Conv()
+                self.pool = torch.nn.MaxPool2d(kernel_size=3, stride=1, padding=1)
+
+        with tempfile.TemporaryDirectory() as temporary:
+            packed = _pack_weights_and_biases(
+                Model(),
+                {
+                    "layer.conv": {"input_max_abs": 2.0, "output_max_abs": 3.0},
+                    "pool": {"input_max_abs": 127.0, "output_max_abs": 19.0},
+                },
+                Path(temporary),
+            )
+        self.assertEqual(
+            packed["nodes"]["pool"]["output_quantization"]["scale"],
+            packed["nodes"]["pool"]["input_quantization"]["scale"],
+        )
+
+    def test_integer_operator_golden_uses_packed_conv_arithmetic_and_signed_maxpool(self) -> None:
+        """Golden outputs must be operator results, not independently quantized FP32 activations."""
+        inputs = np.asarray([[[[1, 3]]]], dtype=np.int8)
+        weights = np.asarray([[[[1]]]], dtype=np.int8)
+        conv = _integer_conv_output(
+            inputs,
+            weights,
+            np.asarray([0], dtype=np.int32),
+            np.asarray([1], dtype=np.int32),
+            np.asarray([1], dtype=np.uint8),
+            stride=1,
+            padding=0,
+            linear=True,
+        )
+        self.assertEqual(conv.reshape(-1).tolist(), [0, 2])  # 0.5 -> 0, 1.5 -> 2 (ties-to-even)
+        relu = _integer_conv_output(
+            inputs,
+            -weights,
+            np.asarray([0], dtype=np.int32),
+            np.asarray([1], dtype=np.int32),
+            np.asarray([0], dtype=np.uint8),
+            stride=1,
+            padding=0,
+            linear=False,
+        )
+        self.assertEqual(relu.reshape(-1).tolist(), [0, 0])
+
+        all_negative = np.full((1, 1, 3, 3), -9, dtype=np.int8)
+        pooled = _integer_maxpool_output(all_negative, kernel=3, stride=1, padding=1)
+        self.assertTrue(np.all(pooled == -9))
+
     def test_symmetric_quantization_uses_signed_int8_and_nearest_even_rounding(self) -> None:
         """Catch a quantizer that emits unsigned values or changes the declared rounding rule."""
         quantized, parameters = quantize_symmetric(torch.tensor([-1.0, -0.5, 0.0, 0.5, 1.0]))

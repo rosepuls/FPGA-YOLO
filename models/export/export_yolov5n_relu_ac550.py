@@ -264,6 +264,10 @@ def _pack_weights_and_biases(
 ) -> dict[str, Any]:
     input_scales = _module_scales(calibration_statistics, "input_max_abs")
     output_scales = _module_scales(calibration_statistics, "output_max_abs")
+    for name, module in model.named_modules():
+        if isinstance(module, nn.MaxPool2d) and name in input_scales:
+            # MaxPool is a byte-preserving signed max operation; it has no output requantizer.
+            output_scales[name] = input_scales[name]
     node_scales: dict[str, Any] = {}
     for name in calibration_statistics:
         base_name = name.split("#", maxsplit=1)[0]
@@ -343,13 +347,99 @@ def _quantize_with_scale(tensor: torch.Tensor, scale: float) -> tuple[torch.Tens
     }
 
 
+def _integer_conv_output(
+    inputs: np.ndarray,
+    weights: np.ndarray,
+    bias: np.ndarray,
+    multipliers: np.ndarray,
+    shifts: np.ndarray,
+    *,
+    stride: int,
+    padding: int,
+    linear: bool,
+) -> np.ndarray:
+    """Execute one packed OIHW Conv exactly, including INT32 wrap and nearest-even requant."""
+    if inputs.ndim != 4 or inputs.shape[0] != 1 or weights.ndim != 4:
+        raise QuantizationError("integer Golden Conv expects one NCHW input and OIHW weights")
+    _, input_channels, input_height, input_width = inputs.shape
+    output_channels, weight_channels, kernel_height, kernel_width = weights.shape
+    if weight_channels != input_channels or kernel_height != kernel_width or stride <= 0 or padding < 0:
+        raise QuantizationError("unsupported integer Golden Conv shape or parameters")
+    if bias.size != output_channels or multipliers.size != output_channels or shifts.size != output_channels:
+        raise QuantizationError("integer Golden Conv parameter count differs from output channels")
+    output_height = (input_height + 2 * padding - kernel_height) // stride + 1
+    output_width = (input_width + 2 * padding - kernel_width) // stride + 1
+    if output_height <= 0 or output_width <= 0:
+        raise QuantizationError("integer Golden Conv output shape is empty")
+
+    padded = np.pad(
+        inputs[0].astype(np.int64),
+        ((0, 0), (padding, padding), (padding, padding)),
+        mode="constant",
+        constant_values=0,
+    )
+    windows = np.lib.stride_tricks.sliding_window_view(
+        padded, (kernel_height, kernel_width), axis=(1, 2)
+    )[:, ::stride, ::stride, :, :]
+    patches = windows.transpose(1, 2, 0, 3, 4).reshape(output_height * output_width, -1)
+    output_weights = weights.astype(np.int64).reshape(output_channels, -1)
+    accumulators = (patches @ output_weights.T).T.reshape(output_channels, output_height, output_width)
+    accumulators += bias.astype(np.int64)[:, None, None]
+    accumulators = np.remainder(accumulators + (1 << 31), 1 << 32) - (1 << 31)
+    products = accumulators * multipliers.astype(np.int64)[:, None, None]
+
+    quantized = np.empty_like(accumulators)
+    for channel in range(output_channels):
+        shift = int(shifts[channel])
+        if shift > 63:
+            raise QuantizationError(f"integer Golden Conv shift exceeds 63: {shift}")
+        quotient = np.right_shift(products[channel], shift)
+        if shift:
+            remainder = np.bitwise_and(products[channel], (1 << shift) - 1)
+            half = 1 << (shift - 1)
+            round_up = (remainder > half) | ((remainder == half) & ((quotient & 1) != 0))
+            quotient = quotient + round_up.astype(np.int64)
+        if not linear:
+            quotient = np.maximum(quotient, 0)
+        quantized[channel] = np.clip(quotient, -127, 127)
+    return quantized.astype(np.int8)[None, ...]
+
+
+def _integer_maxpool_output(
+    inputs: np.ndarray, *, kernel: int, stride: int, padding: int
+) -> np.ndarray:
+    """Execute signed INT8 MaxPool with the contract's -127 padding value."""
+    if inputs.ndim != 4 or inputs.shape[0] != 1 or kernel <= 0 or stride <= 0 or padding < 0:
+        raise QuantizationError("unsupported integer Golden MaxPool shape or parameters")
+    _, channels, input_height, input_width = inputs.shape
+    output_height = (input_height + 2 * padding - kernel) // stride + 1
+    output_width = (input_width + 2 * padding - kernel) // stride + 1
+    padded = np.pad(
+        inputs[0],
+        ((0, 0), (padding, padding), (padding, padding)),
+        mode="constant",
+        constant_values=-127,
+    )
+    windows = np.lib.stride_tricks.sliding_window_view(padded, (kernel, kernel), axis=(1, 2))
+    pooled = windows[:, ::stride, ::stride, :, :].max(axis=(-2, -1))
+    if pooled.shape != (channels, output_height, output_width):
+        raise QuantizationError("integer Golden MaxPool output shape mismatch")
+    return pooled.astype(np.int8)[None, ...]
+
+
 def _write_golden_vectors(
-    records: list[CapturedTensor], output_dir: Path, node_scales: dict[str, Any]
+    records: list[CapturedTensor],
+    output_dir: Path,
+    node_scales: dict[str, Any],
+    convolutions: list[dict[str, Any]],
+    conv_modules: dict[str, nn.Conv2d],
+    maxpool_modules: dict[str, nn.MaxPool2d],
 ) -> dict[str, Any]:
     vectors_dir = output_dir / "vectors"
     vectors_dir.mkdir()
     entries: list[dict[str, Any]] = []
     heads: dict[int, Path] = {}
+    convolution_by_name = {entry["source_module"]: entry for entry in convolutions}
     for record in records:
         base_name = record.name.split("#", maxsplit=1)[0]
         try:
@@ -359,7 +449,59 @@ def _write_golden_vectors(
         except KeyError as error:
             raise QuantizationError(f"missing static activation scales for Golden node {base_name}") from error
         input_i8, input_quantization = _quantize_with_scale(record.input, input_scale)
-        output_i8, output_quantization = _quantize_with_scale(record.output, output_scale)
+        if base_name in convolution_by_name:
+            entry = convolution_by_name[base_name]
+            conv = conv_modules[base_name]
+            weight_entry = entry["weight"]
+            weight_path = output_dir / weight_entry["file"]
+            with weight_path.open("rb") as stream:
+                stream.seek(int(weight_entry["offset"]))
+                weight_bytes = stream.read(int(weight_entry["bytes"]))
+            weights = np.frombuffer(weight_bytes, dtype=np.int8).reshape(weight_entry["shape"])
+            bias_entry = entry["bias"]
+            with (output_dir / bias_entry["file"]).open("rb") as stream:
+                stream.seek(int(bias_entry["offset"]))
+                bias_bytes = stream.read(int(bias_entry["bytes"]))
+            bias = np.frombuffer(bias_bytes, dtype="<i4")
+            requantization = entry["requantization"]
+            output_array = _integer_conv_output(
+                input_i8.numpy()[None, ...] if input_i8.ndim == 3 else input_i8.numpy(),
+                weights,
+                bias,
+                np.asarray(requantization["integer_multiplier"], dtype=np.int32),
+                np.asarray(requantization["right_shift"], dtype=np.uint8),
+                stride=int(conv.stride[0]),
+                padding=int(conv.padding[0]),
+                linear=base_name.startswith("model.24.m."),
+            )
+            output_i8 = torch.from_numpy(output_array.copy())
+            output_quantization = {
+                "scheme": "SYMMETRIC_PER_TENSOR",
+                "storage_dtype": "int8",
+                "scale": output_scale,
+                "zero_point": 0,
+                "rounding": "ROUND_HALF_TO_EVEN",
+                "saturation": [-127, 127],
+            }
+        elif base_name in maxpool_modules:
+            maxpool = maxpool_modules[base_name]
+            output_array = _integer_maxpool_output(
+                input_i8.numpy(),
+                kernel=int(maxpool.kernel_size if isinstance(maxpool.kernel_size, int) else maxpool.kernel_size[0]),
+                stride=int(maxpool.stride if isinstance(maxpool.stride, int) else maxpool.stride[0]),
+                padding=int(maxpool.padding if isinstance(maxpool.padding, int) else maxpool.padding[0]),
+            )
+            output_i8 = torch.from_numpy(output_array.copy())
+            output_quantization = {
+                "scheme": "SYMMETRIC_PER_TENSOR",
+                "storage_dtype": "int8",
+                "scale": output_scale,
+                "zero_point": 0,
+                "rounding": "ROUND_HALF_TO_EVEN",
+                "saturation": [-127, 127],
+            }
+        else:
+            output_i8, output_quantization = _quantize_with_scale(record.output, output_scale)
         stem = _safe_vector_name(record.name)
         input_path = vectors_dir / f"{stem}_input_i8.bin"
         output_path = vectors_dir / f"{stem}_output_i8.bin"
@@ -417,7 +559,18 @@ def export_package(
     try:
         (temporary / "golden_input_u8.bin").write_bytes(pixels.tobytes(order="C"))
         quantization = _pack_weights_and_biases(model, calibration_statistics, temporary)
-        vectors = _write_golden_vectors(capture_records, temporary, quantization["nodes"])
+        conv_modules = dict(_conv_modules(model))
+        maxpool_modules = {
+            name: module for name, module in model.named_modules() if isinstance(module, nn.MaxPool2d)
+        }
+        vectors = _write_golden_vectors(
+            capture_records,
+            temporary,
+            quantization["nodes"],
+            quantization["convolutions"],
+            conv_modules,
+            maxpool_modules,
+        )
         _write_json(temporary / "graph.json", graph)
         _write_json(temporary / "quant_params.json", quantization)
         _write_json(temporary / "anchors.json", _anchors(model))
