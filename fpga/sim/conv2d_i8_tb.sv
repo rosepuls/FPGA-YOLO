@@ -247,7 +247,63 @@ module conv2d_i8_tb;
     shift_mem[0] = 8'd64;
     expect_rejected(ERR_QUANT_PARAM, "requant shift range");
 
+    // Only the four deployed convolution forms are legal, even when a
+    // different kernel/stride/padding combination has a consistent shape.
+    shift_mem[0] = 0;
+    stride = 2;
+    expect_rejected(ERR_UNSUPPORTED_KERNEL, "1x1 stride2 is not a model form");
+    stride = 1;
+    padding = 1;
+    output_height = 3;
+    output_width = 3;
+    expect_rejected(ERR_UNSUPPORTED_KERNEL, "1x1 padded is not a model form");
+
+    kernel = 3;
+    padding = 1;
+    output_height = 2;
+    output_width = 1;
+    expect_rejected(ERR_INVALID_SHAPE, "incorrect convolution output shape");
+
+    kernel = 1;
+    stride = 1;
+    padding = 0;
+    output_height = 1;
+    input_channels = 0;
+    expect_rejected(ERR_INVALID_SHAPE, "zero input channels");
+    input_channels = 33;
+    expect_rejected(ERR_INVALID_SHAPE, "input channel capacity");
+    input_channels = 1;
+    output_channels = 33;
+    expect_rejected(ERR_INVALID_SHAPE, "output channel capacity");
+
+    // A busy start is sticky but does not corrupt the accepted operation;
+    // changing the live shape descriptor must not change its latched shape.
+    output_channels = 1;
+    input_height = 4;
+    input_width = 4;
+    output_height = 4;
+    output_width = 4;
+    clear_mem();
+    input_mem[0] = -8'sd7;
+    weight_mem[0] = 8'sd3;
+    @(negedge clk); start = 1;
+    @(negedge clk); start = 0;
+    input_height = 1;
+    input_width = 1;
+    output_height = 1;
+    output_width = 1;
+    @(negedge clk); start = 1;
+    @(negedge clk); start = 0;
+    wait (done === 1'b1);
+    #1;
+    if (!error || error_code != ERR_BUSY_START || busy) $fatal(1, "busy start contract");
+    expect_output(0, -21, "latched descriptor after busy start");
+    expect_output(15, 0, "latched spatial extent after busy start");
+    run_case("valid operation clears sticky error");
+    expect_output(0, -21, "valid operation after busy start");
+
     $display("AC550 Conv2D functional test passed");
     $finish;
   end
+  initial begin #1000000; $fatal(1, "Conv2D functional test timeout"); end
 endmodule

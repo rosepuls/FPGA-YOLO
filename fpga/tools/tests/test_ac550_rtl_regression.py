@@ -3,6 +3,8 @@ from __future__ import annotations
 import importlib.util
 from pathlib import Path
 
+import pytest
+
 
 SCRIPT = Path(__file__).resolve().parents[1] / "run_ac550_rtl_regression.py"
 SPEC = importlib.util.spec_from_file_location("ac550_rtl_regression", SCRIPT)
@@ -24,6 +26,13 @@ def test_exact_output_report_contains_crc32() -> None:
     report = MODULE.compare_outputs([-128, 0, 127], [-128, 0, 127])
     assert report["mismatches"] == 0
     assert report["crc32_actual"] == report["crc32_expected"]
+
+
+def test_convolution_parameter_sweep_selects_actual_rtl_generics() -> None:
+    assert MODULE.conv_generics(8, 4, 2, 3) == ["-gPIN=8", "-gPOUT=4", "-gTILE_H=2", "-gTILE_W=3"]
+    for values in ((0, 1, 4, 4), (1, -1, 4, 4), (1, 1, 0, 4), (1, 1, 4, 0)):
+        with pytest.raises(ValueError, match="positive"):
+            MODULE.conv_generics(*values)
 
 
 def test_integer_reference_uses_package_weights_bias_and_requant(tmp_path: Path) -> None:

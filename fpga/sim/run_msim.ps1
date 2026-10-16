@@ -30,6 +30,15 @@ if (-not (Test-Path (Join-Path $BuildDir '_info'))) {
 }
 
 $common = Join-Path $repoRoot 'fpga\rtl\common\ac550_cnn_pkg.sv'
+$convSources = @(
+  (Join-Path $repoRoot 'fpga\rtl\cnn\feature_tile_buffer.sv'),
+  (Join-Path $repoRoot 'fpga\rtl\cnn\weight_tile_buffer.sv'),
+  (Join-Path $repoRoot 'fpga\rtl\cnn\accumulator_buffer.sv'),
+  (Join-Path $repoRoot 'fpga\rtl\cnn\mac_array_i8.sv'),
+  (Join-Path $repoRoot 'fpga\rtl\cnn\requant_i32_to_i8.sv'),
+  (Join-Path $repoRoot 'fpga\rtl\cnn\relu_i8.sv'),
+  (Join-Path $repoRoot 'fpga\rtl\cnn\conv2d_i8.sv')
+)
 switch ($Testbench) {
   'ac550_cnn_csr_tb' {
     $sources = @($common, (Join-Path $repoRoot 'fpga\rtl\avalon\ac550_cnn_csr.sv'), (Join-Path $repoRoot 'fpga\sim\ac550_cnn_csr_tb.sv'))
@@ -44,8 +53,8 @@ switch ($Testbench) {
     $sources = @(
       $common,
       (Join-Path $repoRoot 'fpga\rtl\avalon\cnn_job_controller.sv'),
-      (Join-Path $repoRoot 'fpga\rtl\cnn\tensor_dma.sv'),
-      (Join-Path $repoRoot 'fpga\rtl\cnn\conv2d_i8.sv'),
+      (Join-Path $repoRoot 'fpga\rtl\cnn\tensor_dma.sv')
+    ) + $convSources + @(
       (Join-Path $repoRoot 'fpga\rtl\cnn\maxpool_i8.sv'),
       (Join-Path $repoRoot 'fpga\rtl\cnn\fpga_op_executor.sv'),
       (Join-Path $repoRoot 'fpga\sim\fpga_op_executor_tb.sv')
@@ -55,7 +64,10 @@ switch ($Testbench) {
     $sources = @((Join-Path $repoRoot 'fpga\rtl\cnn\requant_i32_to_i8.sv'), (Join-Path $repoRoot 'fpga\rtl\cnn\relu_i8.sv'), (Join-Path $repoRoot 'fpga\sim\requant_i32_to_i8_tb.sv'))
   }
   'conv2d_i8_tb' {
-    $sources = @($common, (Join-Path $repoRoot 'fpga\rtl\cnn\conv2d_i8.sv'), (Join-Path $repoRoot 'fpga\sim\conv2d_i8_tb.sv'))
+    $sources = @($common) + $convSources + @((Join-Path $repoRoot 'fpga\sim\conv2d_i8_tb.sv'))
+  }
+  'conv2d_tiled_i8_tb' {
+    $sources = @($common) + $convSources + @((Join-Path $repoRoot 'fpga\sim\conv2d_tiled_i8_tb.sv'))
   }
   'maxpool_i8_tb' {
     $sources = @($common, (Join-Path $repoRoot 'fpga\rtl\cnn\maxpool_i8.sv'), (Join-Path $repoRoot 'fpga\sim\maxpool_i8_tb.sv'))

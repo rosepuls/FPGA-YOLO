@@ -129,6 +129,12 @@ def compile_simulator(repo: Path, build: Path, modelsim_bin: Path) -> None:
         run_checked([str(modelsim_bin / "vlib.exe"), str(build)], cwd=repo)
     sources = [
         repo / "fpga/rtl/common/ac550_cnn_pkg.sv",
+        repo / "fpga/rtl/cnn/feature_tile_buffer.sv",
+        repo / "fpga/rtl/cnn/weight_tile_buffer.sv",
+        repo / "fpga/rtl/cnn/accumulator_buffer.sv",
+        repo / "fpga/rtl/cnn/mac_array_i8.sv",
+        repo / "fpga/rtl/cnn/requant_i32_to_i8.sv",
+        repo / "fpga/rtl/cnn/relu_i8.sv",
         repo / "fpga/rtl/cnn/conv2d_i8.sv",
         repo / "fpga/rtl/cnn/maxpool_i8.sv",
         repo / "fpga/sim/ac550_package_rtl_tb.sv",
@@ -162,6 +168,13 @@ def node_plusargs(node: dict, vector_dir: Path, actual_file: Path, max_cycles: i
     return [f"+{key}={value}" for key, value in args.items()]
 
 
+def conv_generics(pin: int, pout: int, tile_height: int, tile_width: int) -> list[str]:
+    values = {"PIN": pin, "POUT": pout, "TILE_H": tile_height, "TILE_W": tile_width}
+    if any(value <= 0 for value in values.values()):
+        raise ValueError("convolution lane and tile parameters must be positive")
+    return [f"-g{key}={value}" for key, value in values.items()]
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--package", type=Path, default=Path(os.environ.get("AC550_PACKAGE_ROOT", "")))
@@ -173,7 +186,15 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--max-cycles", type=int, default=100_000_000)
     parser.add_argument("--timeout-seconds", type=int, default=1800)
     parser.add_argument("--skip-compile", action="store_true")
+    parser.add_argument("--pin", type=int, default=1)
+    parser.add_argument("--pout", type=int, default=1)
+    parser.add_argument("--tile-height", type=int, default=4)
+    parser.add_argument("--tile-width", type=int, default=4)
     args = parser.parse_args(argv)
+    try:
+        generics = conv_generics(args.pin, args.pout, args.tile_height, args.tile_width)
+    except ValueError as error:
+        parser.error(str(error))
     repo = Path(__file__).resolve().parents[2]
     package = args.package.resolve()
     vectors = (repo / args.vectors).resolve() if not args.vectors.is_absolute() else args.vectors.resolve()
@@ -205,7 +226,7 @@ def main(argv: list[str] | None = None) -> int:
     for index, node in enumerate(nodes):
         actual = output / f"{node['descriptor_index']:02d}_{node['graph_id'].replace('.', '_')}_actual.mem"
         plusargs = node_plusargs(node, vectors, actual, args.max_cycles)
-        command = [str(modelsim_bin / "vsim.exe"), "-c", "work.ac550_package_rtl_tb", *plusargs, "-do", "run -all; quit -f"]
+        command = [str(modelsim_bin / "vsim.exe"), "-c", "work.ac550_package_rtl_tb", *generics, *plusargs, "-do", "run -all; quit -f"]
         log = run_checked(command, cwd=build, timeout=args.timeout_seconds)
         (output / f"{node['descriptor_index']:02d}_{node['graph_id'].replace('.', '_')}.log").write_text(log, encoding="utf-8")
         actual_values = parse_i8_mem_text(actual.read_text(encoding="ascii"))
@@ -224,7 +245,7 @@ def main(argv: list[str] | None = None) -> int:
         if rtl_report["mismatches"]:
             break
         print(f"[{index + 1}/{len(nodes)}] {node['graph_id']}: RTL exactly matches independent integer reference")
-    summary = {"manifest_sha256": manifest_hash, "selected": len(nodes), "completed": len(results), "passed": all(item["rtl_vs_integer"]["mismatches"] == 0 for item in results), "nodes": results}
+    summary = {"manifest_sha256": manifest_hash, "conv_generics": generics, "selected": len(nodes), "completed": len(results), "passed": all(item["rtl_vs_integer"]["mismatches"] == 0 for item in results), "nodes": results}
     (output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(f"package RTL regression: {summary['completed']}/{summary['selected']} nodes, passed={summary['passed']}")
     return 0 if summary["passed"] and summary["completed"] == summary["selected"] else 1

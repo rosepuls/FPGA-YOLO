@@ -1,6 +1,8 @@
 `timescale 1ns/1ps
 
-module ac550_package_rtl_tb;
+module ac550_package_rtl_tb #(
+  parameter int PIN = 1, POUT = 1, TILE_H = 4, TILE_W = 4
+);
   import ac550_cnn_pkg::*;
   localparam int MAX_INPUT = 262144;
   localparam int MAX_WEIGHT = 1179648;
@@ -34,7 +36,8 @@ module ac550_package_rtl_tb;
 
   conv2d_i8 #(
     .MAX_INPUT_ELEMENTS(MAX_INPUT), .MAX_WEIGHT_ELEMENTS(MAX_WEIGHT),
-    .MAX_OUTPUT_ELEMENTS(MAX_OUTPUT), .MAX_CHANNELS(MAX_CHANNELS)
+    .MAX_OUTPUT_ELEMENTS(MAX_OUTPUT), .MAX_CHANNELS(MAX_CHANNELS),
+    .PIN(PIN), .POUT(POUT), .TILE_H(TILE_H), .TILE_W(TILE_W)
   ) conv (
     .clk, .reset_n, .start(conv_start), .input_channels(ic), .input_height(ih), .input_width(iw),
     .output_channels(oc), .output_height(oh), .output_width(ow), .kernel, .stride, .padding,
