@@ -27,6 +27,7 @@ module tensor_dma #(
   logic [31:0] write_words [0:15];
   logic [3:0] write_enables [0:15];
   logic [31:0] store_byte_index, gather_byte_index;
+  logic [31:0] burst_byte_step;
   logic [2:0] gather_bytes_this_word;
   logic [2:0] write_valid_bytes;
   logic [32:0] ddr_end, local_end;
@@ -142,7 +143,7 @@ module tensor_dma #(
           if (store_byte_index + 1 >= bytes_in_burst) begin
             if (bytes_done + 1 >= active_bytes) state <= FINISH;
             else begin
-              burst_base_addr <= burst_base_addr + (burst_words << 2);
+              burst_base_addr <= burst_base_addr + burst_byte_step;
               set_burst(active_bytes - (bytes_done + 1), 2'd0);
               lane_offset <= 0; store_index <= 0; state <= READ_CMD;
             end
@@ -168,7 +169,7 @@ module tensor_dma #(
               bytes_done <= bytes_done + write_valid_bytes;
               if (bytes_done + write_valid_bytes >= active_bytes) state <= FINISH;
               else begin
-                burst_base_addr <= burst_base_addr + (burst_words << 2);
+                burst_base_addr <= burst_base_addr + burst_byte_step;
                 set_burst(active_bytes - (bytes_done + write_valid_bytes), 2'd0);
                 lane_offset <= 0; gather_index <= 0; gather_lane <= 0; gather_byte_index <= 0;
                 for (integer i=0; i<MAX_BURST_WORDS; i++) begin write_words[i] <= 0; write_enables[i] <= 0; end
@@ -190,6 +191,7 @@ module tensor_dma #(
   end
 
   always_comb begin
+    burst_byte_step = {25'b0, burst_words, 2'b00};
     if (lane_offset != 0 && gather_index == 0) gather_bytes_this_word = 4-lane_offset;
     else if ((bytes_in_burst-gather_byte_index) > 4) gather_bytes_this_word = 4;
     else gather_bytes_this_word = bytes_in_burst-gather_byte_index;

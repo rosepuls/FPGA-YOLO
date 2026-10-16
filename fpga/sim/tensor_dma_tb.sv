@@ -147,6 +147,15 @@ module tensor_dma_tb;
     for (i=0; i<64; i++) if (ddr_model.memory[256+i] !== (i ^ 8'ha5)) $fatal(1, "output burst byte %0d mismatch", i);
     if (max_write_burst != 16) $fatal(1, "output writer did not issue a 16-word burst");
 
+    // Two full bursts catch a byte-offset expression truncated to 5 bits.
+    launch(0, 0, 32'h200, 32, 192, 0, 192);
+    for (i=0; i<192; i++) if (local_mem[32+i] !== ddr_model.memory[512+i])
+      $fatal(1, "multi-burst read byte %0d mismatch", i);
+    for (i=0; i<192; i++) local_mem[32+i] = i ^ 8'h3c;
+    launch(1, 5, 32'h300, 32, 192, 0, 192);
+    for (i=0; i<192; i++) if (ddr_model.memory[768+i] !== (i ^ 8'h3c))
+      $fatal(1, "multi-burst write byte %0d mismatch", i);
+
     // Invalid alignment, region, and address overflow reject before touching memory.
     reads_before_invalid = read_commands;
     launch(0, 0, 32'h24, 20, 4, 1, 0);
