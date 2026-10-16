@@ -11,7 +11,7 @@
 
 ## INT8 算子任务链 bring-up
 
-当前已具备 CSR、Conv/Requant/ReLU、MaxPool、任务控制器、Avalon-MM 字节 DMA，以及功能级 `fpga_op_executor`。可用 ModelSim 运行对应测试：
+当前已具备 CSR、Conv/Requant/ReLU、MaxPool、任务控制器、Avalon-MM burst DMA，以及功能级 `fpga_op_executor`。DMA 使用 32-bit words 计数，burst 最多 16 words（64 bytes），在共享 master 上串行执行读/写；功能特定区域要求 64-byte 对齐，bias/multiplier 要求 4-byte 对齐，shift 支持 byte 地址。DMA 超时、错误和尾部 byte-enable 有独立仿真覆盖。可用 ModelSim 运行对应测试：
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File fpga/sim/run_msim.ps1 -Testbench cnn_job_controller_tb
@@ -20,6 +20,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File fpga/sim/run_msim.ps1 -Testb
 ```
 
 `fpga_op_executor` 目前把完整输入、权重和输出 tensor 放在本地数组中，目的是验证 DDR→算子→DDR 的功能闭环。它尚未实现全模型可综合的片上 tile 复用结构，也未完成 Quartus 资源/时序验收；整网部署前必须把这些完整 tensor bank 改为有界 feature/weight tile buffer。
+
+DMA 读命令和写 beat 共用一个状态机与 Avalon master，避免对同一物理接口建立并行访问通路；`fpga_op_executor.master_burstcount` 已将 burst 长度带到系统边界。`avalon_ddr_model` 为测试用确定性 stall/错误注入模型，不是板级 DDR 控制器。
 
 ## AC550 package RTL 回归
 

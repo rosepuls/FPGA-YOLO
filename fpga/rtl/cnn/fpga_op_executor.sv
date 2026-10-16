@@ -37,6 +37,7 @@ module fpga_op_executor #(
   output logic [31:0] done_task_id,
   output logic [31:0] done_frame_id,
   output logic [31:0] master_address,
+  output logic [4:0]  master_burstcount,
   output logic        master_read,
   output logic        master_write,
   output logic [31:0] master_writedata,
@@ -141,7 +142,7 @@ module fpga_op_executor #(
     .req_valid(dma_req_valid), .req_ready(dma_req_ready), .req_write(dma_req_write),
     .req_region(dma_req_region), .req_ddr_addr(dma_req_addr), .req_local_addr(32'd0),
     .req_bytes(dma_req_bytes), .done(dma_done), .error(dma_error), .bytes_done(dma_bytes_done),
-    .master_address, .master_read, .master_write, .master_writedata, .master_byteenable,
+    .master_address, .master_burstcount, .master_read, .master_write, .master_writedata, .master_byteenable,
     .master_waitrequest, .master_readdata, .master_readdatavalid,
     .master_read_error, .master_write_error,
     .local_wren, .local_region, .local_addr, .local_wdata, .local_rdata

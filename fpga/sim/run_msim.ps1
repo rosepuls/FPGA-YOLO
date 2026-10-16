@@ -47,7 +47,11 @@ switch ($Testbench) {
     $sources = @($common, (Join-Path $repoRoot 'fpga\rtl\avalon\cnn_job_controller.sv'), (Join-Path $repoRoot 'fpga\sim\cnn_job_controller_tb.sv'))
   }
   'tensor_dma_tb' {
-    $sources = @((Join-Path $repoRoot 'fpga\rtl\cnn\tensor_dma.sv'), (Join-Path $repoRoot 'fpga\sim\tensor_dma_tb.sv'))
+    $sources = @(
+      (Join-Path $repoRoot 'fpga\rtl\cnn\tensor_dma.sv'),
+      (Join-Path $repoRoot 'fpga\sim\avalon_ddr_model.sv'),
+      (Join-Path $repoRoot 'fpga\sim\tensor_dma_tb.sv')
+    )
   }
   'fpga_op_executor_tb' {
     $sources = @(

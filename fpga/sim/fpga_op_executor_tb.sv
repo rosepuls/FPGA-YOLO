@@ -17,6 +17,7 @@ module fpga_op_executor_tb;
   logic [3:0] error_code;
   logic [31:0] done_task_id, done_frame_id;
   logic [31:0] master_address, master_writedata, master_readdata;
+  logic [4:0] master_burstcount;
   logic master_read, master_write;
   logic [3:0] master_byteenable;
   logic master_waitrequest, master_readdatavalid, master_read_error, master_write_error;
@@ -39,7 +40,7 @@ module fpga_op_executor_tb;
     .input_channels, .input_height, .input_width,
     .output_channels, .output_height, .output_width, .kernel, .stride, .padding,
     .busy, .done, .error, .error_code, .done_task_id, .done_frame_id,
-    .master_address, .master_read, .master_write, .master_writedata,
+    .master_address, .master_burstcount, .master_read, .master_write, .master_writedata,
     .master_byteenable, .master_waitrequest, .master_readdata, .master_readdatavalid,
     .master_read_error, .master_write_error
   );
