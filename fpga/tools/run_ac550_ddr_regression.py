@@ -31,6 +31,7 @@ def compile_simulator(repo: Path, build: Path, modelsim_bin: Path) -> None:
         "fpga/rtl/avalon/cnn_job_controller.sv",
         "fpga/rtl/avalon/ac550_cnn_csr.sv",
         "fpga/rtl/cnn/tensor_dma.sv",
+        "fpga/rtl/cnn/tile_byte_ram.sv",
         "fpga/rtl/cnn/mac_array_i8.sv",
         "fpga/rtl/cnn/requant_i32_to_i8.sv",
         "fpga/rtl/cnn/fpga_op_executor.sv",

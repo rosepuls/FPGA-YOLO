@@ -36,7 +36,8 @@ module fpga_op_executor #(
 
   typedef enum logic [3:0] {
     IDLE, SETUP, QUANT_ISSUE, QUANT_WAIT, FEATURE_ISSUE, FEATURE_WAIT,
-    WEIGHT_ISSUE, WEIGHT_WAIT, MAC_CONV, MAC_POOL, REQUANT,
+    WEIGHT_ISSUE, WEIGHT_WAIT, MAC_CONV_FETCH, MAC_CONV,
+    MAC_POOL_FETCH, MAC_POOL, REQUANT,
     OUTPUT_ISSUE, OUTPUT_WAIT, ADVANCE
   } state_t;
   state_t state;
@@ -53,8 +54,8 @@ module fpga_op_executor #(
   logic local_wren;
   logic [31:0] local_addr;
   logic [7:0] local_wdata, local_rdata;
-  logic signed [7:0] feature_tile [0:PIN*FEATURE_DEPTH-1];
-  logic signed [7:0] weight_tile [0:POUT*PIN*WEIGHT_DEPTH-1];
+  logic [7:0] feature_read_data [0:PIN-1];
+  logic [7:0] weight_read_data [0:POUT*PIN-1];
   logic signed [31:0] accumulator [0:POUT*SPATIAL_DEPTH-1];
   logic signed [31:0] bias_tile [0:POUT-1], mult_tile [0:POUT-1];
   logic [7:0] shift_tile [0:POUT-1];
@@ -67,11 +68,93 @@ module fpga_op_executor #(
 
   integer oc_base, oy_base, ox_base, ic_base;
   integer lane_o, lane_i, row, spatial, ky, kx, quant_kind;
-  integer tile_h, tile_w, feature_h, feature_w;
+  integer spatial_x_idx, spatial_y_idx;
+  integer ram_ky, ram_kx, ram_spatial_x, ram_spatial_y;
+  logic [31:0] ram_weight_address;
+  integer tile_h, tile_w;
+  integer feature_h, feature_w;
   integer origin_x, origin_y, valid_x0, valid_x1, global_y;
-  integer spatial_y, spatial_x, sample_y, sample_x;
+  integer spatial_y, spatial_x;
+  integer sample_y, sample_x;
   logic signed [7:0] pool_max, pool_next, pool_sample;
   integer lane;
+
+  // The synchronous tile RAMs are addressed one operation ahead while the
+  // MAC is active. This sustains one kernel operation per cycle after the
+  // single fetch cycle at the start of each loaded tile/channel block.
+  always_comb begin
+    ram_ky = ky;
+    ram_kx = kx;
+    ram_spatial_x = spatial_x_idx;
+    ram_spatial_y = spatial_y_idx;
+    if (state==MAC_CONV) begin
+      if (kx<k-1) ram_kx = kx+1;
+      else if (ky<k-1) begin ram_ky = ky+1; ram_kx = 0; end
+      else if (spatial<tile_h*tile_w-1) begin
+        ram_ky = 0; ram_kx = 0;
+        if (spatial_x_idx+1>=tile_w) begin
+          ram_spatial_x = 0; ram_spatial_y = spatial_y_idx+1;
+        end else ram_spatial_x = spatial_x_idx+1;
+      end
+    end else if (state==MAC_POOL) begin
+      if (kx<4) ram_kx = kx+1;
+      else if (ky<4) begin ram_ky = ky+1; ram_kx = 0; end
+      else if (spatial<tile_h*tile_w-1) begin
+        ram_ky = 0; ram_kx = 0;
+        if (spatial_x_idx+1>=tile_w) begin
+          ram_spatial_x = 0; ram_spatial_y = spatial_y_idx+1;
+        end else ram_spatial_x = spatial_x_idx+1;
+      end
+    end
+  end
+  always_comb ram_weight_address = ram_ky*k+ram_kx;
+
+  genvar feature_bank, weight_bank;
+  generate
+  for (feature_bank=0; feature_bank<PIN; feature_bank=feature_bank+1) begin : feature_ram_banks
+    localparam int FEATURE_ADDR_WIDTH = (FEATURE_DEPTH<=2) ? 1 : $clog2(FEATURE_DEPTH);
+    localparam int FEATURE_BANK_BASE = feature_bank*FEATURE_DEPTH;
+    logic [FEATURE_ADDR_WIDTH-1:0] read_address, write_address;
+    logic [31:0] lane_address;
+    logic [31:0] bank_write_offset;
+    always_comb begin
+      lane_address = active_opcode==OP_MAXPOOL
+        ? (ram_spatial_y+ram_ky)*FEATURE_W+ram_spatial_x+ram_kx
+        : (ram_spatial_y*s+ram_ky)*FEATURE_W+ram_spatial_x*s+ram_kx;
+      read_address = '0;
+      if (lane_address<FEATURE_DEPTH) read_address = lane_address[FEATURE_ADDR_WIDTH-1:0];
+      bank_write_offset = local_addr-FEATURE_BANK_BASE;
+      write_address = bank_write_offset[FEATURE_ADDR_WIDTH-1:0];
+    end
+    tile_byte_ram #(.DEPTH(FEATURE_DEPTH)) bank (
+      .clk,
+      .write_enable(local_wren && local_region==DMA_INPUT &&
+                    local_addr>=FEATURE_BANK_BASE && local_addr<FEATURE_BANK_BASE+FEATURE_DEPTH),
+      .write_address, .write_data(local_wdata),
+      .read_address, .read_data(feature_read_data[feature_bank])
+    );
+  end
+
+  for (weight_bank=0; weight_bank<POUT*PIN; weight_bank=weight_bank+1) begin : weight_ram_banks
+    localparam int BANK_BASE = weight_bank*WEIGHT_DEPTH;
+    localparam int WEIGHT_ADDR_WIDTH = (WEIGHT_DEPTH<=2) ? 1 : $clog2(WEIGHT_DEPTH);
+    logic [WEIGHT_ADDR_WIDTH-1:0] read_address, write_address;
+    logic [31:0] bank_write_offset;
+    always_comb begin
+      read_address = ram_weight_address[WEIGHT_ADDR_WIDTH-1:0];
+      if (read_address>=WEIGHT_DEPTH) read_address = '0;
+      bank_write_offset = local_addr-BANK_BASE;
+      write_address = bank_write_offset[WEIGHT_ADDR_WIDTH-1:0];
+    end
+    tile_byte_ram #(.DEPTH(WEIGHT_DEPTH)) bank (
+      .clk,
+      .write_enable(local_wren && local_region==DMA_WEIGHT &&
+                    local_addr>=BANK_BASE && local_addr<BANK_BASE+WEIGHT_DEPTH),
+      .write_address, .write_data(local_wdata),
+      .read_address, .read_data(weight_read_data[weight_bank])
+    );
+  end
+  endgenerate
 
   initial begin
     if (PIN<1 || POUT<1 || TILE_H<1 || TILE_W<1)
@@ -117,14 +200,17 @@ module fpga_op_executor #(
   mac_array_i8 #(.PIN(PIN), .POUT(POUT)) mac (
     .input_lanes(mac_inputs), .weight_lanes(mac_weights), .sum_lanes(mac_sums)
   );
-  for (genvar po=0; po<POUT; po=po+1) begin : quant_lanes
-    assign biased_value[po] = accumulator[po*SPATIAL_DEPTH+spatial] + bias_tile[po];
+  genvar quant_lane;
+  generate
+    for (quant_lane=0; quant_lane<POUT; quant_lane=quant_lane+1) begin : quant_lanes
+    assign biased_value[quant_lane] = accumulator[quant_lane*SPATIAL_DEPTH+spatial] + bias_tile[quant_lane];
     requant_i32_to_i8 requant (
-      .accumulator(biased_value[po]), .multiplier(mult_tile[po]),
-      .right_shift(shift_tile[po]), .apply_relu(1'b0),
-      .result(requant_value[po])
+      .accumulator(biased_value[quant_lane]), .multiplier(mult_tile[quant_lane]),
+      .right_shift(shift_tile[quant_lane]), .apply_relu(1'b0),
+      .result(requant_value[quant_lane])
     );
-  end
+    end
+  endgenerate
 
   always_comb begin
     tile_h = (oh-oy_base<TILE_H) ? oh-oy_base : TILE_H;
@@ -138,8 +224,8 @@ module fpga_op_executor #(
     valid_x1 = (origin_x+feature_w>iw) ? iw-origin_x : feature_w;
     if (valid_x1<0) valid_x1 = 0;
     if (valid_x0>feature_w) valid_x0 = feature_w;
-    spatial_y = (tile_w>0) ? spatial/tile_w : 0;
-    spatial_x = (tile_w>0) ? spatial%tile_w : 0;
+    spatial_y = spatial_y_idx;
+    spatial_x = spatial_x_idx;
     sample_y = oy_base*s+spatial_y*s+ky-p;
     sample_x = ox_base*s+spatial_x*s+kx-p;
 
@@ -149,17 +235,17 @@ module fpga_op_executor #(
       if (ic_base+pi<cin && sample_y>=0 && sample_y<ih &&
           sample_x>=0 && sample_x<iw)
         mac_inputs[pi*8 +: 8] =
-          feature_tile[pi*FEATURE_DEPTH+(spatial_y*s+ky)*FEATURE_W+spatial_x*s+kx];
+          feature_read_data[pi];
     end
     for (integer po=0; po<POUT; po=po+1)
       for (integer pi=0; pi<PIN; pi=pi+1)
         if (oc_base+po<cout && ic_base+pi<cin)
           mac_weights[(po*PIN+pi)*8 +: 8] =
-            weight_tile[(po*PIN+pi)*WEIGHT_DEPTH+ky*k+kx];
+            weight_read_data[po*PIN+pi];
 
-    pool_sample = -8'sd128;
+    pool_sample = 8'sh80;
     if (sample_y>=0 && sample_y<ih && sample_x>=0 && sample_x<iw)
-      pool_sample = feature_tile[(spatial_y+ky)*FEATURE_W+spatial_x+kx];
+      pool_sample = feature_read_data[0];
     pool_next = ($signed(pool_sample)>$signed(pool_max)) ? pool_sample : pool_max;
 
     dma_req_valid = 1'b0;
@@ -232,10 +318,6 @@ module fpga_op_executor #(
   always_ff @(posedge clk) begin
     if (local_wren) begin
       case (local_region)
-        DMA_INPUT: if (local_addr<PIN*FEATURE_DEPTH)
-          feature_tile[local_addr] <= local_wdata;
-        DMA_WEIGHT: if (local_addr<POUT*PIN*WEIGHT_DEPTH)
-          weight_tile[local_addr] <= local_wdata;
         DMA_BIAS: if ((local_addr>>2)<POUT)
           bias_tile[local_addr>>2][local_addr[1:0]*8 +: 8] <= local_wdata;
         DMA_MULT: if ((local_addr>>2)<POUT)
@@ -253,7 +335,8 @@ module fpga_op_executor #(
       engine_done <= 0; engine_error <= 0; engine_error_code <= ERR_OK;
       oc_base <= 0; oy_base <= 0; ox_base <= 0; ic_base <= 0;
       lane_o <= 0; lane_i <= 0; row <= 0; spatial <= 0;
-      ky <= 0; kx <= 0; quant_kind <= 0; pool_max <= -8'sd128;
+      ky <= 0; kx <= 0; quant_kind <= 0; pool_max <= 8'sh80;
+      spatial_x_idx <= 0; spatial_y_idx <= 0;
       pending_bytes <= 0;
     end else begin
       engine_done <= 0;
@@ -273,8 +356,9 @@ module fpga_op_executor #(
         SETUP: begin
           for (integer a=0; a<POUT*SPATIAL_DEPTH; a=a+1) accumulator[a] <= 0;
           lane_o <= 0; lane_i <= 0; row <= 0; spatial <= 0;
+          spatial_x_idx <= 0; spatial_y_idx <= 0;
           ky <= 0; kx <= 0; quant_kind <= 0;
-          pool_max <= -8'sd128;
+          pool_max <= 8'sh80;
           ic_base <= (active_opcode==OP_MAXPOOL) ? oc_base : 0;
           state <= (active_opcode==OP_MAXPOOL) ? FEATURE_ISSUE : QUANT_ISSUE;
         end
@@ -301,8 +385,9 @@ module fpga_op_executor #(
               ic_base+lane_i>=cin) begin
             lane_o <= 0; lane_i <= 0;
             if (active_opcode==OP_MAXPOOL) begin
-              spatial <= 0; ky <= 0; kx <= 0; pool_max <= -8'sd128;
-              state <= MAC_POOL;
+              spatial <= 0; ky <= 0; kx <= 0; pool_max <= 8'sh80;
+              spatial_x_idx <= 0; spatial_y_idx <= 0;
+              state <= MAC_POOL_FETCH;
             end else state <= WEIGHT_ISSUE;
           end else if (row>=feature_h) begin
             lane_i <= lane_i+1; row <= 0;
@@ -319,7 +404,8 @@ module fpga_op_executor #(
         end
         WEIGHT_ISSUE: begin
           if (lane_o>=POUT || oc_base+lane_o>=cout) begin
-            spatial <= 0; ky <= 0; kx <= 0; state <= MAC_CONV;
+            spatial <= 0; ky <= 0; kx <= 0;
+            spatial_x_idx <= 0; spatial_y_idx <= 0; state <= MAC_CONV_FETCH;
           end else if (lane_i>=PIN || ic_base+lane_i>=cin) begin
             lane_i <= 0; lane_o <= lane_o+1;
           end else if (dma_req_ready) begin pending_bytes <= dma_req_bytes; state <= WEIGHT_WAIT; end
@@ -331,6 +417,7 @@ module fpga_op_executor #(
             state <= IDLE;
           end else begin lane_i <= lane_i+1; state <= WEIGHT_ISSUE; end
         end
+        MAC_CONV_FETCH: state <= MAC_CONV;
         MAC_CONV: begin
           for (integer po=0; po<POUT; po=po+1)
             accumulator[po*SPATIAL_DEPTH+spatial] <=
@@ -341,38 +428,58 @@ module fpga_op_executor #(
               ky <= 0;
               if (spatial==tile_h*tile_w-1) begin
                 spatial <= 0;
+                spatial_x_idx <= 0; spatial_y_idx <= 0;
                 if (ic_base+PIN>=cin) state <= REQUANT;
                 else begin
                   ic_base <= ic_base+PIN; lane_i <= 0; row <= 0;
                   state <= FEATURE_ISSUE;
                 end
-              end else spatial <= spatial+1;
+              end else begin
+                spatial <= spatial+1;
+                if (spatial_x_idx+1>=tile_w) begin
+                  spatial_x_idx <= 0;
+                  spatial_y_idx <= spatial_y_idx+1;
+                end else spatial_x_idx <= spatial_x_idx+1;
+              end
             end else ky <= ky+1;
           end else kx <= kx+1;
         end
+        MAC_POOL_FETCH: state <= MAC_POOL;
         MAC_POOL: begin
           pool_max <= pool_next;
           if (kx==4) begin
             kx <= 0;
             if (ky==4) begin
               ky <= 0;
-              output_tile[spatial_y*TILE_W+spatial_x] <= pool_next;
-              pool_max <= -8'sd128;
+              output_tile[spatial_y_idx*TILE_W+spatial_x_idx] <= pool_next;
+              pool_max <= 8'sh80;
               if (spatial==tile_h*tile_w-1) begin
                 lane_o <= 0; row <= 0; state <= OUTPUT_ISSUE;
-              end else spatial <= spatial+1;
+              end else begin
+                spatial <= spatial+1;
+                if (spatial_x_idx+1>=tile_w) begin
+                  spatial_x_idx <= 0;
+                  spatial_y_idx <= spatial_y_idx+1;
+                end else spatial_x_idx <= spatial_x_idx+1;
+              end
             end else ky <= ky+1;
           end else kx <= kx+1;
         end
         REQUANT: begin
           for (integer po=0; po<POUT; po=po+1)
             if (oc_base+po<cout)
-              output_tile[po*SPATIAL_DEPTH+spatial_y*TILE_W+spatial_x] <=
+            output_tile[po*SPATIAL_DEPTH+spatial_y_idx*TILE_W+spatial_x_idx] <=
                 (active_opcode==OP_CONV_RELU && $signed(requant_value[po])<0)
                   ? 8'sd0 : requant_value[po];
           if (spatial==tile_h*tile_w-1) begin
             lane_o <= 0; row <= 0; state <= OUTPUT_ISSUE;
-          end else spatial <= spatial+1;
+          end else begin
+            spatial <= spatial+1;
+            if (spatial_x_idx+1>=tile_w) begin
+              spatial_x_idx <= 0;
+              spatial_y_idx <= spatial_y_idx+1;
+            end else spatial_x_idx <= spatial_x_idx+1;
+          end
         end
         OUTPUT_ISSUE: begin
           if (lane_o>=(active_opcode==OP_MAXPOOL ? 1 : POUT) ||

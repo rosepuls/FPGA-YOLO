@@ -33,3 +33,10 @@ fpga/vitis/Debug/
 fpga/vitis/Release/
 ps_app/build/*
 !ps_app/build/.gitkeep
+
+# Quartus generated databases and local workspace state
+fpga/quartus/*/db/
+fpga/quartus/*/incremental_db/
+fpga/quartus/*/output_files*/
+fpga/quartus/*/*.qws
+

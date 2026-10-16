@@ -59,6 +59,7 @@ switch ($Testbench) {
       (Join-Path $repoRoot 'fpga\rtl\avalon\cnn_job_controller.sv'),
       (Join-Path $repoRoot 'fpga\rtl\avalon\ac550_cnn_csr.sv'),
       (Join-Path $repoRoot 'fpga\rtl\cnn\tensor_dma.sv')
+      (Join-Path $repoRoot 'fpga\rtl\cnn\tile_byte_ram.sv')
     ) + $convSources + @(
       (Join-Path $repoRoot 'fpga\rtl\cnn\maxpool_i8.sv'),
       (Join-Path $repoRoot 'fpga\rtl\cnn\fpga_op_executor.sv'),

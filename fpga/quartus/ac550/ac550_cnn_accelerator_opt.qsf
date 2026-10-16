@@ -1,0 +1,28 @@
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CSXFC6C6U23I7
+set_global_assignment -name TOP_LEVEL_ENTITY ac550_cnn_accelerator
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
+set_global_assignment -name NUM_PARALLEL_PROCESSORS 4
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files_opt
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/common/ac550_cnn_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/cnn/weight_tile_buffer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/cnn/tensor_dma.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/cnn/tile_byte_ram.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/cnn/requant_i32_to_i8.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/cnn/relu_i8.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/cnn/maxpool_i8.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/cnn/mac_array_i8.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/cnn/fpga_op_executor.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/cnn/feature_tile_buffer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/cnn/conv2d_i8.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/cnn/accumulator_buffer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/avalon/cnn_job_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/avalon/ac550_cnn_csr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../rtl/avalon/ac550_cnn_accelerator.sv
+set_global_assignment -name SDC_FILE ../../constraints/ac550_cnn_accelerator.sdc
+set_instance_assignment -name AUTO_DSP_RECOGNITION OFF -to "|ac550_cnn_accelerator|fpga_op_executor:executor"
+set_instance_assignment -name AUTO_DSP_RECOGNITION ON -to "|ac550_cnn_accelerator|fpga_op_executor:executor|mac_array_i8:mac"
+set_instance_assignment -name AUTO_DSP_RECOGNITION ON -to "|ac550_cnn_accelerator|fpga_op_executor:executor|requant_i32_to_i8:quant_lanes[*].requant"
+set_instance_assignment -name AUTO_DSP_RECOGNITION ON -to "|ac550_cnn_accelerator|fpga_op_executor:executor|cnn_job_controller:controller"
+
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Standard Edition"

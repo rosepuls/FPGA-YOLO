@@ -83,61 +83,64 @@ module conv2d_i8 #(
   assign weight_ra = ky_index*active_kernel+kx_index;
   assign accumulator_address = spatial_y*TILE_W+spatial_x;
 
-  for (genvar pi=0; pi<PIN; pi=pi+1) begin : feature_banks
+  genvar feature_lane, gen_output_lane, weight_lane;
+  generate
+    for (feature_lane=0; feature_lane<PIN; feature_lane=feature_lane+1) begin : feature_banks
     logic signed [7:0] write_data, read_data;
     integer iy, ix;
     always @* begin
       iy = oh_base*active_stride+load_y-active_padding;
       ix = ow_base*active_stride+load_x-active_padding;
       write_data = '0;
-      if (state==LOAD_FEATURE && ic_base+pi<active_input_channels &&
+      if (state==LOAD_FEATURE && ic_base+feature_lane<active_input_channels &&
           iy>=0 && iy<active_input_height && ix>=0 && ix<active_input_width)
-        write_data = input_mem[((ic_base+pi)*active_input_height+iy)*active_input_width+ix];
+        write_data = input_mem[((ic_base+feature_lane)*active_input_height+iy)*active_input_width+ix];
     end
     feature_tile_buffer #(.PIN(1), .TILE_H(FEATURE_H), .TILE_W(FEATURE_W)) tile (
       .clk, .write_enable(state==LOAD_FEATURE), .write_address(feature_wa),
       .write_data, .read_address(feature_ra), .read_data
     );
-    assign mac_inputs[pi*8 +: 8] = read_data;
+    assign mac_inputs[feature_lane*8 +: 8] = read_data;
   end
-  for (genvar po=0; po<POUT; po=po+1) begin : output_banks
+    for (gen_output_lane=0; gen_output_lane<POUT; gen_output_lane=gen_output_lane+1) begin : output_banks
     logic signed [31:0] write_data, biased, multiplier;
     logic [7:0] shift;
-    for (genvar pi=0; pi<PIN; pi=pi+1) begin : weight_banks
+    for (weight_lane=0; weight_lane<PIN; weight_lane=weight_lane+1) begin : weight_banks
       logic signed [7:0] write_data, read_data;
       always @* begin
         write_data = '0;
-        if (state==LOAD_WEIGHT && oc_base+po<active_output_channels && ic_base+pi<active_input_channels)
-          write_data = weight_mem[((oc_base+po)*active_input_channels+ic_base+pi)*
+        if (state==LOAD_WEIGHT && oc_base+gen_output_lane<active_output_channels && ic_base+weight_lane<active_input_channels)
+          write_data = weight_mem[((oc_base+gen_output_lane)*active_input_channels+ic_base+weight_lane)*
                                   active_kernel*active_kernel+load_weight];
       end
       weight_tile_buffer #(.PIN(1), .POUT(1)) tile (
         .clk, .write_enable(state==LOAD_WEIGHT), .write_address(weight_wa),
         .write_data, .read_address(weight_ra), .read_data
       );
-      assign mac_weights[(po*PIN+pi)*8 +: 8] = read_data;
+      assign mac_weights[(gen_output_lane*PIN+weight_lane)*8 +: 8] = read_data;
     end
     assign write_data = (state==CLEAR_TILE)?32'sd0:
-                        accumulator_read[po]+$signed(mac_sums[po*32 +: 32]);
+                        accumulator_read[gen_output_lane]+$signed(mac_sums[gen_output_lane*32 +: 32]);
     accumulator_buffer #(.POUT(1), .TILE_H(TILE_H), .TILE_W(TILE_W)) tile (
       .clk, .write_enable(state==CLEAR_TILE || state==MAC),
       .write_address(accumulator_address), .write_data,
-      .read_address(accumulator_address), .read_data(accumulator_read[po])
+      .read_address(accumulator_address), .read_data(accumulator_read[gen_output_lane])
     );
     // Bias is added once after all input tiles. INT32 addition wraps exactly
     // like the partial-sum RAM and remains associative across PIN groupings.
     always @* begin
       biased = '0; multiplier = '0; shift = '0;
-      if (oc_base+po<active_output_channels) begin
-        biased = accumulator_read[po]+bias_mem[oc_base+po];
-        multiplier = multiplier_mem[oc_base+po];
-        shift = shift_mem[oc_base+po];
+      if (oc_base+gen_output_lane<active_output_channels) begin
+        biased = accumulator_read[gen_output_lane]+bias_mem[oc_base+gen_output_lane];
+        multiplier = multiplier_mem[oc_base+gen_output_lane];
+        shift = shift_mem[oc_base+gen_output_lane];
       end
     end
     requant_i32_to_i8 requant (.accumulator(biased), .multiplier,
-      .right_shift(shift), .apply_relu(1'b0), .result(quantized[po]));
-    relu_i8 relu (.data_in(quantized[po]), .data_out(activated[po]));
+      .right_shift(shift), .apply_relu(1'b0), .result(quantized[gen_output_lane]));
+    relu_i8 relu (.data_in(quantized[gen_output_lane]), .data_out(activated[gen_output_lane]));
   end
+  endgenerate
   mac_array_i8 #(.PIN(PIN), .POUT(POUT)) mac (
     .input_lanes(mac_inputs), .weight_lanes(mac_weights), .sum_lanes(mac_sums)
   );
