@@ -1,0 +1,1480 @@
+{
+  "nodes": [
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.0",
+      "input_channels": 1,
+      "kernel": [
+        6,
+        6
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 16,
+      "padding": [
+        2,
+        2
+      ],
+      "source_module": "model.0",
+      "stride": [
+        2,
+        2
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.1",
+      "input_channels": 16,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 32,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.1",
+      "stride": [
+        2,
+        2
+      ]
+    },
+    {
+      "dimension": 1,
+      "executor": "ARM_CONCAT",
+      "id": "model.2.concat",
+      "kind": "CONCAT",
+      "source_module": "model.2"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.2.cv1",
+      "input_channels": 32,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 16,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.2.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.2.cv2",
+      "input_channels": 32,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 16,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.2.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.2.cv3",
+      "input_channels": 32,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 32,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.2.cv3",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "ARM_ADD",
+      "id": "model.2.m.0.add",
+      "kind": "RESIDUAL_ADD",
+      "source_module": "model.2.m.0"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.2.m.0.cv1",
+      "input_channels": 16,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 16,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.2.m.0.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.2.m.0.cv2",
+      "input_channels": 16,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 16,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.2.m.0.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.3",
+      "input_channels": 32,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.3",
+      "stride": [
+        2,
+        2
+      ]
+    },
+    {
+      "dimension": 1,
+      "executor": "ARM_CONCAT",
+      "id": "model.4.concat",
+      "kind": "CONCAT",
+      "source_module": "model.4"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.4.cv1",
+      "input_channels": 64,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 32,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.4.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.4.cv2",
+      "input_channels": 64,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 32,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.4.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.4.cv3",
+      "input_channels": 64,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.4.cv3",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "ARM_ADD",
+      "id": "model.4.m.0.add",
+      "kind": "RESIDUAL_ADD",
+      "source_module": "model.4.m.0"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.4.m.0.cv1",
+      "input_channels": 32,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 32,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.4.m.0.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.4.m.0.cv2",
+      "input_channels": 32,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 32,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.4.m.0.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "ARM_ADD",
+      "id": "model.4.m.1.add",
+      "kind": "RESIDUAL_ADD",
+      "source_module": "model.4.m.1"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.4.m.1.cv1",
+      "input_channels": 32,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 32,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.4.m.1.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.4.m.1.cv2",
+      "input_channels": 32,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 32,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.4.m.1.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.5",
+      "input_channels": 64,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.5",
+      "stride": [
+        2,
+        2
+      ]
+    },
+    {
+      "dimension": 1,
+      "executor": "ARM_CONCAT",
+      "id": "model.6.concat",
+      "kind": "CONCAT",
+      "source_module": "model.6"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.6.cv1",
+      "input_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.6.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.6.cv2",
+      "input_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.6.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.6.cv3",
+      "input_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.6.cv3",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "ARM_ADD",
+      "id": "model.6.m.0.add",
+      "kind": "RESIDUAL_ADD",
+      "source_module": "model.6.m.0"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.6.m.0.cv1",
+      "input_channels": 64,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.6.m.0.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.6.m.0.cv2",
+      "input_channels": 64,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.6.m.0.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "ARM_ADD",
+      "id": "model.6.m.1.add",
+      "kind": "RESIDUAL_ADD",
+      "source_module": "model.6.m.1"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.6.m.1.cv1",
+      "input_channels": 64,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.6.m.1.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.6.m.1.cv2",
+      "input_channels": 64,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.6.m.1.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "ARM_ADD",
+      "id": "model.6.m.2.add",
+      "kind": "RESIDUAL_ADD",
+      "source_module": "model.6.m.2"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.6.m.2.cv1",
+      "input_channels": 64,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.6.m.2.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.6.m.2.cv2",
+      "input_channels": 64,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.6.m.2.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.7",
+      "input_channels": 128,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 256,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.7",
+      "stride": [
+        2,
+        2
+      ]
+    },
+    {
+      "dimension": 1,
+      "executor": "ARM_CONCAT",
+      "id": "model.8.concat",
+      "kind": "CONCAT",
+      "source_module": "model.8"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.8.cv1",
+      "input_channels": 256,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.8.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.8.cv2",
+      "input_channels": 256,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.8.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.8.cv3",
+      "input_channels": 256,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 256,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.8.cv3",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "ARM_ADD",
+      "id": "model.8.m.0.add",
+      "kind": "RESIDUAL_ADD",
+      "source_module": "model.8.m.0"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.8.m.0.cv1",
+      "input_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.8.m.0.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.8.m.0.cv2",
+      "input_channels": 128,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.8.m.0.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_MAXPOOL",
+      "id": "model.9.maxpool.1",
+      "kernel": [
+        5,
+        5
+      ],
+      "kind": "MAXPOOL",
+      "padding": [
+        2,
+        2
+      ],
+      "source_module": "model.9.m",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_MAXPOOL",
+      "id": "model.9.maxpool.2",
+      "kernel": [
+        5,
+        5
+      ],
+      "kind": "MAXPOOL",
+      "padding": [
+        2,
+        2
+      ],
+      "source_module": "model.9.m",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_MAXPOOL",
+      "id": "model.9.maxpool.3",
+      "kernel": [
+        5,
+        5
+      ],
+      "kind": "MAXPOOL",
+      "padding": [
+        2,
+        2
+      ],
+      "source_module": "model.9.m",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "dimension": 1,
+      "executor": "ARM_CONCAT",
+      "id": "model.9.concat",
+      "kind": "CONCAT",
+      "source_module": "model.9"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.9.cv1",
+      "input_channels": 256,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.9.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.9.cv2",
+      "input_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 256,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.9.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.10",
+      "input_channels": 256,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.10",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "ARM_UPSAMPLE",
+      "id": "model.11",
+      "kind": "UPSAMPLE_NEAREST",
+      "scale_factor": 2.0,
+      "source_module": "model.11"
+    },
+    {
+      "executor": "ARM_UPSAMPLE",
+      "id": "model.11.upsample",
+      "kind": "UPSAMPLE_NEAREST",
+      "scale_factor": 2.0,
+      "source_module": "model.11.upsample"
+    },
+    {
+      "dimension": 1,
+      "executor": "ARM_CONCAT",
+      "id": "model.12",
+      "kind": "CONCAT",
+      "source_module": "model.12"
+    },
+    {
+      "dimension": 1,
+      "executor": "ARM_CONCAT",
+      "id": "model.13.concat",
+      "kind": "CONCAT",
+      "source_module": "model.13"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.13.cv1",
+      "input_channels": 256,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.13.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.13.cv2",
+      "input_channels": 256,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.13.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.13.cv3",
+      "input_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.13.cv3",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.13.m.0.cv1",
+      "input_channels": 64,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.13.m.0.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.13.m.0.cv2",
+      "input_channels": 64,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.13.m.0.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.14",
+      "input_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.14",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "ARM_UPSAMPLE",
+      "id": "model.15",
+      "kind": "UPSAMPLE_NEAREST",
+      "scale_factor": 2.0,
+      "source_module": "model.15"
+    },
+    {
+      "executor": "ARM_UPSAMPLE",
+      "id": "model.15.upsample",
+      "kind": "UPSAMPLE_NEAREST",
+      "scale_factor": 2.0,
+      "source_module": "model.15.upsample"
+    },
+    {
+      "dimension": 1,
+      "executor": "ARM_CONCAT",
+      "id": "model.16",
+      "kind": "CONCAT",
+      "source_module": "model.16"
+    },
+    {
+      "dimension": 1,
+      "executor": "ARM_CONCAT",
+      "id": "model.17.concat",
+      "kind": "CONCAT",
+      "source_module": "model.17"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.17.cv1",
+      "input_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 32,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.17.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.17.cv2",
+      "input_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 32,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.17.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.17.cv3",
+      "input_channels": 64,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.17.cv3",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.17.m.0.cv1",
+      "input_channels": 32,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 32,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.17.m.0.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.17.m.0.cv2",
+      "input_channels": 32,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 32,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.17.m.0.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.18",
+      "input_channels": 64,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.18",
+      "stride": [
+        2,
+        2
+      ]
+    },
+    {
+      "dimension": 1,
+      "executor": "ARM_CONCAT",
+      "id": "model.19",
+      "kind": "CONCAT",
+      "source_module": "model.19"
+    },
+    {
+      "dimension": 1,
+      "executor": "ARM_CONCAT",
+      "id": "model.20.concat",
+      "kind": "CONCAT",
+      "source_module": "model.20"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.20.cv1",
+      "input_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.20.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.20.cv2",
+      "input_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.20.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.20.cv3",
+      "input_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.20.cv3",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.20.m.0.cv1",
+      "input_channels": 64,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.20.m.0.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.20.m.0.cv2",
+      "input_channels": 64,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 64,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.20.m.0.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.21",
+      "input_channels": 128,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.21",
+      "stride": [
+        2,
+        2
+      ]
+    },
+    {
+      "dimension": 1,
+      "executor": "ARM_CONCAT",
+      "id": "model.22",
+      "kind": "CONCAT",
+      "source_module": "model.22"
+    },
+    {
+      "dimension": 1,
+      "executor": "ARM_CONCAT",
+      "id": "model.23.concat",
+      "kind": "CONCAT",
+      "source_module": "model.23"
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.23.cv1",
+      "input_channels": 256,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.23.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.23.cv2",
+      "input_channels": 256,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.23.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.23.cv3",
+      "input_channels": 256,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 256,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.23.cv3",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.23.m.0.cv1",
+      "input_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.23.m.0.cv1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_RELU",
+      "groups": 1,
+      "id": "model.23.m.0.cv2",
+      "input_channels": 128,
+      "kernel": [
+        3,
+        3
+      ],
+      "kind": "CONV_RELU",
+      "output_channels": 128,
+      "padding": [
+        1,
+        1
+      ],
+      "source_module": "model.23.m.0.cv2",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_LINEAR",
+      "groups": 1,
+      "id": "model.24.m.0",
+      "input_channels": 64,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "DETECT_CONV",
+      "output_channels": 27,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.24.m.0",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_LINEAR",
+      "groups": 1,
+      "id": "model.24.m.1",
+      "input_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "DETECT_CONV",
+      "output_channels": 27,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.24.m.1",
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "executor": "FPGA_CONV_LINEAR",
+      "groups": 1,
+      "id": "model.24.m.2",
+      "input_channels": 256,
+      "kernel": [
+        1,
+        1
+      ],
+      "kind": "DETECT_CONV",
+      "output_channels": 27,
+      "padding": [
+        0,
+        0
+      ],
+      "source_module": "model.24.m.2",
+      "stride": [
+        1,
+        1
+      ]
+    }
+  ],
+  "schema_version": 1
+}

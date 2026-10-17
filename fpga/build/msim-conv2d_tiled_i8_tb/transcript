@@ -1,0 +1,97 @@
+# vsim work.conv2d_tiled_i8_tb -c -do "run -all; quit -f" 
+# Start time: 14:44:02 on Oct 16,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# //  ModelSim SE-64 10.6e Jun 23 2018
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim SE-64 and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.conv2d_tiled_i8_tb(fast)
+# Loading work.ac550_cnn_pkg(fast)
+# Loading work.conv2d_i8(fast)
+# Loading work.conv2d_i8(fast__1)
+# Loading work.conv2d_i8(fast__2)
+# Loading work.conv2d_i8(fast__3)
+# Loading work.conv2d_i8(fast__4)
+# Loading work.conv2d_i8(fast__5)
+# run -all
+# TILED_CASE_PASS model.0.conv form PIN=8 POUT=8 TILE=4x4 outputs=60 cycles=1790
+# TILED_CASE_PASS model.0.conv form PIN=4 POUT=4 TILE=4x4 outputs=60 cycles=1790
+# TILED_CASE_PASS model.0.conv form PIN=2 POUT=3 TILE=2x3 outputs=60 cycles=1936
+# TILED_CASE_PASS model.1.conv form PIN=8 POUT=8 TILE=4x4 outputs=100 cycles=548
+# TILED_CASE_PASS model.1.conv form PIN=4 POUT=4 TILE=4x4 outputs=100 cycles=1096
+# TILED_CASE_PASS C3 internal 3x3 PIN=8 POUT=8 TILE=4x4 outputs=105 cycles=874
+# TILED_CASE_PASS model.0.conv form PIN=2 POUT=2 TILE=4x4 outputs=60 cycles=3580
+# TILED_CASE_PASS model.1.conv form PIN=2 POUT=3 TILE=2x3 outputs=100 cycles=2192
+# TILED_CASE_PASS Cin512 PIN=8 POUT=8 TILE=4x4 outputs=18 cycles=1235
+# TILED_CASE_PASS C3 internal 3x3 PIN=4 POUT=4 TILE=4x4 outputs=105 cycles=1639
+# TILED_CASE_PASS model.0.conv form PIN=1 POUT=1 TILE=4x4 outputs=60 cycles=5370
+# TILED_CASE_PASS model.24.m.0 form PIN=8 POUT=8 TILE=4x4 outputs=162 cycles=1292
+# TILED_CASE_PASS model.0.conv form PIN=3 POUT=2 TILE=1x1 outputs=60 cycles=5920
+# TILED_CASE_PASS model.1.conv form PIN=2 POUT=2 TILE=4x4 outputs=100 cycles=3102
+# TILED_CASE_PASS C3 internal 3x3 PIN=2 POUT=3 TILE=2x3 outputs=105 cycles=2676
+# TILED_CASE_PASS Cin512 PIN=4 POUT=4 TILE=4x4 outputs=18 cycles=2451
+# TILED_CASE_PASS model.24.m.1 form PIN=8 POUT=8 TILE=4x4 outputs=162 cycles=2508
+# TILED_CASE_PASS model.1.conv form PIN=3 POUT=2 TILE=1x1 outputs=100 cycles=2400
+# TILED_CASE_PASS model.24.m.0 form PIN=4 POUT=4 TILE=4x4 outputs=162 cycles=4389
+# TILED_CASE_PASS C3 internal 3x3 PIN=2 POUT=2 TILE=4x4 outputs=105 cycles=4808
+# TILED_CASE_PASS Cin512 PIN=2 POUT=3 TILE=2x3 outputs=18 cycles=4883
+# TILED_CASE_PASS model.1.conv form PIN=1 POUT=1 TILE=4x4 outputs=100 cycles=7600
+# TILED_CASE_PASS model.24.m.2 form PIN=8 POUT=8 TILE=4x4 outputs=162 cycles=4940
+# TILED_CASE_PASS dense throughput PIN=8 POUT=8 TILE=4x4 outputs=256 cycles=294
+# TILED_CASE_PASS signed ties PIN=8 POUT=8 TILE=4x4 outputs=8 cycles=8
+# TILED_CASE_PASS INT32 bias overflow PIN=8 POUT=8 TILE=4x4 outputs=2 cycles=8
+# TILED_CASE_PASS INT32 overflow ReLU PIN=8 POUT=8 TILE=4x4 outputs=2 cycles=8
+# TILED_CASE_PASS C3 internal 3x3 PIN=3 POUT=2 TILE=1x1 outputs=105 cycles=5320
+# TILED_CASE_PASS model.24.m.1 form PIN=4 POUT=4 TILE=4x4 outputs=162 cycles=8645
+# TILED_CASE_PASS Cin512 PIN=2 POUT=2 TILE=4x4 outputs=18 cycles=9766
+# TILED_CASE_PASS Cin512 PIN=3 POUT=2 TILE=1x1 outputs=18 cycles=8256
+# TILED_CASE_PASS model.24.m.0 form PIN=2 POUT=3 TILE=2x3 outputs=162 cycles=11115
+# TILED_CASE_PASS C3 internal 3x3 PIN=1 POUT=1 TILE=4x4 outputs=105 cycles=11802
+# TILED_CASE_PASS model.24.m.0 form PIN=3 POUT=2 TILE=1x1 outputs=162 cycles=14784
+# TILED_CASE_PASS model.24.m.2 form PIN=4 POUT=4 TILE=4x4 outputs=162 cycles=17157
+# TILED_CASE_PASS dense throughput PIN=4 POUT=4 TILE=4x4 outputs=256 cycles=980
+# TILED_CASE_PASS signed ties PIN=4 POUT=4 TILE=4x4 outputs=8 cycles=16
+# TILED_CASE_PASS INT32 bias overflow PIN=4 POUT=4 TILE=4x4 outputs=2 cycles=8
+# TILED_CASE_PASS INT32 overflow ReLU PIN=4 POUT=4 TILE=4x4 outputs=2 cycles=8
+# TILED_CASE_PASS model.24.m.0 form PIN=2 POUT=2 TILE=4x4 outputs=162 cycles=17290
+# TILED_CASE_PASS model.24.m.1 form PIN=2 POUT=3 TILE=2x3 outputs=162 cycles=22059
+# TILED_CASE_PASS Cin512 PIN=1 POUT=1 TILE=4x4 outputs=18 cycles=29241
+# TILED_CASE_PASS model.24.m.1 form PIN=3 POUT=2 TILE=1x1 outputs=162 cycles=29232
+# TILED_CASE_PASS model.24.m.1 form PIN=2 POUT=2 TILE=4x4 outputs=162 cycles=34314
+# TILED_CASE_PASS model.24.m.2 form PIN=2 POUT=3 TILE=2x3 outputs=162 cycles=43947
+# TILED_CASE_PASS dense throughput PIN=2 POUT=3 TILE=2x3 outputs=256 cycles=2808
+# TILED_CASE_PASS signed ties PIN=2 POUT=3 TILE=2x3 outputs=8 cycles=24
+# TILED_CASE_PASS INT32 bias overflow PIN=2 POUT=3 TILE=2x3 outputs=2 cycles=8
+# TILED_CASE_PASS INT32 overflow ReLU PIN=2 POUT=3 TILE=2x3 outputs=2 cycles=8
+# TILED_CASE_PASS model.24.m.0 form PIN=1 POUT=1 TILE=4x4 outputs=162 cycles=66177
+# TILED_CASE_PASS model.24.m.2 form PIN=3 POUT=2 TILE=1x1 outputs=162 cycles=57792
+# TILED_CASE_PASS dense throughput PIN=3 POUT=2 TILE=1x1 outputs=256 cycles=3584
+# TILED_CASE_PASS signed ties PIN=3 POUT=2 TILE=1x1 outputs=8 cycles=32
+# TILED_CASE_PASS INT32 bias overflow PIN=3 POUT=2 TILE=1x1 outputs=2 cycles=8
+# TILED_CASE_PASS INT32 overflow ReLU PIN=3 POUT=2 TILE=1x1 outputs=2 cycles=8
+# TILED_CASE_PASS model.24.m.2 form PIN=2 POUT=2 TILE=4x4 outputs=162 cycles=68362
+# TILED_CASE_PASS dense throughput PIN=2 POUT=2 TILE=4x4 outputs=256 cycles=3528
+# TILED_CASE_PASS signed ties PIN=2 POUT=2 TILE=4x4 outputs=8 cycles=32
+# TILED_CASE_PASS INT32 bias overflow PIN=2 POUT=2 TILE=4x4 outputs=2 cycles=8
+# TILED_CASE_PASS INT32 overflow ReLU PIN=2 POUT=2 TILE=4x4 outputs=2 cycles=8
+# TILED_CASE_PASS model.24.m.1 form PIN=1 POUT=1 TILE=4x4 outputs=162 cycles=131841
+# TILED_CASE_PASS model.24.m.2 form PIN=1 POUT=1 TILE=4x4 outputs=162 cycles=263169
+# TILED_CASE_PASS dense throughput PIN=1 POUT=1 TILE=4x4 outputs=256 cycles=13328
+# TILED_CASE_PASS signed ties PIN=1 POUT=1 TILE=4x4 outputs=8 cycles=64
+# TILED_CASE_PASS INT32 bias overflow PIN=1 POUT=1 TILE=4x4 outputs=2 cycles=16
+# TILED_CASE_PASS INT32 overflow ReLU PIN=1 POUT=1 TILE=4x4 outputs=2 cycles=16
+# AC550 tiled Conv2D parameter sweep passed: cycles=13328/3528/980/294
+# ** Note: $finish    : C:/Study/IC_Study/Project/FPGA/Contest/CGEDC_1/FPGA-YOLO/fpga/sim/conv2d_tiled_i8_tb.sv(139)
+#    Time: 5286386 ns  Iteration: 1  Instance: /conv2d_tiled_i8_tb
+# End time: 14:44:04 on Oct 16,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0

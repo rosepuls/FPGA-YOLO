@@ -1,0 +1,3918 @@
+{
+  "schema_version": 1,
+  "vectors": [
+    {
+      "input": {
+        "file": "vectors/model_0_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.007874015748031496,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ]
+      },
+      "output": {
+        "file": "vectors/model_0_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.23476123058889795,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          16,
+          128,
+          128
+        ]
+      },
+      "source_module": "model.0.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.23476123058889795,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          16,
+          128,
+          128
+        ]
+      },
+      "output": {
+        "file": "vectors/model_1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 1.0846867598886565,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "source_module": "model.1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_2_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 1.0846867598886565,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "output": {
+        "file": "vectors/model_2_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.19688921650563637,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      "source_module": "model.2.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_2_m_0_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.19688921650563637,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      "output": {
+        "file": "vectors/model_2_m_0_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.19043808283768301,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      "source_module": "model.2.m.0.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_2_m_0_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.19043808283768301,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      "output": {
+        "file": "vectors/model_2_m_0_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.18058237691563883,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      "source_module": "model.2.m.0.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_2_m_0_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.19688921650563637,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      "output": {
+        "file": "vectors/model_2_m_0_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.25841639361043617,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      "source_module": "model.2.m.0"
+    },
+    {
+      "input": {
+        "file": "vectors/model_2_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 1.0846867598886565,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "output": {
+        "file": "vectors/model_2_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.24811562966174028,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      "source_module": "model.2.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_2_cv3_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.25841639361043617,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "output": {
+        "file": "vectors/model_2_cv3_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.14874444796344427,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "source_module": "model.2.cv3.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_2_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 1.0846867598886565,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "output": {
+        "file": "vectors/model_2_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.14874444796344427,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "source_module": "model.2"
+    },
+    {
+      "input": {
+        "file": "vectors/model_3_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.14874444796344427,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "output": {
+        "file": "vectors/model_3_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.07935680179145392,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.3.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_4_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.07935680179145392,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_4_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0310608064095805,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.4.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_4_m_0_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0310608064095805,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_4_m_0_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.07974125268891102,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.4.m.0.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_4_m_0_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.07974125268891102,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_4_m_0_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04533502248328502,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.4.m.0.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_4_m_0_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0310608064095805,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_4_m_0_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.05398539295346718,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.4.m.0"
+    },
+    {
+      "input": {
+        "file": "vectors/model_4_m_1_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.05398539295346718,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_4_m_1_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.046623061022420566,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.4.m.1.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_4_m_1_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.046623061022420566,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_4_m_1_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.056169389739749935,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.4.m.1.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_4_m_1_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.05398539295346718,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_4_m_1_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.06957195312019408,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.4.m.1"
+    },
+    {
+      "input": {
+        "file": "vectors/model_4_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.07935680179145392,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_4_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.06688257652943529,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.4.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_4_cv3_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.06957195312019408,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_4_cv3_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04641632020004152,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.4.cv3.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_4_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.07935680179145392,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_4_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04641632020004152,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.4"
+    },
+    {
+      "input": {
+        "file": "vectors/model_5_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04641632020004152,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_5_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0443579906553734,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.5.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_6_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0443579906553734,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_6_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.017367913028386636,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.6.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_6_m_0_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.017367913028386636,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_6_m_0_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.041664604126937746,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.6.m.0.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_6_m_0_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.041664604126937746,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_6_m_0_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0229090255076491,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.6.m.0.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_6_m_0_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.017367913028386636,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_6_m_0_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.026496155055489128,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.6.m.0"
+    },
+    {
+      "input": {
+        "file": "vectors/model_6_m_1_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.026496155055489128,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_6_m_1_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04079256283016655,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.6.m.1.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_6_m_1_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04079256283016655,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_6_m_1_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03502973421352116,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.6.m.1.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_6_m_1_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.026496155055489128,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_6_m_1_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03587230547206608,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.6.m.1"
+    },
+    {
+      "input": {
+        "file": "vectors/model_6_m_2_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03587230547206608,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_6_m_2_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03874328192763441,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.6.m.2.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_6_m_2_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03874328192763441,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_6_m_2_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04552742064468504,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.6.m.2.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_6_m_2_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03587230547206608,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_6_m_2_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.057493626602052705,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.6.m.2"
+    },
+    {
+      "input": {
+        "file": "vectors/model_6_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0443579906553734,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_6_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04866677381860928,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.6.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_6_cv3_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.057493626602052705,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_6_cv3_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.030906992634450358,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.6.cv3.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_6_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0443579906553734,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_6_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.030906992634450358,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.6"
+    },
+    {
+      "input": {
+        "file": "vectors/model_7_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.030906992634450358,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_7_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.041045984883946694,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.7.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_8_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.041045984883946694,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_8_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.016113365729024092,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.8.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_8_m_0_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.016113365729024092,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_8_m_0_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04766536322165662,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.8.m.0.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_8_m_0_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04766536322165662,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_8_m_0_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.05143283859012634,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.8.m.0.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_8_m_0_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.016113365729024092,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_8_m_0_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.05143283859012634,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.8.m.0"
+    },
+    {
+      "input": {
+        "file": "vectors/model_8_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.041045984883946694,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_8_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.054932928460789475,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.8.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_8_cv3_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.054932928460789475,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_8_cv3_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04560761188897561,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.8.cv3.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_8_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.041045984883946694,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_8_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04560761188897561,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.8"
+    },
+    {
+      "input": {
+        "file": "vectors/model_9_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04560761188897561,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_9_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04078666431697335,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.9.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_9_m_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04078666431697335,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_9_m_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04078666431697335,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.9.m"
+    },
+    {
+      "input": {
+        "file": "vectors/model_9_m_call_2_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04078666431697335,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_9_m_call_2_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04078666431697335,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.9.m#2"
+    },
+    {
+      "input": {
+        "file": "vectors/model_9_m_call_3_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04078666431697335,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_9_m_call_3_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04078666431697335,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.9.m#3"
+    },
+    {
+      "input": {
+        "file": "vectors/model_9_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04078666431697335,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          512,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_9_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02870952801441583,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.9.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_9_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04560761188897561,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_9_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02870952801441583,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.9"
+    },
+    {
+      "input": {
+        "file": "vectors/model_10_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02870952801441583,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_10_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0261742449182225,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.10.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_11_upsample_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0261742449182225,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_11_upsample_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0261742449182225,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.11.upsample"
+    },
+    {
+      "input": {
+        "file": "vectors/model_11_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0261742449182225,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_11_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0261742449182225,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.11"
+    },
+    {
+      "input": {
+        "file": "vectors/model_12_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.0261742449182225,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_12_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.030906992634450358,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.12"
+    },
+    {
+      "input": {
+        "file": "vectors/model_13_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.030906992634450358,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_13_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03586408660167784,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.13.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_13_m_0_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03586408660167784,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_13_m_0_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.026129127487422913,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.13.m.0.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_13_m_0_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.026129127487422913,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_13_m_0_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02807353425213671,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.13.m.0.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_13_m_0_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03586408660167784,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_13_m_0_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02807353425213671,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.13.m.0"
+    },
+    {
+      "input": {
+        "file": "vectors/model_13_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.030906992634450358,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_13_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02313622151772807,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.13.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_13_cv3_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02807353425213671,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_13_cv3_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02574709456736647,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.13.cv3.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_13_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.030906992634450358,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_13_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02574709456736647,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.13"
+    },
+    {
+      "input": {
+        "file": "vectors/model_14_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02574709456736647,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_14_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03148592363192341,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.14.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_15_upsample_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03148592363192341,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_15_upsample_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03148592363192341,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.15.upsample"
+    },
+    {
+      "input": {
+        "file": "vectors/model_15_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03148592363192341,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_15_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03148592363192341,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.15"
+    },
+    {
+      "input": {
+        "file": "vectors/model_16_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03148592363192341,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_16_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04641632020004152,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.16"
+    },
+    {
+      "input": {
+        "file": "vectors/model_17_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04641632020004152,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_17_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.021192637015515426,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.17.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_17_m_0_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.021192637015515426,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_17_m_0_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.026282592082586813,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.17.m.0.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_17_m_0_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.026282592082586813,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_17_m_0_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.038829735883577604,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.17.m.0.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_17_m_0_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.021192637015515426,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_17_m_0_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.038829735883577604,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.17.m.0"
+    },
+    {
+      "input": {
+        "file": "vectors/model_17_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04641632020004152,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_17_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.027484903185386357,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.17.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_17_cv3_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.038829735883577604,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_17_cv3_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.08447810796302134,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.17.cv3.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_17_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04641632020004152,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_17_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.08447810796302134,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.17"
+    },
+    {
+      "input": {
+        "file": "vectors/model_18_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.08447810796302134,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_18_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02652442173695001,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.18.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_19_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02652442173695001,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_19_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03148592363192341,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.19"
+    },
+    {
+      "input": {
+        "file": "vectors/model_20_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03148592363192341,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_20_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.025589130056185985,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.20.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_20_m_0_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.025589130056185985,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_20_m_0_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.030409351108581062,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.20.m.0.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_20_m_0_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.030409351108581062,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_20_m_0_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.06905084144412063,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.20.m.0.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_20_m_0_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.025589130056185985,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_20_m_0_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.06905084144412063,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.20.m.0"
+    },
+    {
+      "input": {
+        "file": "vectors/model_20_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03148592363192341,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_20_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02279499759824257,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.20.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_20_cv3_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.06905084144412063,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_20_cv3_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.07481840839536172,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.20.cv3.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_20_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03148592363192341,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_20_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.07481840839536172,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.20"
+    },
+    {
+      "input": {
+        "file": "vectors/model_21_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.07481840839536172,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_21_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03168199569221557,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.21.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_22_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03168199569221557,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_22_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03168199569221557,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.22"
+    },
+    {
+      "input": {
+        "file": "vectors/model_23_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03168199569221557,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_23_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03457649861733744,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.23.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_23_m_0_cv1_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03457649861733744,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_23_m_0_cv1_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.033918080367441254,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.23.m.0.cv1.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_23_m_0_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.033918080367441254,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_23_m_0_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04109373993760958,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.23.m.0.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_23_m_0_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03457649861733744,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_23_m_0_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04109373993760958,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.23.m.0"
+    },
+    {
+      "input": {
+        "file": "vectors/model_23_cv2_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03168199569221557,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_23_cv2_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.02836797181076891,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.23.cv2.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_23_cv3_conv_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04109373993760958,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_23_cv3_conv_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04266980313879298,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.23.cv3.conv"
+    },
+    {
+      "input": {
+        "file": "vectors/model_23_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.03168199569221557,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_23_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04266980313879298,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.23"
+    },
+    {
+      "input": {
+        "file": "vectors/model_24_m_0_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.08447810796302134,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "output": {
+        "file": "vectors/model_24_m_0_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.18360393253837046,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          27,
+          32,
+          32
+        ]
+      },
+      "source_module": "model.24.m.0"
+    },
+    {
+      "input": {
+        "file": "vectors/model_24_m_1_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.07481840839536172,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "output": {
+        "file": "vectors/model_24_m_1_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.12836728133554534,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          27,
+          16,
+          16
+        ]
+      },
+      "source_module": "model.24.m.1"
+    },
+    {
+      "input": {
+        "file": "vectors/model_24_m_2_input_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.04266980313879298,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "output": {
+        "file": "vectors/model_24_m_2_output_i8.bin",
+        "quantization": {
+          "rounding": "ROUND_HALF_TO_EVEN",
+          "saturation": [
+            -127,
+            127
+          ],
+          "scale": 0.11625766003225732,
+          "scheme": "SYMMETRIC_PER_TENSOR",
+          "storage_dtype": "int8",
+          "zero_point": 0
+        },
+        "shape": [
+          1,
+          27,
+          8,
+          8
+        ]
+      },
+      "source_module": "model.24.m.2"
+    }
+  ]
+}

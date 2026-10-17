@@ -1,0 +1,46 @@
+simulation failed: D:\modeltech64_10.6e\win64\vsim.exe work.ac550_package_ddr_tb -c +NODE=model.0 +OP=1 +IC=1 +IH=256 +IW=256 +OC=16 +OH=128 +OW=128 +KERNEL=6 +STRIDE=2 +PADDING=2 +INPUT=C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\results\task4-tiled-8x8-v4\vectors\model_0_input.mem +GOLDEN=C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\results\task4-tiled-8x8-v4\vectors\model_0_output_golden.mem +ACTUAL=C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\results\ram-banked-v4\model_0.mem +MAX_CYCLES=100000000 +WEIGHT=C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\results\task4-tiled-8x8-v4\vectors\model_0_weight.mem +BIAS=C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\results\task4-tiled-8x8-v4\vectors\model_0_bias.mem +MULT=C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\results\task4-tiled-8x8-v4\vectors\model_0_multiplier.mem +SHIFT=C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\results\task4-tiled-8x8-v4\vectors\model_0_shift.mem -do run -all; quit -f
+roject\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# ** Error: C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv(144): Module 'tile_byte_ram' is not defined.
+# Optimization failed
+# Error loading design
+# End time: 19:13:18 on Oct 16,2026, Elapsed time: 0:00:00
+# Errors: 72, Warnings: 0
+Error loading design

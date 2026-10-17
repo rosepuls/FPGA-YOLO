@@ -1,0 +1,44 @@
+
+State Machine - |ac550_cnn_accelerator|fpga_op_executor:executor|state
+Name state.ADVANCE state.OUTPUT_WAIT state.OUTPUT_ISSUE state.REQUANT state.MAC_POOL state.MAC_CONV state.WEIGHT_WAIT state.WEIGHT_ISSUE state.FEATURE_WAIT state.FEATURE_ISSUE state.QUANT_WAIT state.QUANT_ISSUE state.SETUP state.IDLE 
+state.IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.SETUP 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.QUANT_ISSUE 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.QUANT_WAIT 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.FEATURE_ISSUE 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.FEATURE_WAIT 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.WEIGHT_ISSUE 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.WEIGHT_WAIT 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.MAC_CONV 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.MAC_POOL 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.REQUANT 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.OUTPUT_ISSUE 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.OUTPUT_WAIT 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.ADVANCE 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |ac550_cnn_accelerator|fpga_op_executor:executor|tensor_dma:dma|state
+Name state.FINISH state.WRITE_CMD state.WRITE_GATHER state.READ_STORE state.READ_DATA state.READ_CMD state.IDLE 
+state.IDLE 0 0 0 0 0 0 0 
+state.READ_CMD 0 0 0 0 0 1 1 
+state.READ_DATA 0 0 0 0 1 0 1 
+state.READ_STORE 0 0 0 1 0 0 1 
+state.WRITE_GATHER 0 0 1 0 0 0 1 
+state.WRITE_CMD 0 1 0 0 0 0 1 
+state.FINISH 1 0 0 0 0 0 1 
+
+State Machine - |ac550_cnn_accelerator|fpga_op_executor:executor|cnn_job_controller:controller|region
+Name region.DMA_OUTPUT region.DMA_SHIFT region.DMA_MULTIPLIER region.DMA_BIAS region.DMA_WEIGHT region.DMA_INPUT 
+region.DMA_INPUT 0 0 0 0 0 0 
+region.DMA_WEIGHT 0 0 0 0 1 1 
+region.DMA_BIAS 0 0 0 1 0 1 
+region.DMA_MULTIPLIER 0 0 1 0 0 1 
+region.DMA_SHIFT 0 1 0 0 0 1 
+region.DMA_OUTPUT 1 0 0 0 0 1 
+
+State Machine - |ac550_cnn_accelerator|fpga_op_executor:executor|cnn_job_controller:controller|state
+Name state.ENGINE_START state.DMA_WAIT state.DMA_ISSUE state.IDLE state.ENGINE_WAIT 
+state.IDLE 0 0 0 0 0 
+state.DMA_ISSUE 0 0 1 1 0 
+state.DMA_WAIT 0 1 0 1 0 
+state.ENGINE_START 1 0 0 1 0 
+state.ENGINE_WAIT 0 0 0 1 1 

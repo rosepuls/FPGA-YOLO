@@ -1,0 +1,204 @@
+{
+  "manifest_sha256": "30EC0F313A521A66492F86CB8E1C1265E6250C58326878F463936A57609093F4",
+  "conv_generics": [
+    "-gPIN=8",
+    "-gPOUT=8",
+    "-gTILE_H=4",
+    "-gTILE_W=4"
+  ],
+  "selected": 10,
+  "completed": 10,
+  "passed": true,
+  "nodes": [
+    {
+      "graph_id": "model.0",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 262144,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "3D745BD5",
+        "crc32_expected": "3D745BD5"
+      },
+      "package_golden_vs_integer": {
+        "count": 262144,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "3D745BD5",
+        "crc32_expected": "3D745BD5"
+      },
+      "cycles": "2828289"
+    },
+    {
+      "graph_id": "model.1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 131072,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "27CD7CB8",
+        "crc32_expected": "27CD7CB8"
+      },
+      "package_golden_vs_integer": {
+        "count": 131072,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "27CD7CB8",
+        "crc32_expected": "27CD7CB8"
+      },
+      "cycles": "824321"
+    },
+    {
+      "graph_id": "model.2.m.0.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "0CE41B11",
+        "crc32_expected": "0CE41B11"
+      },
+      "package_golden_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "0CE41B11",
+        "crc32_expected": "0CE41B11"
+      },
+      "cycles": "366081"
+    },
+    {
+      "graph_id": "model.9.maxpool.1",
+      "opcode": "MAXPOOL",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "FC11FB3A",
+        "crc32_expected": "FC11FB3A"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "FC11FB3A",
+        "crc32_expected": "FC11FB3A"
+      },
+      "cycles": "204801"
+    },
+    {
+      "graph_id": "model.9.maxpool.2",
+      "opcode": "MAXPOOL",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "83FE6264",
+        "crc32_expected": "83FE6264"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "83FE6264",
+        "crc32_expected": "83FE6264"
+      },
+      "cycles": "204801"
+    },
+    {
+      "graph_id": "model.9.maxpool.3",
+      "opcode": "MAXPOOL",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "F29D3DA9",
+        "crc32_expected": "F29D3DA9"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "F29D3DA9",
+        "crc32_expected": "F29D3DA9"
+      },
+      "cycles": "204801"
+    },
+    {
+      "graph_id": "model.9.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "91B69FF3",
+        "crc32_expected": "91B69FF3"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "91B69FF3",
+        "crc32_expected": "91B69FF3"
+      },
+      "cycles": "407681"
+    },
+    {
+      "graph_id": "model.24.m.0",
+      "opcode": "CONV_LINEAR",
+      "rtl_vs_integer": {
+        "count": 27648,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "FAD4484A",
+        "crc32_expected": "FAD4484A"
+      },
+      "package_golden_vs_integer": {
+        "count": 27648,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "FAD4484A",
+        "crc32_expected": "FAD4484A"
+      },
+      "cycles": "112897"
+    },
+    {
+      "graph_id": "model.24.m.1",
+      "opcode": "CONV_LINEAR",
+      "rtl_vs_integer": {
+        "count": 6912,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "0336ED63",
+        "crc32_expected": "0336ED63"
+      },
+      "package_golden_vs_integer": {
+        "count": 6912,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "0336ED63",
+        "crc32_expected": "0336ED63"
+      },
+      "cycles": "53313"
+    },
+    {
+      "graph_id": "model.24.m.2",
+      "opcode": "CONV_LINEAR",
+      "rtl_vs_integer": {
+        "count": 1728,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "ADE4A9FE",
+        "crc32_expected": "ADE4A9FE"
+      },
+      "package_golden_vs_integer": {
+        "count": 1728,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "ADE4A9FE",
+        "crc32_expected": "ADE4A9FE"
+      },
+      "cycles": "25873"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Study/IC_Study/Project/FPGA/Contest/CGEDC_1/FPGA-YOLO
+T_opt
+!s110 1792113148
+VXHSMe:iC^O4V;?zAa_kCG1
+04 16 4 work tile_datapath_tb fast 0
+=1-7ccf0f6dc8fe-6ad179fc-290-4ff8
+o-quiet -auto_acc_if_foreign -work work
+Z1 tCvgOpt 0
+n@_opt
+OL;O;10.6e;65
+R0
+vaccumulator_buffer
+Z2 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z3 !s110 1792117644
+!i10b 1
+!s100 HX3VRY6eWi9PjgD]g9G?U0
+I<70Rn8YOT]?Zg@_fgEWcW0
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+!s105 accumulator_buffer_sv_unit
+S1
+R0
+Z5 w1792113134
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\accumulator_buffer.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\accumulator_buffer.sv
+L0 2
+Z6 OL;L;10.6e;65
+r1
+!s85 0
+31
+Z7 !s108 1792117644.000000
+!s107 C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\tile_datapath_tb.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\accumulator_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\weight_tile_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\feature_tile_buffer.sv|
+Z8 !s90 -work|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\build\msim-tile_datapath_tb|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\feature_tile_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\weight_tile_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\accumulator_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\tile_datapath_tb.sv|
+!i113 0
+Z9 o-work {C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\build\msim-tile_datapath_tb} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+vfeature_tile_buffer
+R2
+R3
+!i10b 1
+!s100 TG>m65<jNdocOZhT^>C882
+IMRYne>^i<<SzfcDBA@Ba33
+R4
+!s105 feature_tile_buffer_sv_unit
+S1
+R0
+R5
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\feature_tile_buffer.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\feature_tile_buffer.sv
+L0 2
+R6
+r1
+!s85 0
+31
+R7
+Z10 !s107 C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\tile_datapath_tb.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\accumulator_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\weight_tile_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\feature_tile_buffer.sv|
+R8
+!i113 0
+R9
+R1
+vmac_array_i8
+R2
+R3
+!i10b 1
+!s100 d0JmU`QNRE;6L4BLFL><23
+I;IO<@he^me`T6UVboCmm91
+R4
+!s105 mac_array_i8_sv_unit
+S1
+R0
+w1792112943
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv
+L0 2
+R6
+r1
+!s85 0
+31
+R7
+R10
+R8
+!i113 0
+R9
+R1
+vtile_datapath_tb
+R2
+R3
+!i10b 1
+!s100 [J>lPD^@nXVPjD21cJDb72
+Io=8NO7a^gZVoCMI=o69f<1
+R4
+!s105 tile_datapath_tb_sv_unit
+S1
+R0
+R5
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\tile_datapath_tb.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\tile_datapath_tb.sv
+L0 3
+R6
+r1
+!s85 0
+31
+R7
+R10
+R8
+!i113 0
+R9
+R1
+vweight_tile_buffer
+R2
+R3
+!i10b 1
+!s100 8DEJUjcT^BMCGUk7]d2P10
+IC87o]K:zjiE9D1iM1]gib2
+R4
+!s105 weight_tile_buffer_sv_unit
+S1
+R0
+R5
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\weight_tile_buffer.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\weight_tile_buffer.sv
+L0 2
+R6
+r1
+!s85 0
+31
+R7
+R10
+R8
+!i113 0
+R9
+R1

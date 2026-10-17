@@ -1,0 +1,6399 @@
+{
+  "acceptance": "AC550_G2_INT8",
+  "aggregate": {
+    "detection_summary": {
+      "class_mismatches": 0,
+      "matched": 15,
+      "max_confidence_diff": 0.015180587768554688,
+      "min_box_iou": 0.8396215395489677,
+      "quantized_count": 15,
+      "reference_count": 15,
+      "unmatched_quantized": 0,
+      "unmatched_reference": 0
+    },
+    "failure_reasons": [
+      "minimum box IoU 0.839622 is below 0.9"
+    ],
+    "image_count": 8,
+    "manifest_sha256": "3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24",
+    "node_coverage": {
+      "boundary": {
+        "golden_non_conv_boundaries": 34,
+        "hooked_modules": [
+          "model.11",
+          "model.11.upsample",
+          "model.12",
+          "model.13",
+          "model.13.m.0",
+          "model.15",
+          "model.15.upsample",
+          "model.16",
+          "model.17",
+          "model.17.m.0",
+          "model.19",
+          "model.2",
+          "model.2.m.0",
+          "model.20",
+          "model.20.m.0",
+          "model.22",
+          "model.23",
+          "model.23.m.0",
+          "model.24.m.0",
+          "model.24.m.1",
+          "model.24.m.2",
+          "model.4",
+          "model.4.m.0",
+          "model.4.m.1",
+          "model.6",
+          "model.6.m.0",
+          "model.6.m.1",
+          "model.6.m.2",
+          "model.8",
+          "model.8.m.0",
+          "model.9",
+          "model.9.m"
+        ],
+        "hooked_non_conv_boundaries": 31,
+        "unresolved_non_conv_modules": []
+      },
+      "boundary_simulated_executors": [
+        "ARM_ADD",
+        "ARM_CONCAT",
+        "ARM_UPSAMPLE",
+        "FPGA_MAXPOOL"
+      ],
+      "executor_counts": {
+        "ARM_ADD": 7,
+        "ARM_CONCAT": 13,
+        "ARM_UPSAMPLE": 4,
+        "FPGA_CONV_LINEAR": 3,
+        "FPGA_CONV_RELU": 57,
+        "FPGA_MAXPOOL": 3
+      },
+      "graph_node_count": 87,
+      "integer_simulation_complete": true,
+      "measured_conv_nodes": 60,
+      "missing_conv_sources": [],
+      "missing_non_conv_nodes": [],
+      "package_conv_nodes": 60,
+      "unquantized_executors": []
+    },
+    "package_status": [
+      "PRE_G2_STATIC_QUANTIZATION"
+    ],
+    "passed": false,
+    "worst_heads": {
+      "P3": {
+        "max_mean_abs_diff": 0.19496788084506989,
+        "max_rmse": 0.30272960662841797,
+        "worst_mean_input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "worst_rmse_input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png"
+      },
+      "P4": {
+        "max_mean_abs_diff": 0.14932069182395935,
+        "max_rmse": 0.2512025535106659,
+        "worst_mean_input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1012.png",
+        "worst_rmse_input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png"
+      },
+      "P5": {
+        "max_mean_abs_diff": 0.11917076259851456,
+        "max_rmse": 0.24674589931964874,
+        "worst_mean_input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png",
+        "worst_rmse_input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png"
+      }
+    },
+    "worst_nodes": {
+      "model.11": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.4338229298591614,
+        "mean_abs_diff": 0.027568738907575607,
+        "quantized_max": 2.5491867065429688,
+        "quantized_min": 0.0,
+        "reference_max": 2.542884588241577,
+        "reference_min": 0.0,
+        "rmse": 0.05268795043230057,
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "model.11.upsample": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.4338229298591614,
+        "mean_abs_diff": 0.027568738907575607,
+        "quantized_max": 2.5491867065429688,
+        "quantized_min": 0.0,
+        "reference_max": 2.542884588241577,
+        "reference_min": 0.0,
+        "rmse": 0.05268795043230057,
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "model.12": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.8558082580566406,
+        "mean_abs_diff": 0.029822973534464836,
+        "quantized_max": 4.643929481506348,
+        "quantized_min": 0.0,
+        "reference_max": 4.669163703918457,
+        "reference_min": 0.0,
+        "rmse": 0.05980973690748215,
+        "shape": [
+          1,
+          256,
+          16,
+          16
+        ]
+      },
+      "model.13": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.5553190112113953,
+        "mean_abs_diff": 0.022517064586281776,
+        "quantized_max": 3.437065601348877,
+        "quantized_min": 0.0,
+        "reference_max": 3.4851856231689453,
+        "reference_min": 0.0,
+        "rmse": 0.04737313836812973,
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "model.13.m.0": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.4475228786468506,
+        "mean_abs_diff": 0.02930315025150776,
+        "quantized_max": 3.6903560161590576,
+        "quantized_min": 0.0,
+        "reference_max": 3.679565668106079,
+        "reference_min": 0.0,
+        "rmse": 0.052442412823438644,
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "model.15": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.41346311569213867,
+        "mean_abs_diff": 0.036865852773189545,
+        "quantized_max": 4.419180393218994,
+        "quantized_min": 0.0,
+        "reference_max": 4.376831531524658,
+        "reference_min": 0.0,
+        "rmse": 0.05742596462368965,
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "model.15.upsample": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.41346311569213867,
+        "mean_abs_diff": 0.036865852773189545,
+        "quantized_max": 4.419180393218994,
+        "quantized_min": 0.0,
+        "reference_max": 4.376831531524658,
+        "reference_min": 0.0,
+        "rmse": 0.05742596462368965,
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "model.16": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.8917784690856934,
+        "mean_abs_diff": 0.035558588802814484,
+        "quantized_max": 4.40510368347168,
+        "quantized_min": 0.0,
+        "reference_max": 4.376831531524658,
+        "reference_min": 0.0,
+        "rmse": 0.06222637742757797,
+        "shape": [
+          1,
+          128,
+          32,
+          32
+        ]
+      },
+      "model.17": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 1.5399975776672363,
+        "mean_abs_diff": 0.08883586525917053,
+        "quantized_max": 10.47719955444336,
+        "quantized_min": 0.0,
+        "reference_max": 10.642400741577148,
+        "reference_min": 0.0,
+        "rmse": 0.14933624863624573,
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "model.17.m.0": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.7746362090110779,
+        "mean_abs_diff": 0.043558113276958466,
+        "quantized_max": 6.032875061035156,
+        "quantized_min": 0.0,
+        "reference_max": 6.109224796295166,
+        "reference_min": 0.0,
+        "rmse": 0.06987014412879944,
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "model.19": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.7505530118942261,
+        "mean_abs_diff": 0.033644698560237885,
+        "quantized_max": 4.427685737609863,
+        "quantized_min": 0.0,
+        "reference_max": 4.376831531524658,
+        "reference_min": 0.0,
+        "rmse": 0.058501746505498886,
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "model.2": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1006.png",
+        "max_abs_diff": 1.5446687936782837,
+        "mean_abs_diff": 0.08697931468486786,
+        "quantized_max": 15.25989055633545,
+        "quantized_min": 0.0,
+        "reference_max": 14.990283966064453,
+        "reference_min": 0.0,
+        "rmse": 0.1427983194589615,
+        "shape": [
+          1,
+          32,
+          64,
+          64
+        ]
+      },
+      "model.2.m.0": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1006.png",
+        "max_abs_diff": 4.322187423706055,
+        "mean_abs_diff": 0.2144063115119934,
+        "quantized_max": 31.637739181518555,
+        "quantized_min": 0.0,
+        "reference_max": 32.19477844238281,
+        "reference_min": 0.0,
+        "rmse": 0.32591038942337036,
+        "shape": [
+          1,
+          16,
+          64,
+          64
+        ]
+      },
+      "model.20": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 1.2240426540374756,
+        "mean_abs_diff": 0.051695097237825394,
+        "quantized_max": 10.006453514099121,
+        "quantized_min": 0.0,
+        "reference_max": 9.761946678161621,
+        "reference_min": 0.0,
+        "rmse": 0.10088017582893372,
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "model.20.m.0": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.7484778165817261,
+        "mean_abs_diff": 0.037153210490942,
+        "quantized_max": 9.351784706115723,
+        "quantized_min": 0.0,
+        "reference_max": 9.056999206542969,
+        "reference_min": 0.0,
+        "rmse": 0.06837201863527298,
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "model.22": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 1.2262332439422607,
+        "mean_abs_diff": 0.02815435454249382,
+        "quantized_max": 6.060303688049316,
+        "quantized_min": 0.0,
+        "reference_max": 6.019059181213379,
+        "reference_min": 0.0,
+        "rmse": 0.05754602700471878,
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "model.23": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 1.0325053930282593,
+        "mean_abs_diff": 0.023110290989279747,
+        "quantized_max": 5.858444690704346,
+        "quantized_min": 0.0,
+        "reference_max": 5.860908508300781,
+        "reference_min": 0.0,
+        "rmse": 0.05159187689423561,
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "model.23.m.0": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.9023118019104004,
+        "mean_abs_diff": 0.025906505063176155,
+        "quantized_max": 5.883162975311279,
+        "quantized_min": 0.0,
+        "reference_max": 5.805458068847656,
+        "reference_min": 0.0,
+        "rmse": 0.05629246309399605,
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "model.24.m.0": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 2.4813051223754883,
+        "mean_abs_diff": 0.19496788084506989,
+        "quantized_max": 9.482224464416504,
+        "quantized_min": -21.867172241210938,
+        "reference_max": 9.461562156677246,
+        "reference_min": -21.849063873291016,
+        "rmse": 0.2938035726547241,
+        "shape": [
+          1,
+          27,
+          32,
+          32
+        ]
+      },
+      "model.24.m.1": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1012.png",
+        "max_abs_diff": 2.106736183166504,
+        "mean_abs_diff": 0.14932069182395935,
+        "quantized_max": 7.911587715148926,
+        "quantized_min": -16.97395133972168,
+        "reference_max": 7.859584808349609,
+        "reference_min": -16.4630184173584,
+        "rmse": 0.23543481528759003,
+        "shape": [
+          1,
+          27,
+          16,
+          16
+        ]
+      },
+      "model.24.m.2": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png",
+        "max_abs_diff": 2.652438163757324,
+        "mean_abs_diff": 0.11917076259851456,
+        "quantized_max": 8.583586692810059,
+        "quantized_min": -15.245475769042969,
+        "reference_max": 8.672135353088379,
+        "reference_min": -15.522920608520508,
+        "rmse": 0.24674589931964874,
+        "shape": [
+          1,
+          27,
+          8,
+          8
+        ]
+      },
+      "model.4": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1006.png",
+        "max_abs_diff": 0.9158746004104614,
+        "mean_abs_diff": 0.036004260182380676,
+        "quantized_max": 4.727428436279297,
+        "quantized_min": 0.0,
+        "reference_max": 4.787871837615967,
+        "reference_min": 0.0,
+        "rmse": 0.07090209424495697,
+        "shape": [
+          1,
+          64,
+          32,
+          32
+        ]
+      },
+      "model.4.m.0": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1006.png",
+        "max_abs_diff": 0.9903717041015625,
+        "mean_abs_diff": 0.05843624845147133,
+        "quantized_max": 6.437416076660156,
+        "quantized_min": 0.0,
+        "reference_max": 6.360489368438721,
+        "reference_min": 0.0,
+        "rmse": 0.0965295135974884,
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "model.4.m.1": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1006.png",
+        "max_abs_diff": 1.4589259624481201,
+        "mean_abs_diff": 0.1193133071064949,
+        "quantized_max": 9.570008277893066,
+        "quantized_min": 0.0,
+        "reference_max": 9.800579071044922,
+        "reference_min": 0.0,
+        "rmse": 0.17493703961372375,
+        "shape": [
+          1,
+          32,
+          32,
+          32
+        ]
+      },
+      "model.6": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1012.png",
+        "max_abs_diff": 0.8633031845092773,
+        "mean_abs_diff": 0.03082721121609211,
+        "quantized_max": 4.708428382873535,
+        "quantized_min": 0.0,
+        "reference_max": 4.610988140106201,
+        "reference_min": 0.0,
+        "rmse": 0.0638292208313942,
+        "shape": [
+          1,
+          128,
+          16,
+          16
+        ]
+      },
+      "model.6.m.0": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1006.png",
+        "max_abs_diff": 0.46521031856536865,
+        "mean_abs_diff": 0.023874148726463318,
+        "quantized_max": 3.814119815826416,
+        "quantized_min": 0.0,
+        "reference_max": 3.797957420349121,
+        "reference_min": 0.0,
+        "rmse": 0.043326571583747864,
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "model.6.m.1": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png",
+        "max_abs_diff": 0.5933552980422974,
+        "mean_abs_diff": 0.04764746502041817,
+        "quantized_max": 6.0439677238464355,
+        "quantized_min": 0.0,
+        "reference_max": 6.147515296936035,
+        "reference_min": 0.0,
+        "rmse": 0.07324337959289551,
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "model.6.m.2": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1013.png",
+        "max_abs_diff": 0.7057099342346191,
+        "mean_abs_diff": 0.07918675988912582,
+        "quantized_max": 7.226219177246094,
+        "quantized_min": 0.0,
+        "reference_max": 7.23169469833374,
+        "reference_min": 0.0,
+        "rmse": 0.1108773946762085,
+        "shape": [
+          1,
+          64,
+          16,
+          16
+        ]
+      },
+      "model.8": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.7726109027862549,
+        "mean_abs_diff": 0.027150893583893776,
+        "quantized_max": 3.8930108547210693,
+        "quantized_min": 0.0,
+        "reference_max": 4.145911693572998,
+        "reference_min": 0.0,
+        "rmse": 0.06376230716705322,
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "model.8.m.0": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png",
+        "max_abs_diff": 0.7295443415641785,
+        "mean_abs_diff": 0.04694027826189995,
+        "quantized_max": 6.90784215927124,
+        "quantized_min": 0.0,
+        "reference_max": 6.950263500213623,
+        "reference_min": 0.0,
+        "rmse": 0.089539535343647,
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "model.9": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png",
+        "max_abs_diff": 0.8329082727432251,
+        "mean_abs_diff": 0.00967550277709961,
+        "quantized_max": 2.796936273574829,
+        "quantized_min": 0.0,
+        "reference_max": 2.7813453674316406,
+        "reference_min": 0.0,
+        "rmse": 0.03585801273584366,
+        "shape": [
+          1,
+          256,
+          8,
+          8
+        ]
+      },
+      "model.9.m": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+        "max_abs_diff": 0.3677724599838257,
+        "mean_abs_diff": 0.059811487793922424,
+        "quantized_max": 4.9051971435546875,
+        "quantized_min": 0.2502651512622833,
+        "reference_max": 4.947934627532959,
+        "reference_min": 0.0,
+        "rmse": 0.07832412421703339,
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "model.9.m#2": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1013.png",
+        "max_abs_diff": 0.3790109157562256,
+        "mean_abs_diff": 0.05835217610001564,
+        "quantized_max": 5.255568027496338,
+        "quantized_min": 1.1011667251586914,
+        "reference_max": 5.314657211303711,
+        "reference_min": 1.1271932125091553,
+        "rmse": 0.08080017566680908,
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      },
+      "model.9.m#3": {
+        "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1013.png",
+        "max_abs_diff": 0.3790109157562256,
+        "mean_abs_diff": 0.05829359591007233,
+        "quantized_max": 5.255568027496338,
+        "quantized_min": 1.4014848470687866,
+        "reference_max": 5.314657211303711,
+        "reference_min": 1.4029858112335205,
+        "rmse": 0.08155214786529541,
+        "shape": [
+          1,
+          128,
+          8,
+          8
+        ]
+      }
+    }
+  },
+  "failure_reasons": [
+    "minimum box IoU 0.839622 is below 0.9"
+  ],
+  "images": [
+    "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1000.png",
+    "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1002.png",
+    "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1004.png",
+    "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png",
+    "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1006.png",
+    "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+    "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1012.png",
+    "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1013.png"
+  ],
+  "manifest_sha256": "3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24",
+  "package": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\runs\\ac550_yolov5n_relu_int8_qat_staged_v1",
+  "package_status": "PRE_G2_STATIC_QUANTIZATION",
+  "passed": false,
+  "per_image": [
+    {
+      "detections": {
+        "comparison": {
+          "matched": 1,
+          "matches": [
+            {
+              "box_abs_max_diff": 8.061660766601562,
+              "box_iou": 0.8396215395489677,
+              "class_match": true,
+              "confidence_abs_diff": 0.0014728903770446777,
+              "quantized_class": 2,
+              "quantized_index": 0,
+              "reference_class": 2,
+              "reference_index": 0
+            }
+          ],
+          "quantized_count": 1,
+          "reference_count": 1,
+          "unmatched_quantized": [],
+          "unmatched_reference": []
+        },
+        "quantized": [
+          [
+            39.79026794433594,
+            32.225921630859375,
+            217.49766540527344,
+            215.22817993164062,
+            0.8969458341598511,
+            2.0
+          ]
+        ],
+        "reference": [
+          [
+            47.489898681640625,
+            40.19709014892578,
+            209.43600463867188,
+            208.80386352539062,
+            0.8954729437828064,
+            2.0
+          ]
+        ]
+      },
+      "graph": {
+        "node_count": 87,
+        "node_coverage": {
+          "boundary": {
+            "golden_non_conv_boundaries": 34,
+            "hooked_modules": [
+              "model.11",
+              "model.11.upsample",
+              "model.12",
+              "model.13",
+              "model.13.m.0",
+              "model.15",
+              "model.15.upsample",
+              "model.16",
+              "model.17",
+              "model.17.m.0",
+              "model.19",
+              "model.2",
+              "model.2.m.0",
+              "model.20",
+              "model.20.m.0",
+              "model.22",
+              "model.23",
+              "model.23.m.0",
+              "model.24.m.0",
+              "model.24.m.1",
+              "model.24.m.2",
+              "model.4",
+              "model.4.m.0",
+              "model.4.m.1",
+              "model.6",
+              "model.6.m.0",
+              "model.6.m.1",
+              "model.6.m.2",
+              "model.8",
+              "model.8.m.0",
+              "model.9",
+              "model.9.m"
+            ],
+            "hooked_non_conv_boundaries": 31,
+            "unresolved_non_conv_modules": []
+          },
+          "boundary_simulated_executors": [
+            "ARM_ADD",
+            "ARM_CONCAT",
+            "ARM_UPSAMPLE",
+            "FPGA_MAXPOOL"
+          ],
+          "executor_counts": {
+            "ARM_ADD": 7,
+            "ARM_CONCAT": 13,
+            "ARM_UPSAMPLE": 4,
+            "FPGA_CONV_LINEAR": 3,
+            "FPGA_CONV_RELU": 57,
+            "FPGA_MAXPOOL": 3
+          },
+          "graph_node_count": 87,
+          "integer_simulation_complete": true,
+          "measured_conv_nodes": 60,
+          "missing_conv_sources": [],
+          "missing_non_conv_nodes": [],
+          "package_conv_nodes": 60,
+          "unquantized_executors": []
+        }
+      },
+      "heads": {
+        "P3": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1000.png",
+          "max_abs_diff": 2.4569802284240723,
+          "mean_abs_diff": 0.15903203189373016,
+          "quantized_max": 9.675739288330078,
+          "quantized_min": -23.41529083251953,
+          "reference_max": 9.702594757080078,
+          "reference_min": -23.317699432373047,
+          "rmse": 0.24313463270664215,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "P4": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1000.png",
+          "max_abs_diff": 1.1402912139892578,
+          "mean_abs_diff": 0.11561091989278793,
+          "quantized_max": 8.774669647216797,
+          "quantized_min": -16.542409896850586,
+          "reference_max": 8.769365310668945,
+          "reference_min": -16.302644729614258,
+          "rmse": 0.1719306856393814,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "P5": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1000.png",
+          "max_abs_diff": 0.9862504005432129,
+          "mean_abs_diff": 0.08910831063985825,
+          "quantized_max": 7.046228408813477,
+          "quantized_min": -14.733022689819336,
+          "reference_max": 7.059136390686035,
+          "reference_min": -14.76472282409668,
+          "rmse": 0.139705628156662,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        }
+      },
+      "input": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "source": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1000.png"
+      },
+      "nodes": {
+        "model.11": {
+          "max_abs_diff": 0.32268184423446655,
+          "mean_abs_diff": 0.020981885492801666,
+          "quantized_max": 3.226818561553955,
+          "quantized_min": 0.0,
+          "reference_max": 3.324129104614258,
+          "reference_min": 0.0,
+          "rmse": 0.04265459626913071,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.11.upsample": {
+          "max_abs_diff": 0.32268184423446655,
+          "mean_abs_diff": 0.020981885492801666,
+          "quantized_max": 3.226818561553955,
+          "quantized_min": 0.0,
+          "reference_max": 3.324129104614258,
+          "reference_min": 0.0,
+          "rmse": 0.04265459626913071,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.12": {
+          "max_abs_diff": 0.6503134369850159,
+          "mean_abs_diff": 0.024658016860485077,
+          "quantized_max": 3.869941234588623,
+          "quantized_min": 0.0,
+          "reference_max": 3.9251880645751953,
+          "reference_min": 0.0,
+          "rmse": 0.05133550986647606,
+          "shape": [
+            1,
+            256,
+            16,
+            16
+          ]
+        },
+        "model.13": {
+          "max_abs_diff": 0.4419060945510864,
+          "mean_abs_diff": 0.01656239479780197,
+          "quantized_max": 3.361525535583496,
+          "quantized_min": 0.0,
+          "reference_max": 3.269881010055542,
+          "reference_min": 0.0,
+          "rmse": 0.03695923089981079,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.13.m.0": {
+          "max_abs_diff": 0.3574749827384949,
+          "mean_abs_diff": 0.02422461472451687,
+          "quantized_max": 3.5725786685943604,
+          "quantized_min": 0.0,
+          "reference_max": 3.5653388500213623,
+          "reference_min": 0.0,
+          "rmse": 0.042341213673353195,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.15": {
+          "max_abs_diff": 0.4042629599571228,
+          "mean_abs_diff": 0.02888505533337593,
+          "quantized_max": 4.007223129272461,
+          "quantized_min": 0.0,
+          "reference_max": 3.9987123012542725,
+          "reference_min": 0.0,
+          "rmse": 0.045711882412433624,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.15.upsample": {
+          "max_abs_diff": 0.4042629599571228,
+          "mean_abs_diff": 0.02888505533337593,
+          "quantized_max": 4.007223129272461,
+          "quantized_min": 0.0,
+          "reference_max": 3.9987123012542725,
+          "reference_min": 0.0,
+          "rmse": 0.045711882412433624,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.16": {
+          "max_abs_diff": 0.7682312726974487,
+          "mean_abs_diff": 0.031123192980885506,
+          "quantized_max": 5.909285545349121,
+          "quantized_min": 0.0,
+          "reference_max": 5.894872665405273,
+          "reference_min": 0.0,
+          "rmse": 0.05641091614961624,
+          "shape": [
+            1,
+            128,
+            32,
+            32
+          ]
+        },
+        "model.17": {
+          "max_abs_diff": 1.345632553100586,
+          "mean_abs_diff": 0.07428519427776337,
+          "quantized_max": 10.47719955444336,
+          "quantized_min": 0.0,
+          "reference_max": 10.728719711303711,
+          "reference_min": 0.0,
+          "rmse": 0.12231174856424332,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.17.m.0": {
+          "max_abs_diff": 0.4635181427001953,
+          "mean_abs_diff": 0.03695172816514969,
+          "quantized_max": 4.996926784515381,
+          "quantized_min": 0.0,
+          "reference_max": 4.9313764572143555,
+          "reference_min": 0.0,
+          "rmse": 0.057650282979011536,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.19": {
+          "max_abs_diff": 0.4107944965362549,
+          "mean_abs_diff": 0.027379188686609268,
+          "quantized_max": 4.021061420440674,
+          "quantized_min": 0.0,
+          "reference_max": 3.9987123012542725,
+          "reference_min": 0.0,
+          "rmse": 0.047488462179899216,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.2": {
+          "max_abs_diff": 1.3960850238800049,
+          "mean_abs_diff": 0.07823485136032104,
+          "quantized_max": 18.80870246887207,
+          "quantized_min": 0.0,
+          "reference_max": 18.890544891357422,
+          "reference_min": 0.0,
+          "rmse": 0.13103953003883362,
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ]
+        },
+        "model.2.m.0": {
+          "max_abs_diff": 3.924485921859741,
+          "mean_abs_diff": 0.19007211923599243,
+          "quantized_max": 32.24615478515625,
+          "quantized_min": 0.0,
+          "reference_max": 32.81888198852539,
+          "reference_min": 0.0,
+          "rmse": 0.3006463050842285,
+          "shape": [
+            1,
+            16,
+            64,
+            64
+          ]
+        },
+        "model.20": {
+          "max_abs_diff": 0.8176737427711487,
+          "mean_abs_diff": 0.040558356791734695,
+          "quantized_max": 9.236725807189941,
+          "quantized_min": 0.0,
+          "reference_max": 9.501937866210938,
+          "reference_min": 0.0,
+          "rmse": 0.07675562053918839,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.20.m.0": {
+          "max_abs_diff": 0.4082396924495697,
+          "mean_abs_diff": 0.0277437511831522,
+          "quantized_max": 8.801679611206055,
+          "quantized_min": 0.0,
+          "reference_max": 8.76945686340332,
+          "reference_min": 0.0,
+          "rmse": 0.04784446209669113,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.22": {
+          "max_abs_diff": 0.34232693910598755,
+          "mean_abs_diff": 0.021476367488503456,
+          "quantized_max": 4.090704917907715,
+          "quantized_min": 0.0,
+          "reference_max": 4.023613452911377,
+          "reference_min": 0.0,
+          "rmse": 0.04258245229721069,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23": {
+          "max_abs_diff": 0.5551027059555054,
+          "mean_abs_diff": 0.02070476859807968,
+          "quantized_max": 5.50793981552124,
+          "quantized_min": 0.0,
+          "reference_max": 5.419064998626709,
+          "reference_min": 0.0,
+          "rmse": 0.041577521711587906,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23.m.0": {
+          "max_abs_diff": 0.4341011047363281,
+          "mean_abs_diff": 0.018838951364159584,
+          "quantized_max": 5.307636260986328,
+          "quantized_min": 0.0,
+          "reference_max": 5.218904972076416,
+          "reference_min": 0.0,
+          "rmse": 0.03825549781322479,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.24.m.0": {
+          "max_abs_diff": 2.4569802284240723,
+          "mean_abs_diff": 0.15903203189373016,
+          "quantized_max": 9.675739288330078,
+          "quantized_min": -23.41529083251953,
+          "reference_max": 9.702594757080078,
+          "reference_min": -23.317699432373047,
+          "rmse": 0.24313463270664215,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "model.24.m.1": {
+          "max_abs_diff": 1.1402912139892578,
+          "mean_abs_diff": 0.11561091989278793,
+          "quantized_max": 8.774669647216797,
+          "quantized_min": -16.542409896850586,
+          "reference_max": 8.769365310668945,
+          "reference_min": -16.302644729614258,
+          "rmse": 0.1719306856393814,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "model.24.m.2": {
+          "max_abs_diff": 0.9862504005432129,
+          "mean_abs_diff": 0.08910831063985825,
+          "quantized_max": 7.046228408813477,
+          "quantized_min": -14.733022689819336,
+          "reference_max": 7.059136390686035,
+          "reference_min": -14.76472282409668,
+          "rmse": 0.139705628156662,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        },
+        "model.4": {
+          "max_abs_diff": 0.7682312726974487,
+          "mean_abs_diff": 0.03160233795642853,
+          "quantized_max": 5.909285545349121,
+          "quantized_min": 0.0,
+          "reference_max": 5.894872665405273,
+          "reference_min": 0.0,
+          "rmse": 0.06382215023040771,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.4.m.0": {
+          "max_abs_diff": 1.0261834859848022,
+          "mean_abs_diff": 0.051180168986320496,
+          "quantized_max": 6.7469072341918945,
+          "quantized_min": 0.0,
+          "reference_max": 6.856144905090332,
+          "reference_min": 0.0,
+          "rmse": 0.08638796210289001,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.4.m.1": {
+          "max_abs_diff": 1.3951855897903442,
+          "mean_abs_diff": 0.10443115234375,
+          "quantized_max": 8.95542049407959,
+          "quantized_min": 0.0,
+          "reference_max": 8.835638046264648,
+          "reference_min": 0.0,
+          "rmse": 0.15434807538986206,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.6": {
+          "max_abs_diff": 0.6503134369850159,
+          "mean_abs_diff": 0.026304472237825394,
+          "quantized_max": 3.869941234588623,
+          "quantized_min": 0.0,
+          "reference_max": 3.9251880645751953,
+          "reference_min": 0.0,
+          "rmse": 0.05642416328191757,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.6.m.0": {
+          "max_abs_diff": 0.4141092896461487,
+          "mean_abs_diff": 0.021217893809080124,
+          "quantized_max": 3.3196969032287598,
+          "quantized_min": 0.0,
+          "reference_max": 3.365011692047119,
+          "reference_min": 0.0,
+          "rmse": 0.0379016175866127,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.1": {
+          "max_abs_diff": 0.544201135635376,
+          "mean_abs_diff": 0.04221563786268234,
+          "quantized_max": 4.518854141235352,
+          "quantized_min": 0.0,
+          "reference_max": 4.555782794952393,
+          "reference_min": 0.0,
+          "rmse": 0.06393232941627502,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.2": {
+          "max_abs_diff": 0.6112313270568848,
+          "mean_abs_diff": 0.07175362855195999,
+          "quantized_max": 7.365185260772705,
+          "quantized_min": 0.0,
+          "reference_max": 7.301690578460693,
+          "reference_min": 0.0,
+          "rmse": 0.09950336068868637,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.8": {
+          "max_abs_diff": 0.6946306228637695,
+          "mean_abs_diff": 0.022120052948594093,
+          "quantized_max": 5.672673225402832,
+          "quantized_min": 0.0,
+          "reference_max": 5.792166709899902,
+          "reference_min": 0.0,
+          "rmse": 0.054005272686481476,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.8.m.0": {
+          "max_abs_diff": 0.47917604446411133,
+          "mean_abs_diff": 0.03955427557229996,
+          "quantized_max": 6.451663970947266,
+          "quantized_min": 0.0,
+          "reference_max": 6.531970500946045,
+          "reference_min": 0.0,
+          "rmse": 0.07181565463542938,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9": {
+          "max_abs_diff": 0.38598716259002686,
+          "mean_abs_diff": 0.008128753863275051,
+          "quantized_max": 3.3434641361236572,
+          "quantized_min": 0.0,
+          "reference_max": 3.6461100578308105,
+          "reference_min": 0.0,
+          "rmse": 0.02791958674788475,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.9.m": {
+          "max_abs_diff": 0.5014023780822754,
+          "mean_abs_diff": 0.05111725628376007,
+          "quantized_max": 5.205514907836914,
+          "quantized_min": 0.35037121176719666,
+          "reference_max": 5.179906368255615,
+          "reference_min": 0.23907172679901123,
+          "rmse": 0.06784139573574066,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#2": {
+          "max_abs_diff": 0.2693343162536621,
+          "mean_abs_diff": 0.0489659383893013,
+          "quantized_max": 5.205514907836914,
+          "quantized_min": 0.90095454454422,
+          "reference_max": 5.179906368255615,
+          "reference_min": 0.9035193920135498,
+          "rmse": 0.0642789974808693,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#3": {
+          "max_abs_diff": 0.21174180507659912,
+          "mean_abs_diff": 0.04909868165850639,
+          "quantized_max": 5.205514907836914,
+          "quantized_min": 1.451537847518921,
+          "reference_max": 5.179906368255615,
+          "reference_min": 1.469841718673706,
+          "rmse": 0.06444981694221497,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        }
+      },
+      "notes": [
+        "Convolution nodes use package INT8 weights, INT32 bias and calibrated scales.",
+        "Non-convolution graph nodes retain the frozen topology and are not yet integer-executed by this simulator.",
+        "This report does not approve QAT, FPGA timing, resource constraints, or manifest freeze."
+      ],
+      "package": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\runs\\ac550_yolov5n_relu_int8_qat_staged_v1",
+      "package_manifest_sha256": "3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24",
+      "package_status": "PRE_G2_STATIC_QUANTIZATION",
+      "schema_version": 1,
+      "thresholds": {
+        "confidence": 0.25,
+        "nms_iou": 0.45
+      }
+    },
+    {
+      "detections": {
+        "comparison": {
+          "matched": 2,
+          "matches": [
+            {
+              "box_abs_max_diff": 3.6457061767578125,
+              "box_iou": 0.9176410018189048,
+              "class_match": true,
+              "confidence_abs_diff": 0.005908012390136719,
+              "quantized_class": 2,
+              "quantized_index": 0,
+              "reference_class": 2,
+              "reference_index": 0
+            },
+            {
+              "box_abs_max_diff": 2.5476837158203125,
+              "box_iou": 0.913067282269008,
+              "class_match": true,
+              "confidence_abs_diff": 0.0052835941314697266,
+              "quantized_class": 1,
+              "quantized_index": 1,
+              "reference_class": 1,
+              "reference_index": 1
+            }
+          ],
+          "quantized_count": 2,
+          "reference_count": 2,
+          "unmatched_quantized": [],
+          "unmatched_reference": []
+        },
+        "quantized": [
+          [
+            34.72295379638672,
+            116.69194030761719,
+            216.19415283203125,
+            167.2140350341797,
+            0.8855223059654236,
+            2.0
+          ],
+          [
+            141.8250732421875,
+            54.32081604003906,
+            187.37545776367188,
+            87.381591796875,
+            0.866093099117279,
+            1.0
+          ]
+        ],
+        "reference": [
+          [
+            31.94635009765625,
+            115.34859466552734,
+            219.83985900878906,
+            168.52322387695312,
+            0.8914303183555603,
+            2.0
+          ],
+          [
+            140.99623107910156,
+            53.72917175292969,
+            189.9231414794922,
+            87.4388427734375,
+            0.8608095049858093,
+            1.0
+          ]
+        ]
+      },
+      "graph": {
+        "node_count": 87,
+        "node_coverage": {
+          "boundary": {
+            "golden_non_conv_boundaries": 34,
+            "hooked_modules": [
+              "model.11",
+              "model.11.upsample",
+              "model.12",
+              "model.13",
+              "model.13.m.0",
+              "model.15",
+              "model.15.upsample",
+              "model.16",
+              "model.17",
+              "model.17.m.0",
+              "model.19",
+              "model.2",
+              "model.2.m.0",
+              "model.20",
+              "model.20.m.0",
+              "model.22",
+              "model.23",
+              "model.23.m.0",
+              "model.24.m.0",
+              "model.24.m.1",
+              "model.24.m.2",
+              "model.4",
+              "model.4.m.0",
+              "model.4.m.1",
+              "model.6",
+              "model.6.m.0",
+              "model.6.m.1",
+              "model.6.m.2",
+              "model.8",
+              "model.8.m.0",
+              "model.9",
+              "model.9.m"
+            ],
+            "hooked_non_conv_boundaries": 31,
+            "unresolved_non_conv_modules": []
+          },
+          "boundary_simulated_executors": [
+            "ARM_ADD",
+            "ARM_CONCAT",
+            "ARM_UPSAMPLE",
+            "FPGA_MAXPOOL"
+          ],
+          "executor_counts": {
+            "ARM_ADD": 7,
+            "ARM_CONCAT": 13,
+            "ARM_UPSAMPLE": 4,
+            "FPGA_CONV_LINEAR": 3,
+            "FPGA_CONV_RELU": 57,
+            "FPGA_MAXPOOL": 3
+          },
+          "graph_node_count": 87,
+          "integer_simulation_complete": true,
+          "measured_conv_nodes": 60,
+          "missing_conv_sources": [],
+          "missing_non_conv_nodes": [],
+          "package_conv_nodes": 60,
+          "unquantized_executors": []
+        }
+      },
+      "heads": {
+        "P3": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1002.png",
+          "max_abs_diff": 2.5300445556640625,
+          "mean_abs_diff": 0.18320435285568237,
+          "quantized_max": 10.062768936157227,
+          "quantized_min": -22.641231536865234,
+          "reference_max": 9.637350082397461,
+          "reference_min": -22.773681640625,
+          "rmse": 0.27444159984588623,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "P4": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1002.png",
+          "max_abs_diff": 1.4573249816894531,
+          "mean_abs_diff": 0.13154275715351105,
+          "quantized_max": 8.918517112731934,
+          "quantized_min": -18.124727249145508,
+          "reference_max": 8.898919105529785,
+          "reference_min": -18.26857566833496,
+          "rmse": 0.19728973507881165,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "P5": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1002.png",
+          "max_abs_diff": 1.1218149662017822,
+          "mean_abs_diff": 0.09833112359046936,
+          "quantized_max": 8.199247360229492,
+          "quantized_min": -15.373588562011719,
+          "reference_max": 8.133727073669434,
+          "reference_min": -15.20916748046875,
+          "rmse": 0.1678183674812317,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        }
+      },
+      "input": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "source": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1002.png"
+      },
+      "nodes": {
+        "model.11": {
+          "max_abs_diff": 0.43235617876052856,
+          "mean_abs_diff": 0.020177844911813736,
+          "quantized_max": 2.5491867065429688,
+          "quantized_min": 0.0,
+          "reference_max": 2.716712236404419,
+          "reference_min": 0.0,
+          "rmse": 0.03894829377532005,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.11.upsample": {
+          "max_abs_diff": 0.43235617876052856,
+          "mean_abs_diff": 0.020177844911813736,
+          "quantized_max": 2.5491867065429688,
+          "quantized_min": 0.0,
+          "reference_max": 2.716712236404419,
+          "reference_min": 0.0,
+          "rmse": 0.03894829377532005,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.12": {
+          "max_abs_diff": 0.5504365563392639,
+          "mean_abs_diff": 0.02502744272351265,
+          "quantized_max": 4.708428382873535,
+          "quantized_min": 0.0,
+          "reference_max": 4.606247901916504,
+          "reference_min": 0.0,
+          "rmse": 0.049743372946977615,
+          "shape": [
+            1,
+            256,
+            16,
+            16
+          ]
+        },
+        "model.13": {
+          "max_abs_diff": 0.49100935459136963,
+          "mean_abs_diff": 0.019419146701693535,
+          "quantized_max": 3.5126054286956787,
+          "quantized_min": 0.0,
+          "reference_max": 3.4975833892822266,
+          "reference_min": 0.0,
+          "rmse": 0.04053798317909241,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.13.m.0": {
+          "max_abs_diff": 0.43900585174560547,
+          "mean_abs_diff": 0.02517545409500599,
+          "quantized_max": 3.5333194732666016,
+          "quantized_min": -0.0,
+          "reference_max": 3.3679351806640625,
+          "reference_min": 0.0,
+          "rmse": 0.04422668740153313,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.15": {
+          "max_abs_diff": 0.312888503074646,
+          "mean_abs_diff": 0.03220543637871742,
+          "quantized_max": 4.718785762786865,
+          "quantized_min": 0.0,
+          "reference_max": 4.756236553192139,
+          "reference_min": 0.0,
+          "rmse": 0.05002428591251373,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.15.upsample": {
+          "max_abs_diff": 0.312888503074646,
+          "mean_abs_diff": 0.03220543637871742,
+          "quantized_max": 4.718785762786865,
+          "quantized_min": 0.0,
+          "reference_max": 4.756236553192139,
+          "reference_min": 0.0,
+          "rmse": 0.05002428591251373,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.16": {
+          "max_abs_diff": 0.6388185024261475,
+          "mean_abs_diff": 0.03314388543367386,
+          "quantized_max": 4.727428436279297,
+          "quantized_min": 0.0,
+          "reference_max": 4.756236553192139,
+          "reference_min": 0.0,
+          "rmse": 0.05800144001841545,
+          "shape": [
+            1,
+            128,
+            32,
+            32
+          ]
+        },
+        "model.17": {
+          "max_abs_diff": 1.3334617614746094,
+          "mean_abs_diff": 0.0801231861114502,
+          "quantized_max": 10.286705017089844,
+          "quantized_min": 0.0,
+          "reference_max": 10.31253433227539,
+          "reference_min": 0.0,
+          "rmse": 0.1339797079563141,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.17.m.0": {
+          "max_abs_diff": 0.6829590201377869,
+          "mean_abs_diff": 0.03884429484605789,
+          "quantized_max": 6.093812942504883,
+          "quantized_min": 0.0,
+          "reference_max": 6.090551853179932,
+          "reference_min": 0.0,
+          "rmse": 0.061446208506822586,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.19": {
+          "max_abs_diff": 0.43255871534347534,
+          "mean_abs_diff": 0.029993603006005287,
+          "quantized_max": 4.698768615722656,
+          "quantized_min": 0.0,
+          "reference_max": 4.756236553192139,
+          "reference_min": 0.0,
+          "rmse": 0.05129605531692505,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.2": {
+          "max_abs_diff": 1.129752278327942,
+          "mean_abs_diff": 0.08515334129333496,
+          "quantized_max": 7.807385444641113,
+          "quantized_min": 0.0,
+          "reference_max": 7.941746711730957,
+          "reference_min": 0.0,
+          "rmse": 0.13781315088272095,
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ]
+        },
+        "model.2.m.0": {
+          "max_abs_diff": 2.967240571975708,
+          "mean_abs_diff": 0.20840120315551758,
+          "quantized_max": 23.424095153808594,
+          "quantized_min": 0.0,
+          "reference_max": 23.796293258666992,
+          "reference_min": 0.0,
+          "rmse": 0.31070780754089355,
+          "shape": [
+            1,
+            16,
+            64,
+            64
+          ]
+        },
+        "model.20": {
+          "max_abs_diff": 0.7643795013427734,
+          "mean_abs_diff": 0.04831506311893463,
+          "quantized_max": 10.006453514099121,
+          "quantized_min": 0.0,
+          "reference_max": 9.916587829589844,
+          "reference_min": 0.0,
+          "rmse": 0.09190673381090164,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.20.m.0": {
+          "max_abs_diff": 0.6557052135467529,
+          "mean_abs_diff": 0.03325570747256279,
+          "quantized_max": 9.508957862854004,
+          "quantized_min": 0.0,
+          "reference_max": 8.936558723449707,
+          "reference_min": 0.0,
+          "rmse": 0.05812365561723709,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.22": {
+          "max_abs_diff": 0.4545227587223053,
+          "mean_abs_diff": 0.022896941751241684,
+          "quantized_max": 7.120856761932373,
+          "quantized_min": 0.0,
+          "reference_max": 7.173448085784912,
+          "reference_min": 0.0,
+          "rmse": 0.044683486223220825,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23": {
+          "max_abs_diff": 0.6922474503517151,
+          "mean_abs_diff": 0.021581342443823814,
+          "quantized_max": 5.908516883850098,
+          "quantized_min": 0.0,
+          "reference_max": 5.876190185546875,
+          "reference_min": 0.0,
+          "rmse": 0.04510965570807457,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23.m.0": {
+          "max_abs_diff": 0.42035019397735596,
+          "mean_abs_diff": 0.022237516939640045,
+          "quantized_max": 5.947110652923584,
+          "quantized_min": 0.0,
+          "reference_max": 5.8626556396484375,
+          "reference_min": 0.0,
+          "rmse": 0.04575138911604881,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.24.m.0": {
+          "max_abs_diff": 2.5300445556640625,
+          "mean_abs_diff": 0.18320435285568237,
+          "quantized_max": 10.062768936157227,
+          "quantized_min": -22.641231536865234,
+          "reference_max": 9.637350082397461,
+          "reference_min": -22.773681640625,
+          "rmse": 0.27444159984588623,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "model.24.m.1": {
+          "max_abs_diff": 1.4573249816894531,
+          "mean_abs_diff": 0.13154275715351105,
+          "quantized_max": 8.918517112731934,
+          "quantized_min": -18.124727249145508,
+          "reference_max": 8.898919105529785,
+          "reference_min": -18.26857566833496,
+          "rmse": 0.19728973507881165,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "model.24.m.2": {
+          "max_abs_diff": 1.1218149662017822,
+          "mean_abs_diff": 0.09833112359046936,
+          "quantized_max": 8.199247360229492,
+          "quantized_min": -15.373588562011719,
+          "reference_max": 8.133727073669434,
+          "reference_min": -15.20916748046875,
+          "rmse": 0.1678183674812317,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        },
+        "model.4": {
+          "max_abs_diff": 0.6388185024261475,
+          "mean_abs_diff": 0.0327417254447937,
+          "quantized_max": 4.512545108795166,
+          "quantized_min": 0.0,
+          "reference_max": 4.455963134765625,
+          "reference_min": 0.0,
+          "rmse": 0.06365564465522766,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.4.m.0": {
+          "max_abs_diff": 0.8469657897949219,
+          "mean_abs_diff": 0.05400186777114868,
+          "quantized_max": 5.385146141052246,
+          "quantized_min": 0.0,
+          "reference_max": 5.359399795532227,
+          "reference_min": 0.0,
+          "rmse": 0.08468247950077057,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.4.m.1": {
+          "max_abs_diff": 1.2595545053482056,
+          "mean_abs_diff": 0.11154058575630188,
+          "quantized_max": 10.623586654663086,
+          "quantized_min": 0.0,
+          "reference_max": 10.735815048217773,
+          "reference_min": 0.0,
+          "rmse": 0.15702426433563232,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.6": {
+          "max_abs_diff": 0.5504365563392639,
+          "mean_abs_diff": 0.027542302384972572,
+          "quantized_max": 4.708428382873535,
+          "quantized_min": 0.0,
+          "reference_max": 4.606247901916504,
+          "reference_min": 0.0,
+          "rmse": 0.05622345954179764,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.6.m.0": {
+          "max_abs_diff": 0.30709147453308105,
+          "mean_abs_diff": 0.021060273051261902,
+          "quantized_max": 3.0371694564819336,
+          "quantized_min": 0.0,
+          "reference_max": 2.9964120388031006,
+          "reference_min": 0.0,
+          "rmse": 0.03643081337213516,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.1": {
+          "max_abs_diff": 0.40102458000183105,
+          "mean_abs_diff": 0.0436018705368042,
+          "quantized_max": 5.08371114730835,
+          "quantized_min": 0.0,
+          "reference_max": 4.999767780303955,
+          "reference_min": 0.0,
+          "rmse": 0.06435226649045944,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.2": {
+          "max_abs_diff": 0.5930113792419434,
+          "mean_abs_diff": 0.07483503222465515,
+          "quantized_max": 7.434668064117432,
+          "quantized_min": 0.0,
+          "reference_max": 7.1242289543151855,
+          "reference_min": 0.0,
+          "rmse": 0.10243327915668488,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.8": {
+          "max_abs_diff": 0.4637613594532013,
+          "mean_abs_diff": 0.021412979811429977,
+          "quantized_max": 4.838456630706787,
+          "quantized_min": 0.0,
+          "reference_max": 4.785984039306641,
+          "reference_min": 0.0,
+          "rmse": 0.048871275037527084,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.8.m.0": {
+          "max_abs_diff": 0.4176524877548218,
+          "mean_abs_diff": 0.03227759152650833,
+          "quantized_max": 6.90784215927124,
+          "quantized_min": 0.0,
+          "reference_max": 6.8695878982543945,
+          "reference_min": 0.0,
+          "rmse": 0.057503338903188705,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9": {
+          "max_abs_diff": 0.28730297088623047,
+          "mean_abs_diff": 0.0070784627459943295,
+          "quantized_max": 2.218259811401367,
+          "quantized_min": 0.0,
+          "reference_max": 2.265916585922241,
+          "reference_min": 0.0,
+          "rmse": 0.02387111820280552,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.9.m": {
+          "max_abs_diff": 0.2674691677093506,
+          "mean_abs_diff": 0.04795292019844055,
+          "quantized_max": 4.554825782775879,
+          "quantized_min": 0.20021212100982666,
+          "reference_max": 4.5127081871032715,
+          "reference_min": 0.22638869285583496,
+          "rmse": 0.06331099569797516,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#2": {
+          "max_abs_diff": 0.22725343704223633,
+          "mean_abs_diff": 0.04920289292931557,
+          "quantized_max": 4.554825782775879,
+          "quantized_min": 0.90095454454422,
+          "reference_max": 4.5127081871032715,
+          "reference_min": 0.9172990322113037,
+          "rmse": 0.0656597837805748,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#3": {
+          "max_abs_diff": 0.22725343704223633,
+          "mean_abs_diff": 0.052559129893779755,
+          "quantized_max": 4.554825782775879,
+          "quantized_min": 0.90095454454422,
+          "reference_max": 4.5127081871032715,
+          "reference_min": 0.924238920211792,
+          "rmse": 0.0708981528878212,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        }
+      },
+      "notes": [
+        "Convolution nodes use package INT8 weights, INT32 bias and calibrated scales.",
+        "Non-convolution graph nodes retain the frozen topology and are not yet integer-executed by this simulator.",
+        "This report does not approve QAT, FPGA timing, resource constraints, or manifest freeze."
+      ],
+      "package": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\runs\\ac550_yolov5n_relu_int8_qat_staged_v1",
+      "package_manifest_sha256": "3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24",
+      "package_status": "PRE_G2_STATIC_QUANTIZATION",
+      "schema_version": 1,
+      "thresholds": {
+        "confidence": 0.25,
+        "nms_iou": 0.45
+      }
+    },
+    {
+      "detections": {
+        "comparison": {
+          "matched": 2,
+          "matches": [
+            {
+              "box_abs_max_diff": 4.033538818359375,
+              "box_iou": 0.9201851728260939,
+              "class_match": true,
+              "confidence_abs_diff": 0.003084838390350342,
+              "quantized_class": 2,
+              "quantized_index": 0,
+              "reference_class": 2,
+              "reference_index": 0
+            },
+            {
+              "box_abs_max_diff": 2.1637039184570312,
+              "box_iou": 0.8723318109491214,
+              "class_match": true,
+              "confidence_abs_diff": 0.015180587768554688,
+              "quantized_class": 1,
+              "quantized_index": 1,
+              "reference_class": 1,
+              "reference_index": 1
+            }
+          ],
+          "quantized_count": 2,
+          "reference_count": 2,
+          "unmatched_quantized": [],
+          "unmatched_reference": []
+        },
+        "quantized": [
+          [
+            22.680076599121094,
+            90.81629180908203,
+            221.67559814453125,
+            141.33837890625,
+            0.8980324864387512,
+            2.0
+          ],
+          [
+            59.15027618408203,
+            169.3380889892578,
+            108.30313873291016,
+            200.9595184326172,
+            0.8485065698623657,
+            1.0
+          ]
+        ],
+        "reference": [
+          [
+            26.203880310058594,
+            91.04969787597656,
+            217.64205932617188,
+            143.4724578857422,
+            0.8949476480484009,
+            2.0
+          ],
+          [
+            60.447906494140625,
+            168.25218200683594,
+            106.13943481445312,
+            202.1060333251953,
+            0.8636871576309204,
+            1.0
+          ]
+        ]
+      },
+      "graph": {
+        "node_count": 87,
+        "node_coverage": {
+          "boundary": {
+            "golden_non_conv_boundaries": 34,
+            "hooked_modules": [
+              "model.11",
+              "model.11.upsample",
+              "model.12",
+              "model.13",
+              "model.13.m.0",
+              "model.15",
+              "model.15.upsample",
+              "model.16",
+              "model.17",
+              "model.17.m.0",
+              "model.19",
+              "model.2",
+              "model.2.m.0",
+              "model.20",
+              "model.20.m.0",
+              "model.22",
+              "model.23",
+              "model.23.m.0",
+              "model.24.m.0",
+              "model.24.m.1",
+              "model.24.m.2",
+              "model.4",
+              "model.4.m.0",
+              "model.4.m.1",
+              "model.6",
+              "model.6.m.0",
+              "model.6.m.1",
+              "model.6.m.2",
+              "model.8",
+              "model.8.m.0",
+              "model.9",
+              "model.9.m"
+            ],
+            "hooked_non_conv_boundaries": 31,
+            "unresolved_non_conv_modules": []
+          },
+          "boundary_simulated_executors": [
+            "ARM_ADD",
+            "ARM_CONCAT",
+            "ARM_UPSAMPLE",
+            "FPGA_MAXPOOL"
+          ],
+          "executor_counts": {
+            "ARM_ADD": 7,
+            "ARM_CONCAT": 13,
+            "ARM_UPSAMPLE": 4,
+            "FPGA_CONV_LINEAR": 3,
+            "FPGA_CONV_RELU": 57,
+            "FPGA_MAXPOOL": 3
+          },
+          "graph_node_count": 87,
+          "integer_simulation_complete": true,
+          "measured_conv_nodes": 60,
+          "missing_conv_sources": [],
+          "missing_non_conv_nodes": [],
+          "package_conv_nodes": 60,
+          "unquantized_executors": []
+        }
+      },
+      "heads": {
+        "P3": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1004.png",
+          "max_abs_diff": 1.9413361549377441,
+          "mean_abs_diff": 0.1825150102376938,
+          "quantized_max": 9.675739288330078,
+          "quantized_min": -22.254201889038086,
+          "reference_max": 9.903160095214844,
+          "reference_min": -22.25646209716797,
+          "rmse": 0.2769647240638733,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "P4": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1004.png",
+          "max_abs_diff": 1.5161256790161133,
+          "mean_abs_diff": 0.1323574036359787,
+          "quantized_max": 8.34312915802002,
+          "quantized_min": -16.97395133972168,
+          "reference_max": 8.23937702178955,
+          "reference_min": -16.897254943847656,
+          "rmse": 0.19360218942165375,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "P5": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1004.png",
+          "max_abs_diff": 0.8573751449584961,
+          "mean_abs_diff": 0.08101055026054382,
+          "quantized_max": 8.327360153198242,
+          "quantized_min": -15.629815101623535,
+          "reference_max": 8.405112266540527,
+          "reference_min": -15.967107772827148,
+          "rmse": 0.12298282235860825,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        }
+      },
+      "input": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "source": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1004.png"
+      },
+      "nodes": {
+        "model.11": {
+          "max_abs_diff": 0.37512367963790894,
+          "mean_abs_diff": 0.02335936762392521,
+          "quantized_max": 2.5491867065429688,
+          "quantized_min": 0.0,
+          "reference_max": 2.8247811794281006,
+          "reference_min": 0.0,
+          "rmse": 0.04468359798192978,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.11.upsample": {
+          "max_abs_diff": 0.37512367963790894,
+          "mean_abs_diff": 0.02335936762392521,
+          "quantized_max": 2.5491867065429688,
+          "quantized_min": 0.0,
+          "reference_max": 2.8247811794281006,
+          "reference_min": 0.0,
+          "rmse": 0.04468359798192978,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.12": {
+          "max_abs_diff": 0.7160782814025879,
+          "mean_abs_diff": 0.027166424319148064,
+          "quantized_max": 4.256935119628906,
+          "quantized_min": 0.0,
+          "reference_max": 4.321004867553711,
+          "reference_min": 0.0,
+          "rmse": 0.053732730448246,
+          "shape": [
+            1,
+            256,
+            16,
+            16
+          ]
+        },
+        "model.13": {
+          "max_abs_diff": 0.5075099468231201,
+          "mean_abs_diff": 0.019297532737255096,
+          "quantized_max": 3.437065601348877,
+          "quantized_min": 0.0,
+          "reference_max": 3.36428165435791,
+          "reference_min": 0.0,
+          "rmse": 0.04158396273851395,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.13.m.0": {
+          "max_abs_diff": 0.427575021982193,
+          "mean_abs_diff": 0.02611403539776802,
+          "quantized_max": 3.808133363723755,
+          "quantized_min": 0.0,
+          "reference_max": 3.7777626514434814,
+          "reference_min": 0.0,
+          "rmse": 0.046758100390434265,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.15": {
+          "max_abs_diff": 0.47710084915161133,
+          "mean_abs_diff": 0.03245183080434799,
+          "quantized_max": 4.419180393218994,
+          "quantized_min": 0.0,
+          "reference_max": 4.399697780609131,
+          "reference_min": 0.0,
+          "rmse": 0.0509946346282959,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.15.upsample": {
+          "max_abs_diff": 0.47710084915161133,
+          "mean_abs_diff": 0.03245183080434799,
+          "quantized_max": 4.419180393218994,
+          "quantized_min": 0.0,
+          "reference_max": 4.399697780609131,
+          "reference_min": 0.0,
+          "rmse": 0.0509946346282959,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.16": {
+          "max_abs_diff": 0.7255364656448364,
+          "mean_abs_diff": 0.033514201641082764,
+          "quantized_max": 4.40510368347168,
+          "quantized_min": 0.0,
+          "reference_max": 4.399697780609131,
+          "reference_min": 0.0,
+          "rmse": 0.05910981073975563,
+          "shape": [
+            1,
+            128,
+            32,
+            32
+          ]
+        },
+        "model.17": {
+          "max_abs_diff": 1.5645780563354492,
+          "mean_abs_diff": 0.07824026048183441,
+          "quantized_max": 10.381952285766602,
+          "quantized_min": 0.0,
+          "reference_max": 10.230895042419434,
+          "reference_min": 0.0,
+          "rmse": 0.13138072192668915,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.17.m.0": {
+          "max_abs_diff": 0.7225688099861145,
+          "mean_abs_diff": 0.038028866052627563,
+          "quantized_max": 6.215689182281494,
+          "quantized_min": 0.0,
+          "reference_max": 6.082396507263184,
+          "reference_min": 0.0,
+          "rmse": 0.059998542070388794,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.19": {
+          "max_abs_diff": 0.47230786085128784,
+          "mean_abs_diff": 0.029338296502828598,
+          "quantized_max": 4.427685737609863,
+          "quantized_min": 0.0,
+          "reference_max": 4.399697780609131,
+          "reference_min": 0.0,
+          "rmse": 0.05049361661076546,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.2": {
+          "max_abs_diff": 1.3604626655578613,
+          "mean_abs_diff": 0.08503643423318863,
+          "quantized_max": 10.823875427246094,
+          "quantized_min": 0.0,
+          "reference_max": 10.722853660583496,
+          "reference_min": 0.0,
+          "rmse": 0.1382206827402115,
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ]
+        },
+        "model.2.m.0": {
+          "max_abs_diff": 3.2108874320983887,
+          "mean_abs_diff": 0.21098369359970093,
+          "quantized_max": 23.424095153808594,
+          "quantized_min": 0.0,
+          "reference_max": 23.404340744018555,
+          "reference_min": 0.0,
+          "rmse": 0.3125781714916229,
+          "shape": [
+            1,
+            16,
+            64,
+            64
+          ]
+        },
+        "model.20": {
+          "max_abs_diff": 0.7902641296386719,
+          "mean_abs_diff": 0.04509353265166283,
+          "quantized_max": 9.910237312316895,
+          "quantized_min": 0.0,
+          "reference_max": 10.153182029724121,
+          "reference_min": 0.0,
+          "rmse": 0.08647622913122177,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.20.m.0": {
+          "max_abs_diff": 0.4714466333389282,
+          "mean_abs_diff": 0.03121139109134674,
+          "quantized_max": 8.801679611206055,
+          "quantized_min": 0.0,
+          "reference_max": 8.588838577270508,
+          "reference_min": 0.0,
+          "rmse": 0.053906459361314774,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.22": {
+          "max_abs_diff": 0.5633624792098999,
+          "mean_abs_diff": 0.024063043296337128,
+          "quantized_max": 7.045102596282959,
+          "quantized_min": 0.0,
+          "reference_max": 7.101241111755371,
+          "reference_min": 0.0,
+          "rmse": 0.04677186533808708,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23": {
+          "max_abs_diff": 0.45120227336883545,
+          "mean_abs_diff": 0.019414225593209267,
+          "quantized_max": 5.608083724975586,
+          "quantized_min": 0.0,
+          "reference_max": 5.638213157653809,
+          "reference_min": 0.0,
+          "rmse": 0.03950215503573418,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23.m.0": {
+          "max_abs_diff": 0.45224225521087646,
+          "mean_abs_diff": 0.01827733963727951,
+          "quantized_max": 6.586584568023682,
+          "quantized_min": 0.0,
+          "reference_max": 6.416328430175781,
+          "reference_min": 0.0,
+          "rmse": 0.03677134960889816,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.24.m.0": {
+          "max_abs_diff": 1.9413361549377441,
+          "mean_abs_diff": 0.1825150102376938,
+          "quantized_max": 9.675739288330078,
+          "quantized_min": -22.254201889038086,
+          "reference_max": 9.903160095214844,
+          "reference_min": -22.25646209716797,
+          "rmse": 0.2769647240638733,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "model.24.m.1": {
+          "max_abs_diff": 1.5161256790161133,
+          "mean_abs_diff": 0.1323574036359787,
+          "quantized_max": 8.34312915802002,
+          "quantized_min": -16.97395133972168,
+          "reference_max": 8.23937702178955,
+          "reference_min": -16.897254943847656,
+          "rmse": 0.19360218942165375,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "model.24.m.2": {
+          "max_abs_diff": 0.8573751449584961,
+          "mean_abs_diff": 0.08101055026054382,
+          "quantized_max": 8.327360153198242,
+          "quantized_min": -15.629815101623535,
+          "reference_max": 8.405112266540527,
+          "reference_min": -15.967107772827148,
+          "rmse": 0.12298282235860825,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        },
+        "model.4": {
+          "max_abs_diff": 0.7255364656448364,
+          "mean_abs_diff": 0.03321322053670883,
+          "quantized_max": 4.40510368347168,
+          "quantized_min": 0.0,
+          "reference_max": 4.367451190948486,
+          "reference_min": 0.0,
+          "rmse": 0.06490203738212585,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.4.m.0": {
+          "max_abs_diff": 0.7099783420562744,
+          "mean_abs_diff": 0.05457593500614166,
+          "quantized_max": 5.075654983520508,
+          "quantized_min": 0.0,
+          "reference_max": 5.173151016235352,
+          "reference_min": 0.0,
+          "rmse": 0.08472412824630737,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.4.m.1": {
+          "max_abs_diff": 1.243800401687622,
+          "mean_abs_diff": 0.11494799703359604,
+          "quantized_max": 7.989639759063721,
+          "quantized_min": 0.0,
+          "reference_max": 8.050789833068848,
+          "reference_min": 0.0,
+          "rmse": 0.16196617484092712,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.6": {
+          "max_abs_diff": 0.7160782814025879,
+          "mean_abs_diff": 0.02844298630952835,
+          "quantized_max": 4.256935119628906,
+          "quantized_min": 0.0,
+          "reference_max": 4.321004867553711,
+          "reference_min": 0.0,
+          "rmse": 0.05883730947971344,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.6.m.0": {
+          "max_abs_diff": 0.4274432957172394,
+          "mean_abs_diff": 0.021566001698374748,
+          "quantized_max": 3.0724854469299316,
+          "quantized_min": 0.0,
+          "reference_max": 3.0853188037872314,
+          "reference_min": 0.0,
+          "rmse": 0.03820880129933357,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.1": {
+          "max_abs_diff": 0.47620153427124023,
+          "mean_abs_diff": 0.043963879346847534,
+          "quantized_max": 4.518854141235352,
+          "quantized_min": 0.0,
+          "reference_max": 4.4993391036987305,
+          "reference_min": 0.0,
+          "rmse": 0.0661717876791954,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.2": {
+          "max_abs_diff": 0.6927553415298462,
+          "mean_abs_diff": 0.07560443878173828,
+          "quantized_max": 6.322941780090332,
+          "quantized_min": 0.0,
+          "reference_max": 6.398845672607422,
+          "reference_min": 0.0,
+          "rmse": 0.10489629954099655,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.8": {
+          "max_abs_diff": 0.4740549325942993,
+          "mean_abs_diff": 0.02368869073688984,
+          "quantized_max": 4.449155330657959,
+          "quantized_min": 0.0,
+          "reference_max": 4.62103796005249,
+          "reference_min": 0.0,
+          "rmse": 0.05403474345803261,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.8.m.0": {
+          "max_abs_diff": 0.4217163920402527,
+          "mean_abs_diff": 0.03741065040230751,
+          "quantized_max": 6.0606536865234375,
+          "quantized_min": 0.0,
+          "reference_max": 5.980436325073242,
+          "reference_min": 0.0,
+          "rmse": 0.06529999524354935,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9": {
+          "max_abs_diff": 0.29990145564079285,
+          "mean_abs_diff": 0.007621739525347948,
+          "quantized_max": 2.282557249069214,
+          "quantized_min": 0.0,
+          "reference_max": 2.464113712310791,
+          "reference_min": 0.0,
+          "rmse": 0.026300588622689247,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.9.m": {
+          "max_abs_diff": 0.3676309585571289,
+          "mean_abs_diff": 0.05059558153152466,
+          "quantized_max": 4.604878902435303,
+          "quantized_min": 0.20021212100982666,
+          "reference_max": 4.643623352050781,
+          "reference_min": 0.1568913459777832,
+          "rmse": 0.06736036390066147,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#2": {
+          "max_abs_diff": 0.3238651752471924,
+          "mean_abs_diff": 0.04569079354405403,
+          "quantized_max": 4.604878902435303,
+          "quantized_min": 0.7007424235343933,
+          "reference_max": 4.643623352050781,
+          "reference_min": 0.6742678880691528,
+          "rmse": 0.06149350479245186,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#3": {
+          "max_abs_diff": 0.3238651752471924,
+          "mean_abs_diff": 0.047287244349718094,
+          "quantized_max": 4.604878902435303,
+          "quantized_min": 1.3514318466186523,
+          "reference_max": 4.643623352050781,
+          "reference_min": 1.3201420307159424,
+          "rmse": 0.06405799835920334,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        }
+      },
+      "notes": [
+        "Convolution nodes use package INT8 weights, INT32 bias and calibrated scales.",
+        "Non-convolution graph nodes retain the frozen topology and are not yet integer-executed by this simulator.",
+        "This report does not approve QAT, FPGA timing, resource constraints, or manifest freeze."
+      ],
+      "package": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\runs\\ac550_yolov5n_relu_int8_qat_staged_v1",
+      "package_manifest_sha256": "3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24",
+      "package_status": "PRE_G2_STATIC_QUANTIZATION",
+      "schema_version": 1,
+      "thresholds": {
+        "confidence": 0.25,
+        "nms_iou": 0.45
+      }
+    },
+    {
+      "detections": {
+        "comparison": {
+          "matched": 2,
+          "matches": [
+            {
+              "box_abs_max_diff": 2.58734130859375,
+              "box_iou": 0.964531680016503,
+              "class_match": true,
+              "confidence_abs_diff": 0.005190014839172363,
+              "quantized_class": 2,
+              "quantized_index": 0,
+              "reference_class": 2,
+              "reference_index": 0
+            },
+            {
+              "box_abs_max_diff": 2.8849258422851562,
+              "box_iou": 0.8569097135066579,
+              "class_match": true,
+              "confidence_abs_diff": 0.009212315082550049,
+              "quantized_class": 1,
+              "quantized_index": 1,
+              "reference_class": 1,
+              "reference_index": 1
+            }
+          ],
+          "quantized_count": 2,
+          "reference_count": 2,
+          "unmatched_quantized": [],
+          "unmatched_reference": []
+        },
+        "quantized": [
+          [
+            62.14984893798828,
+            69.00830078125,
+            207.55255126953125,
+            243.95205688476562,
+            0.9300854802131653,
+            2.0
+          ],
+          [
+            46.61691665649414,
+            146.66160583496094,
+            85.56132507324219,
+            197.18370056152344,
+            0.857205867767334,
+            1.0
+          ]
+        ],
+        "reference": [
+          [
+            61.78636169433594,
+            66.56392669677734,
+            208.32127380371094,
+            246.53939819335938,
+            0.9248954653739929,
+            2.0
+          ],
+          [
+            47.72698211669922,
+            144.83428955078125,
+            82.67639923095703,
+            198.0177001953125,
+            0.866418182849884,
+            1.0
+          ]
+        ]
+      },
+      "graph": {
+        "node_count": 87,
+        "node_coverage": {
+          "boundary": {
+            "golden_non_conv_boundaries": 34,
+            "hooked_modules": [
+              "model.11",
+              "model.11.upsample",
+              "model.12",
+              "model.13",
+              "model.13.m.0",
+              "model.15",
+              "model.15.upsample",
+              "model.16",
+              "model.17",
+              "model.17.m.0",
+              "model.19",
+              "model.2",
+              "model.2.m.0",
+              "model.20",
+              "model.20.m.0",
+              "model.22",
+              "model.23",
+              "model.23.m.0",
+              "model.24.m.0",
+              "model.24.m.1",
+              "model.24.m.2",
+              "model.4",
+              "model.4.m.0",
+              "model.4.m.1",
+              "model.6",
+              "model.6.m.0",
+              "model.6.m.1",
+              "model.6.m.2",
+              "model.8",
+              "model.8.m.0",
+              "model.9",
+              "model.9.m"
+            ],
+            "hooked_non_conv_boundaries": 31,
+            "unresolved_non_conv_modules": []
+          },
+          "boundary_simulated_executors": [
+            "ARM_ADD",
+            "ARM_CONCAT",
+            "ARM_UPSAMPLE",
+            "FPGA_MAXPOOL"
+          ],
+          "executor_counts": {
+            "ARM_ADD": 7,
+            "ARM_CONCAT": 13,
+            "ARM_UPSAMPLE": 4,
+            "FPGA_CONV_LINEAR": 3,
+            "FPGA_CONV_RELU": 57,
+            "FPGA_MAXPOOL": 3
+          },
+          "graph_node_count": 87,
+          "integer_simulation_complete": true,
+          "measured_conv_nodes": 60,
+          "missing_conv_sources": [],
+          "missing_non_conv_nodes": [],
+          "package_conv_nodes": 60,
+          "unquantized_executors": []
+        }
+      },
+      "heads": {
+        "P3": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png",
+          "max_abs_diff": 2.7659945487976074,
+          "mean_abs_diff": 0.18719980120658875,
+          "quantized_max": 9.675739288330078,
+          "quantized_min": -23.60880470275879,
+          "reference_max": 9.610692977905273,
+          "reference_min": -23.29938316345215,
+          "rmse": 0.30272960662841797,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "P4": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png",
+          "max_abs_diff": 2.569551467895508,
+          "mean_abs_diff": 0.1419006735086441,
+          "quantized_max": 9.350058555603027,
+          "quantized_min": -16.254716873168945,
+          "reference_max": 9.395050048828125,
+          "reference_min": -16.066436767578125,
+          "rmse": 0.2512025535106659,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "P5": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png",
+          "max_abs_diff": 2.652438163757324,
+          "mean_abs_diff": 0.11917076259851456,
+          "quantized_max": 8.583586692810059,
+          "quantized_min": -15.245475769042969,
+          "reference_max": 8.672135353088379,
+          "reference_min": -15.522920608520508,
+          "rmse": 0.24674589931964874,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        }
+      },
+      "input": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "source": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png"
+      },
+      "nodes": {
+        "model.11": {
+          "max_abs_diff": 0.4204632639884949,
+          "mean_abs_diff": 0.023289093747735023,
+          "quantized_max": 3.130013942718506,
+          "quantized_min": 0.0,
+          "reference_max": 3.238532781600952,
+          "reference_min": 0.0,
+          "rmse": 0.04866112396121025,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.11.upsample": {
+          "max_abs_diff": 0.4204632639884949,
+          "mean_abs_diff": 0.023289093747735023,
+          "quantized_max": 3.130013942718506,
+          "quantized_min": 0.0,
+          "reference_max": 3.238532781600952,
+          "reference_min": 0.0,
+          "rmse": 0.04866112396121025,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.12": {
+          "max_abs_diff": 0.7145318388938904,
+          "mean_abs_diff": 0.02718316577374935,
+          "quantized_max": 4.256935119628906,
+          "quantized_min": 0.0,
+          "reference_max": 4.298098564147949,
+          "reference_min": 0.0,
+          "rmse": 0.05713706836104393,
+          "shape": [
+            1,
+            256,
+            16,
+            16
+          ]
+        },
+        "model.13": {
+          "max_abs_diff": 0.810481071472168,
+          "mean_abs_diff": 0.01775476522743702,
+          "quantized_max": 3.248215675354004,
+          "quantized_min": 0.0,
+          "reference_max": 3.225428342819214,
+          "reference_min": 0.0,
+          "rmse": 0.04107706993818283,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.13.m.0": {
+          "max_abs_diff": 0.4442557096481323,
+          "mean_abs_diff": 0.026363365352153778,
+          "quantized_max": 4.004428863525391,
+          "quantized_min": 0.0,
+          "reference_max": 4.085214614868164,
+          "reference_min": 0.0,
+          "rmse": 0.04673425480723381,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.15": {
+          "max_abs_diff": 0.42780497670173645,
+          "mean_abs_diff": 0.03153479844331741,
+          "quantized_max": 3.370561361312866,
+          "quantized_min": 0.0,
+          "reference_max": 3.378485679626465,
+          "reference_min": 0.0,
+          "rmse": 0.05143261328339577,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.15.upsample": {
+          "max_abs_diff": 0.42780497670173645,
+          "mean_abs_diff": 0.03153479844331741,
+          "quantized_max": 3.370561361312866,
+          "quantized_min": 0.0,
+          "reference_max": 3.378485679626465,
+          "reference_min": 0.0,
+          "rmse": 0.05143261328339577,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.16": {
+          "max_abs_diff": 0.9103667736053467,
+          "mean_abs_diff": 0.03315836563706398,
+          "quantized_max": 6.23160982131958,
+          "quantized_min": 0.0,
+          "reference_max": 6.22078275680542,
+          "reference_min": 0.0,
+          "rmse": 0.060170456767082214,
+          "shape": [
+            1,
+            128,
+            32,
+            32
+          ]
+        },
+        "model.17": {
+          "max_abs_diff": 2.0996005535125732,
+          "mean_abs_diff": 0.08132773637771606,
+          "quantized_max": 10.953435897827148,
+          "quantized_min": 0.0,
+          "reference_max": 11.03361988067627,
+          "reference_min": 0.0,
+          "rmse": 0.14098049700260162,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.17.m.0": {
+          "max_abs_diff": 0.5899632573127747,
+          "mean_abs_diff": 0.040966324508190155,
+          "quantized_max": 5.2406792640686035,
+          "quantized_min": 0.0,
+          "reference_max": 5.3155837059021,
+          "reference_min": 0.0,
+          "rmse": 0.0658908411860466,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.19": {
+          "max_abs_diff": 0.7769967913627625,
+          "mean_abs_diff": 0.030319320037961006,
+          "quantized_max": 3.433715343475342,
+          "quantized_min": 0.0,
+          "reference_max": 3.452040433883667,
+          "reference_min": 0.0,
+          "rmse": 0.05429061874747276,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.2": {
+          "max_abs_diff": 1.4968395233154297,
+          "mean_abs_diff": 0.08326065540313721,
+          "quantized_max": 19.518465042114258,
+          "quantized_min": 0.0,
+          "reference_max": 19.41550064086914,
+          "reference_min": 0.0,
+          "rmse": 0.13659758865833282,
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ]
+        },
+        "model.2.m.0": {
+          "max_abs_diff": 4.592046737670898,
+          "mean_abs_diff": 0.20285478234291077,
+          "quantized_max": 38.026126861572266,
+          "quantized_min": 0.0,
+          "reference_max": 37.892906188964844,
+          "reference_min": 0.0,
+          "rmse": 0.31036511063575745,
+          "shape": [
+            1,
+            16,
+            64,
+            64
+          ]
+        },
+        "model.20": {
+          "max_abs_diff": 1.0820112228393555,
+          "mean_abs_diff": 0.04375308379530907,
+          "quantized_max": 10.487532615661621,
+          "quantized_min": 0.0,
+          "reference_max": 10.501049995422363,
+          "reference_min": 0.0,
+          "rmse": 0.08740877360105515,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.20.m.0": {
+          "max_abs_diff": 0.6258277893066406,
+          "mean_abs_diff": 0.031137675046920776,
+          "quantized_max": 7.858643054962158,
+          "quantized_min": 0.0,
+          "reference_max": 7.715730667114258,
+          "reference_min": 0.0,
+          "rmse": 0.055526793003082275,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.22": {
+          "max_abs_diff": 0.5693318843841553,
+          "mean_abs_diff": 0.02488573268055916,
+          "quantized_max": 4.923996448516846,
+          "quantized_min": 0.0,
+          "reference_max": 4.866305351257324,
+          "reference_min": 0.0,
+          "rmse": 0.05081983283162117,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23": {
+          "max_abs_diff": 1.0339686870574951,
+          "mean_abs_diff": 0.02233552187681198,
+          "quantized_max": 5.2075066566467285,
+          "quantized_min": 0.0,
+          "reference_max": 5.1771955490112305,
+          "reference_min": 0.0,
+          "rmse": 0.05200192704796791,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23.m.0": {
+          "max_abs_diff": 0.4669116139411926,
+          "mean_abs_diff": 0.020120833069086075,
+          "quantized_max": 5.051846504211426,
+          "quantized_min": 0.0,
+          "reference_max": 5.063065528869629,
+          "reference_min": 0.0,
+          "rmse": 0.04188518598675728,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.24.m.0": {
+          "max_abs_diff": 2.7659945487976074,
+          "mean_abs_diff": 0.18719980120658875,
+          "quantized_max": 9.675739288330078,
+          "quantized_min": -23.60880470275879,
+          "reference_max": 9.610692977905273,
+          "reference_min": -23.29938316345215,
+          "rmse": 0.30272960662841797,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "model.24.m.1": {
+          "max_abs_diff": 2.569551467895508,
+          "mean_abs_diff": 0.1419006735086441,
+          "quantized_max": 9.350058555603027,
+          "quantized_min": -16.254716873168945,
+          "reference_max": 9.395050048828125,
+          "reference_min": -16.066436767578125,
+          "rmse": 0.2512025535106659,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "model.24.m.2": {
+          "max_abs_diff": 2.652438163757324,
+          "mean_abs_diff": 0.11917076259851456,
+          "quantized_max": 8.583586692810059,
+          "quantized_min": -15.245475769042969,
+          "reference_max": 8.672135353088379,
+          "reference_min": -15.522920608520508,
+          "rmse": 0.24674589931964874,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        },
+        "model.4": {
+          "max_abs_diff": 0.9103667736053467,
+          "mean_abs_diff": 0.03332497552037239,
+          "quantized_max": 6.23160982131958,
+          "quantized_min": 0.0,
+          "reference_max": 6.22078275680542,
+          "reference_min": 0.0,
+          "rmse": 0.06658849865198135,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.4.m.0": {
+          "max_abs_diff": 0.9138239026069641,
+          "mean_abs_diff": 0.05411926656961441,
+          "quantized_max": 7.242093086242676,
+          "quantized_min": 0.0,
+          "reference_max": 7.130335807800293,
+          "reference_min": 0.0,
+          "rmse": 0.0895126685500145,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.4.m.1": {
+          "max_abs_diff": 1.4565110206604004,
+          "mean_abs_diff": 0.11023114621639252,
+          "quantized_max": 11.150376319885254,
+          "quantized_min": 0.0,
+          "reference_max": 11.150376319885254,
+          "reference_min": 0.0,
+          "rmse": 0.1629849374294281,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.6": {
+          "max_abs_diff": 0.7145318388938904,
+          "mean_abs_diff": 0.029316242784261703,
+          "quantized_max": 4.256935119628906,
+          "quantized_min": 0.0,
+          "reference_max": 4.298098564147949,
+          "reference_min": 0.0,
+          "rmse": 0.062312569469213486,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.6.m.0": {
+          "max_abs_diff": 0.4168579876422882,
+          "mean_abs_diff": 0.023748137056827545,
+          "quantized_max": 3.708171844482422,
+          "quantized_min": 0.0,
+          "reference_max": 3.7154202461242676,
+          "reference_min": 0.0,
+          "rmse": 0.043194059282541275,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.1": {
+          "max_abs_diff": 0.5933552980422974,
+          "mean_abs_diff": 0.04764746502041817,
+          "quantized_max": 6.0439677238464355,
+          "quantized_min": 0.0,
+          "reference_max": 6.147515296936035,
+          "reference_min": 0.0,
+          "rmse": 0.07324337959289551,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.2": {
+          "max_abs_diff": 0.8225691318511963,
+          "mean_abs_diff": 0.0789908692240715,
+          "quantized_max": 7.434668064117432,
+          "quantized_min": 0.0,
+          "reference_max": 7.191183090209961,
+          "reference_min": 0.0,
+          "rmse": 0.11155597120523453,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.8": {
+          "max_abs_diff": 0.6256035566329956,
+          "mean_abs_diff": 0.02568058855831623,
+          "quantized_max": 5.728287696838379,
+          "quantized_min": 0.0,
+          "reference_max": 5.839796543121338,
+          "reference_min": 0.0,
+          "rmse": 0.06455982476472855,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.8.m.0": {
+          "max_abs_diff": 0.7295443415641785,
+          "mean_abs_diff": 0.04694027826189995,
+          "quantized_max": 6.90784215927124,
+          "quantized_min": 0.0,
+          "reference_max": 6.950263500213623,
+          "reference_min": 0.0,
+          "rmse": 0.089539535343647,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9": {
+          "max_abs_diff": 0.8329082727432251,
+          "mean_abs_diff": 0.00967550277709961,
+          "quantized_max": 2.796936273574829,
+          "quantized_min": 0.0,
+          "reference_max": 2.7813453674316406,
+          "reference_min": 0.0,
+          "rmse": 0.03585801273584366,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.9.m": {
+          "max_abs_diff": 0.705581784248352,
+          "mean_abs_diff": 0.059346020221710205,
+          "quantized_max": 5.6059393882751465,
+          "quantized_min": 0.30031818151474,
+          "reference_max": 5.67222785949707,
+          "reference_min": 0.27895021438598633,
+          "rmse": 0.08098173141479492,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#2": {
+          "max_abs_diff": 0.38283705711364746,
+          "mean_abs_diff": 0.056079376488924026,
+          "quantized_max": 5.6059393882751465,
+          "quantized_min": 1.0511136054992676,
+          "reference_max": 5.67222785949707,
+          "reference_min": 1.0865708589553833,
+          "rmse": 0.07340570539236069,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#3": {
+          "max_abs_diff": 0.2646963596343994,
+          "mean_abs_diff": 0.05740727484226227,
+          "quantized_max": 5.6059393882751465,
+          "quantized_min": 1.451537847518921,
+          "reference_max": 5.67222785949707,
+          "reference_min": 1.3983774185180664,
+          "rmse": 0.07405607402324677,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        }
+      },
+      "notes": [
+        "Convolution nodes use package INT8 weights, INT32 bias and calibrated scales.",
+        "Non-convolution graph nodes retain the frozen topology and are not yet integer-executed by this simulator.",
+        "This report does not approve QAT, FPGA timing, resource constraints, or manifest freeze."
+      ],
+      "package": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\runs\\ac550_yolov5n_relu_int8_qat_staged_v1",
+      "package_manifest_sha256": "3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24",
+      "package_status": "PRE_G2_STATIC_QUANTIZATION",
+      "schema_version": 1,
+      "thresholds": {
+        "confidence": 0.25,
+        "nms_iou": 0.45
+      }
+    },
+    {
+      "detections": {
+        "comparison": {
+          "matched": 2,
+          "matches": [
+            {
+              "box_abs_max_diff": 4.9789581298828125,
+              "box_iou": 0.9005284798449867,
+              "class_match": true,
+              "confidence_abs_diff": 0.0007732510566711426,
+              "quantized_class": 2,
+              "quantized_index": 0,
+              "reference_class": 2,
+              "reference_index": 0
+            },
+            {
+              "box_abs_max_diff": 0.9745330810546875,
+              "box_iou": 0.9451643922321564,
+              "class_match": true,
+              "confidence_abs_diff": 0.0018785595893859863,
+              "quantized_class": 1,
+              "quantized_index": 1,
+              "reference_class": 1,
+              "reference_index": 1
+            }
+          ],
+          "quantized_count": 2,
+          "reference_count": 2,
+          "unmatched_quantized": [],
+          "unmatched_reference": []
+        },
+        "quantized": [
+          [
+            29.92266082763672,
+            40.36009979248047,
+            185.92266845703125,
+            213.83856201171875,
+            0.8978376388549805,
+            2.0
+          ],
+          [
+            92.52780151367188,
+            13.102212905883789,
+            131.47219848632812,
+            55.980674743652344,
+            0.872018039226532,
+            1.0
+          ]
+        ],
+        "reference": [
+          [
+            26.245895385742188,
+            45.33905792236328,
+            190.58251953125,
+            209.45950317382812,
+            0.8970643877983093,
+            2.0
+          ],
+          [
+            92.073974609375,
+            12.342405319213867,
+            130.49766540527344,
+            55.879554748535156,
+            0.870139479637146,
+            1.0
+          ]
+        ]
+      },
+      "graph": {
+        "node_count": 87,
+        "node_coverage": {
+          "boundary": {
+            "golden_non_conv_boundaries": 34,
+            "hooked_modules": [
+              "model.11",
+              "model.11.upsample",
+              "model.12",
+              "model.13",
+              "model.13.m.0",
+              "model.15",
+              "model.15.upsample",
+              "model.16",
+              "model.17",
+              "model.17.m.0",
+              "model.19",
+              "model.2",
+              "model.2.m.0",
+              "model.20",
+              "model.20.m.0",
+              "model.22",
+              "model.23",
+              "model.23.m.0",
+              "model.24.m.0",
+              "model.24.m.1",
+              "model.24.m.2",
+              "model.4",
+              "model.4.m.0",
+              "model.4.m.1",
+              "model.6",
+              "model.6.m.0",
+              "model.6.m.1",
+              "model.6.m.2",
+              "model.8",
+              "model.8.m.0",
+              "model.9",
+              "model.9.m"
+            ],
+            "hooked_non_conv_boundaries": 31,
+            "unresolved_non_conv_modules": []
+          },
+          "boundary_simulated_executors": [
+            "ARM_ADD",
+            "ARM_CONCAT",
+            "ARM_UPSAMPLE",
+            "FPGA_MAXPOOL"
+          ],
+          "executor_counts": {
+            "ARM_ADD": 7,
+            "ARM_CONCAT": 13,
+            "ARM_UPSAMPLE": 4,
+            "FPGA_CONV_LINEAR": 3,
+            "FPGA_CONV_RELU": 57,
+            "FPGA_MAXPOOL": 3
+          },
+          "graph_node_count": 87,
+          "integer_simulation_complete": true,
+          "measured_conv_nodes": 60,
+          "missing_conv_sources": [],
+          "missing_non_conv_nodes": [],
+          "package_conv_nodes": 60,
+          "unquantized_executors": []
+        }
+      },
+      "heads": {
+        "P3": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1006.png",
+          "max_abs_diff": 2.9832355976104736,
+          "mean_abs_diff": 0.18394887447357178,
+          "quantized_max": 8.901680946350098,
+          "quantized_min": -23.60880470275879,
+          "reference_max": 8.9148530960083,
+          "reference_min": -23.245004653930664,
+          "rmse": 0.2922780513763428,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "P4": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1006.png",
+          "max_abs_diff": 1.402879238128662,
+          "mean_abs_diff": 0.13393843173980713,
+          "quantized_max": 9.350058555603027,
+          "quantized_min": -16.110870361328125,
+          "reference_max": 9.12889575958252,
+          "reference_min": -16.61971092224121,
+          "rmse": 0.2085830420255661,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "P5": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1006.png",
+          "max_abs_diff": 1.1277081966400146,
+          "mean_abs_diff": 0.09462574124336243,
+          "quantized_max": 8.199247360229492,
+          "quantized_min": -13.964343070983887,
+          "reference_max": 8.161697387695312,
+          "reference_min": -14.27276611328125,
+          "rmse": 0.15663385391235352,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        }
+      },
+      "input": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "source": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1006.png"
+      },
+      "nodes": {
+        "model.11": {
+          "max_abs_diff": 0.6723800301551819,
+          "mean_abs_diff": 0.023324336856603622,
+          "quantized_max": 4.09805965423584,
+          "quantized_min": 0.0,
+          "reference_max": 4.073236465454102,
+          "reference_min": 0.0,
+          "rmse": 0.05115346238017082,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.11.upsample": {
+          "max_abs_diff": 0.6723800301551819,
+          "mean_abs_diff": 0.023324336856603622,
+          "quantized_max": 4.09805965423584,
+          "quantized_min": 0.0,
+          "reference_max": 4.073236465454102,
+          "reference_min": 0.0,
+          "rmse": 0.05115346238017082,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.12": {
+          "max_abs_diff": 0.9959386587142944,
+          "mean_abs_diff": 0.02785343863070011,
+          "quantized_max": 4.450432300567627,
+          "quantized_min": 0.0,
+          "reference_max": 4.526095390319824,
+          "reference_min": 0.0,
+          "rmse": 0.05962473526597023,
+          "shape": [
+            1,
+            256,
+            16,
+            16
+          ]
+        },
+        "model.13": {
+          "max_abs_diff": 0.666485071182251,
+          "mean_abs_diff": 0.018083179369568825,
+          "quantized_max": 3.437065601348877,
+          "quantized_min": 0.0,
+          "reference_max": 3.393031358718872,
+          "reference_min": 0.0,
+          "rmse": 0.041982293128967285,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.13.m.0": {
+          "max_abs_diff": 0.39889490604400635,
+          "mean_abs_diff": 0.02631758339703083,
+          "quantized_max": 3.6903560161590576,
+          "quantized_min": 0.0,
+          "reference_max": 3.7930119037628174,
+          "reference_min": 0.0,
+          "rmse": 0.04601003974676132,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.15": {
+          "max_abs_diff": 0.44529953598976135,
+          "mean_abs_diff": 0.032343506813049316,
+          "quantized_max": 3.8574202060699463,
+          "quantized_min": 0.0,
+          "reference_max": 3.7670974731445312,
+          "reference_min": 0.0,
+          "rmse": 0.05219237506389618,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.15.upsample": {
+          "max_abs_diff": 0.44529953598976135,
+          "mean_abs_diff": 0.032343506813049316,
+          "quantized_max": 3.8574202060699463,
+          "quantized_min": 0.0,
+          "reference_max": 3.7670974731445312,
+          "reference_min": 0.0,
+          "rmse": 0.05219237506389618,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.16": {
+          "max_abs_diff": 0.9158746004104614,
+          "mean_abs_diff": 0.03497442603111267,
+          "quantized_max": 4.727428436279297,
+          "quantized_min": 0.0,
+          "reference_max": 4.787871837615967,
+          "reference_min": 0.0,
+          "rmse": 0.06299617886543274,
+          "shape": [
+            1,
+            128,
+            32,
+            32
+          ]
+        },
+        "model.17": {
+          "max_abs_diff": 1.5810904502868652,
+          "mean_abs_diff": 0.08318173885345459,
+          "quantized_max": 10.47719955444336,
+          "quantized_min": 0.0,
+          "reference_max": 10.635869026184082,
+          "reference_min": 0.0,
+          "rmse": 0.14238668978214264,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.17.m.0": {
+          "max_abs_diff": 0.6903461217880249,
+          "mean_abs_diff": 0.0408182293176651,
+          "quantized_max": 5.057864665985107,
+          "quantized_min": 0.0,
+          "reference_max": 5.081533432006836,
+          "reference_min": 0.0,
+          "rmse": 0.0656856819987297,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.19": {
+          "max_abs_diff": 0.5477107763290405,
+          "mean_abs_diff": 0.030528277158737183,
+          "quantized_max": 4.698768615722656,
+          "quantized_min": 0.0,
+          "reference_max": 4.726217269897461,
+          "reference_min": 0.0,
+          "rmse": 0.05396642908453941,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.2": {
+          "max_abs_diff": 1.5446687936782837,
+          "mean_abs_diff": 0.08697931468486786,
+          "quantized_max": 15.25989055633545,
+          "quantized_min": 0.0,
+          "reference_max": 14.990283966064453,
+          "reference_min": 0.0,
+          "rmse": 0.1427983194589615,
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ]
+        },
+        "model.2.m.0": {
+          "max_abs_diff": 4.322187423706055,
+          "mean_abs_diff": 0.2144063115119934,
+          "quantized_max": 31.637739181518555,
+          "quantized_min": 0.0,
+          "reference_max": 32.19477844238281,
+          "reference_min": 0.0,
+          "rmse": 0.32591038942337036,
+          "shape": [
+            1,
+            16,
+            64,
+            64
+          ]
+        },
+        "model.20": {
+          "max_abs_diff": 1.129482388496399,
+          "mean_abs_diff": 0.04632101207971573,
+          "quantized_max": 10.872396469116211,
+          "quantized_min": 0.0,
+          "reference_max": 10.833020210266113,
+          "reference_min": 0.0,
+          "rmse": 0.09168295562267303,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.20.m.0": {
+          "max_abs_diff": 0.5792627334594727,
+          "mean_abs_diff": 0.03276558220386505,
+          "quantized_max": 8.330161094665527,
+          "quantized_min": 0.0,
+          "reference_max": 8.016819953918457,
+          "reference_min": 0.0,
+          "rmse": 0.058854490518569946,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.22": {
+          "max_abs_diff": 0.7004959583282471,
+          "mean_abs_diff": 0.023933250457048416,
+          "quantized_max": 6.893595218658447,
+          "quantized_min": 0.0,
+          "reference_max": 6.905357360839844,
+          "reference_min": 0.0,
+          "rmse": 0.04965085908770561,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23": {
+          "max_abs_diff": 0.618161678314209,
+          "mean_abs_diff": 0.019366594031453133,
+          "quantized_max": 5.658155918121338,
+          "quantized_min": 0.0,
+          "reference_max": 5.652867317199707,
+          "reference_min": 0.0,
+          "rmse": 0.041216496378183365,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23.m.0": {
+          "max_abs_diff": 0.587713360786438,
+          "mean_abs_diff": 0.019643550738692284,
+          "quantized_max": 7.417901039123535,
+          "quantized_min": 0.0,
+          "reference_max": 7.4693684577941895,
+          "reference_min": 0.0,
+          "rmse": 0.04082360491156578,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.24.m.0": {
+          "max_abs_diff": 2.9832355976104736,
+          "mean_abs_diff": 0.18394887447357178,
+          "quantized_max": 8.901680946350098,
+          "quantized_min": -23.60880470275879,
+          "reference_max": 8.9148530960083,
+          "reference_min": -23.245004653930664,
+          "rmse": 0.2922780513763428,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "model.24.m.1": {
+          "max_abs_diff": 1.402879238128662,
+          "mean_abs_diff": 0.13393843173980713,
+          "quantized_max": 9.350058555603027,
+          "quantized_min": -16.110870361328125,
+          "reference_max": 9.12889575958252,
+          "reference_min": -16.61971092224121,
+          "rmse": 0.2085830420255661,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "model.24.m.2": {
+          "max_abs_diff": 1.1277081966400146,
+          "mean_abs_diff": 0.09462574124336243,
+          "quantized_max": 8.199247360229492,
+          "quantized_min": -13.964343070983887,
+          "reference_max": 8.161697387695312,
+          "reference_min": -14.27276611328125,
+          "rmse": 0.15663385391235352,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        },
+        "model.4": {
+          "max_abs_diff": 0.9158746004104614,
+          "mean_abs_diff": 0.036004260182380676,
+          "quantized_max": 4.727428436279297,
+          "quantized_min": 0.0,
+          "reference_max": 4.787871837615967,
+          "reference_min": 0.0,
+          "rmse": 0.07090209424495697,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.4.m.0": {
+          "max_abs_diff": 0.9903717041015625,
+          "mean_abs_diff": 0.05843624845147133,
+          "quantized_max": 6.437416076660156,
+          "quantized_min": 0.0,
+          "reference_max": 6.360489368438721,
+          "reference_min": 0.0,
+          "rmse": 0.0965295135974884,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.4.m.1": {
+          "max_abs_diff": 1.4589259624481201,
+          "mean_abs_diff": 0.1193133071064949,
+          "quantized_max": 9.570008277893066,
+          "quantized_min": 0.0,
+          "reference_max": 9.800579071044922,
+          "reference_min": 0.0,
+          "rmse": 0.17493703961372375,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.6": {
+          "max_abs_diff": 0.9959386587142944,
+          "mean_abs_diff": 0.02984153851866722,
+          "quantized_max": 4.450432300567627,
+          "quantized_min": 0.0,
+          "reference_max": 4.526095390319824,
+          "reference_min": 0.0,
+          "rmse": 0.06441973149776459,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.6.m.0": {
+          "max_abs_diff": 0.46521031856536865,
+          "mean_abs_diff": 0.023874148726463318,
+          "quantized_max": 3.814119815826416,
+          "quantized_min": 0.0,
+          "reference_max": 3.797957420349121,
+          "reference_min": 0.0,
+          "rmse": 0.043326571583747864,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.1": {
+          "max_abs_diff": 0.6009674072265625,
+          "mean_abs_diff": 0.046588290482759476,
+          "quantized_max": 5.140196800231934,
+          "quantized_min": 0.0,
+          "reference_max": 4.98046350479126,
+          "reference_min": 0.0,
+          "rmse": 0.07123763114213943,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.2": {
+          "max_abs_diff": 1.0673531293869019,
+          "mean_abs_diff": 0.07834774255752563,
+          "quantized_max": 8.129496574401855,
+          "quantized_min": 0.0,
+          "reference_max": 7.996299743652344,
+          "reference_min": 0.0,
+          "rmse": 0.11036741733551025,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.8": {
+          "max_abs_diff": 0.7162169218063354,
+          "mean_abs_diff": 0.025157716125249863,
+          "quantized_max": 4.727227687835693,
+          "quantized_min": 0.0,
+          "reference_max": 4.665383338928223,
+          "reference_min": 0.0,
+          "rmse": 0.06257104873657227,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.8.m.0": {
+          "max_abs_diff": 0.8465383052825928,
+          "mean_abs_diff": 0.043053049594163895,
+          "quantized_max": 6.582000255584717,
+          "quantized_min": 0.0,
+          "reference_max": 6.6707563400268555,
+          "reference_min": 0.0,
+          "rmse": 0.08253039419651031,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9": {
+          "max_abs_diff": 0.7349911332130432,
+          "mean_abs_diff": 0.009596274234354496,
+          "quantized_max": 3.3434641361236572,
+          "quantized_min": 0.0,
+          "reference_max": 3.345323324203491,
+          "reference_min": 0.0,
+          "rmse": 0.03360546752810478,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.9.m": {
+          "max_abs_diff": 0.4163496494293213,
+          "mean_abs_diff": 0.05390074476599693,
+          "quantized_max": 5.455780506134033,
+          "quantized_min": 0.35037121176719666,
+          "reference_max": 5.407434463500977,
+          "reference_min": 0.3469555377960205,
+          "rmse": 0.07549859583377838,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#2": {
+          "max_abs_diff": 0.347759485244751,
+          "mean_abs_diff": 0.049308571964502335,
+          "quantized_max": 5.455780506134033,
+          "quantized_min": 0.951007604598999,
+          "reference_max": 5.407434463500977,
+          "reference_min": 0.9478636980056763,
+          "rmse": 0.0687379240989685,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#3": {
+          "max_abs_diff": 0.2596036195755005,
+          "mean_abs_diff": 0.04866112768650055,
+          "quantized_max": 5.455780506134033,
+          "quantized_min": 1.451537847518921,
+          "reference_max": 5.407434463500977,
+          "reference_min": 1.4185206890106201,
+          "rmse": 0.0685216560959816,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        }
+      },
+      "notes": [
+        "Convolution nodes use package INT8 weights, INT32 bias and calibrated scales.",
+        "Non-convolution graph nodes retain the frozen topology and are not yet integer-executed by this simulator.",
+        "This report does not approve QAT, FPGA timing, resource constraints, or manifest freeze."
+      ],
+      "package": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\runs\\ac550_yolov5n_relu_int8_qat_staged_v1",
+      "package_manifest_sha256": "3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24",
+      "package_status": "PRE_G2_STATIC_QUANTIZATION",
+      "schema_version": 1,
+      "thresholds": {
+        "confidence": 0.25,
+        "nms_iou": 0.45
+      }
+    },
+    {
+      "detections": {
+        "comparison": {
+          "matched": 2,
+          "matches": [
+            {
+              "box_abs_max_diff": 4.893455505371094,
+              "box_iou": 0.919232602338627,
+              "class_match": true,
+              "confidence_abs_diff": 0.010491251945495605,
+              "quantized_class": 2,
+              "quantized_index": 1,
+              "reference_class": 2,
+              "reference_index": 0
+            },
+            {
+              "box_abs_max_diff": 1.259368896484375,
+              "box_iou": 0.9609596656566174,
+              "class_match": true,
+              "confidence_abs_diff": 0.007168173789978027,
+              "quantized_class": 1,
+              "quantized_index": 0,
+              "reference_class": 1,
+              "reference_index": 1
+            }
+          ],
+          "quantized_count": 2,
+          "reference_count": 2,
+          "unmatched_quantized": [],
+          "unmatched_reference": []
+        },
+        "quantized": [
+          [
+            159.30120849609375,
+            43.4666748046875,
+            186.24209594726562,
+            110.07662963867188,
+            0.8735051155090332,
+            1.0
+          ],
+          [
+            26.413116455078125,
+            110.38639068603516,
+            225.4086456298828,
+            169.4589080810547,
+            0.8720880150794983,
+            2.0
+          ]
+        ],
+        "reference": [
+          [
+            31.30657196044922,
+            111.44561004638672,
+            221.03134155273438,
+            168.400390625,
+            0.8825792670249939,
+            2.0
+          ],
+          [
+            159.12094116210938,
+            43.900665283203125,
+            186.45358276367188,
+            108.8172607421875,
+            0.8806732892990112,
+            1.0
+          ]
+        ]
+      },
+      "graph": {
+        "node_count": 87,
+        "node_coverage": {
+          "boundary": {
+            "golden_non_conv_boundaries": 34,
+            "hooked_modules": [
+              "model.11",
+              "model.11.upsample",
+              "model.12",
+              "model.13",
+              "model.13.m.0",
+              "model.15",
+              "model.15.upsample",
+              "model.16",
+              "model.17",
+              "model.17.m.0",
+              "model.19",
+              "model.2",
+              "model.2.m.0",
+              "model.20",
+              "model.20.m.0",
+              "model.22",
+              "model.23",
+              "model.23.m.0",
+              "model.24.m.0",
+              "model.24.m.1",
+              "model.24.m.2",
+              "model.4",
+              "model.4.m.0",
+              "model.4.m.1",
+              "model.6",
+              "model.6.m.0",
+              "model.6.m.1",
+              "model.6.m.2",
+              "model.8",
+              "model.8.m.0",
+              "model.9",
+              "model.9.m"
+            ],
+            "hooked_non_conv_boundaries": 31,
+            "unresolved_non_conv_modules": []
+          },
+          "boundary_simulated_executors": [
+            "ARM_ADD",
+            "ARM_CONCAT",
+            "ARM_UPSAMPLE",
+            "FPGA_MAXPOOL"
+          ],
+          "executor_counts": {
+            "ARM_ADD": 7,
+            "ARM_CONCAT": 13,
+            "ARM_UPSAMPLE": 4,
+            "FPGA_CONV_LINEAR": 3,
+            "FPGA_CONV_RELU": 57,
+            "FPGA_MAXPOOL": 3
+          },
+          "graph_node_count": 87,
+          "integer_simulation_complete": true,
+          "measured_conv_nodes": 60,
+          "missing_conv_sources": [],
+          "missing_non_conv_nodes": [],
+          "package_conv_nodes": 60,
+          "unquantized_executors": []
+        }
+      },
+      "heads": {
+        "P3": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+          "max_abs_diff": 2.4813051223754883,
+          "mean_abs_diff": 0.19496788084506989,
+          "quantized_max": 9.482224464416504,
+          "quantized_min": -21.867172241210938,
+          "reference_max": 9.461562156677246,
+          "reference_min": -21.849063873291016,
+          "rmse": 0.2938035726547241,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "P4": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+          "max_abs_diff": 2.3030319213867188,
+          "mean_abs_diff": 0.14668865501880646,
+          "quantized_max": 8.918517112731934,
+          "quantized_min": -16.83010482788086,
+          "reference_max": 8.957871437072754,
+          "reference_min": -16.942420959472656,
+          "rmse": 0.2284741997718811,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "P5": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+          "max_abs_diff": 1.4597179889678955,
+          "mean_abs_diff": 0.10032349824905396,
+          "quantized_max": 8.199247360229492,
+          "quantized_min": -15.245475769042969,
+          "reference_max": 8.2715482711792,
+          "reference_min": -15.260468482971191,
+          "rmse": 0.16665521264076233,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        }
+      },
+      "input": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "source": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png"
+      },
+      "nodes": {
+        "model.11": {
+          "max_abs_diff": 0.4338229298591614,
+          "mean_abs_diff": 0.027568738907575607,
+          "quantized_max": 2.5491867065429688,
+          "quantized_min": 0.0,
+          "reference_max": 2.542884588241577,
+          "reference_min": 0.0,
+          "rmse": 0.05268795043230057,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.11.upsample": {
+          "max_abs_diff": 0.4338229298591614,
+          "mean_abs_diff": 0.027568738907575607,
+          "quantized_max": 2.5491867065429688,
+          "quantized_min": 0.0,
+          "reference_max": 2.542884588241577,
+          "reference_min": 0.0,
+          "rmse": 0.05268795043230057,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.12": {
+          "max_abs_diff": 0.8558082580566406,
+          "mean_abs_diff": 0.029822973534464836,
+          "quantized_max": 4.643929481506348,
+          "quantized_min": 0.0,
+          "reference_max": 4.669163703918457,
+          "reference_min": 0.0,
+          "rmse": 0.05980973690748215,
+          "shape": [
+            1,
+            256,
+            16,
+            16
+          ]
+        },
+        "model.13": {
+          "max_abs_diff": 0.5553190112113953,
+          "mean_abs_diff": 0.022517064586281776,
+          "quantized_max": 3.437065601348877,
+          "quantized_min": 0.0,
+          "reference_max": 3.4851856231689453,
+          "reference_min": 0.0,
+          "rmse": 0.04737313836812973,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.13.m.0": {
+          "max_abs_diff": 0.4475228786468506,
+          "mean_abs_diff": 0.02930315025150776,
+          "quantized_max": 3.6903560161590576,
+          "quantized_min": 0.0,
+          "reference_max": 3.679565668106079,
+          "reference_min": 0.0,
+          "rmse": 0.052442412823438644,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.15": {
+          "max_abs_diff": 0.41346311569213867,
+          "mean_abs_diff": 0.036865852773189545,
+          "quantized_max": 4.419180393218994,
+          "quantized_min": 0.0,
+          "reference_max": 4.376831531524658,
+          "reference_min": 0.0,
+          "rmse": 0.05742596462368965,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.15.upsample": {
+          "max_abs_diff": 0.41346311569213867,
+          "mean_abs_diff": 0.036865852773189545,
+          "quantized_max": 4.419180393218994,
+          "quantized_min": 0.0,
+          "reference_max": 4.376831531524658,
+          "reference_min": 0.0,
+          "rmse": 0.05742596462368965,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.16": {
+          "max_abs_diff": 0.8917784690856934,
+          "mean_abs_diff": 0.035558588802814484,
+          "quantized_max": 4.40510368347168,
+          "quantized_min": 0.0,
+          "reference_max": 4.376831531524658,
+          "reference_min": 0.0,
+          "rmse": 0.06222637742757797,
+          "shape": [
+            1,
+            128,
+            32,
+            32
+          ]
+        },
+        "model.17": {
+          "max_abs_diff": 1.5399975776672363,
+          "mean_abs_diff": 0.08883586525917053,
+          "quantized_max": 10.47719955444336,
+          "quantized_min": 0.0,
+          "reference_max": 10.642400741577148,
+          "reference_min": 0.0,
+          "rmse": 0.14933624863624573,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.17.m.0": {
+          "max_abs_diff": 0.7746362090110779,
+          "mean_abs_diff": 0.043558113276958466,
+          "quantized_max": 6.032875061035156,
+          "quantized_min": 0.0,
+          "reference_max": 6.109224796295166,
+          "reference_min": 0.0,
+          "rmse": 0.06987014412879944,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.19": {
+          "max_abs_diff": 0.7505530118942261,
+          "mean_abs_diff": 0.033644698560237885,
+          "quantized_max": 4.427685737609863,
+          "quantized_min": 0.0,
+          "reference_max": 4.376831531524658,
+          "reference_min": 0.0,
+          "rmse": 0.058501746505498886,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.2": {
+          "max_abs_diff": 1.24208402633667,
+          "mean_abs_diff": 0.08342496305704117,
+          "quantized_max": 10.468994140625,
+          "quantized_min": 0.0,
+          "reference_max": 10.142999649047852,
+          "reference_min": 0.0,
+          "rmse": 0.13628479838371277,
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ]
+        },
+        "model.2.m.0": {
+          "max_abs_diff": 3.2175521850585938,
+          "mean_abs_diff": 0.20814919471740723,
+          "quantized_max": 21.90304946899414,
+          "quantized_min": 0.0,
+          "reference_max": 21.666996002197266,
+          "reference_min": 0.0,
+          "rmse": 0.30875593423843384,
+          "shape": [
+            1,
+            16,
+            64,
+            64
+          ]
+        },
+        "model.20": {
+          "max_abs_diff": 1.2240426540374756,
+          "mean_abs_diff": 0.051695097237825394,
+          "quantized_max": 10.006453514099121,
+          "quantized_min": 0.0,
+          "reference_max": 9.761946678161621,
+          "reference_min": 0.0,
+          "rmse": 0.10088017582893372,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.20.m.0": {
+          "max_abs_diff": 0.7484778165817261,
+          "mean_abs_diff": 0.037153210490942,
+          "quantized_max": 9.351784706115723,
+          "quantized_min": 0.0,
+          "reference_max": 9.056999206542969,
+          "reference_min": 0.0,
+          "rmse": 0.06837201863527298,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.22": {
+          "max_abs_diff": 1.2262332439422607,
+          "mean_abs_diff": 0.02815435454249382,
+          "quantized_max": 6.060303688049316,
+          "quantized_min": 0.0,
+          "reference_max": 6.019059181213379,
+          "reference_min": 0.0,
+          "rmse": 0.05754602700471878,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23": {
+          "max_abs_diff": 1.0325053930282593,
+          "mean_abs_diff": 0.023110290989279747,
+          "quantized_max": 5.858444690704346,
+          "quantized_min": 0.0,
+          "reference_max": 5.860908508300781,
+          "reference_min": 0.0,
+          "rmse": 0.05159187689423561,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23.m.0": {
+          "max_abs_diff": 0.9023118019104004,
+          "mean_abs_diff": 0.025906505063176155,
+          "quantized_max": 5.883162975311279,
+          "quantized_min": 0.0,
+          "reference_max": 5.805458068847656,
+          "reference_min": 0.0,
+          "rmse": 0.05629246309399605,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.24.m.0": {
+          "max_abs_diff": 2.4813051223754883,
+          "mean_abs_diff": 0.19496788084506989,
+          "quantized_max": 9.482224464416504,
+          "quantized_min": -21.867172241210938,
+          "reference_max": 9.461562156677246,
+          "reference_min": -21.849063873291016,
+          "rmse": 0.2938035726547241,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "model.24.m.1": {
+          "max_abs_diff": 2.3030319213867188,
+          "mean_abs_diff": 0.14668865501880646,
+          "quantized_max": 8.918517112731934,
+          "quantized_min": -16.83010482788086,
+          "reference_max": 8.957871437072754,
+          "reference_min": -16.942420959472656,
+          "rmse": 0.2284741997718811,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "model.24.m.2": {
+          "max_abs_diff": 1.4597179889678955,
+          "mean_abs_diff": 0.10032349824905396,
+          "quantized_max": 8.199247360229492,
+          "quantized_min": -15.245475769042969,
+          "reference_max": 8.2715482711792,
+          "reference_min": -15.260468482971191,
+          "rmse": 0.16665521264076233,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        },
+        "model.4": {
+          "max_abs_diff": 0.8917784690856934,
+          "mean_abs_diff": 0.03300707787275314,
+          "quantized_max": 3.975337505340576,
+          "quantized_min": 0.0,
+          "reference_max": 3.9627578258514404,
+          "reference_min": 0.0,
+          "rmse": 0.06530240178108215,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.4.m.0": {
+          "max_abs_diff": 0.8500151634216309,
+          "mean_abs_diff": 0.05405930057168007,
+          "quantized_max": 6.623110771179199,
+          "quantized_min": 0.0,
+          "reference_max": 6.498478412628174,
+          "reference_min": 0.0,
+          "rmse": 0.08442860841751099,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.4.m.1": {
+          "max_abs_diff": 1.1803877353668213,
+          "mean_abs_diff": 0.1140332967042923,
+          "quantized_max": 9.218814849853516,
+          "quantized_min": 0.0,
+          "reference_max": 9.497224807739258,
+          "reference_min": 0.0,
+          "rmse": 0.1612226516008377,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.6": {
+          "max_abs_diff": 0.8558082580566406,
+          "mean_abs_diff": 0.030100494623184204,
+          "quantized_max": 4.643929481506348,
+          "quantized_min": 0.0,
+          "reference_max": 4.669163703918457,
+          "reference_min": 0.0,
+          "rmse": 0.06382908672094345,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.6.m.0": {
+          "max_abs_diff": 0.4683992266654968,
+          "mean_abs_diff": 0.0225636288523674,
+          "quantized_max": 3.2843809127807617,
+          "quantized_min": 0.0,
+          "reference_max": 3.315258026123047,
+          "reference_min": 0.0,
+          "rmse": 0.040289804339408875,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.1": {
+          "max_abs_diff": 0.9690797328948975,
+          "mean_abs_diff": 0.04542262479662895,
+          "quantized_max": 5.8180251121521,
+          "quantized_min": 0.0,
+          "reference_max": 6.026315689086914,
+          "reference_min": 0.0,
+          "rmse": 0.06959830224514008,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.2": {
+          "max_abs_diff": 1.0107815265655518,
+          "mean_abs_diff": 0.07760906964540482,
+          "quantized_max": 7.573633670806885,
+          "quantized_min": 0.0,
+          "reference_max": 7.820039749145508,
+          "reference_min": 0.0,
+          "rmse": 0.11047409474849701,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.8": {
+          "max_abs_diff": 0.7726109027862549,
+          "mean_abs_diff": 0.027150893583893776,
+          "quantized_max": 3.8930108547210693,
+          "quantized_min": 0.0,
+          "reference_max": 4.145911693572998,
+          "reference_min": 0.0,
+          "rmse": 0.06376230716705322,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.8.m.0": {
+          "max_abs_diff": 0.45879173278808594,
+          "mean_abs_diff": 0.042879313230514526,
+          "quantized_max": 7.68986177444458,
+          "quantized_min": 0.0,
+          "reference_max": 7.709441661834717,
+          "reference_min": 0.0,
+          "rmse": 0.07576900720596313,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9": {
+          "max_abs_diff": 0.46496790647506714,
+          "mean_abs_diff": 0.009157409891486168,
+          "quantized_max": 2.443300724029541,
+          "quantized_min": 0.0,
+          "reference_max": 2.488823652267456,
+          "reference_min": 0.0,
+          "rmse": 0.03277157247066498,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.9.m": {
+          "max_abs_diff": 0.3677724599838257,
+          "mean_abs_diff": 0.059811487793922424,
+          "quantized_max": 4.9051971435546875,
+          "quantized_min": 0.2502651512622833,
+          "reference_max": 4.947934627532959,
+          "reference_min": 0.0,
+          "rmse": 0.07832412421703339,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#2": {
+          "max_abs_diff": 0.27709150314331055,
+          "mean_abs_diff": 0.05644746124744415,
+          "quantized_max": 4.9051971435546875,
+          "quantized_min": 0.8008484840393066,
+          "reference_max": 4.947934627532959,
+          "reference_min": 0.758959174156189,
+          "rmse": 0.0726032629609108,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#3": {
+          "max_abs_diff": 0.27709150314331055,
+          "mean_abs_diff": 0.05810515210032463,
+          "quantized_max": 4.9051971435546875,
+          "quantized_min": 1.20127272605896,
+          "reference_max": 4.947934627532959,
+          "reference_min": 1.2172422409057617,
+          "rmse": 0.07366663962602615,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        }
+      },
+      "notes": [
+        "Convolution nodes use package INT8 weights, INT32 bias and calibrated scales.",
+        "Non-convolution graph nodes retain the frozen topology and are not yet integer-executed by this simulator.",
+        "This report does not approve QAT, FPGA timing, resource constraints, or manifest freeze."
+      ],
+      "package": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\runs\\ac550_yolov5n_relu_int8_qat_staged_v1",
+      "package_manifest_sha256": "3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24",
+      "package_status": "PRE_G2_STATIC_QUANTIZATION",
+      "schema_version": 1,
+      "thresholds": {
+        "confidence": 0.25,
+        "nms_iou": 0.45
+      }
+    },
+    {
+      "detections": {
+        "comparison": {
+          "matched": 2,
+          "matches": [
+            {
+              "box_abs_max_diff": 1.3448944091796875,
+              "box_iou": 0.905646416427207,
+              "class_match": true,
+              "confidence_abs_diff": 0.0007124543190002441,
+              "quantized_class": 1,
+              "quantized_index": 0,
+              "reference_class": 1,
+              "reference_index": 0
+            },
+            {
+              "box_abs_max_diff": 1.8192138671875,
+              "box_iou": 0.929209818802148,
+              "class_match": true,
+              "confidence_abs_diff": 0.013776183128356934,
+              "quantized_class": 2,
+              "quantized_index": 1,
+              "reference_class": 2,
+              "reference_index": 1
+            }
+          ],
+          "quantized_count": 2,
+          "reference_count": 2,
+          "unmatched_quantized": [],
+          "unmatched_reference": []
+        },
+        "quantized": [
+          [
+            62.57481002807617,
+            57.86146926879883,
+            101.51921081542969,
+            93.98385620117188,
+            0.8567100167274475,
+            1.0
+          ],
+          [
+            107.62713623046875,
+            14.03253173828125,
+            146.571533203125,
+            257.9186706542969,
+            0.8034759759902954,
+            2.0
+          ]
+        ],
+        "reference": [
+          [
+            61.61553192138672,
+            57.08489990234375,
+            100.7974624633789,
+            95.32875061035156,
+            0.8559975624084473,
+            1.0
+          ],
+          [
+            108.51992797851562,
+            14.092437744140625,
+            144.7523193359375,
+            257.676513671875,
+            0.7896997928619385,
+            2.0
+          ]
+        ]
+      },
+      "graph": {
+        "node_count": 87,
+        "node_coverage": {
+          "boundary": {
+            "golden_non_conv_boundaries": 34,
+            "hooked_modules": [
+              "model.11",
+              "model.11.upsample",
+              "model.12",
+              "model.13",
+              "model.13.m.0",
+              "model.15",
+              "model.15.upsample",
+              "model.16",
+              "model.17",
+              "model.17.m.0",
+              "model.19",
+              "model.2",
+              "model.2.m.0",
+              "model.20",
+              "model.20.m.0",
+              "model.22",
+              "model.23",
+              "model.23.m.0",
+              "model.24.m.0",
+              "model.24.m.1",
+              "model.24.m.2",
+              "model.4",
+              "model.4.m.0",
+              "model.4.m.1",
+              "model.6",
+              "model.6.m.0",
+              "model.6.m.1",
+              "model.6.m.2",
+              "model.8",
+              "model.8.m.0",
+              "model.9",
+              "model.9.m"
+            ],
+            "hooked_non_conv_boundaries": 31,
+            "unresolved_non_conv_modules": []
+          },
+          "boundary_simulated_executors": [
+            "ARM_ADD",
+            "ARM_CONCAT",
+            "ARM_UPSAMPLE",
+            "FPGA_MAXPOOL"
+          ],
+          "executor_counts": {
+            "ARM_ADD": 7,
+            "ARM_CONCAT": 13,
+            "ARM_UPSAMPLE": 4,
+            "FPGA_CONV_LINEAR": 3,
+            "FPGA_CONV_RELU": 57,
+            "FPGA_MAXPOOL": 3
+          },
+          "graph_node_count": 87,
+          "integer_simulation_complete": true,
+          "measured_conv_nodes": 60,
+          "missing_conv_sources": [],
+          "missing_non_conv_nodes": [],
+          "package_conv_nodes": 60,
+          "unquantized_executors": []
+        }
+      },
+      "heads": {
+        "P3": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1012.png",
+          "max_abs_diff": 2.215604305267334,
+          "mean_abs_diff": 0.1797020137310028,
+          "quantized_max": 10.062768936157227,
+          "quantized_min": -20.125537872314453,
+          "reference_max": 10.00016975402832,
+          "reference_min": -20.228408813476562,
+          "rmse": 0.2742755711078644,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "P4": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1012.png",
+          "max_abs_diff": 2.106736183166504,
+          "mean_abs_diff": 0.14932069182395935,
+          "quantized_max": 7.911587715148926,
+          "quantized_min": -16.97395133972168,
+          "reference_max": 7.859584808349609,
+          "reference_min": -16.4630184173584,
+          "rmse": 0.23543481528759003,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "P5": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1012.png",
+          "max_abs_diff": 1.3470439910888672,
+          "mean_abs_diff": 0.09388440102338791,
+          "quantized_max": 8.455473899841309,
+          "quantized_min": -15.245475769042969,
+          "reference_max": 8.37080192565918,
+          "reference_min": -15.104843139648438,
+          "rmse": 0.15383897721767426,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        }
+      },
+      "input": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "source": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1012.png"
+      },
+      "nodes": {
+        "model.11": {
+          "max_abs_diff": 0.3926738500595093,
+          "mean_abs_diff": 0.018280260264873505,
+          "quantized_max": 2.8396003246307373,
+          "quantized_min": 0.0,
+          "reference_max": 2.883122682571411,
+          "reference_min": 0.0,
+          "rmse": 0.03549998253583908,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.11.upsample": {
+          "max_abs_diff": 0.3926738500595093,
+          "mean_abs_diff": 0.018280260264873505,
+          "quantized_max": 2.8396003246307373,
+          "quantized_min": 0.0,
+          "reference_max": 2.883122682571411,
+          "reference_min": 0.0,
+          "rmse": 0.03549998253583908,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.12": {
+          "max_abs_diff": 0.8633031845092773,
+          "mean_abs_diff": 0.025676485151052475,
+          "quantized_max": 4.708428382873535,
+          "quantized_min": 0.0,
+          "reference_max": 4.610988140106201,
+          "reference_min": 0.0,
+          "rmse": 0.05277066305279732,
+          "shape": [
+            1,
+            256,
+            16,
+            16
+          ]
+        },
+        "model.13": {
+          "max_abs_diff": 0.5665492415428162,
+          "mean_abs_diff": 0.018987763673067093,
+          "quantized_max": 2.6438965797424316,
+          "quantized_min": 0.0,
+          "reference_max": 2.704676866531372,
+          "reference_min": 0.0,
+          "rmse": 0.04176066443324089,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.13.m.0": {
+          "max_abs_diff": 0.3260425627231598,
+          "mean_abs_diff": 0.02825879491865635,
+          "quantized_max": 3.5725786685943604,
+          "quantized_min": 0.0,
+          "reference_max": 3.6572799682617188,
+          "reference_min": 0.0,
+          "rmse": 0.048751264810562134,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.15": {
+          "max_abs_diff": 0.5487015843391418,
+          "mean_abs_diff": 0.03327865153551102,
+          "quantized_max": 3.333110809326172,
+          "quantized_min": 0.0,
+          "reference_max": 3.3774914741516113,
+          "reference_min": 0.0,
+          "rmse": 0.05160368233919144,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.15.upsample": {
+          "max_abs_diff": 0.5487015843391418,
+          "mean_abs_diff": 0.03327865153551102,
+          "quantized_max": 3.333110809326172,
+          "quantized_min": 0.0,
+          "reference_max": 3.3774914741516113,
+          "reference_min": 0.0,
+          "rmse": 0.05160368233919144,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.16": {
+          "max_abs_diff": 0.698370099067688,
+          "mean_abs_diff": 0.03522763028740883,
+          "quantized_max": 4.243941307067871,
+          "quantized_min": 0.0,
+          "reference_max": 4.635972499847412,
+          "reference_min": 0.0,
+          "rmse": 0.061696991324424744,
+          "shape": [
+            1,
+            128,
+            32,
+            32
+          ]
+        },
+        "model.17": {
+          "max_abs_diff": 1.502986192703247,
+          "mean_abs_diff": 0.07606415450572968,
+          "quantized_max": 10.572446823120117,
+          "quantized_min": 0.0,
+          "reference_max": 10.896040916442871,
+          "reference_min": 0.0,
+          "rmse": 0.1302752047777176,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.17.m.0": {
+          "max_abs_diff": 0.4995081126689911,
+          "mean_abs_diff": 0.04088553041219711,
+          "quantized_max": 4.996926784515381,
+          "quantized_min": 0.0,
+          "reference_max": 5.183384895324707,
+          "reference_min": 0.0,
+          "rmse": 0.06297744810581207,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.19": {
+          "max_abs_diff": 0.530845582485199,
+          "mean_abs_diff": 0.03101281262934208,
+          "quantized_max": 3.5692567825317383,
+          "quantized_min": 0.0,
+          "reference_max": 3.774397850036621,
+          "reference_min": 0.0,
+          "rmse": 0.0537714846432209,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.2": {
+          "max_abs_diff": 1.5169053077697754,
+          "mean_abs_diff": 0.08571217209100723,
+          "quantized_max": 11.711078643798828,
+          "quantized_min": 0.0,
+          "reference_max": 11.526294708251953,
+          "reference_min": 0.0,
+          "rmse": 0.13879360258579254,
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ]
+        },
+        "model.2.m.0": {
+          "max_abs_diff": 3.439863681793213,
+          "mean_abs_diff": 0.20829105377197266,
+          "quantized_max": 25.24934959411621,
+          "quantized_min": 0.0,
+          "reference_max": 25.140174865722656,
+          "reference_min": 0.0,
+          "rmse": 0.3169513940811157,
+          "shape": [
+            1,
+            16,
+            64,
+            64
+          ]
+        },
+        "model.20": {
+          "max_abs_diff": 1.1281352043151855,
+          "mean_abs_diff": 0.04963560402393341,
+          "quantized_max": 10.776180267333984,
+          "quantized_min": 0.0,
+          "reference_max": 10.773147583007812,
+          "reference_min": 0.0,
+          "rmse": 0.09948159754276276,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.20.m.0": {
+          "max_abs_diff": 0.8386132717132568,
+          "mean_abs_diff": 0.03215434029698372,
+          "quantized_max": 6.129741668701172,
+          "quantized_min": 0.0,
+          "reference_max": 5.959636688232422,
+          "reference_min": 0.0,
+          "rmse": 0.05859498679637909,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.22": {
+          "max_abs_diff": 0.6601021885871887,
+          "mean_abs_diff": 0.023251527920365334,
+          "quantized_max": 6.742087364196777,
+          "quantized_min": 0.0,
+          "reference_max": 6.793835163116455,
+          "reference_min": 0.0,
+          "rmse": 0.04681422933936119,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23": {
+          "max_abs_diff": 0.9564226865768433,
+          "mean_abs_diff": 0.020667845383286476,
+          "quantized_max": 5.007217884063721,
+          "quantized_min": 0.0,
+          "reference_max": 4.875150203704834,
+          "reference_min": 0.0,
+          "rmse": 0.04814138263463974,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23.m.0": {
+          "max_abs_diff": 0.6679627895355225,
+          "mean_abs_diff": 0.022546738386154175,
+          "quantized_max": 7.162111282348633,
+          "quantized_min": 0.0,
+          "reference_max": 7.037747859954834,
+          "reference_min": 0.0,
+          "rmse": 0.050911761820316315,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.24.m.0": {
+          "max_abs_diff": 2.215604305267334,
+          "mean_abs_diff": 0.1797020137310028,
+          "quantized_max": 10.062768936157227,
+          "quantized_min": -20.125537872314453,
+          "reference_max": 10.00016975402832,
+          "reference_min": -20.228408813476562,
+          "rmse": 0.2742755711078644,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "model.24.m.1": {
+          "max_abs_diff": 2.106736183166504,
+          "mean_abs_diff": 0.14932069182395935,
+          "quantized_max": 7.911587715148926,
+          "quantized_min": -16.97395133972168,
+          "reference_max": 7.859584808349609,
+          "reference_min": -16.4630184173584,
+          "rmse": 0.23543481528759003,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "model.24.m.2": {
+          "max_abs_diff": 1.3470439910888672,
+          "mean_abs_diff": 0.09388440102338791,
+          "quantized_max": 8.455473899841309,
+          "quantized_min": -15.245475769042969,
+          "reference_max": 8.37080192565918,
+          "reference_min": -15.104843139648438,
+          "rmse": 0.15383897721767426,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        },
+        "model.4": {
+          "max_abs_diff": 0.698370099067688,
+          "mean_abs_diff": 0.03565560281276703,
+          "quantized_max": 4.243941307067871,
+          "quantized_min": 0.0,
+          "reference_max": 4.635972499847412,
+          "reference_min": 0.0,
+          "rmse": 0.06893869489431381,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.4.m.0": {
+          "max_abs_diff": 0.9151923656463623,
+          "mean_abs_diff": 0.0550541989505291,
+          "quantized_max": 5.632739067077637,
+          "quantized_min": 0.0,
+          "reference_max": 5.757993698120117,
+          "reference_min": 0.0,
+          "rmse": 0.08658353984355927,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.4.m.1": {
+          "max_abs_diff": 1.3593640327453613,
+          "mean_abs_diff": 0.11556912213563919,
+          "quantized_max": 8.604227066040039,
+          "quantized_min": 0.0,
+          "reference_max": 8.774136543273926,
+          "reference_min": 0.0,
+          "rmse": 0.1646723598241806,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.6": {
+          "max_abs_diff": 0.8633031845092773,
+          "mean_abs_diff": 0.03082721121609211,
+          "quantized_max": 4.708428382873535,
+          "quantized_min": 0.0,
+          "reference_max": 4.610988140106201,
+          "reference_min": 0.0,
+          "rmse": 0.0638292208313942,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.6.m.0": {
+          "max_abs_diff": 0.33164989948272705,
+          "mean_abs_diff": 0.023703034967184067,
+          "quantized_max": 3.3550126552581787,
+          "quantized_min": 0.0,
+          "reference_max": 3.287965774536133,
+          "reference_min": 0.0,
+          "rmse": 0.04128522053360939,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.1": {
+          "max_abs_diff": 0.5871918201446533,
+          "mean_abs_diff": 0.04720665141940117,
+          "quantized_max": 6.0439677238464355,
+          "quantized_min": 0.0,
+          "reference_max": 6.100124835968018,
+          "reference_min": 0.0,
+          "rmse": 0.07027820497751236,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.2": {
+          "max_abs_diff": 0.6977572441101074,
+          "mean_abs_diff": 0.07917053252458572,
+          "quantized_max": 7.504150867462158,
+          "quantized_min": 0.0,
+          "reference_max": 7.560771942138672,
+          "reference_min": 0.0,
+          "rmse": 0.10944856703281403,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.8": {
+          "max_abs_diff": 0.5643577575683594,
+          "mean_abs_diff": 0.021931177005171776,
+          "quantized_max": 4.337926387786865,
+          "quantized_min": 0.0,
+          "reference_max": 4.470892429351807,
+          "reference_min": 0.0,
+          "rmse": 0.052726536989212036,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.8.m.0": {
+          "max_abs_diff": 0.46417587995529175,
+          "mean_abs_diff": 0.04005162790417671,
+          "quantized_max": 5.799980640411377,
+          "quantized_min": 0.0,
+          "reference_max": 5.878417015075684,
+          "reference_min": 0.0,
+          "rmse": 0.07281281799077988,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9": {
+          "max_abs_diff": 0.3517926335334778,
+          "mean_abs_diff": 0.006507055833935738,
+          "quantized_max": 2.9576797485351562,
+          "quantized_min": 0.0,
+          "reference_max": 2.889056444168091,
+          "reference_min": 0.0,
+          "rmse": 0.02346586063504219,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.9.m": {
+          "max_abs_diff": 0.27951908111572266,
+          "mean_abs_diff": 0.05104047432541847,
+          "quantized_max": 5.405727386474609,
+          "quantized_min": 0.5005303025245667,
+          "reference_max": 5.4680962562561035,
+          "reference_min": 0.4637589454650879,
+          "rmse": 0.06734392791986465,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#2": {
+          "max_abs_diff": 0.27951908111572266,
+          "mean_abs_diff": 0.05029250308871269,
+          "quantized_max": 5.405727386474609,
+          "quantized_min": 0.7007424235343933,
+          "reference_max": 5.4680962562561035,
+          "reference_min": 0.6832239627838135,
+          "rmse": 0.06679382175207138,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#3": {
+          "max_abs_diff": 0.27951908111572266,
+          "mean_abs_diff": 0.051934778690338135,
+          "quantized_max": 5.405727386474609,
+          "quantized_min": 1.2513257265090942,
+          "reference_max": 5.4680962562561035,
+          "reference_min": 1.2184081077575684,
+          "rmse": 0.06904913485050201,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        }
+      },
+      "notes": [
+        "Convolution nodes use package INT8 weights, INT32 bias and calibrated scales.",
+        "Non-convolution graph nodes retain the frozen topology and are not yet integer-executed by this simulator.",
+        "This report does not approve QAT, FPGA timing, resource constraints, or manifest freeze."
+      ],
+      "package": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\runs\\ac550_yolov5n_relu_int8_qat_staged_v1",
+      "package_manifest_sha256": "3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24",
+      "package_status": "PRE_G2_STATIC_QUANTIZATION",
+      "schema_version": 1,
+      "thresholds": {
+        "confidence": 0.25,
+        "nms_iou": 0.45
+      }
+    },
+    {
+      "detections": {
+        "comparison": {
+          "matched": 2,
+          "matches": [
+            {
+              "box_abs_max_diff": 2.8686981201171875,
+              "box_iou": 0.9563144145580217,
+              "class_match": true,
+              "confidence_abs_diff": 0.0009571313858032227,
+              "quantized_class": 2,
+              "quantized_index": 0,
+              "reference_class": 2,
+              "reference_index": 0
+            },
+            {
+              "box_abs_max_diff": 1.0397796630859375,
+              "box_iou": 0.9489565991768283,
+              "class_match": true,
+              "confidence_abs_diff": 0.0020480751991271973,
+              "quantized_class": 1,
+              "quantized_index": 1,
+              "reference_class": 1,
+              "reference_index": 1
+            }
+          ],
+          "quantized_count": 2,
+          "reference_count": 2,
+          "unmatched_quantized": [],
+          "unmatched_reference": []
+        },
+        "quantized": [
+          [
+            55.82215881347656,
+            51.18592071533203,
+            211.82215881347656,
+            224.66439819335938,
+            0.9090089797973633,
+            2.0
+          ],
+          [
+            118.42185974121094,
+            15.612236022949219,
+            149.0065155029297,
+            66.68535614013672,
+            0.8816700577735901,
+            1.0
+          ]
+        ],
+        "reference": [
+          [
+            54.22551727294922,
+            49.6776123046875,
+            214.69085693359375,
+            223.28042602539062,
+            0.9080518484115601,
+            2.0
+          ],
+          [
+            117.382080078125,
+            15.831792831420898,
+            149.46063232421875,
+            66.71575164794922,
+            0.8796219825744629,
+            1.0
+          ]
+        ]
+      },
+      "graph": {
+        "node_count": 87,
+        "node_coverage": {
+          "boundary": {
+            "golden_non_conv_boundaries": 34,
+            "hooked_modules": [
+              "model.11",
+              "model.11.upsample",
+              "model.12",
+              "model.13",
+              "model.13.m.0",
+              "model.15",
+              "model.15.upsample",
+              "model.16",
+              "model.17",
+              "model.17.m.0",
+              "model.19",
+              "model.2",
+              "model.2.m.0",
+              "model.20",
+              "model.20.m.0",
+              "model.22",
+              "model.23",
+              "model.23.m.0",
+              "model.24.m.0",
+              "model.24.m.1",
+              "model.24.m.2",
+              "model.4",
+              "model.4.m.0",
+              "model.4.m.1",
+              "model.6",
+              "model.6.m.0",
+              "model.6.m.1",
+              "model.6.m.2",
+              "model.8",
+              "model.8.m.0",
+              "model.9",
+              "model.9.m"
+            ],
+            "hooked_non_conv_boundaries": 31,
+            "unresolved_non_conv_modules": []
+          },
+          "boundary_simulated_executors": [
+            "ARM_ADD",
+            "ARM_CONCAT",
+            "ARM_UPSAMPLE",
+            "FPGA_MAXPOOL"
+          ],
+          "executor_counts": {
+            "ARM_ADD": 7,
+            "ARM_CONCAT": 13,
+            "ARM_UPSAMPLE": 4,
+            "FPGA_CONV_LINEAR": 3,
+            "FPGA_CONV_RELU": 57,
+            "FPGA_MAXPOOL": 3
+          },
+          "graph_node_count": 87,
+          "integer_simulation_complete": true,
+          "measured_conv_nodes": 60,
+          "missing_conv_sources": [],
+          "missing_non_conv_nodes": [],
+          "package_conv_nodes": 60,
+          "unquantized_executors": []
+        }
+      },
+      "heads": {
+        "P3": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1013.png",
+          "max_abs_diff": 3.706824779510498,
+          "mean_abs_diff": 0.18374015390872955,
+          "quantized_max": 9.28870964050293,
+          "quantized_min": -22.447715759277344,
+          "reference_max": 9.092222213745117,
+          "reference_min": -22.65852165222168,
+          "rmse": 0.29833799600601196,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "P4": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1013.png",
+          "max_abs_diff": 1.703293800354004,
+          "mean_abs_diff": 0.13643380999565125,
+          "quantized_max": 8.630823135375977,
+          "quantized_min": -16.398563385009766,
+          "reference_max": 8.608009338378906,
+          "reference_min": -16.347997665405273,
+          "rmse": 0.215346097946167,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "P5": {
+          "input": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1013.png",
+          "max_abs_diff": 1.7237069606781006,
+          "mean_abs_diff": 0.10616336017847061,
+          "quantized_max": 8.455473899841309,
+          "quantized_min": -13.58000373840332,
+          "reference_max": 8.445209503173828,
+          "reference_min": -13.43795394897461,
+          "rmse": 0.19635608792304993,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        }
+      },
+      "input": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "source": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1013.png"
+      },
+      "nodes": {
+        "model.11": {
+          "max_abs_diff": 0.4933466911315918,
+          "mean_abs_diff": 0.022869186475872993,
+          "quantized_max": 4.001255035400391,
+          "quantized_min": 0.0,
+          "reference_max": 4.09805965423584,
+          "reference_min": 0.0,
+          "rmse": 0.04599664360284805,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.11.upsample": {
+          "max_abs_diff": 0.4933466911315918,
+          "mean_abs_diff": 0.022869186475872993,
+          "quantized_max": 4.001255035400391,
+          "quantized_min": 0.0,
+          "reference_max": 4.09805965423584,
+          "reference_min": 0.0,
+          "rmse": 0.04599664360284805,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.12": {
+          "max_abs_diff": 0.678964376449585,
+          "mean_abs_diff": 0.026727352291345596,
+          "quantized_max": 4.3859333992004395,
+          "quantized_min": 0.0,
+          "reference_max": 4.239530086517334,
+          "reference_min": 0.0,
+          "rmse": 0.05512714385986328,
+          "shape": [
+            1,
+            256,
+            16,
+            16
+          ]
+        },
+        "model.13": {
+          "max_abs_diff": 0.5460893511772156,
+          "mean_abs_diff": 0.017778435721993446,
+          "quantized_max": 3.05936598777771,
+          "quantized_min": 0.0,
+          "reference_max": 3.095623254776001,
+          "reference_min": 0.0,
+          "rmse": 0.04053354263305664,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.13.m.0": {
+          "max_abs_diff": 0.3627225160598755,
+          "mean_abs_diff": 0.027572736144065857,
+          "quantized_max": 4.004428863525391,
+          "quantized_min": -0.0,
+          "reference_max": 4.059420585632324,
+          "reference_min": 0.0,
+          "rmse": 0.04858676716685295,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.15": {
+          "max_abs_diff": 0.6295197010040283,
+          "mean_abs_diff": 0.03102852590382099,
+          "quantized_max": 3.7825188636779785,
+          "quantized_min": 0.0,
+          "reference_max": 3.747359275817871,
+          "reference_min": 0.0,
+          "rmse": 0.049993958324193954,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.15.upsample": {
+          "max_abs_diff": 0.6295197010040283,
+          "mean_abs_diff": 0.03102852590382099,
+          "quantized_max": 3.7825188636779785,
+          "quantized_min": 0.0,
+          "reference_max": 3.747359275817871,
+          "reference_min": 0.0,
+          "rmse": 0.049993958324193954,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.16": {
+          "max_abs_diff": 1.0817428827285767,
+          "mean_abs_diff": 0.03299801051616669,
+          "quantized_max": 5.425798416137695,
+          "quantized_min": 0.0,
+          "reference_max": 5.536620616912842,
+          "reference_min": 0.0,
+          "rmse": 0.05931856855750084,
+          "shape": [
+            1,
+            128,
+            32,
+            32
+          ]
+        },
+        "model.17": {
+          "max_abs_diff": 2.131058931350708,
+          "mean_abs_diff": 0.08161305636167526,
+          "quantized_max": 10.47719955444336,
+          "quantized_min": 0.0,
+          "reference_max": 10.653955459594727,
+          "reference_min": 0.0,
+          "rmse": 0.13882863521575928,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.17.m.0": {
+          "max_abs_diff": 0.5756192207336426,
+          "mean_abs_diff": 0.039695072919130325,
+          "quantized_max": 4.814112186431885,
+          "quantized_min": 0.0,
+          "reference_max": 4.8300580978393555,
+          "reference_min": 0.0,
+          "rmse": 0.06306687742471695,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.19": {
+          "max_abs_diff": 0.6205917596817017,
+          "mean_abs_diff": 0.029474716633558273,
+          "quantized_max": 3.795159101486206,
+          "quantized_min": 0.0,
+          "reference_max": 3.854806661605835,
+          "reference_min": 0.0,
+          "rmse": 0.05163729935884476,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.2": {
+          "max_abs_diff": 1.4195246696472168,
+          "mean_abs_diff": 0.08418180793523788,
+          "quantized_max": 16.324533462524414,
+          "quantized_min": 0.0,
+          "reference_max": 16.308557510375977,
+          "reference_min": 0.0,
+          "rmse": 0.13807331025600433,
+          "shape": [
+            1,
+            32,
+            64,
+            64
+          ]
+        },
+        "model.2.m.0": {
+          "max_abs_diff": 4.294064521789551,
+          "mean_abs_diff": 0.20426982641220093,
+          "quantized_max": 31.637739181518555,
+          "quantized_min": 0.0,
+          "reference_max": 31.61391830444336,
+          "reference_min": 0.0,
+          "rmse": 0.3107700049877167,
+          "shape": [
+            1,
+            16,
+            64,
+            64
+          ]
+        },
+        "model.20": {
+          "max_abs_diff": 1.0955712795257568,
+          "mean_abs_diff": 0.0449068509042263,
+          "quantized_max": 10.198884963989258,
+          "quantized_min": -0.0,
+          "reference_max": 10.47725772857666,
+          "reference_min": 0.0,
+          "rmse": 0.08979601413011551,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.20.m.0": {
+          "max_abs_diff": 0.6616966724395752,
+          "mean_abs_diff": 0.03194914758205414,
+          "quantized_max": 8.094402313232422,
+          "quantized_min": 0.0,
+          "reference_max": 8.141999244689941,
+          "reference_min": 0.0,
+          "rmse": 0.05782545357942581,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.22": {
+          "max_abs_diff": 0.5649652481079102,
+          "mean_abs_diff": 0.0240649301558733,
+          "quantized_max": 6.287564754486084,
+          "quantized_min": 0.0,
+          "reference_max": 6.1113362312316895,
+          "reference_min": 0.0,
+          "rmse": 0.0487949438393116,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23": {
+          "max_abs_diff": 0.7552226781845093,
+          "mean_abs_diff": 0.021822363138198853,
+          "quantized_max": 5.95858907699585,
+          "quantized_min": 0.0,
+          "reference_max": 5.962466716766357,
+          "reference_min": 0.0,
+          "rmse": 0.04884924367070198,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.23.m.0": {
+          "max_abs_diff": 0.5294284224510193,
+          "mean_abs_diff": 0.020451800897717476,
+          "quantized_max": 5.883162975311279,
+          "quantized_min": 0.0,
+          "reference_max": 5.883242607116699,
+          "reference_min": 0.0,
+          "rmse": 0.04315163940191269,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.24.m.0": {
+          "max_abs_diff": 3.706824779510498,
+          "mean_abs_diff": 0.18374015390872955,
+          "quantized_max": 9.28870964050293,
+          "quantized_min": -22.447715759277344,
+          "reference_max": 9.092222213745117,
+          "reference_min": -22.65852165222168,
+          "rmse": 0.29833799600601196,
+          "shape": [
+            1,
+            27,
+            32,
+            32
+          ]
+        },
+        "model.24.m.1": {
+          "max_abs_diff": 1.703293800354004,
+          "mean_abs_diff": 0.13643380999565125,
+          "quantized_max": 8.630823135375977,
+          "quantized_min": -16.398563385009766,
+          "reference_max": 8.608009338378906,
+          "reference_min": -16.347997665405273,
+          "rmse": 0.215346097946167,
+          "shape": [
+            1,
+            27,
+            16,
+            16
+          ]
+        },
+        "model.24.m.2": {
+          "max_abs_diff": 1.7237069606781006,
+          "mean_abs_diff": 0.10616336017847061,
+          "quantized_max": 8.455473899841309,
+          "quantized_min": -13.58000373840332,
+          "reference_max": 8.445209503173828,
+          "reference_min": -13.43795394897461,
+          "rmse": 0.19635608792304993,
+          "shape": [
+            1,
+            27,
+            8,
+            8
+          ]
+        },
+        "model.4": {
+          "max_abs_diff": 1.0817428827285767,
+          "mean_abs_diff": 0.03343096747994423,
+          "quantized_max": 5.425798416137695,
+          "quantized_min": 0.0,
+          "reference_max": 5.536620616912842,
+          "reference_min": 0.0,
+          "rmse": 0.06606370210647583,
+          "shape": [
+            1,
+            64,
+            32,
+            32
+          ]
+        },
+        "model.4.m.0": {
+          "max_abs_diff": 1.47373628616333,
+          "mean_abs_diff": 0.054217711091041565,
+          "quantized_max": 7.675380706787109,
+          "quantized_min": 0.0,
+          "reference_max": 7.684273719787598,
+          "reference_min": 0.0,
+          "rmse": 0.08939071744680405,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.4.m.1": {
+          "max_abs_diff": 1.5982418060302734,
+          "mean_abs_diff": 0.11020851135253906,
+          "quantized_max": 9.657806396484375,
+          "quantized_min": 0.0,
+          "reference_max": 9.55319595336914,
+          "reference_min": 0.0,
+          "rmse": 0.16074100136756897,
+          "shape": [
+            1,
+            32,
+            32,
+            32
+          ]
+        },
+        "model.6": {
+          "max_abs_diff": 0.678964376449585,
+          "mean_abs_diff": 0.028722776100039482,
+          "quantized_max": 4.3859333992004395,
+          "quantized_min": 0.0,
+          "reference_max": 4.239530086517334,
+          "reference_min": 0.0,
+          "rmse": 0.0611955001950264,
+          "shape": [
+            1,
+            128,
+            16,
+            16
+          ]
+        },
+        "model.6.m.0": {
+          "max_abs_diff": 0.4389285147190094,
+          "mean_abs_diff": 0.02239276096224785,
+          "quantized_max": 3.53159236907959,
+          "quantized_min": 0.0,
+          "reference_max": 3.584620952606201,
+          "reference_min": 0.0,
+          "rmse": 0.039909303188323975,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.1": {
+          "max_abs_diff": 0.6011460423469543,
+          "mean_abs_diff": 0.046069011092185974,
+          "quantized_max": 6.3263959884643555,
+          "quantized_min": 0.0,
+          "reference_max": 6.477001190185547,
+          "reference_min": 0.0,
+          "rmse": 0.06996945291757584,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.6.m.2": {
+          "max_abs_diff": 0.7057099342346191,
+          "mean_abs_diff": 0.07918675988912582,
+          "quantized_max": 7.226219177246094,
+          "quantized_min": 0.0,
+          "reference_max": 7.23169469833374,
+          "reference_min": 0.0,
+          "rmse": 0.1108773946762085,
+          "shape": [
+            1,
+            64,
+            16,
+            16
+          ]
+        },
+        "model.8": {
+          "max_abs_diff": 0.6747080087661743,
+          "mean_abs_diff": 0.02347046509385109,
+          "quantized_max": 5.227757453918457,
+          "quantized_min": 0.0,
+          "reference_max": 5.236721515655518,
+          "reference_min": 0.0,
+          "rmse": 0.058181677013635635,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.8.m.0": {
+          "max_abs_diff": 0.577315092086792,
+          "mean_abs_diff": 0.04243851453065872,
+          "quantized_max": 6.973010540008545,
+          "quantized_min": 0.0,
+          "reference_max": 6.887757301330566,
+          "reference_min": 0.0,
+          "rmse": 0.07912812381982803,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9": {
+          "max_abs_diff": 0.6811130046844482,
+          "mean_abs_diff": 0.009084213525056839,
+          "quantized_max": 3.18272066116333,
+          "quantized_min": 0.0,
+          "reference_max": 3.252296209335327,
+          "reference_min": 0.0,
+          "rmse": 0.03198225423693657,
+          "shape": [
+            1,
+            256,
+            8,
+            8
+          ]
+        },
+        "model.9.m": {
+          "max_abs_diff": 0.440504789352417,
+          "mean_abs_diff": 0.05799591541290283,
+          "quantized_max": 5.255568027496338,
+          "quantized_min": 0.050053030252456665,
+          "reference_max": 5.314657211303711,
+          "reference_min": 0.02318704128265381,
+          "rmse": 0.07806188613176346,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#2": {
+          "max_abs_diff": 0.3790109157562256,
+          "mean_abs_diff": 0.05835217610001564,
+          "quantized_max": 5.255568027496338,
+          "quantized_min": 1.1011667251586914,
+          "reference_max": 5.314657211303711,
+          "reference_min": 1.1271932125091553,
+          "rmse": 0.08080017566680908,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        },
+        "model.9.m#3": {
+          "max_abs_diff": 0.3790109157562256,
+          "mean_abs_diff": 0.05829359591007233,
+          "quantized_max": 5.255568027496338,
+          "quantized_min": 1.4014848470687866,
+          "reference_max": 5.314657211303711,
+          "reference_min": 1.4029858112335205,
+          "rmse": 0.08155214786529541,
+          "shape": [
+            1,
+            128,
+            8,
+            8
+          ]
+        }
+      },
+      "notes": [
+        "Convolution nodes use package INT8 weights, INT32 bias and calibrated scales.",
+        "Non-convolution graph nodes retain the frozen topology and are not yet integer-executed by this simulator.",
+        "This report does not approve QAT, FPGA timing, resource constraints, or manifest freeze."
+      ],
+      "package": "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\runs\\ac550_yolov5n_relu_int8_qat_staged_v1",
+      "package_manifest_sha256": "3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24",
+      "package_status": "PRE_G2_STATIC_QUANTIZATION",
+      "schema_version": 1,
+      "thresholds": {
+        "confidence": 0.25,
+        "nms_iou": 0.45
+      }
+    }
+  ],
+  "schema_version": 1,
+  "thresholds": {
+    "confidence": 0.25,
+    "max_confidence_diff": 0.05,
+    "max_head_mean_abs_diff": 0.25,
+    "max_head_rmse": 0.35,
+    "min_box_iou": 0.9,
+    "min_images": 8,
+    "nms_iou": 0.45
+  }
+}

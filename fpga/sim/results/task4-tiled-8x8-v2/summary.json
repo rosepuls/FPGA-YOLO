@@ -1,0 +1,175 @@
+{
+  "manifest_sha256": "3BFA0A7EB1D14E42A2874C4BBD5C77D29195D57A09600178E29C02A3F16B8542",
+  "conv_generics": [
+    "-gPIN=8",
+    "-gPOUT=8",
+    "-gTILE_H=4",
+    "-gTILE_W=4"
+  ],
+  "selected": 7,
+  "completed": 7,
+  "passed": true,
+  "nodes": [
+    {
+      "graph_id": "model.0",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 262144,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "3D745BD5",
+        "crc32_expected": "3D745BD5"
+      },
+      "package_golden_vs_integer": {
+        "count": 262144,
+        "mismatches": 35066,
+        "first_mismatch": {
+          "index": 15,
+          "actual": 19,
+          "expected": 18
+        },
+        "crc32_actual": "8E593D7C",
+        "crc32_expected": "3D745BD5"
+      },
+      "cycles": "2828289"
+    },
+    {
+      "graph_id": "model.1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 131072,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "27CD7CB8",
+        "crc32_expected": "27CD7CB8"
+      },
+      "package_golden_vs_integer": {
+        "count": 131072,
+        "mismatches": 9421,
+        "first_mismatch": {
+          "index": 91,
+          "actual": 1,
+          "expected": 0
+        },
+        "crc32_actual": "1CFD54A7",
+        "crc32_expected": "27CD7CB8"
+      },
+      "cycles": "824321"
+    },
+    {
+      "graph_id": "model.2.m.0.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "0CE41B11",
+        "crc32_expected": "0CE41B11"
+      },
+      "package_golden_vs_integer": {
+        "count": 65536,
+        "mismatches": 7901,
+        "first_mismatch": {
+          "index": 0,
+          "actual": 3,
+          "expected": 2
+        },
+        "crc32_actual": "73D74CA4",
+        "crc32_expected": "0CE41B11"
+      },
+      "cycles": "366081"
+    },
+    {
+      "graph_id": "model.9.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "91B69FF3",
+        "crc32_expected": "91B69FF3"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 1338,
+        "first_mismatch": {
+          "index": 497,
+          "actual": 2,
+          "expected": 1
+        },
+        "crc32_actual": "D6CC6E25",
+        "crc32_expected": "91B69FF3"
+      },
+      "cycles": "407681"
+    },
+    {
+      "graph_id": "model.24.m.0",
+      "opcode": "CONV_LINEAR",
+      "rtl_vs_integer": {
+        "count": 27648,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "FAD4484A",
+        "crc32_expected": "FAD4484A"
+      },
+      "package_golden_vs_integer": {
+        "count": 27648,
+        "mismatches": 3598,
+        "first_mismatch": {
+          "index": 4,
+          "actual": 3,
+          "expected": 4
+        },
+        "crc32_actual": "C0D4D765",
+        "crc32_expected": "FAD4484A"
+      },
+      "cycles": "112897"
+    },
+    {
+      "graph_id": "model.24.m.1",
+      "opcode": "CONV_LINEAR",
+      "rtl_vs_integer": {
+        "count": 6912,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "0336ED63",
+        "crc32_expected": "0336ED63"
+      },
+      "package_golden_vs_integer": {
+        "count": 6912,
+        "mismatches": 925,
+        "first_mismatch": {
+          "index": 0,
+          "actual": 4,
+          "expected": 3
+        },
+        "crc32_actual": "7693A217",
+        "crc32_expected": "0336ED63"
+      },
+      "cycles": "53313"
+    },
+    {
+      "graph_id": "model.24.m.2",
+      "opcode": "CONV_LINEAR",
+      "rtl_vs_integer": {
+        "count": 1728,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "ADE4A9FE",
+        "crc32_expected": "ADE4A9FE"
+      },
+      "package_golden_vs_integer": {
+        "count": 1728,
+        "mismatches": 186,
+        "first_mismatch": {
+          "index": 3,
+          "actual": 4,
+          "expected": 5
+        },
+        "crc32_actual": "A60F35F5",
+        "crc32_expected": "ADE4A9FE"
+      },
+      "cycles": "25873"
+    }
+  ]
+}

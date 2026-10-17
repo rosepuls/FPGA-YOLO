@@ -1,0 +1,2774 @@
+[
+  {
+    "descriptor_index": 0,
+    "graph_id": "model.0",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.0.conv",
+    "input_shape": [
+      1,
+      1,
+      256,
+      256
+    ],
+    "output_shape": [
+      1,
+      16,
+      128,
+      128
+    ],
+    "kernel": [
+      6,
+      6
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "padding": [
+      2,
+      2
+    ],
+    "weight_offset": 0,
+    "weight_bytes": 576,
+    "bias_offset": 0,
+    "bias_bytes": 64,
+    "multiplier_offset": 0,
+    "shift_offset": 0,
+    "input_mem": "model_0_input.mem",
+    "output_golden_mem": "model_0_output_golden.mem",
+    "weight_mem": "model_0_weight.mem",
+    "bias_mem": "model_0_bias.mem",
+    "multiplier_mem": "model_0_multiplier.mem",
+    "shift_mem": "model_0_shift.mem",
+    "input_scale": 0.007874015748031496,
+    "output_scale": 0.26131439208984375
+  },
+  {
+    "descriptor_index": 1,
+    "graph_id": "model.1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.1.conv",
+    "input_shape": [
+      1,
+      16,
+      128,
+      128
+    ],
+    "output_shape": [
+      1,
+      32,
+      64,
+      64
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 576,
+    "weight_bytes": 4608,
+    "bias_offset": 64,
+    "bias_bytes": 128,
+    "multiplier_offset": 64,
+    "shift_offset": 16,
+    "input_mem": "model_1_input.mem",
+    "output_golden_mem": "model_1_output_golden.mem",
+    "weight_mem": "model_1_weight.mem",
+    "bias_mem": "model_1_bias.mem",
+    "multiplier_mem": "model_1_multiplier.mem",
+    "shift_mem": "model_1_shift.mem",
+    "input_scale": 0.26131439208984375,
+    "output_scale": 1.0846867598886565
+  },
+  {
+    "descriptor_index": 2,
+    "graph_id": "model.2.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.2.cv1.conv",
+    "input_shape": [
+      1,
+      32,
+      64,
+      64
+    ],
+    "output_shape": [
+      1,
+      16,
+      64,
+      64
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 5184,
+    "weight_bytes": 512,
+    "bias_offset": 192,
+    "bias_bytes": 64,
+    "multiplier_offset": 192,
+    "shift_offset": 48,
+    "input_mem": "model_2_cv1_input.mem",
+    "output_golden_mem": "model_2_cv1_output_golden.mem",
+    "weight_mem": "model_2_cv1_weight.mem",
+    "bias_mem": "model_2_cv1_bias.mem",
+    "multiplier_mem": "model_2_cv1_multiplier.mem",
+    "shift_mem": "model_2_cv1_shift.mem",
+    "input_scale": 1.0846867598886565,
+    "output_scale": 0.2032035166823019
+  },
+  {
+    "descriptor_index": 3,
+    "graph_id": "model.2.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.2.cv2.conv",
+    "input_shape": [
+      1,
+      32,
+      64,
+      64
+    ],
+    "output_shape": [
+      1,
+      16,
+      64,
+      64
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 5696,
+    "weight_bytes": 512,
+    "bias_offset": 256,
+    "bias_bytes": 64,
+    "multiplier_offset": 256,
+    "shift_offset": 64,
+    "input_mem": "model_2_cv2_input.mem",
+    "output_golden_mem": "model_2_cv2_output_golden.mem",
+    "weight_mem": "model_2_cv2_weight.mem",
+    "bias_mem": "model_2_cv2_bias.mem",
+    "multiplier_mem": "model_2_cv2_multiplier.mem",
+    "shift_mem": "model_2_cv2_shift.mem",
+    "input_scale": 1.0846867598886565,
+    "output_scale": 0.2692758755421075
+  },
+  {
+    "descriptor_index": 4,
+    "graph_id": "model.2.cv3",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.2.cv3.conv",
+    "input_shape": [
+      1,
+      32,
+      64,
+      64
+    ],
+    "output_shape": [
+      1,
+      32,
+      64,
+      64
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 6208,
+    "weight_bytes": 1024,
+    "bias_offset": 320,
+    "bias_bytes": 128,
+    "multiplier_offset": 320,
+    "shift_offset": 80,
+    "input_mem": "model_2_cv3_input.mem",
+    "output_golden_mem": "model_2_cv3_output_golden.mem",
+    "weight_mem": "model_2_cv3_weight.mem",
+    "bias_mem": "model_2_cv3_bias.mem",
+    "multiplier_mem": "model_2_cv3_multiplier.mem",
+    "shift_mem": "model_2_cv3_shift.mem",
+    "input_scale": 0.304209010807548,
+    "output_scale": 0.1774405832365742
+  },
+  {
+    "descriptor_index": 5,
+    "graph_id": "model.2.m.0.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.2.m.0.cv1.conv",
+    "input_shape": [
+      1,
+      16,
+      64,
+      64
+    ],
+    "output_shape": [
+      1,
+      16,
+      64,
+      64
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 7232,
+    "weight_bytes": 256,
+    "bias_offset": 448,
+    "bias_bytes": 64,
+    "multiplier_offset": 448,
+    "shift_offset": 112,
+    "input_mem": "model_2_m_0_cv1_input.mem",
+    "output_golden_mem": "model_2_m_0_cv1_output_golden.mem",
+    "weight_mem": "model_2_m_0_cv1_weight.mem",
+    "bias_mem": "model_2_m_0_cv1_bias.mem",
+    "multiplier_mem": "model_2_m_0_cv1_multiplier.mem",
+    "shift_mem": "model_2_m_0_cv1_shift.mem",
+    "input_scale": 0.2032035166823019,
+    "output_scale": 0.19606030081200787
+  },
+  {
+    "descriptor_index": 6,
+    "graph_id": "model.2.m.0.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.2.m.0.cv2.conv",
+    "input_shape": [
+      1,
+      16,
+      64,
+      64
+    ],
+    "output_shape": [
+      1,
+      16,
+      64,
+      64
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 7488,
+    "weight_bytes": 2304,
+    "bias_offset": 512,
+    "bias_bytes": 64,
+    "multiplier_offset": 512,
+    "shift_offset": 128,
+    "input_mem": "model_2_m_0_cv2_input.mem",
+    "output_golden_mem": "model_2_m_0_cv2_output_golden.mem",
+    "weight_mem": "model_2_m_0_cv2_weight.mem",
+    "bias_mem": "model_2_m_0_cv2_bias.mem",
+    "multiplier_mem": "model_2_m_0_cv2_multiplier.mem",
+    "shift_mem": "model_2_m_0_cv2_shift.mem",
+    "input_scale": 0.19606030081200787,
+    "output_scale": 0.22196238059697188
+  },
+  {
+    "descriptor_index": 7,
+    "graph_id": "model.3",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.3.conv",
+    "input_shape": [
+      1,
+      32,
+      64,
+      64
+    ],
+    "output_shape": [
+      1,
+      64,
+      32,
+      32
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 9792,
+    "weight_bytes": 18432,
+    "bias_offset": 576,
+    "bias_bytes": 256,
+    "multiplier_offset": 576,
+    "shift_offset": 144,
+    "input_mem": "model_3_input.mem",
+    "output_golden_mem": "model_3_output_golden.mem",
+    "weight_mem": "model_3_weight.mem",
+    "bias_mem": "model_3_bias.mem",
+    "multiplier_mem": "model_3_multiplier.mem",
+    "shift_mem": "model_3_shift.mem",
+    "input_scale": 0.1774405832365742,
+    "output_scale": 0.1112511927687277
+  },
+  {
+    "descriptor_index": 8,
+    "graph_id": "model.4.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.4.cv1.conv",
+    "input_shape": [
+      1,
+      64,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 28224,
+    "weight_bytes": 2048,
+    "bias_offset": 832,
+    "bias_bytes": 128,
+    "multiplier_offset": 832,
+    "shift_offset": 208,
+    "input_mem": "model_4_cv1_input.mem",
+    "output_golden_mem": "model_4_cv1_output_golden.mem",
+    "weight_mem": "model_4_cv1_weight.mem",
+    "bias_mem": "model_4_cv1_bias.mem",
+    "multiplier_mem": "model_4_cv1_multiplier.mem",
+    "shift_mem": "model_4_cv1_shift.mem",
+    "input_scale": 0.1112511927687277,
+    "output_scale": 0.037967437834251584
+  },
+  {
+    "descriptor_index": 9,
+    "graph_id": "model.4.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.4.cv2.conv",
+    "input_shape": [
+      1,
+      64,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 30272,
+    "weight_bytes": 2048,
+    "bias_offset": 960,
+    "bias_bytes": 128,
+    "multiplier_offset": 960,
+    "shift_offset": 240,
+    "input_mem": "model_4_cv2_input.mem",
+    "output_golden_mem": "model_4_cv2_output_golden.mem",
+    "weight_mem": "model_4_cv2_weight.mem",
+    "bias_mem": "model_4_cv2_bias.mem",
+    "multiplier_mem": "model_4_cv2_multiplier.mem",
+    "shift_mem": "model_4_cv2_shift.mem",
+    "input_scale": 0.1112511927687277,
+    "output_scale": 0.06688257652943529
+  },
+  {
+    "descriptor_index": 10,
+    "graph_id": "model.4.cv3",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.4.cv3.conv",
+    "input_shape": [
+      1,
+      64,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      64,
+      32,
+      32
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 32320,
+    "weight_bytes": 4096,
+    "bias_offset": 1088,
+    "bias_bytes": 256,
+    "multiplier_offset": 1088,
+    "shift_offset": 272,
+    "input_mem": "model_4_cv3_input.mem",
+    "output_golden_mem": "model_4_cv3_output_golden.mem",
+    "weight_mem": "model_4_cv3_weight.mem",
+    "bias_mem": "model_4_cv3_bias.mem",
+    "multiplier_mem": "model_4_cv3_multiplier.mem",
+    "shift_mem": "model_4_cv3_shift.mem",
+    "input_scale": 0.08779823873925396,
+    "output_scale": 0.053720774613027496
+  },
+  {
+    "descriptor_index": 11,
+    "graph_id": "model.4.m.0.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.4.m.0.cv1.conv",
+    "input_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 36416,
+    "weight_bytes": 1024,
+    "bias_offset": 1344,
+    "bias_bytes": 128,
+    "multiplier_offset": 1344,
+    "shift_offset": 336,
+    "input_mem": "model_4_m_0_cv1_input.mem",
+    "output_golden_mem": "model_4_m_0_cv1_output_golden.mem",
+    "weight_mem": "model_4_m_0_cv1_weight.mem",
+    "bias_mem": "model_4_m_0_cv1_bias.mem",
+    "multiplier_mem": "model_4_m_0_cv1_multiplier.mem",
+    "shift_mem": "model_4_m_0_cv1_shift.mem",
+    "input_scale": 0.037967437834251584,
+    "output_scale": 0.07974125268891102
+  },
+  {
+    "descriptor_index": 12,
+    "graph_id": "model.4.m.0.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.4.m.0.cv2.conv",
+    "input_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 37440,
+    "weight_bytes": 9216,
+    "bias_offset": 1472,
+    "bias_bytes": 128,
+    "multiplier_offset": 1472,
+    "shift_offset": 368,
+    "input_mem": "model_4_m_0_cv2_input.mem",
+    "output_golden_mem": "model_4_m_0_cv2_output_golden.mem",
+    "weight_mem": "model_4_m_0_cv2_weight.mem",
+    "bias_mem": "model_4_m_0_cv2_bias.mem",
+    "multiplier_mem": "model_4_m_0_cv2_multiplier.mem",
+    "shift_mem": "model_4_m_0_cv2_shift.mem",
+    "input_scale": 0.07974125268891102,
+    "output_scale": 0.049354395528477944
+  },
+  {
+    "descriptor_index": 13,
+    "graph_id": "model.4.m.1.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.4.m.1.cv1.conv",
+    "input_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 46656,
+    "weight_bytes": 1024,
+    "bias_offset": 1600,
+    "bias_bytes": 128,
+    "multiplier_offset": 1600,
+    "shift_offset": 400,
+    "input_mem": "model_4_m_1_cv1_input.mem",
+    "output_golden_mem": "model_4_m_1_cv1_output_golden.mem",
+    "weight_mem": "model_4_m_1_cv1_weight.mem",
+    "bias_mem": "model_4_m_1_cv1_bias.mem",
+    "multiplier_mem": "model_4_m_1_cv1_multiplier.mem",
+    "shift_mem": "model_4_m_1_cv1_shift.mem",
+    "input_scale": 0.061898231506347656,
+    "output_scale": 0.05512174846619133
+  },
+  {
+    "descriptor_index": 14,
+    "graph_id": "model.4.m.1.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.4.m.1.cv2.conv",
+    "input_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 47680,
+    "weight_bytes": 9216,
+    "bias_offset": 1728,
+    "bias_bytes": 128,
+    "multiplier_offset": 1728,
+    "shift_offset": 432,
+    "input_mem": "model_4_m_1_cv2_input.mem",
+    "output_golden_mem": "model_4_m_1_cv2_output_golden.mem",
+    "weight_mem": "model_4_m_1_cv2_weight.mem",
+    "bias_mem": "model_4_m_1_cv2_bias.mem",
+    "multiplier_mem": "model_4_m_1_cv2_multiplier.mem",
+    "shift_mem": "model_4_m_1_cv2_shift.mem",
+    "input_scale": 0.05512174846619133,
+    "output_scale": 0.07292800813209353
+  },
+  {
+    "descriptor_index": 15,
+    "graph_id": "model.5",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.5.conv",
+    "input_shape": [
+      1,
+      64,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 56896,
+    "weight_bytes": 73728,
+    "bias_offset": 1856,
+    "bias_bytes": 512,
+    "multiplier_offset": 1856,
+    "shift_offset": 464,
+    "input_mem": "model_5_input.mem",
+    "output_golden_mem": "model_5_output_golden.mem",
+    "weight_mem": "model_5_weight.mem",
+    "bias_mem": "model_5_bias.mem",
+    "multiplier_mem": "model_5_multiplier.mem",
+    "shift_mem": "model_5_shift.mem",
+    "input_scale": 0.053720774613027496,
+    "output_scale": 0.050957311795452445
+  },
+  {
+    "descriptor_index": 16,
+    "graph_id": "model.6.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.6.cv1.conv",
+    "input_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 130624,
+    "weight_bytes": 8192,
+    "bias_offset": 2368,
+    "bias_bytes": 256,
+    "multiplier_offset": 2368,
+    "shift_offset": 592,
+    "input_mem": "model_6_cv1_input.mem",
+    "output_golden_mem": "model_6_cv1_output_golden.mem",
+    "weight_mem": "model_6_cv1_weight.mem",
+    "bias_mem": "model_6_cv1_bias.mem",
+    "multiplier_mem": "model_6_cv1_multiplier.mem",
+    "shift_mem": "model_6_cv1_shift.mem",
+    "input_scale": 0.050957311795452445,
+    "output_scale": 0.025578267930999515
+  },
+  {
+    "descriptor_index": 17,
+    "graph_id": "model.6.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.6.cv2.conv",
+    "input_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 138816,
+    "weight_bytes": 8192,
+    "bias_offset": 2624,
+    "bias_bytes": 256,
+    "multiplier_offset": 2624,
+    "shift_offset": 656,
+    "input_mem": "model_6_cv2_input.mem",
+    "output_golden_mem": "model_6_cv2_output_golden.mem",
+    "weight_mem": "model_6_cv2_weight.mem",
+    "bias_mem": "model_6_cv2_bias.mem",
+    "multiplier_mem": "model_6_cv2_multiplier.mem",
+    "shift_mem": "model_6_cv2_shift.mem",
+    "input_scale": 0.050957311795452445,
+    "output_scale": 0.05280074547594926
+  },
+  {
+    "descriptor_index": 18,
+    "graph_id": "model.6.cv3",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.6.cv3.conv",
+    "input_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 147008,
+    "weight_bytes": 16384,
+    "bias_offset": 2880,
+    "bias_bytes": 512,
+    "multiplier_offset": 2880,
+    "shift_offset": 720,
+    "input_mem": "model_6_cv3_input.mem",
+    "output_golden_mem": "model_6_cv3_output_golden.mem",
+    "weight_mem": "model_6_cv3_weight.mem",
+    "bias_mem": "model_6_cv3_bias.mem",
+    "multiplier_mem": "model_6_cv3_multiplier.mem",
+    "shift_mem": "model_6_cv3_shift.mem",
+    "input_scale": 0.06948287843719242,
+    "output_scale": 0.06449902151513287
+  },
+  {
+    "descriptor_index": 19,
+    "graph_id": "model.6.m.0.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.6.m.0.cv1.conv",
+    "input_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 163392,
+    "weight_bytes": 4096,
+    "bias_offset": 3392,
+    "bias_bytes": 256,
+    "multiplier_offset": 3392,
+    "shift_offset": 848,
+    "input_mem": "model_6_m_0_cv1_input.mem",
+    "output_golden_mem": "model_6_m_0_cv1_output_golden.mem",
+    "weight_mem": "model_6_m_0_cv1_weight.mem",
+    "bias_mem": "model_6_m_0_cv1_bias.mem",
+    "multiplier_mem": "model_6_m_0_cv1_multiplier.mem",
+    "shift_mem": "model_6_m_0_cv1_shift.mem",
+    "input_scale": 0.025578267930999515,
+    "output_scale": 0.07471244541678841
+  },
+  {
+    "descriptor_index": 20,
+    "graph_id": "model.6.m.0.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.6.m.0.cv2.conv",
+    "input_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 167488,
+    "weight_bytes": 36864,
+    "bias_offset": 3648,
+    "bias_bytes": 256,
+    "multiplier_offset": 3648,
+    "shift_offset": 912,
+    "input_mem": "model_6_m_0_cv2_input.mem",
+    "output_golden_mem": "model_6_m_0_cv2_output_golden.mem",
+    "weight_mem": "model_6_m_0_cv2_weight.mem",
+    "bias_mem": "model_6_m_0_cv2_bias.mem",
+    "multiplier_mem": "model_6_m_0_cv2_multiplier.mem",
+    "shift_mem": "model_6_m_0_cv2_shift.mem",
+    "input_scale": 0.07471244541678841,
+    "output_scale": 0.029905176538182057
+  },
+  {
+    "descriptor_index": 21,
+    "graph_id": "model.6.m.1.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.6.m.1.cv1.conv",
+    "input_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 204352,
+    "weight_bytes": 4096,
+    "bias_offset": 3904,
+    "bias_bytes": 256,
+    "multiplier_offset": 3904,
+    "shift_offset": 976,
+    "input_mem": "model_6_m_1_cv1_input.mem",
+    "output_golden_mem": "model_6_m_1_cv1_output_golden.mem",
+    "weight_mem": "model_6_m_1_cv1_weight.mem",
+    "bias_mem": "model_6_m_1_cv1_bias.mem",
+    "multiplier_mem": "model_6_m_1_cv1_multiplier.mem",
+    "shift_mem": "model_6_m_1_cv1_shift.mem",
+    "input_scale": 0.035315922864778776,
+    "output_scale": 0.06977291557732529
+  },
+  {
+    "descriptor_index": 22,
+    "graph_id": "model.6.m.1.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.6.m.1.cv2.conv",
+    "input_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 208448,
+    "weight_bytes": 36864,
+    "bias_offset": 4160,
+    "bias_bytes": 256,
+    "multiplier_offset": 4160,
+    "shift_offset": 1040,
+    "input_mem": "model_6_m_1_cv2_input.mem",
+    "output_golden_mem": "model_6_m_1_cv2_output_golden.mem",
+    "weight_mem": "model_6_m_1_cv2_weight.mem",
+    "bias_mem": "model_6_m_1_cv2_bias.mem",
+    "multiplier_mem": "model_6_m_1_cv2_multiplier.mem",
+    "shift_mem": "model_6_m_1_cv2_shift.mem",
+    "input_scale": 0.06977291557732529,
+    "output_scale": 0.05169857205368403
+  },
+  {
+    "descriptor_index": 23,
+    "graph_id": "model.6.m.2.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.6.m.2.cv1.conv",
+    "input_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 245312,
+    "weight_bytes": 4096,
+    "bias_offset": 4416,
+    "bias_bytes": 256,
+    "multiplier_offset": 4416,
+    "shift_offset": 1104,
+    "input_mem": "model_6_m_2_cv1_input.mem",
+    "output_golden_mem": "model_6_m_2_cv1_output_golden.mem",
+    "weight_mem": "model_6_m_2_cv1_weight.mem",
+    "bias_mem": "model_6_m_2_cv1_bias.mem",
+    "multiplier_mem": "model_6_m_2_cv1_multiplier.mem",
+    "shift_mem": "model_6_m_2_cv1_shift.mem",
+    "input_scale": 0.056485679205947034,
+    "output_scale": 0.07788449385034757
+  },
+  {
+    "descriptor_index": 24,
+    "graph_id": "model.6.m.2.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.6.m.2.cv2.conv",
+    "input_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 249408,
+    "weight_bytes": 36864,
+    "bias_offset": 4672,
+    "bias_bytes": 256,
+    "multiplier_offset": 4672,
+    "shift_offset": 1168,
+    "input_mem": "model_6_m_2_cv2_input.mem",
+    "output_golden_mem": "model_6_m_2_cv2_output_golden.mem",
+    "weight_mem": "model_6_m_2_cv2_weight.mem",
+    "bias_mem": "model_6_m_2_cv2_bias.mem",
+    "multiplier_mem": "model_6_m_2_cv2_multiplier.mem",
+    "shift_mem": "model_6_m_2_cv2_shift.mem",
+    "input_scale": 0.07788449385034757,
+    "output_scale": 0.055804628086841015
+  },
+  {
+    "descriptor_index": 25,
+    "graph_id": "model.7",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.7.conv",
+    "input_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      256,
+      8,
+      8
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 286272,
+    "weight_bytes": 294912,
+    "bias_offset": 4928,
+    "bias_bytes": 1024,
+    "multiplier_offset": 4928,
+    "shift_offset": 1232,
+    "input_mem": "model_7_input.mem",
+    "output_golden_mem": "model_7_output_golden.mem",
+    "weight_mem": "model_7_weight.mem",
+    "bias_mem": "model_7_bias.mem",
+    "multiplier_mem": "model_7_multiplier.mem",
+    "shift_mem": "model_7_shift.mem",
+    "input_scale": 0.06449902151513287,
+    "output_scale": 0.04200190821970542
+  },
+  {
+    "descriptor_index": 26,
+    "graph_id": "model.8.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.8.cv1.conv",
+    "input_shape": [
+      1,
+      256,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 581184,
+    "weight_bytes": 32768,
+    "bias_offset": 5952,
+    "bias_bytes": 512,
+    "multiplier_offset": 5952,
+    "shift_offset": 1488,
+    "input_mem": "model_8_cv1_input.mem",
+    "output_golden_mem": "model_8_cv1_output_golden.mem",
+    "weight_mem": "model_8_cv1_weight.mem",
+    "bias_mem": "model_8_cv1_bias.mem",
+    "multiplier_mem": "model_8_cv1_multiplier.mem",
+    "shift_mem": "model_8_cv1_shift.mem",
+    "input_scale": 0.04200190821970542,
+    "output_scale": 0.033612638007937456
+  },
+  {
+    "descriptor_index": 27,
+    "graph_id": "model.8.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.8.cv2.conv",
+    "input_shape": [
+      1,
+      256,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 613952,
+    "weight_bytes": 32768,
+    "bias_offset": 6464,
+    "bias_bytes": 512,
+    "multiplier_offset": 6464,
+    "shift_offset": 1616,
+    "input_mem": "model_8_cv2_input.mem",
+    "output_golden_mem": "model_8_cv2_output_golden.mem",
+    "weight_mem": "model_8_cv2_weight.mem",
+    "bias_mem": "model_8_cv2_bias.mem",
+    "multiplier_mem": "model_8_cv2_multiplier.mem",
+    "shift_mem": "model_8_cv2_shift.mem",
+    "input_scale": 0.04200190821970542,
+    "output_scale": 0.06304715374323326
+  },
+  {
+    "descriptor_index": 28,
+    "graph_id": "model.8.cv3",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.8.cv3.conv",
+    "input_shape": [
+      1,
+      256,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      256,
+      8,
+      8
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 646720,
+    "weight_bytes": 65536,
+    "bias_offset": 6976,
+    "bias_bytes": 1024,
+    "multiplier_offset": 6976,
+    "shift_offset": 1744,
+    "input_mem": "model_8_cv3_input.mem",
+    "output_golden_mem": "model_8_cv3_output_golden.mem",
+    "weight_mem": "model_8_cv3_weight.mem",
+    "bias_mem": "model_8_cv3_bias.mem",
+    "multiplier_mem": "model_8_cv3_multiplier.mem",
+    "shift_mem": "model_8_cv3_shift.mem",
+    "input_scale": 0.065168320663332,
+    "output_scale": 0.05561444139856053
+  },
+  {
+    "descriptor_index": 29,
+    "graph_id": "model.8.m.0.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.8.m.0.cv1.conv",
+    "input_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 712256,
+    "weight_bytes": 16384,
+    "bias_offset": 8000,
+    "bias_bytes": 512,
+    "multiplier_offset": 8000,
+    "shift_offset": 2000,
+    "input_mem": "model_8_m_0_cv1_input.mem",
+    "output_golden_mem": "model_8_m_0_cv1_output_golden.mem",
+    "weight_mem": "model_8_m_0_cv1_weight.mem",
+    "bias_mem": "model_8_m_0_cv1_bias.mem",
+    "multiplier_mem": "model_8_m_0_cv1_multiplier.mem",
+    "shift_mem": "model_8_m_0_cv1_shift.mem",
+    "input_scale": 0.033612638007937456,
+    "output_scale": 0.09405232226754737
+  },
+  {
+    "descriptor_index": 30,
+    "graph_id": "model.8.m.0.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.8.m.0.cv2.conv",
+    "input_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 728640,
+    "weight_bytes": 147456,
+    "bias_offset": 8512,
+    "bias_bytes": 512,
+    "multiplier_offset": 8512,
+    "shift_offset": 2128,
+    "input_mem": "model_8_m_0_cv2_input.mem",
+    "output_golden_mem": "model_8_m_0_cv2_output_golden.mem",
+    "weight_mem": "model_8_m_0_cv2_weight.mem",
+    "bias_mem": "model_8_m_0_cv2_bias.mem",
+    "multiplier_mem": "model_8_m_0_cv2_multiplier.mem",
+    "shift_mem": "model_8_m_0_cv2_shift.mem",
+    "input_scale": 0.09405232226754737,
+    "output_scale": 0.065168320663332
+  },
+  {
+    "descriptor_index": 31,
+    "graph_id": "model.9.maxpool.1",
+    "opcode": "MAXPOOL",
+    "vector_source_module": "model.9.m",
+    "input_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      5,
+      5
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      2,
+      2
+    ],
+    "weight_offset": 0,
+    "weight_bytes": 0,
+    "bias_offset": 0,
+    "bias_bytes": 0,
+    "multiplier_offset": 9024,
+    "shift_offset": 2256,
+    "input_mem": "model_9_maxpool_1_input.mem",
+    "output_golden_mem": "model_9_maxpool_1_output_golden.mem",
+    "weight_mem": null,
+    "bias_mem": null,
+    "multiplier_mem": null,
+    "shift_mem": null,
+    "input_scale": 0.0500530295484648,
+    "output_scale": 0.0500530295484648
+  },
+  {
+    "descriptor_index": 32,
+    "graph_id": "model.9.maxpool.2",
+    "opcode": "MAXPOOL",
+    "vector_source_module": "model.9.m#2",
+    "input_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      5,
+      5
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      2,
+      2
+    ],
+    "weight_offset": 0,
+    "weight_bytes": 0,
+    "bias_offset": 0,
+    "bias_bytes": 0,
+    "multiplier_offset": 9024,
+    "shift_offset": 2256,
+    "input_mem": "model_9_maxpool_2_input.mem",
+    "output_golden_mem": "model_9_maxpool_2_output_golden.mem",
+    "weight_mem": null,
+    "bias_mem": null,
+    "multiplier_mem": null,
+    "shift_mem": null,
+    "input_scale": 0.0500530295484648,
+    "output_scale": 0.0500530295484648
+  },
+  {
+    "descriptor_index": 33,
+    "graph_id": "model.9.maxpool.3",
+    "opcode": "MAXPOOL",
+    "vector_source_module": "model.9.m#3",
+    "input_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      5,
+      5
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      2,
+      2
+    ],
+    "weight_offset": 0,
+    "weight_bytes": 0,
+    "bias_offset": 0,
+    "bias_bytes": 0,
+    "multiplier_offset": 9024,
+    "shift_offset": 2256,
+    "input_mem": "model_9_maxpool_3_input.mem",
+    "output_golden_mem": "model_9_maxpool_3_output_golden.mem",
+    "weight_mem": null,
+    "bias_mem": null,
+    "multiplier_mem": null,
+    "shift_mem": null,
+    "input_scale": 0.0500530295484648,
+    "output_scale": 0.0500530295484648
+  },
+  {
+    "descriptor_index": 34,
+    "graph_id": "model.9.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.9.cv1.conv",
+    "input_shape": [
+      1,
+      256,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 876096,
+    "weight_bytes": 32768,
+    "bias_offset": 9024,
+    "bias_bytes": 512,
+    "multiplier_offset": 9024,
+    "shift_offset": 2256,
+    "input_mem": "model_9_cv1_input.mem",
+    "output_golden_mem": "model_9_cv1_output_golden.mem",
+    "weight_mem": "model_9_cv1_weight.mem",
+    "bias_mem": "model_9_cv1_bias.mem",
+    "multiplier_mem": "model_9_cv1_multiplier.mem",
+    "shift_mem": "model_9_cv1_shift.mem",
+    "input_scale": 0.05561444139856053,
+    "output_scale": 0.0500530295484648
+  },
+  {
+    "descriptor_index": 35,
+    "graph_id": "model.9.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.9.cv2.conv",
+    "input_shape": [
+      1,
+      512,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      256,
+      8,
+      8
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 908864,
+    "weight_bytes": 131072,
+    "bias_offset": 9536,
+    "bias_bytes": 1024,
+    "multiplier_offset": 9536,
+    "shift_offset": 2384,
+    "input_mem": "model_9_cv2_input.mem",
+    "output_golden_mem": "model_9_cv2_output_golden.mem",
+    "weight_mem": "model_9_cv2_weight.mem",
+    "bias_mem": "model_9_cv2_bias.mem",
+    "multiplier_mem": "model_9_cv2_multiplier.mem",
+    "shift_mem": "model_9_cv2_shift.mem",
+    "input_scale": 0.0500530295484648,
+    "output_scale": 0.03214869161290446
+  },
+  {
+    "descriptor_index": 36,
+    "graph_id": "model.10",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.10.conv",
+    "input_shape": [
+      1,
+      256,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1039936,
+    "weight_bytes": 32768,
+    "bias_offset": 10560,
+    "bias_bytes": 512,
+    "multiplier_offset": 10560,
+    "shift_offset": 2640,
+    "input_mem": "model_10_input.mem",
+    "output_golden_mem": "model_10_output_golden.mem",
+    "weight_mem": "model_10_weight.mem",
+    "bias_mem": "model_10_bias.mem",
+    "multiplier_mem": "model_10_multiplier.mem",
+    "shift_mem": "model_10_shift.mem",
+    "input_scale": 0.03214869161290446,
+    "output_scale": 0.032268186253825513
+  },
+  {
+    "descriptor_index": 37,
+    "graph_id": "model.13.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.13.cv1.conv",
+    "input_shape": [
+      1,
+      256,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1072704,
+    "weight_bytes": 16384,
+    "bias_offset": 11072,
+    "bias_bytes": 256,
+    "multiplier_offset": 11072,
+    "shift_offset": 2768,
+    "input_mem": "model_13_cv1_input.mem",
+    "output_golden_mem": "model_13_cv1_output_golden.mem",
+    "weight_mem": "model_13_cv1_weight.mem",
+    "bias_mem": "model_13_cv1_bias.mem",
+    "multiplier_mem": "model_13_cv1_multiplier.mem",
+    "shift_mem": "model_13_cv1_shift.mem",
+    "input_scale": 0.06449902151513287,
+    "output_scale": 0.03738277915894516
+  },
+  {
+    "descriptor_index": 38,
+    "graph_id": "model.13.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.13.cv2.conv",
+    "input_shape": [
+      1,
+      256,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1089088,
+    "weight_bytes": 16384,
+    "bias_offset": 11328,
+    "bias_bytes": 256,
+    "multiplier_offset": 11328,
+    "shift_offset": 2832,
+    "input_mem": "model_13_cv2_input.mem",
+    "output_golden_mem": "model_13_cv2_output_golden.mem",
+    "weight_mem": "model_13_cv2_weight.mem",
+    "bias_mem": "model_13_cv2_bias.mem",
+    "multiplier_mem": "model_13_cv2_multiplier.mem",
+    "shift_mem": "model_13_cv2_shift.mem",
+    "input_scale": 0.06449902151513287,
+    "output_scale": 0.031061007281926675
+  },
+  {
+    "descriptor_index": 39,
+    "graph_id": "model.13.cv3",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.13.cv3.conv",
+    "input_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1105472,
+    "weight_bytes": 16384,
+    "bias_offset": 11584,
+    "bias_bytes": 512,
+    "multiplier_offset": 11584,
+    "shift_offset": 2896,
+    "input_mem": "model_13_cv3_input.mem",
+    "output_golden_mem": "model_13_cv3_output_golden.mem",
+    "weight_mem": "model_13_cv3_weight.mem",
+    "bias_mem": "model_13_cv3_bias.mem",
+    "multiplier_mem": "model_13_cv3_multiplier.mem",
+    "shift_mem": "model_13_cv3_shift.mem",
+    "input_scale": 0.03925910709411141,
+    "output_scale": 0.037769952158289634
+  },
+  {
+    "descriptor_index": 40,
+    "graph_id": "model.13.m.0.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.13.m.0.cv1.conv",
+    "input_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1121856,
+    "weight_bytes": 4096,
+    "bias_offset": 12096,
+    "bias_bytes": 256,
+    "multiplier_offset": 12096,
+    "shift_offset": 3024,
+    "input_mem": "model_13_m_0_cv1_input.mem",
+    "output_golden_mem": "model_13_m_0_cv1_output_golden.mem",
+    "weight_mem": "model_13_m_0_cv1_weight.mem",
+    "bias_mem": "model_13_m_0_cv1_bias.mem",
+    "multiplier_mem": "model_13_m_0_cv1_multiplier.mem",
+    "shift_mem": "model_13_m_0_cv1_shift.mem",
+    "input_scale": 0.03738277915894516,
+    "output_scale": 0.04313676188311239
+  },
+  {
+    "descriptor_index": 41,
+    "graph_id": "model.13.m.0.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.13.m.0.cv2.conv",
+    "input_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 1125952,
+    "weight_bytes": 36864,
+    "bias_offset": 12352,
+    "bias_bytes": 256,
+    "multiplier_offset": 12352,
+    "shift_offset": 3088,
+    "input_mem": "model_13_m_0_cv2_input.mem",
+    "output_golden_mem": "model_13_m_0_cv2_output_golden.mem",
+    "weight_mem": "model_13_m_0_cv2_weight.mem",
+    "bias_mem": "model_13_m_0_cv2_bias.mem",
+    "multiplier_mem": "model_13_m_0_cv2_multiplier.mem",
+    "shift_mem": "model_13_m_0_cv2_shift.mem",
+    "input_scale": 0.04313676188311239,
+    "output_scale": 0.03925910709411141
+  },
+  {
+    "descriptor_index": 42,
+    "graph_id": "model.14",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.14.conv",
+    "input_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1162816,
+    "weight_bytes": 8192,
+    "bias_offset": 12608,
+    "bias_bytes": 256,
+    "multiplier_offset": 12608,
+    "shift_offset": 3152,
+    "input_mem": "model_14_input.mem",
+    "output_golden_mem": "model_14_output_golden.mem",
+    "weight_mem": "model_14_weight.mem",
+    "bias_mem": "model_14_bias.mem",
+    "multiplier_mem": "model_14_multiplier.mem",
+    "shift_mem": "model_14_shift.mem",
+    "input_scale": 0.037769952158289634,
+    "output_scale": 0.037450681521197945
+  },
+  {
+    "descriptor_index": 43,
+    "graph_id": "model.17.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.17.cv1.conv",
+    "input_shape": [
+      1,
+      128,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1171008,
+    "weight_bytes": 4096,
+    "bias_offset": 12864,
+    "bias_bytes": 128,
+    "multiplier_offset": 12864,
+    "shift_offset": 3216,
+    "input_mem": "model_17_cv1_input.mem",
+    "output_golden_mem": "model_17_cv1_output_golden.mem",
+    "weight_mem": "model_17_cv1_weight.mem",
+    "bias_mem": "model_17_cv1_bias.mem",
+    "multiplier_mem": "model_17_cv1_multiplier.mem",
+    "shift_mem": "model_17_cv1_shift.mem",
+    "input_scale": 0.053720774613027496,
+    "output_scale": 0.03429868277602308
+  },
+  {
+    "descriptor_index": 44,
+    "graph_id": "model.17.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.17.cv2.conv",
+    "input_shape": [
+      1,
+      128,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1175104,
+    "weight_bytes": 4096,
+    "bias_offset": 12992,
+    "bias_bytes": 128,
+    "multiplier_offset": 12992,
+    "shift_offset": 3248,
+    "input_mem": "model_17_cv2_input.mem",
+    "output_golden_mem": "model_17_cv2_output_golden.mem",
+    "weight_mem": "model_17_cv2_weight.mem",
+    "bias_mem": "model_17_cv2_bias.mem",
+    "multiplier_mem": "model_17_cv2_multiplier.mem",
+    "shift_mem": "model_17_cv2_shift.mem",
+    "input_scale": 0.053720774613027496,
+    "output_scale": 0.03088800362714632
+  },
+  {
+    "descriptor_index": 45,
+    "graph_id": "model.17.cv3",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.17.cv3.conv",
+    "input_shape": [
+      1,
+      64,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      64,
+      32,
+      32
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1179200,
+    "weight_bytes": 4096,
+    "bias_offset": 13120,
+    "bias_bytes": 256,
+    "multiplier_offset": 13120,
+    "shift_offset": 3280,
+    "input_mem": "model_17_cv3_input.mem",
+    "output_golden_mem": "model_17_cv3_output_golden.mem",
+    "weight_mem": "model_17_cv3_weight.mem",
+    "bias_mem": "model_17_cv3_bias.mem",
+    "multiplier_mem": "model_17_cv3_multiplier.mem",
+    "shift_mem": "model_17_cv3_shift.mem",
+    "input_scale": 0.060938129274863896,
+    "output_scale": 0.09524726867675781
+  },
+  {
+    "descriptor_index": 46,
+    "graph_id": "model.17.m.0.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.17.m.0.cv1.conv",
+    "input_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1183296,
+    "weight_bytes": 1024,
+    "bias_offset": 13376,
+    "bias_bytes": 128,
+    "multiplier_offset": 13376,
+    "shift_offset": 3344,
+    "input_mem": "model_17_m_0_cv1_input.mem",
+    "output_golden_mem": "model_17_m_0_cv1_output_golden.mem",
+    "weight_mem": "model_17_m_0_cv1_weight.mem",
+    "bias_mem": "model_17_m_0_cv1_bias.mem",
+    "multiplier_mem": "model_17_m_0_cv1_multiplier.mem",
+    "shift_mem": "model_17_m_0_cv1_shift.mem",
+    "input_scale": 0.03429868277602308,
+    "output_scale": 0.05612343315064438
+  },
+  {
+    "descriptor_index": 47,
+    "graph_id": "model.17.m.0.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.17.m.0.cv2.conv",
+    "input_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      32,
+      32,
+      32
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 1184320,
+    "weight_bytes": 9216,
+    "bias_offset": 13504,
+    "bias_bytes": 128,
+    "multiplier_offset": 13504,
+    "shift_offset": 3376,
+    "input_mem": "model_17_m_0_cv2_input.mem",
+    "output_golden_mem": "model_17_m_0_cv2_output_golden.mem",
+    "weight_mem": "model_17_m_0_cv2_weight.mem",
+    "bias_mem": "model_17_m_0_cv2_bias.mem",
+    "multiplier_mem": "model_17_m_0_cv2_multiplier.mem",
+    "shift_mem": "model_17_m_0_cv2_shift.mem",
+    "input_scale": 0.05612343315064438,
+    "output_scale": 0.060938129274863896
+  },
+  {
+    "descriptor_index": 48,
+    "graph_id": "model.18",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.18.conv",
+    "input_shape": [
+      1,
+      64,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 1193536,
+    "weight_bytes": 36864,
+    "bias_offset": 13632,
+    "bias_bytes": 256,
+    "multiplier_offset": 13632,
+    "shift_offset": 3408,
+    "input_mem": "model_18_input.mem",
+    "output_golden_mem": "model_18_output_golden.mem",
+    "weight_mem": "model_18_weight.mem",
+    "bias_mem": "model_18_bias.mem",
+    "multiplier_mem": "model_18_multiplier.mem",
+    "shift_mem": "model_18_shift.mem",
+    "input_scale": 0.09524726867675781,
+    "output_scale": 0.04518046717005452
+  },
+  {
+    "descriptor_index": 49,
+    "graph_id": "model.20.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.20.cv1.conv",
+    "input_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1230400,
+    "weight_bytes": 8192,
+    "bias_offset": 13888,
+    "bias_bytes": 256,
+    "multiplier_offset": 13888,
+    "shift_offset": 3472,
+    "input_mem": "model_20_cv1_input.mem",
+    "output_golden_mem": "model_20_cv1_output_golden.mem",
+    "weight_mem": "model_20_cv1_weight.mem",
+    "bias_mem": "model_20_cv1_bias.mem",
+    "multiplier_mem": "model_20_cv1_multiplier.mem",
+    "shift_mem": "model_20_cv1_shift.mem",
+    "input_scale": 0.04518046717005452,
+    "output_scale": 0.03645644976398137
+  },
+  {
+    "descriptor_index": 50,
+    "graph_id": "model.20.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.20.cv2.conv",
+    "input_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1238592,
+    "weight_bytes": 8192,
+    "bias_offset": 14144,
+    "bias_bytes": 256,
+    "multiplier_offset": 14144,
+    "shift_offset": 3536,
+    "input_mem": "model_20_cv2_input.mem",
+    "output_golden_mem": "model_20_cv2_output_golden.mem",
+    "weight_mem": "model_20_cv2_weight.mem",
+    "bias_mem": "model_20_cv2_bias.mem",
+    "multiplier_mem": "model_20_cv2_multiplier.mem",
+    "shift_mem": "model_20_cv2_shift.mem",
+    "input_scale": 0.04518046717005452,
+    "output_scale": 0.04284033061951164
+  },
+  {
+    "descriptor_index": 51,
+    "graph_id": "model.20.cv3",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.20.cv3.conv",
+    "input_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1246784,
+    "weight_bytes": 16384,
+    "bias_offset": 14400,
+    "bias_bytes": 512,
+    "multiplier_offset": 14400,
+    "shift_offset": 3600,
+    "input_mem": "model_20_cv3_input.mem",
+    "output_golden_mem": "model_20_cv3_output_golden.mem",
+    "weight_mem": "model_20_cv3_weight.mem",
+    "bias_mem": "model_20_cv3_bias.mem",
+    "multiplier_mem": "model_20_cv3_multiplier.mem",
+    "shift_mem": "model_20_cv3_shift.mem",
+    "input_scale": 0.07858642818420891,
+    "output_scale": 0.09621589390311654
+  },
+  {
+    "descriptor_index": 52,
+    "graph_id": "model.20.m.0.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.20.m.0.cv1.conv",
+    "input_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1263168,
+    "weight_bytes": 4096,
+    "bias_offset": 14912,
+    "bias_bytes": 256,
+    "multiplier_offset": 14912,
+    "shift_offset": 3728,
+    "input_mem": "model_20_m_0_cv1_input.mem",
+    "output_golden_mem": "model_20_m_0_cv1_output_golden.mem",
+    "weight_mem": "model_20_m_0_cv1_weight.mem",
+    "bias_mem": "model_20_m_0_cv1_bias.mem",
+    "multiplier_mem": "model_20_m_0_cv1_multiplier.mem",
+    "shift_mem": "model_20_m_0_cv1_shift.mem",
+    "input_scale": 0.03645644976398137,
+    "output_scale": 0.03799070898942122
+  },
+  {
+    "descriptor_index": 53,
+    "graph_id": "model.20.m.0.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.20.m.0.cv2.conv",
+    "input_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      64,
+      16,
+      16
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 1267264,
+    "weight_bytes": 36864,
+    "bias_offset": 15168,
+    "bias_bytes": 256,
+    "multiplier_offset": 15168,
+    "shift_offset": 3792,
+    "input_mem": "model_20_m_0_cv2_input.mem",
+    "output_golden_mem": "model_20_m_0_cv2_output_golden.mem",
+    "weight_mem": "model_20_m_0_cv2_weight.mem",
+    "bias_mem": "model_20_m_0_cv2_bias.mem",
+    "multiplier_mem": "model_20_m_0_cv2_multiplier.mem",
+    "shift_mem": "model_20_m_0_cv2_shift.mem",
+    "input_scale": 0.03799070898942122,
+    "output_scale": 0.07858642818420891
+  },
+  {
+    "descriptor_index": 54,
+    "graph_id": "model.21",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.21.conv",
+    "input_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 1304128,
+    "weight_bytes": 147456,
+    "bias_offset": 15424,
+    "bias_bytes": 512,
+    "multiplier_offset": 15424,
+    "shift_offset": 3856,
+    "input_mem": "model_21_input.mem",
+    "output_golden_mem": "model_21_output_golden.mem",
+    "weight_mem": "model_21_weight.mem",
+    "bias_mem": "model_21_bias.mem",
+    "multiplier_mem": "model_21_multiplier.mem",
+    "shift_mem": "model_21_shift.mem",
+    "input_scale": 0.09621589390311654,
+    "output_scale": 0.07575379018708477
+  },
+  {
+    "descriptor_index": 55,
+    "graph_id": "model.23.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.23.cv1.conv",
+    "input_shape": [
+      1,
+      256,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1451584,
+    "weight_bytes": 32768,
+    "bias_offset": 15936,
+    "bias_bytes": 512,
+    "multiplier_offset": 15936,
+    "shift_offset": 3984,
+    "input_mem": "model_23_cv1_input.mem",
+    "output_golden_mem": "model_23_cv1_output_golden.mem",
+    "weight_mem": "model_23_cv1_weight.mem",
+    "bias_mem": "model_23_cv1_bias.mem",
+    "multiplier_mem": "model_23_cv1_multiplier.mem",
+    "shift_mem": "model_23_cv1_shift.mem",
+    "input_scale": 0.07575379018708477,
+    "output_scale": 0.07843343479426827
+  },
+  {
+    "descriptor_index": 56,
+    "graph_id": "model.23.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.23.cv2.conv",
+    "input_shape": [
+      1,
+      256,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1484352,
+    "weight_bytes": 32768,
+    "bias_offset": 16448,
+    "bias_bytes": 512,
+    "multiplier_offset": 16448,
+    "shift_offset": 4112,
+    "input_mem": "model_23_cv2_input.mem",
+    "output_golden_mem": "model_23_cv2_output_golden.mem",
+    "weight_mem": "model_23_cv2_weight.mem",
+    "bias_mem": "model_23_cv2_bias.mem",
+    "multiplier_mem": "model_23_cv2_multiplier.mem",
+    "shift_mem": "model_23_cv2_shift.mem",
+    "input_scale": 0.07575379018708477,
+    "output_scale": 0.04935822148961345
+  },
+  {
+    "descriptor_index": 57,
+    "graph_id": "model.23.cv3",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.23.cv3.conv",
+    "input_shape": [
+      1,
+      256,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      256,
+      8,
+      8
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1517120,
+    "weight_bytes": 65536,
+    "bias_offset": 16960,
+    "bias_bytes": 1024,
+    "multiplier_offset": 16960,
+    "shift_offset": 4240,
+    "input_mem": "model_23_cv3_input.mem",
+    "output_golden_mem": "model_23_cv3_output_golden.mem",
+    "weight_mem": "model_23_cv3_weight.mem",
+    "bias_mem": "model_23_cv3_bias.mem",
+    "multiplier_mem": "model_23_cv3_multiplier.mem",
+    "shift_mem": "model_23_cv3_shift.mem",
+    "input_scale": 0.06394742229792076,
+    "output_scale": 0.05007217812725878
+  },
+  {
+    "descriptor_index": 58,
+    "graph_id": "model.23.m.0.cv1",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.23.m.0.cv1.conv",
+    "input_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1582656,
+    "weight_bytes": 16384,
+    "bias_offset": 17984,
+    "bias_bytes": 512,
+    "multiplier_offset": 17984,
+    "shift_offset": 4496,
+    "input_mem": "model_23_m_0_cv1_input.mem",
+    "output_golden_mem": "model_23_m_0_cv1_output_golden.mem",
+    "weight_mem": "model_23_m_0_cv1_weight.mem",
+    "bias_mem": "model_23_m_0_cv1_bias.mem",
+    "multiplier_mem": "model_23_m_0_cv1_multiplier.mem",
+    "shift_mem": "model_23_m_0_cv1_shift.mem",
+    "input_scale": 0.07843343479426827,
+    "output_scale": 0.06033958975724348
+  },
+  {
+    "descriptor_index": 59,
+    "graph_id": "model.23.m.0.cv2",
+    "opcode": "CONV_RELU",
+    "vector_source_module": "model.23.m.0.cv2.conv",
+    "input_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      128,
+      8,
+      8
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      1,
+      1
+    ],
+    "weight_offset": 1599040,
+    "weight_bytes": 147456,
+    "bias_offset": 18496,
+    "bias_bytes": 512,
+    "multiplier_offset": 18496,
+    "shift_offset": 4624,
+    "input_mem": "model_23_m_0_cv2_input.mem",
+    "output_golden_mem": "model_23_m_0_cv2_output_golden.mem",
+    "weight_mem": "model_23_m_0_cv2_weight.mem",
+    "bias_mem": "model_23_m_0_cv2_bias.mem",
+    "multiplier_mem": "model_23_m_0_cv2_multiplier.mem",
+    "shift_mem": "model_23_m_0_cv2_shift.mem",
+    "input_scale": 0.06033958975724348,
+    "output_scale": 0.06394742229792076
+  },
+  {
+    "descriptor_index": 60,
+    "graph_id": "model.24.m.0",
+    "opcode": "CONV_LINEAR",
+    "vector_source_module": "model.24.m.0",
+    "input_shape": [
+      1,
+      64,
+      32,
+      32
+    ],
+    "output_shape": [
+      1,
+      27,
+      32,
+      32
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1746496,
+    "weight_bytes": 1728,
+    "bias_offset": 19008,
+    "bias_bytes": 108,
+    "multiplier_offset": 19008,
+    "shift_offset": 4752,
+    "input_mem": "model_24_m_0_input.mem",
+    "output_golden_mem": "model_24_m_0_output_golden.mem",
+    "weight_mem": "model_24_m_0_weight.mem",
+    "bias_mem": "model_24_m_0_bias.mem",
+    "multiplier_mem": "model_24_m_0_multiplier.mem",
+    "shift_mem": "model_24_m_0_shift.mem",
+    "input_scale": 0.09524726867675781,
+    "output_scale": 0.19351480138583446
+  },
+  {
+    "descriptor_index": 61,
+    "graph_id": "model.24.m.1",
+    "opcode": "CONV_LINEAR",
+    "vector_source_module": "model.24.m.1",
+    "input_shape": [
+      1,
+      128,
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      27,
+      16,
+      16
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1748224,
+    "weight_bytes": 3456,
+    "bias_offset": 19116,
+    "bias_bytes": 108,
+    "multiplier_offset": 19116,
+    "shift_offset": 4779,
+    "input_mem": "model_24_m_1_input.mem",
+    "output_golden_mem": "model_24_m_1_output_golden.mem",
+    "weight_mem": "model_24_m_1_weight.mem",
+    "bias_mem": "model_24_m_1_bias.mem",
+    "multiplier_mem": "model_24_m_1_multiplier.mem",
+    "shift_mem": "model_24_m_1_shift.mem",
+    "input_scale": 0.09621589390311654,
+    "output_scale": 0.1438470525065745
+  },
+  {
+    "descriptor_index": 62,
+    "graph_id": "model.24.m.2",
+    "opcode": "CONV_LINEAR",
+    "vector_source_module": "model.24.m.2",
+    "input_shape": [
+      1,
+      256,
+      8,
+      8
+    ],
+    "output_shape": [
+      1,
+      27,
+      8,
+      8
+    ],
+    "kernel": [
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "padding": [
+      0,
+      0
+    ],
+    "weight_offset": 1751680,
+    "weight_bytes": 6912,
+    "bias_offset": 19224,
+    "bias_bytes": 108,
+    "multiplier_offset": 19224,
+    "shift_offset": 4806,
+    "input_mem": "model_24_m_2_input.mem",
+    "output_golden_mem": "model_24_m_2_output_golden.mem",
+    "weight_mem": "model_24_m_2_weight.mem",
+    "bias_mem": "model_24_m_2_bias.mem",
+    "multiplier_mem": "model_24_m_2_multiplier.mem",
+    "shift_mem": "model_24_m_2_shift.mem",
+    "input_scale": 0.05007217812725878,
+    "output_scale": 0.12811324352354514
+  }
+]

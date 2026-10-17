@@ -1,0 +1,53 @@
+{
+  "manifest_sha256": "30EC0F313A521A66492F86CB8E1C1265E6250C58326878F463936A57609093F4",
+  "selected": 2,
+  "completed": 2,
+  "passed": true,
+  "bytes_compared": 263872,
+  "nodes": [
+    {
+      "graph_id": "model.0",
+      "opcode": "CONV_RELU",
+      "cycles": 3536901,
+      "outputs": 262144,
+      "read_commands": 136976,
+      "write_commands": 65536,
+      "rtl_vs_integer": {
+        "count": 262144,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "3D745BD5",
+        "crc32_expected": "3D745BD5"
+      },
+      "rtl_vs_package_golden": {
+        "count": 262144,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "3D745BD5",
+        "crc32_expected": "3D745BD5"
+      }
+    },
+    {
+      "graph_id": "model.24.m.2",
+      "opcode": "CONV_LINEAR",
+      "cycles": 347787,
+      "outputs": 1728,
+      "read_commands": 44356,
+      "write_commands": 432,
+      "rtl_vs_integer": {
+        "count": 1728,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "ADE4A9FE",
+        "crc32_expected": "ADE4A9FE"
+      },
+      "rtl_vs_package_golden": {
+        "count": 1728,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "ADE4A9FE",
+        "crc32_expected": "ADE4A9FE"
+      }
+    }
+  ]
+}

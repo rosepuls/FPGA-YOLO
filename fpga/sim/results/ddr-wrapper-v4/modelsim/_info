@@ -1,0 +1,262 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Study/IC_Study/Project/FPGA/Contest/CGEDC_1/FPGA-YOLO
+T_opt
+!s110 1792131971
+VX`honc9bYOkROj4jQizf>2
+04 20 4 work ac550_package_ddr_tb fast 0
+=1-7ccf0f6dc8fe-6ad1c383-74-1368
+o-quiet -auto_acc_if_foreign -work work
+Z1 tCvgOpt 0
+n@_opt
+OL;O;10.6e;65
+vac550_cnn_accelerator
+Z2 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z3 !s110 1792131970
+!i10b 1
+!s100 [@i_J5[gIR[=T8`5HO_?83
+I291zjHPJJ3Z4Mn2Q<9>;]2
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+!s105 ac550_cnn_accelerator_sv_unit
+S1
+R0
+w1792131929
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\ac550_cnn_accelerator.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\ac550_cnn_accelerator.sv
+L0 2
+Z5 OL;L;10.6e;65
+r1
+!s85 0
+31
+Z6 !s108 1792131970.000000
+Z7 !s107 C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\ac550_package_ddr_tb.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\avalon_ddr_model.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\ac550_cnn_accelerator.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\requant_i32_to_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\tensor_dma.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\ac550_cnn_csr.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\cnn_job_controller.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv|
+Z8 !s90 -work|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\results\ddr-wrapper-v4\modelsim|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\cnn_job_controller.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\ac550_cnn_csr.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\tensor_dma.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\requant_i32_to_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\ac550_cnn_accelerator.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\avalon_ddr_model.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\ac550_package_ddr_tb.sv|
+!i113 0
+Z9 o-work {C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\results\ddr-wrapper-v4\modelsim} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+vac550_cnn_csr
+R2
+Z10 DXx4 work 13 ac550_cnn_pkg 0 22 37z6IZ[_amTc9_BilOI@I3
+R3
+!i10b 1
+!s100 OWdG:c>7GREl6SeDlFo640
+ICc`3P86E@1YnIbI<U3ZNj3
+R4
+!s105 ac550_cnn_csr_sv_unit
+S1
+R0
+w1792131884
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\ac550_cnn_csr.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\ac550_cnn_csr.sv
+L0 1
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R1
+Xac550_cnn_pkg
+R2
+R3
+!i10b 1
+!s100 PoL]iOd8?3X0MkhaI7ZF^1
+I37z6IZ[_amTc9_BilOI@I3
+V37z6IZ[_amTc9_BilOI@I3
+S1
+R0
+Z11 w1792111526
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv
+L0 1
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R1
+vac550_package_ddr_tb
+R2
+R10
+R3
+!i10b 1
+!s100 cY==Bb0K<:1KGjQ0TaYnJ1
+IhK;;0L9j:?MNlkT75kXMT2
+R4
+!s105 ac550_package_ddr_tb_sv_unit
+S1
+R0
+w1792131952
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\ac550_package_ddr_tb.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\ac550_package_ddr_tb.sv
+L0 4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R1
+vavalon_ddr_model
+R2
+R3
+!i10b 1
+!s100 M4<[oAFK`bNMkX?QAbkh[3
+I`Q9_MezXfzcZaJO914MzA2
+R4
+!s105 avalon_ddr_model_sv_unit
+S1
+R0
+w1792119912
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\avalon_ddr_model.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\avalon_ddr_model.sv
+L0 5
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R1
+vcnn_job_controller
+R2
+R10
+R3
+!i10b 1
+!s100 @9gjjD`T7H5e<WCQlJ[240
+I?TDB=o=V9ao[?km[D0^m_0
+R4
+!s105 cnn_job_controller_sv_unit
+S1
+R0
+w1792131731
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\cnn_job_controller.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\cnn_job_controller.sv
+L0 1
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R1
+vfpga_op_executor
+R2
+R10
+R3
+!i10b 1
+!s100 e:`5DkQPQC3c4AOZ^_O8?1
+I@mm^Sa`a4iRf[n8;G[2Ac1
+R4
+!s105 fpga_op_executor_sv_unit
+S1
+R0
+w1792131663
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\fpga_op_executor.sv
+L0 3
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R1
+vmac_array_i8
+R2
+R3
+!i10b 1
+!s100 d0JmU`QNRE;6L4BLFL><23
+I]c4NDMYPbf5WQN:No_z?V2
+R4
+!s105 mac_array_i8_sv_unit
+S1
+R0
+w1792112943
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv
+L0 2
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R1
+vrequant_i32_to_i8
+R2
+R3
+!i10b 1
+!s100 8ff:c`@4SJ0Z4RddDOZjI2
+IcoeK1N3cAnRML]?R??W<S0
+R4
+!s105 requant_i32_to_i8_sv_unit
+S1
+R0
+R11
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\requant_i32_to_i8.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\requant_i32_to_i8.sv
+L0 1
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R1
+vtensor_dma
+R2
+R3
+!i10b 1
+!s100 BSYPO=g7NDY;40A^U3O3G0
+In=:f<Z7T;T[l5Oe5]b`;P2
+R4
+!s105 tensor_dma_sv_unit
+S1
+R0
+w1792131569
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\tensor_dma.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\tensor_dma.sv
+L0 1
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R1

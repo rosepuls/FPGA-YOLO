@@ -1,0 +1,1211 @@
+{
+  "manifest_sha256": "30EC0F313A521A66492F86CB8E1C1265E6250C58326878F463936A57609093F4",
+  "conv_generics": [
+    "-gPIN=8",
+    "-gPOUT=8",
+    "-gTILE_H=4",
+    "-gTILE_W=4"
+  ],
+  "selected": 63,
+  "completed": 63,
+  "passed": true,
+  "nodes": [
+    {
+      "graph_id": "model.0",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 262144,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "3D745BD5",
+        "crc32_expected": "3D745BD5"
+      },
+      "package_golden_vs_integer": {
+        "count": 262144,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "3D745BD5",
+        "crc32_expected": "3D745BD5"
+      },
+      "cycles": "2828289"
+    },
+    {
+      "graph_id": "model.1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 131072,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "27CD7CB8",
+        "crc32_expected": "27CD7CB8"
+      },
+      "package_golden_vs_integer": {
+        "count": 131072,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "27CD7CB8",
+        "crc32_expected": "27CD7CB8"
+      },
+      "cycles": "824321"
+    },
+    {
+      "graph_id": "model.2.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "D70E8254",
+        "crc32_expected": "D70E8254"
+      },
+      "package_golden_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "D70E8254",
+        "crc32_expected": "D70E8254"
+      },
+      "cycles": "125441"
+    },
+    {
+      "graph_id": "model.2.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "4E01A0F4",
+        "crc32_expected": "4E01A0F4"
+      },
+      "package_golden_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "4E01A0F4",
+        "crc32_expected": "4E01A0F4"
+      },
+      "cycles": "125441"
+    },
+    {
+      "graph_id": "model.2.cv3",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 131072,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "C78F09FB",
+        "crc32_expected": "C78F09FB"
+      },
+      "package_golden_vs_integer": {
+        "count": 131072,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "C78F09FB",
+        "crc32_expected": "C78F09FB"
+      },
+      "cycles": "250881"
+    },
+    {
+      "graph_id": "model.2.m.0.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "005F867E",
+        "crc32_expected": "005F867E"
+      },
+      "package_golden_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "005F867E",
+        "crc32_expected": "005F867E"
+      },
+      "cycles": "75265"
+    },
+    {
+      "graph_id": "model.2.m.0.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "0CE41B11",
+        "crc32_expected": "0CE41B11"
+      },
+      "package_golden_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "0CE41B11",
+        "crc32_expected": "0CE41B11"
+      },
+      "cycles": "366081"
+    },
+    {
+      "graph_id": "model.3",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "B1405734",
+        "crc32_expected": "B1405734"
+      },
+      "package_golden_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "B1405734",
+        "crc32_expected": "B1405734"
+      },
+      "cycles": "799233"
+    },
+    {
+      "graph_id": "model.4.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "1125DA17",
+        "crc32_expected": "1125DA17"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "1125DA17",
+        "crc32_expected": "1125DA17"
+      },
+      "cycles": "112897"
+    },
+    {
+      "graph_id": "model.4.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "9AD7ABDE",
+        "crc32_expected": "9AD7ABDE"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "9AD7ABDE",
+        "crc32_expected": "9AD7ABDE"
+      },
+      "cycles": "112897"
+    },
+    {
+      "graph_id": "model.4.cv3",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "1116760F",
+        "crc32_expected": "1116760F"
+      },
+      "package_golden_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "1116760F",
+        "crc32_expected": "1116760F"
+      },
+      "cycles": "225793"
+    },
+    {
+      "graph_id": "model.4.m.0.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "9240A710",
+        "crc32_expected": "9240A710"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "9240A710",
+        "crc32_expected": "9240A710"
+      },
+      "cycles": "62721"
+    },
+    {
+      "graph_id": "model.4.m.0.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "C57FA7EF",
+        "crc32_expected": "C57FA7EF"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "C57FA7EF",
+        "crc32_expected": "C57FA7EF"
+      },
+      "cycles": "353537"
+    },
+    {
+      "graph_id": "model.4.m.1.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "5890F080",
+        "crc32_expected": "5890F080"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "5890F080",
+        "crc32_expected": "5890F080"
+      },
+      "cycles": "62721"
+    },
+    {
+      "graph_id": "model.4.m.1.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "6B962803",
+        "crc32_expected": "6B962803"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "6B962803",
+        "crc32_expected": "6B962803"
+      },
+      "cycles": "353537"
+    },
+    {
+      "graph_id": "model.5",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "7AE42C73",
+        "crc32_expected": "7AE42C73"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "7AE42C73",
+        "crc32_expected": "7AE42C73"
+      },
+      "cycles": "786689"
+    },
+    {
+      "graph_id": "model.6.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "B999BD99",
+        "crc32_expected": "B999BD99"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "B999BD99",
+        "crc32_expected": "B999BD99"
+      },
+      "cycles": "106625"
+    },
+    {
+      "graph_id": "model.6.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "3D211443",
+        "crc32_expected": "3D211443"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "3D211443",
+        "crc32_expected": "3D211443"
+      },
+      "cycles": "106625"
+    },
+    {
+      "graph_id": "model.6.cv3",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "3D13972D",
+        "crc32_expected": "3D13972D"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "3D13972D",
+        "crc32_expected": "3D13972D"
+      },
+      "cycles": "213249"
+    },
+    {
+      "graph_id": "model.6.m.0.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "F09A6AC1",
+        "crc32_expected": "F09A6AC1"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "F09A6AC1",
+        "crc32_expected": "F09A6AC1"
+      },
+      "cycles": "56449"
+    },
+    {
+      "graph_id": "model.6.m.0.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "EBBFAEDB",
+        "crc32_expected": "EBBFAEDB"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "EBBFAEDB",
+        "crc32_expected": "EBBFAEDB"
+      },
+      "cycles": "347265"
+    },
+    {
+      "graph_id": "model.6.m.1.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "448FD765",
+        "crc32_expected": "448FD765"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "448FD765",
+        "crc32_expected": "448FD765"
+      },
+      "cycles": "56449"
+    },
+    {
+      "graph_id": "model.6.m.1.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "14EB3C54",
+        "crc32_expected": "14EB3C54"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "14EB3C54",
+        "crc32_expected": "14EB3C54"
+      },
+      "cycles": "347265"
+    },
+    {
+      "graph_id": "model.6.m.2.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "1FFB1769",
+        "crc32_expected": "1FFB1769"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "1FFB1769",
+        "crc32_expected": "1FFB1769"
+      },
+      "cycles": "56449"
+    },
+    {
+      "graph_id": "model.6.m.2.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "F8E3AF81",
+        "crc32_expected": "F8E3AF81"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "F8E3AF81",
+        "crc32_expected": "F8E3AF81"
+      },
+      "cycles": "347265"
+    },
+    {
+      "graph_id": "model.7",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "03F3069E",
+        "crc32_expected": "03F3069E"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "03F3069E",
+        "crc32_expected": "03F3069E"
+      },
+      "cycles": "780417"
+    },
+    {
+      "graph_id": "model.8.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "B2577B8F",
+        "crc32_expected": "B2577B8F"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "B2577B8F",
+        "crc32_expected": "B2577B8F"
+      },
+      "cycles": "103489"
+    },
+    {
+      "graph_id": "model.8.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "7068D5ED",
+        "crc32_expected": "7068D5ED"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "7068D5ED",
+        "crc32_expected": "7068D5ED"
+      },
+      "cycles": "103489"
+    },
+    {
+      "graph_id": "model.8.cv3",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "4F051C3E",
+        "crc32_expected": "4F051C3E"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "4F051C3E",
+        "crc32_expected": "4F051C3E"
+      },
+      "cycles": "206977"
+    },
+    {
+      "graph_id": "model.8.m.0.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "CA668ACD",
+        "crc32_expected": "CA668ACD"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "CA668ACD",
+        "crc32_expected": "CA668ACD"
+      },
+      "cycles": "53313"
+    },
+    {
+      "graph_id": "model.8.m.0.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "AB25052F",
+        "crc32_expected": "AB25052F"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "AB25052F",
+        "crc32_expected": "AB25052F"
+      },
+      "cycles": "344129"
+    },
+    {
+      "graph_id": "model.9.maxpool.1",
+      "opcode": "MAXPOOL",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "FC11FB3A",
+        "crc32_expected": "FC11FB3A"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "FC11FB3A",
+        "crc32_expected": "FC11FB3A"
+      },
+      "cycles": "204801"
+    },
+    {
+      "graph_id": "model.9.maxpool.2",
+      "opcode": "MAXPOOL",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "83FE6264",
+        "crc32_expected": "83FE6264"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "83FE6264",
+        "crc32_expected": "83FE6264"
+      },
+      "cycles": "204801"
+    },
+    {
+      "graph_id": "model.9.maxpool.3",
+      "opcode": "MAXPOOL",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "F29D3DA9",
+        "crc32_expected": "F29D3DA9"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "F29D3DA9",
+        "crc32_expected": "F29D3DA9"
+      },
+      "cycles": "204801"
+    },
+    {
+      "graph_id": "model.9.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "087BDE45",
+        "crc32_expected": "087BDE45"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "087BDE45",
+        "crc32_expected": "087BDE45"
+      },
+      "cycles": "103489"
+    },
+    {
+      "graph_id": "model.9.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "91B69FF3",
+        "crc32_expected": "91B69FF3"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "91B69FF3",
+        "crc32_expected": "91B69FF3"
+      },
+      "cycles": "407681"
+    },
+    {
+      "graph_id": "model.10",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "EB65AC19",
+        "crc32_expected": "EB65AC19"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "EB65AC19",
+        "crc32_expected": "EB65AC19"
+      },
+      "cycles": "103489"
+    },
+    {
+      "graph_id": "model.13.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "A56E449E",
+        "crc32_expected": "A56E449E"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "A56E449E",
+        "crc32_expected": "A56E449E"
+      },
+      "cycles": "206977"
+    },
+    {
+      "graph_id": "model.13.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "89537402",
+        "crc32_expected": "89537402"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "89537402",
+        "crc32_expected": "89537402"
+      },
+      "cycles": "206977"
+    },
+    {
+      "graph_id": "model.13.cv3",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "B2F1F906",
+        "crc32_expected": "B2F1F906"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "B2F1F906",
+        "crc32_expected": "B2F1F906"
+      },
+      "cycles": "213249"
+    },
+    {
+      "graph_id": "model.13.m.0.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "DA04ACE1",
+        "crc32_expected": "DA04ACE1"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "DA04ACE1",
+        "crc32_expected": "DA04ACE1"
+      },
+      "cycles": "56449"
+    },
+    {
+      "graph_id": "model.13.m.0.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "E5D44D2E",
+        "crc32_expected": "E5D44D2E"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "E5D44D2E",
+        "crc32_expected": "E5D44D2E"
+      },
+      "cycles": "347265"
+    },
+    {
+      "graph_id": "model.14",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "64D29358",
+        "crc32_expected": "64D29358"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "64D29358",
+        "crc32_expected": "64D29358"
+      },
+      "cycles": "106625"
+    },
+    {
+      "graph_id": "model.17.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "24FAC432",
+        "crc32_expected": "24FAC432"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "24FAC432",
+        "crc32_expected": "24FAC432"
+      },
+      "cycles": "213249"
+    },
+    {
+      "graph_id": "model.17.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "A2BCFD30",
+        "crc32_expected": "A2BCFD30"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "A2BCFD30",
+        "crc32_expected": "A2BCFD30"
+      },
+      "cycles": "213249"
+    },
+    {
+      "graph_id": "model.17.cv3",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "38FD3C35",
+        "crc32_expected": "38FD3C35"
+      },
+      "package_golden_vs_integer": {
+        "count": 65536,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "38FD3C35",
+        "crc32_expected": "38FD3C35"
+      },
+      "cycles": "225793"
+    },
+    {
+      "graph_id": "model.17.m.0.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "81D38819",
+        "crc32_expected": "81D38819"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "81D38819",
+        "crc32_expected": "81D38819"
+      },
+      "cycles": "62721"
+    },
+    {
+      "graph_id": "model.17.m.0.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "29B88105",
+        "crc32_expected": "29B88105"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "29B88105",
+        "crc32_expected": "29B88105"
+      },
+      "cycles": "353537"
+    },
+    {
+      "graph_id": "model.18",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "00F95AD0",
+        "crc32_expected": "00F95AD0"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "00F95AD0",
+        "crc32_expected": "00F95AD0"
+      },
+      "cycles": "393345"
+    },
+    {
+      "graph_id": "model.20.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "5547646B",
+        "crc32_expected": "5547646B"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "5547646B",
+        "crc32_expected": "5547646B"
+      },
+      "cycles": "106625"
+    },
+    {
+      "graph_id": "model.20.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "94D0BAFB",
+        "crc32_expected": "94D0BAFB"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "94D0BAFB",
+        "crc32_expected": "94D0BAFB"
+      },
+      "cycles": "106625"
+    },
+    {
+      "graph_id": "model.20.cv3",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "D1C0077C",
+        "crc32_expected": "D1C0077C"
+      },
+      "package_golden_vs_integer": {
+        "count": 32768,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "D1C0077C",
+        "crc32_expected": "D1C0077C"
+      },
+      "cycles": "213249"
+    },
+    {
+      "graph_id": "model.20.m.0.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "CE4D7031",
+        "crc32_expected": "CE4D7031"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "CE4D7031",
+        "crc32_expected": "CE4D7031"
+      },
+      "cycles": "56449"
+    },
+    {
+      "graph_id": "model.20.m.0.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "AD02AF8A",
+        "crc32_expected": "AD02AF8A"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "AD02AF8A",
+        "crc32_expected": "AD02AF8A"
+      },
+      "cycles": "347265"
+    },
+    {
+      "graph_id": "model.21",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "2FA15FC4",
+        "crc32_expected": "2FA15FC4"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "2FA15FC4",
+        "crc32_expected": "2FA15FC4"
+      },
+      "cycles": "390209"
+    },
+    {
+      "graph_id": "model.23.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "E1F60056",
+        "crc32_expected": "E1F60056"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "E1F60056",
+        "crc32_expected": "E1F60056"
+      },
+      "cycles": "103489"
+    },
+    {
+      "graph_id": "model.23.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "1E93A264",
+        "crc32_expected": "1E93A264"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "1E93A264",
+        "crc32_expected": "1E93A264"
+      },
+      "cycles": "103489"
+    },
+    {
+      "graph_id": "model.23.cv3",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "4341BC01",
+        "crc32_expected": "4341BC01"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "4341BC01",
+        "crc32_expected": "4341BC01"
+      },
+      "cycles": "206977"
+    },
+    {
+      "graph_id": "model.23.m.0.cv1",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "CCA12C6D",
+        "crc32_expected": "CCA12C6D"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "CCA12C6D",
+        "crc32_expected": "CCA12C6D"
+      },
+      "cycles": "53313"
+    },
+    {
+      "graph_id": "model.23.m.0.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "66C0FE9B",
+        "crc32_expected": "66C0FE9B"
+      },
+      "package_golden_vs_integer": {
+        "count": 8192,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "66C0FE9B",
+        "crc32_expected": "66C0FE9B"
+      },
+      "cycles": "344129"
+    },
+    {
+      "graph_id": "model.24.m.0",
+      "opcode": "CONV_LINEAR",
+      "rtl_vs_integer": {
+        "count": 27648,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "FAD4484A",
+        "crc32_expected": "FAD4484A"
+      },
+      "package_golden_vs_integer": {
+        "count": 27648,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "FAD4484A",
+        "crc32_expected": "FAD4484A"
+      },
+      "cycles": "112897"
+    },
+    {
+      "graph_id": "model.24.m.1",
+      "opcode": "CONV_LINEAR",
+      "rtl_vs_integer": {
+        "count": 6912,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "0336ED63",
+        "crc32_expected": "0336ED63"
+      },
+      "package_golden_vs_integer": {
+        "count": 6912,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "0336ED63",
+        "crc32_expected": "0336ED63"
+      },
+      "cycles": "53313"
+    },
+    {
+      "graph_id": "model.24.m.2",
+      "opcode": "CONV_LINEAR",
+      "rtl_vs_integer": {
+        "count": 1728,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "ADE4A9FE",
+        "crc32_expected": "ADE4A9FE"
+      },
+      "package_golden_vs_integer": {
+        "count": 1728,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "ADE4A9FE",
+        "crc32_expected": "ADE4A9FE"
+      },
+      "cycles": "25873"
+    }
+  ]
+}

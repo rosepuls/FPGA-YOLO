@@ -1,0 +1,282 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Study/IC_Study/Project/FPGA/Contest/CGEDC_1/FPGA-YOLO
+T_opt
+!s110 1792113117
+Vfa^TIeX<GboH^Yg0o]zTO2
+Z1 04 20 4 work ac550_package_rtl_tb fast 0
+=1-7ccf0f6dc8fe-6ad179dd-2-998
+o-quiet -auto_acc_if_foreign -work work
+Z2 tCvgOpt 0
+n@_opt
+Z3 OL;O;10.6e;65
+R0
+T_opt1
+!s110 1792117755
+V6E[U1DTLCnjnB]fYo?3BP1
+R1
+=1-7ccf0f6dc8fe-6ad18bfb-1b9-7ae0
+Z4 o-quiet -auto_acc_if_foreign -work work -g TILE_W=4 -g POUT=8 -g TILE_H=4 -g PIN=8
+R2
+n@_opt1
+R3
+R0
+T_opt2
+!s110 1792120280
+VB;oTzA034L?BWiLMdC?_61
+R1
+=1-7ccf0f6dc8fe-6ad195d7-38f-540
+R4
+R2
+n@_opt2
+R3
+R0
+Xac550_cnn_pkg
+Z5 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z6 !s110 1792120394
+!i10b 1
+!s100 PoL]iOd8?3X0MkhaI7ZF^1
+IhWEUEb<1GR3@C1C6X]b2]3
+VhWEUEb<1GR3@C1C6X]b2]3
+S1
+R0
+Z7 w1792111526
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv
+L0 1
+Z8 OL;L;10.6e;65
+r1
+!s85 0
+31
+Z9 !s108 1792120394.000000
+!s107 C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\ac550_package_rtl_tb.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\maxpool_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\conv2d_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\relu_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\requant_i32_to_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\accumulator_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\weight_tile_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\feature_tile_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv|
+Z10 !s90 -work|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\build\ac550-package-rtl|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\feature_tile_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\weight_tile_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\accumulator_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\requant_i32_to_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\relu_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\conv2d_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\maxpool_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\ac550_package_rtl_tb.sv|
+!i113 0
+Z11 o-work {C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\build\ac550-package-rtl} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vac550_package_rtl_tb
+R5
+Z12 DXx4 work 13 ac550_cnn_pkg 0 22 hWEUEb<1GR3@C1C6X]b2]3
+R6
+!i10b 1
+!s100 IRiUme8Zbn=71gI`[6zJ;2
+IN9aWzJl9;gW5DnO8Age;20
+Z13 VDg1SIo80bB@j0V0VzS_@n1
+!s105 ac550_package_rtl_tb_sv_unit
+S1
+R0
+Z14 w1792117640
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\ac550_package_rtl_tb.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\ac550_package_rtl_tb.sv
+L0 3
+R8
+r1
+!s85 0
+31
+R9
+Z15 !s107 C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\ac550_package_rtl_tb.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\maxpool_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\conv2d_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\relu_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\requant_i32_to_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\accumulator_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\weight_tile_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\feature_tile_buffer.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv|
+R10
+!i113 0
+R11
+R2
+vaccumulator_buffer
+R5
+R6
+!i10b 1
+!s100 HX3VRY6eWi9PjgD]g9G?U0
+IQgl5k>TmT8NCDA;W<[T292
+R13
+!s105 accumulator_buffer_sv_unit
+S1
+R0
+Z16 w1792113134
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\accumulator_buffer.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\accumulator_buffer.sv
+L0 2
+R8
+r1
+!s85 0
+31
+R9
+R15
+R10
+!i113 0
+R11
+R2
+vconv2d_i8
+R5
+R12
+R6
+!i10b 1
+!s100 08UQiJZfKUlO::RYZdVVW1
+IQOHO<Q0Rd5IzRH>VMiobT1
+R13
+!s105 conv2d_i8_sv_unit
+S1
+R0
+R14
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\conv2d_i8.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\conv2d_i8.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+R15
+R10
+!i113 0
+R11
+R2
+vfeature_tile_buffer
+R5
+R6
+!i10b 1
+!s100 TG>m65<jNdocOZhT^>C882
+I[GkcYifXC]_mjeiAX0C152
+R13
+!s105 feature_tile_buffer_sv_unit
+S1
+R0
+R16
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\feature_tile_buffer.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\feature_tile_buffer.sv
+L0 2
+R8
+r1
+!s85 0
+31
+R9
+R15
+R10
+!i113 0
+R11
+R2
+vmac_array_i8
+R5
+R6
+!i10b 1
+!s100 d0JmU`QNRE;6L4BLFL><23
+I@VTKnPm7Gh9`cmHSPH77Y3
+R13
+!s105 mac_array_i8_sv_unit
+S1
+R0
+w1792112943
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\mac_array_i8.sv
+L0 2
+R8
+r1
+!s85 0
+31
+R9
+R15
+R10
+!i113 0
+R11
+R2
+vmaxpool_i8
+R5
+R12
+R6
+!i10b 1
+!s100 JjOdO10YSm6NR:3O@:6C?3
+IcMNDPUd8:RmiFh;FGU@E?0
+R13
+!s105 maxpool_i8_sv_unit
+S1
+R0
+R7
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\maxpool_i8.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\maxpool_i8.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+R15
+R10
+!i113 0
+R11
+R2
+vrelu_i8
+R5
+R6
+!i10b 1
+!s100 E_a>ncSlaJ9c:2Y@OF_9J1
+I0EHR]jUGF3UU3bk:Ui:B@1
+R13
+!s105 relu_i8_sv_unit
+S1
+R0
+R7
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\relu_i8.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\relu_i8.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+R15
+R10
+!i113 0
+R11
+R2
+vrequant_i32_to_i8
+R5
+R6
+!i10b 1
+!s100 8ff:c`@4SJ0Z4RddDOZjI2
+IW_gSVgKkJ`Y:>RiVh2FD[2
+R13
+!s105 requant_i32_to_i8_sv_unit
+S1
+R0
+R7
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\requant_i32_to_i8.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\requant_i32_to_i8.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+R15
+R10
+!i113 0
+R11
+R2
+vweight_tile_buffer
+R5
+R6
+!i10b 1
+!s100 8DEJUjcT^BMCGUk7]d2P10
+I:>RGB64VhQDZzRB@8^SI?3
+R13
+!s105 weight_tile_buffer_sv_unit
+S1
+R0
+R16
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\weight_tile_buffer.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\weight_tile_buffer.sv
+L0 2
+R8
+r1
+!s85 0
+31
+R9
+R15
+R10
+!i113 0
+R11
+R2

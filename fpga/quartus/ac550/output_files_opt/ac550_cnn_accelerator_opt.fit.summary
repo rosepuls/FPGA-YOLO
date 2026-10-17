@@ -1,0 +1,20 @@
+Fitter Status : Failed - Fri Oct 16 19:36:59 2026
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : ac550_cnn_accelerator_opt
+Top-level Entity Name : ac550_cnn_accelerator
+Family : Cyclone V
+Device : 5CSXFC6C6U23I7
+Timing Models : Final
+Logic utilization (in ALMs) : 24,875 / 41,910 ( 59 % )
+Total registers : 9340
+Total pins : 259 / 342 ( 76 % )
+Total virtual pins : 0
+Total block memory bits : 27,648 / 5,662,720 ( < 1 % )
+Total RAM Blocks : 0 / 553 ( 0 % )
+Total DSP Blocks : 91 / 112 ( 81 % )
+Total HSSI RX PCSs : 0 / 6 ( 0 % )
+Total HSSI PMA RX Deserializers : 0 / 6 ( 0 % )
+Total HSSI TX PCSs : 0 / 6 ( 0 % )
+Total HSSI PMA TX Serializers : 0 / 6 ( 0 % )
+Total PLLs : 0 / 12 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )

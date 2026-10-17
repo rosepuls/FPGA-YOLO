@@ -1,0 +1,16 @@
+{
+  "manifest_sha256": "3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24",
+  "package_status": "PRE_G2_STATIC_QUANTIZATION",
+  "graph_node_count": 87,
+  "convolution_count": 60,
+  "executor_counts": {
+    "ARM_ADD": 7,
+    "ARM_CONCAT": 13,
+    "ARM_UPSAMPLE": 4,
+    "FPGA_CONV_LINEAR": 3,
+    "FPGA_CONV_RELU": 57,
+    "FPGA_MAXPOOL": 3
+  },
+  "descriptor_count": 63,
+  "record_bytes": 64
+}

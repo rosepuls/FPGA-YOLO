@@ -1,0 +1,142 @@
+{
+  "artifacts": {
+    "anchors.json": {
+      "bytes": 584,
+      "sha256": "8B10BE29DAEDE831260E194E588DFD4A74107094B1A53DA5466C2AC0CD061AF4"
+    },
+    "bias_i32.bin": {
+      "bytes": 19332,
+      "sha256": "9AB3487ED94810045659058F0B823935098603617FC7E4D7528356949C3BCB3A"
+    },
+    "golden_input_u8.bin": {
+      "bytes": 65536,
+      "sha256": "17568A7D5E5BEB61B6DCD99CD09A04FBD2509F17E9023BAF972BD511B784743B"
+    },
+    "golden_vectors.json": {
+      "bytes": 93423,
+      "sha256": "BFF7D4816A0938D2F69D0B9459B31FBB9C3FFF93217619B405551BA3452E00DC"
+    },
+    "graph.json": {
+      "bytes": 27925,
+      "sha256": "6FF21BA601358121863F00E40A90AD8382B3B46D1534A5E57F6219CEB7D0792E"
+    },
+    "head_p3_i8.bin": {
+      "bytes": 27648,
+      "sha256": "6FBEC5AA4C71E7C29A3AF21303A1D13153FFC62BE6BF992E4EB2D8E5051D21FD"
+    },
+    "head_p4_i8.bin": {
+      "bytes": 6912,
+      "sha256": "A4985A61CA5B3E55B98D660CAD10199CE43BD33C0CD551411000336421769B8D"
+    },
+    "head_p5_i8.bin": {
+      "bytes": 1728,
+      "sha256": "FF6DD241C53D5FC200699CD653C898D956C9AC2B253F0030D097BEE04B68E6CF"
+    },
+    "quant_params.json": {
+      "bytes": 450551,
+      "sha256": "6BE245FC65874AFC7F1666289C31152A668C3F88691515EC849E881584B88F34"
+    },
+    "weights_i8.bin": {
+      "bytes": 1758592,
+      "sha256": "91560457FEB0F5D99BCAF9D0765E568BCB439B96624D20A0B400356D9F48539B"
+    }
+  },
+  "calibration": {
+    "images": [
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1000.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1002.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1004.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1005.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1006.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1009.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1012.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1013.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1014.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1015.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1016.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1017.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1018.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1019.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1021.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1022.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1023.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1025.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1028.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1029.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1030.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1032.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1033.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1034.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1035.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1038.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1039.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1041.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1042.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1043.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1045.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1046.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1047.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1051.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1052.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1054.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1055.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1056.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1058.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1059.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1061.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1062.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1065.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1066.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1067.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1068.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1070.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1071.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1072.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1074.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1077.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1079.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1082.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1084.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1093.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1096.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1097.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1098.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1101.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1102.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1103.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1106.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1110.png",
+      "C:\\Study\\IC_Study\\Project\\FPGA\\Contest\\CGEDC_1\\FPGA-YOLO\\data\\LV-YOLO-ROI256\\images\\train\\train__1115.png"
+    ]
+  },
+  "graph": {
+    "file": "graph.json",
+    "node_count": 87,
+    "nodes": 87
+  },
+  "input": {
+    "golden_file": "golden_input_u8.bin",
+    "layout": "NCHW",
+    "normalization": "float = uint8 / 255.0",
+    "shape": [
+      1,
+      1,
+      256,
+      256
+    ],
+    "storage_dtype": "uint8"
+  },
+  "model": {
+    "architecture": "YOLOv5n-ReLU",
+    "checkpoint_sha256": "20DC478B4C097FEC313443E1936CD2339B6A100CC00F821E6DF9D9F30DFAD30B",
+    "classes": [
+      "ca_shang",
+      "zang_wu",
+      "zhe_zhou",
+      "zhen_kong"
+    ]
+  },
+  "schema_version": 1,
+  "status": "PRE_G2_STATIC_QUANTIZATION",
+  "target_platform": "Xiaomeige AC550 Cyclone V SoC"
+}

@@ -1,0 +1,93 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Study/IC_Study/Project/FPGA/Contest/CGEDC_1/FPGA-YOLO
+T_opt
+!s110 1792132786
+V=fF>[Y[DU@jz@lCm3e9gD1
+04 21 4 work cnn_job_controller_tb fast 0
+=1-7ccf0f6dc8fe-6ad1c6b2-192-86c8
+o-quiet -auto_acc_if_foreign -work work
+Z1 tCvgOpt 0
+n@_opt
+OL;O;10.6e;65
+R0
+Xac550_cnn_pkg
+Z2 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z3 !s110 1792133042
+!i10b 1
+!s100 PoL]iOd8?3X0MkhaI7ZF^1
+ImoORjCaWD[0Jf?NMlgz5F1
+VmoORjCaWD[0Jf?NMlgz5F1
+S1
+R0
+w1792111526
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv
+L0 1
+Z4 OL;L;10.6e;65
+r1
+!s85 0
+31
+Z5 !s108 1792133042.000000
+!s107 C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\cnn_job_controller_tb.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\cnn_job_controller.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv|
+Z6 !s90 -work|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\build\msim-cnn_job_controller_tb|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\cnn_job_controller.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\cnn_job_controller_tb.sv|
+!i113 0
+Z7 o-work {C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\build\msim-cnn_job_controller_tb} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+vcnn_job_controller
+R2
+Z8 DXx4 work 13 ac550_cnn_pkg 0 22 moORjCaWD[0Jf?NMlgz5F1
+R3
+!i10b 1
+!s100 7jj?zNnIZlj?CNLkHCfo>1
+I5l6l6jG<^d@8]FoFmZBhz1
+Z9 VDg1SIo80bB@j0V0VzS_@n1
+!s105 cnn_job_controller_sv_unit
+S1
+R0
+w1792132349
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\cnn_job_controller.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\cnn_job_controller.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+Z10 !s107 C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\cnn_job_controller_tb.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\avalon\cnn_job_controller.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv|
+R6
+!i113 0
+R7
+R1
+vcnn_job_controller_tb
+R2
+R8
+R3
+!i10b 1
+!s100 70o=9:SKE8VWWM]l?5T;;0
+IijmgOVUB<TfbL=j5PXoDc3
+R9
+!s105 cnn_job_controller_tb_sv_unit
+S1
+R0
+w1792132120
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\cnn_job_controller_tb.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\cnn_job_controller_tb.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+R10
+R6
+!i113 0
+R7
+R1

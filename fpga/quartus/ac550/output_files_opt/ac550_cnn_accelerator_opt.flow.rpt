@@ -1,0 +1,119 @@
+Flow report for ac550_cnn_accelerator_opt
+Fri Oct 16 19:36:59 2026
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------+
+; Flow Summary                                                                      ;
++---------------------------------+-------------------------------------------------+
+; Flow Status                     ; Flow Failed - Fri Oct 16 19:36:59 2026          ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
+; Revision Name                   ; ac550_cnn_accelerator_opt                       ;
+; Top-level Entity Name           ; ac550_cnn_accelerator                           ;
+; Family                          ; Cyclone V                                       ;
+; Device                          ; 5CSXFC6C6U23I7                                  ;
+; Timing Models                   ; Final                                           ;
+; Logic utilization (in ALMs)     ; 24,875 / 41,910 ( 59 % )                        ;
+; Total registers                 ; 9340                                            ;
+; Total pins                      ; 259 / 342 ( 76 % )                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 27,648 / 5,662,720 ( < 1 % )                    ;
+; Total DSP Blocks                ; 91 / 112 ( 81 % )                               ;
+; Total HSSI RX PCSs              ; 0 / 6 ( 0 % )                                   ;
+; Total HSSI PMA RX Deserializers ; 0 / 6 ( 0 % )                                   ;
+; Total HSSI TX PCSs              ; 0 / 6 ( 0 % )                                   ;
+; Total HSSI PMA TX Serializers   ; 0 / 6 ( 0 % )                                   ;
+; Total PLLs                      ; 0 / 12 ( 0 % )                                  ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                                   ;
++---------------------------------+-------------------------------------------------+
+
+
++-----------------------------------------------+
+; Flow Settings                                 ;
++-------------------+---------------------------+
+; Option            ; Setting                   ;
++-------------------+---------------------------+
+; Start date & time ; 10/16/2026 19:28:17       ;
+; Main task         ; Compilation               ;
+; Revision Name     ; ac550_cnn_accelerator_opt ;
++-------------------+---------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                  ;
++--------------------------+---------------------------------+---------------------------+-------------+------------+
+; Assignment Name          ; Value                           ; Default Value             ; Entity Name ; Section Id ;
++--------------------------+---------------------------------+---------------------------+-------------+------------+
+; COMPILER_SIGNATURE_ID    ; 137228758927614.179215009727528 ; --                        ; --          ; --         ;
+; NUM_PARALLEL_PROCESSORS  ; 4                               ; --                        ; --          ; --         ;
+; PROJECT_OUTPUT_DIRECTORY ; output_files_opt                ; --                        ; --          ; --         ;
+; TOP_LEVEL_ENTITY         ; ac550_cnn_accelerator           ; ac550_cnn_accelerator_opt ; --          ; --         ;
++--------------------------+---------------------------------+---------------------------+-------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:01:00     ; 1.8                     ; 5358 MB             ; 00:00:40                           ;
+; Fitter               ; 00:00:26     ; 1.0                     ; 5546 MB             ; 00:00:26                           ;
+; Fitter               ; 00:00:27     ; 1.0                     ; 5593 MB             ; 00:00:27                           ;
+; Total                ; 00:01:53     ; --                      ; --                  ; 00:01:33                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; HCQ              ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; HCQ              ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; HCQ              ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off ac550_cnn_accelerator_opt -c ac550_cnn_accelerator_opt
+quartus_fit --read_settings_files=on --write_settings_files=off ac550_cnn_accelerator_opt -c ac550_cnn_accelerator_opt
+quartus_fit --read_settings_files=on --write_settings_files=off ac550_cnn_accelerator_opt -c ac550_cnn_accelerator_opt
+
+
+

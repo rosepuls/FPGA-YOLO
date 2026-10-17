@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "status": "FROZEN_FOR_INT8_EVALUATION",
+  "frozen_at": "2026-10-01T23:00:22+08:00",
+  "target_platform": "Xiaomeige AC550 Cyclone V SoC",
+  "model": {
+    "architecture": "YOLOv5n-ReLU",
+    "input_shape": [1, 1, 256, 256],
+    "classes": ["ca_shang", "zang_wu", "zhe_zhou", "zhen_kong"],
+    "config": "third_party/yolov5-relu/models/yolov5n_relu_4cls_gray.yaml",
+    "config_sha256": "0D9BC2A65D45F29264DBA1EDE98D63AB5892665EE13CB1C218C88AFF64B8E05A",
+    "best_checkpoint": {
+      "path": "runs/yolov5n_gray_relu_256/weights/best.pt",
+      "bytes": 14545468,
+      "sha256": "99AE979023B0276A4424086549FBA7F1E445BA23257BB5A22FA7F8DDB0B4AC98"
+    },
+    "last_checkpoint": {
+      "path": "runs/yolov5n_gray_relu_256/weights/last.pt",
+      "bytes": 14545468,
+      "sha256": "98890A235197C3749BBF9FE586CB8FAE239866F93A857B66D65DD3D43FC01E55"
+    }
+  },
+  "training": {
+    "source_tree": "third_party/yolov5-relu",
+    "source_tree_file_count_excluding_caches": 145,
+    "source_tree_sha256": "F7A21B7391A75AD025193AC988E983F871A286AEF34A6B0E8099EF7F9591FB0B",
+    "source_tree_hash_rule": "sorted relative path plus SHA256 for each file; __pycache__ and *.pyc excluded",
+    "weights_initialization": "yolov5n.pt",
+    "data_config": "lv_yolo.yaml",
+    "data_config_sha256": "7CACD6CC77066DA71448223A117DC089588509E0FFC3FED23E96CF3E9329F4DF",
+    "epochs": 100,
+    "batch_size": 32,
+    "image_size": 256,
+    "channels": 1,
+    "device": "CUDA:0 NVIDIA GeForce RTX 5070 Laptop GPU",
+    "workers": 4,
+    "seed": 20260930,
+    "optimizer": "SGD",
+    "command": "python train.py --weights ..\\..\\yolov5n.pt --cfg .\\models\\yolov5n_relu_4cls_gray.yaml --data ..\\..\\lv_yolo.yaml --hyp .\\data\\hyps\\hyp.scratch-low.yaml --imgsz 256 --channels 1 --epochs 100 --batch-size 32 --device 0 --workers 4 --seed 20260930 --project ..\\..\\runs --name yolov5n_gray_relu_256"
+  },
+  "dataset": {
+    "root": "data/LV-YOLO-ROI256",
+    "conversion_report": "data/LV-YOLO-ROI256/reports/conversion_report.json",
+    "conversion_report_sha256": "750F156743630BF98EFE36231B5C6017FB450B215EDF43379576260CFC6EC3F3",
+    "conversion_seed": 20260928,
+    "source_splits": ["train", "val"],
+    "excluded_source_split": "test2017 (incomplete image references)",
+    "split_summary": {
+      "train_images": 1851,
+      "val_images": 274,
+      "test_images": 256,
+      "train_annotations": 3109,
+      "val_annotations": 424,
+      "test_annotations": 457
+    },
+    "validation": "conversion_report.validation.valid == true"
+  },
+  "test_split": {
+    "command_output": "runs/yolov5n_gray_relu_256_test_workers0",
+    "images": 256,
+    "instances": 457,
+    "background_images": 36,
+    "workers": 0,
+    "precision": 0.987,
+    "recall": 0.968,
+    "map50": 0.987,
+    "map50_95": 0.609,
+    "per_class": {
+      "ca_shang": {"precision": 0.984, "recall": 0.960, "map50": 0.986, "map50_95": 0.684},
+      "zang_wu": {"precision": 0.983, "recall": 0.937, "map50": 0.976, "map50_95": 0.663},
+      "zhe_zhou": {"precision": 0.998, "recall": 0.988, "map50": 0.991, "map50_95": 0.559},
+      "zhen_kong": {"precision": 0.984, "recall": 0.989, "map50": 0.993, "map50_95": 0.530}
+    }
+  },
+  "artifacts": {
+    "results_csv": "runs/yolov5n_gray_relu_256/results.csv",
+    "results_png": null,
+    "results_png_note": "Not generated; results.csv is the authoritative training metric record.",
+    "test_figures": [
+      "confusion_matrix.png",
+      "P_curve.png",
+      "R_curve.png",
+      "F1_curve.png",
+      "PR_curve.png"
+    ]
+  },
+  "provenance": {
+    "project_git_revision": "aa5254e",
+    "working_tree_note": "The ReLU copy, contract test, freeze manifest, and documentation are local uncommitted artifacts at freeze time.",
+    "pytorch": "2.11.0+cu128",
+    "python": "3.12.14"
+  }
+}

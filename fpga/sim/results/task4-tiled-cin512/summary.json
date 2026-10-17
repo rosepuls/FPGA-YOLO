@@ -1,0 +1,37 @@
+{
+  "manifest_sha256": "3BC1316D55C85B9010052E4ABCD1F886B74146DB7314CE2475EE6E45D016EE24",
+  "conv_generics": [
+    "-gPIN=8",
+    "-gPOUT=8",
+    "-gTILE_H=4",
+    "-gTILE_W=4"
+  ],
+  "selected": 1,
+  "completed": 1,
+  "passed": true,
+  "nodes": [
+    {
+      "graph_id": "model.9.cv2",
+      "opcode": "CONV_RELU",
+      "rtl_vs_integer": {
+        "count": 16384,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "crc32_actual": "6BE05E3E",
+        "crc32_expected": "6BE05E3E"
+      },
+      "package_golden_vs_integer": {
+        "count": 16384,
+        "mismatches": 1400,
+        "first_mismatch": {
+          "index": 155,
+          "actual": 3,
+          "expected": 1
+        },
+        "crc32_actual": "7DA27FFA",
+        "crc32_expected": "6BE05E3E"
+      },
+      "cycles": "407681"
+    }
+  ]
+}

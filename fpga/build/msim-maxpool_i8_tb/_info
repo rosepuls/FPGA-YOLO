@@ -1,0 +1,93 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Study/IC_Study/Project/FPGA/Contest/CGEDC_1/FPGA-YOLO
+T_opt
+!s110 1792112317
+V<DzWi^hi`Vee30<;=Lj7M2
+04 13 4 work maxpool_i8_tb fast 0
+=1-7ccf0f6dc8fe-6ad176bd-a5-28b0
+o-quiet -auto_acc_if_foreign -work work
+Z1 tCvgOpt 0
+n@_opt
+OL;O;10.6e;65
+R0
+Xac550_cnn_pkg
+Z2 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z3 !s110 1792121919
+!i10b 1
+!s100 PoL]iOd8?3X0MkhaI7ZF^1
+IV;:e9]G[I]knzUDa9^Uf=3
+VV;:e9]G[I]knzUDa9^Uf=3
+S1
+R0
+Z4 w1792111526
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv
+L0 1
+Z5 OL;L;10.6e;65
+r1
+!s85 0
+31
+Z6 !s108 1792121919.000000
+!s107 C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\maxpool_i8_tb.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\maxpool_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv|
+Z7 !s90 -work|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\build\msim-maxpool_i8_tb|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\maxpool_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\maxpool_i8_tb.sv|
+!i113 0
+Z8 o-work {C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\build\msim-maxpool_i8_tb} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+vmaxpool_i8
+R2
+Z9 DXx4 work 13 ac550_cnn_pkg 0 22 V;:e9]G[I]knzUDa9^Uf=3
+R3
+!i10b 1
+!s100 JjOdO10YSm6NR:3O@:6C?3
+Ig?3779ZFF^nS?oi>_U7^e3
+Z10 VDg1SIo80bB@j0V0VzS_@n1
+!s105 maxpool_i8_sv_unit
+S1
+R0
+R4
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\maxpool_i8.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\maxpool_i8.sv
+L0 1
+R5
+r1
+!s85 0
+31
+R6
+Z11 !s107 C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\maxpool_i8_tb.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\cnn\maxpool_i8.sv|C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\rtl\common\ac550_cnn_pkg.sv|
+R7
+!i113 0
+R8
+R1
+vmaxpool_i8_tb
+R2
+R9
+R3
+!i10b 1
+!s100 5Kkj`K7HW9GO1?^LA=M5z3
+I16`AljGdhacJ>UWJ^lY6U0
+R10
+!s105 maxpool_i8_tb_sv_unit
+S1
+R0
+R4
+8C:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\maxpool_i8_tb.sv
+FC:\Study\IC_Study\Project\FPGA\Contest\CGEDC_1\FPGA-YOLO\fpga\sim\maxpool_i8_tb.sv
+L0 3
+R5
+r1
+!s85 0
+31
+R6
+R11
+R7
+!i113 0
+R8
+R1

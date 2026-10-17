@@ -1,0 +1,39 @@
+{
+  "activation_quantization": "per_tensor_symmetric_int8",
+  "amp_enabled": false,
+  "counts": {
+    "detect_convs": 3,
+    "external_concats": 4,
+    "normal_convs": 57,
+    "residual_adds": 7,
+    "sppf": 1,
+    "upsamples": 2
+  },
+  "data_yaml_sha256": "7CACD6CC77066DA71448223A117DC089588509E0FFC3FED23E96CF3E9329F4DF",
+  "deployment_candidate": {
+    "epoch": 64,
+    "file": "weights/best_qat.pt",
+    "fitness": 0.5976831649705303,
+    "selection": "final_frozen_qat_checkpoint"
+  },
+  "hyp_yaml_sha256": "95717846BA7204AB33F85477E6E3CFEBE682BCD5D4A46109C92F38D3A51CA9E1",
+  "normal_conv_weight_quantization": "per_output_channel_symmetric_int8",
+  "phase": "freeze",
+  "qrange": [
+    -127,
+    127
+  ],
+  "quantization_method": "QAT_AC550_SYMMETRIC_INT8",
+  "rounding": "ROUND_HALF_TO_EVEN",
+  "schedule": {
+    "activation_quant_epoch": 15,
+    "deployment_candidate_start_epoch": 50,
+    "freeze_bn_epoch": 50,
+    "freeze_observer_epoch": 45,
+    "observer_epochs": 5
+  },
+  "seed": 20260930,
+  "source_checkpoint_sha256": "99AE979023B0276A4424086549FBA7F1E445BA23257BB5A22FA7F8DDB0B4AC98",
+  "status": "COMPLETED",
+  "zero_point": 0
+}
